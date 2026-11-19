@@ -3,16 +3,12 @@
 __pycache__/
 *.pyc
 
-# data and generated outputs (large; reproducible from scripts)
+# data and generated outputs (large; reproducible with reproduce.sh)
 data/
-results*/
-report*/
+results/
 *.npz
-*.parquet
 *.h5
 logs_*.txt
-run_*.sh
-data_ext/
 
 # LaTeX build files
 paper/*.aux

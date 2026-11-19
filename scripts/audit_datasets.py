@@ -1,51 +1,59 @@
-"""Dataset audits quoted in the paper.
+"""Dataset audits quoted in the paper (Section 4.1 and Appendix A).
 
-GW-TCW: correlation between the 10 repeated acquisitions of a configuration, and the
-configurations whose damaged signals are sign-inverted relative to the baseline.
-OGW-1: residual energy of a path relative to its baseline-to-baseline drift, by the
-distance between the path and the damage.
+GW-TCW
+  * how similar the 10 repeated acquisitions of a configuration are (median correlation)
+  * how many configurations have sign-inverted damaged signals
+OGW-1
+  * residual energy of a path relative to its drift (baseline-to-baseline) energy, for
+    paths within 10 mm of the damage and paths more than 120 mm away. This shows that only
+    paths near the damage carry information about it, and less so at higher frequency.
 
-    python scripts/audit_datasets.py --gwtcw data/gwtcw/gwtcw.npz --ogw data/ogw1/loc.npz
+Output: paper_results/audits.json
+
+    python scripts/audit_datasets.py
 """
-import argparse
+
+from __future__ import annotations
+
 import json
 import sys
 from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ogw1_spearman import proximity  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gwtsfm.config import DATA, ROOT  # noqa: E402
+from gwtsfm.ogw import path_distance, phase_of  # noqa: E402
 
 
-def gwtcw(path):
-    d = np.load(path)
-    B, D = d["B"], d["D"]
+def audit_gwtcw(path):
+    z = np.load(path)
+    B, D = z["B"], z["D"]
     i = np.arange(len(B))
-    cfg = (i // 120) * 12 + i % 12          # 13 blocks x 12 paths; 10 repeats per configuration
-    rep_r, flips, abs_r = [], 0, []
+    cfg = (i // 120) * 12 + i % 12     # 13 blocks x 12 paths; 10 repeats per configuration
+    repeat_r, flipped, abs_r = [], 0, []
     for c in np.unique(cfg):
         idx = np.flatnonzero(cfg == c)
-        C = np.corrcoef(B[idx])
-        rep_r.append(np.median(C[np.triu_indices(len(idx), 1)]))
-        r = np.array([np.corrcoef(B[k], D[k])[0, 1] for k in idx])
-        flips += int(np.all(r < 0))
+        C = np.corrcoef(B[idx])                                   # repeats of one configuration
+        repeat_r.append(np.median(C[np.triu_indices(len(idx), 1)]))
+        r = np.array([np.corrcoef(B[k], D[k])[0, 1] for k in idx])   # healthy vs damaged
+        flipped += int(np.all(r < 0))
         abs_r.append(np.median(np.abs(r)))
-    return dict(n_configs=int(len(np.unique(cfg))), median_repeat_r=float(np.median(rep_r)),
-                min_repeat_r=float(np.min(rep_r)), sign_inverted_configs=flips,
+    return dict(n_configs=int(len(np.unique(cfg))), median_repeat_r=float(np.median(repeat_r)),
+                min_repeat_r=float(np.min(repeat_r)), sign_inverted_configs=flipped,
                 median_abs_r_baseline_damaged=float(np.median(abs_r)))
 
 
-def ogw(path, near=10.0, far=120.0):
+def audit_ogw1(path, near=10.0, far=120.0):
     z = np.load(path, allow_pickle=True)
     R, B = z["R"], z["B"]
-    dist = -proximity(z["cross"], z["tpos"], z["dpos"])     # mm from damage centre to each path
-    ph = np.array([0] * 11 + [1] * 9 + [2] * 8)
+    dist = path_distance(z["cross"], z["tpos"], z["dpos"])          # (28 cases, 36 paths), mm
+    phase = np.array([phase_of(k) for k in range(1, 29)])
     out = {}
     for fi, f in enumerate(z["freqs"]):
-        eR, eB = (R[fi] ** 2).sum(-1), (B[fi] ** 2).sum(-1)
-        drift = np.stack([eB[20 * q:20 * q + 20].mean(0) for q in range(3)])
-        ratio = eR / drift[ph]
+        energy = (R[fi] ** 2).sum(-1)                                # (28, 36)
+        drift = np.stack([(B[fi][20 * q:20 * q + 20] ** 2).sum(-1).mean(0) for q in range(3)])
+        ratio = energy / drift[phase]
         out[int(f)] = dict(near_median=float(np.median(ratio[dist <= near])),
                            far_median=float(np.median(ratio[dist > far])),
                            n_near=int((dist <= near).sum()), n_far=int((dist > far).sum()))
@@ -53,11 +61,7 @@ def ogw(path, near=10.0, far=120.0):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--gwtcw", default="data/gwtcw/gwtcw.npz")
-    ap.add_argument("--ogw", default="data/ogw1/loc.npz")
-    ap.add_argument("--out", default="paper_results/audits.json")
-    a = ap.parse_args()
-    res = {"gwtcw": gwtcw(a.gwtcw), "ogw1_energy_contrast": ogw(a.ogw)}
-    Path(a.out).write_text(json.dumps(res, indent=2))
-    print(json.dumps(res, indent=2))
+    result = {"gwtcw": audit_gwtcw(DATA / "gwtcw" / "gwtcw.npz"),
+              "ogw1_energy_contrast": audit_ogw1(DATA / "ogw1" / "residuals.npz")}
+    (ROOT / "paper_results" / "audits.json").write_text(json.dumps(result, indent=2))
+    print(json.dumps(result, indent=2))

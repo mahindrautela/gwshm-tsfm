@@ -1,30 +1,40 @@
-"""Write the paper's result tables as LaTeX, straight from the result files.
+"""Write the paper's result tables as LaTeX rows (paper/tables/*.tex), straight from results/.
 
-    python paper/make_tables.py        (from the repository root)
+Every number in a results table of the paper comes from here; nothing is typed by hand.
+Values are rounded to two decimals only at the end, and ties at that precision are all
+set in bold.
+
+    python paper/make_tables.py
 """
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gwtsfm.config import MODELS, RESULTS  # noqa: E402
+
 OUT = Path(__file__).resolve().parent / "tables"
 OUT.mkdir(exist_ok=True)
 
-NAME = {"Chronos-2": "Chronos-2", "Chronos-Bolt (base)": "Chronos-Bolt base", "TiRex": "TiRex",
-        "MOMENT-1 (base)": "MOMENT-1 base", "Mantis-8M": "Mantis-8M", "TTM-R2": "TTM-R2"}
+# model names as printed in the paper ("Chronos-Bolt (base)" -> "Chronos-Bolt base")
+NAME = {m: m.replace(" (base)", " base") for m in MODELS.values()}
 TSFM = list(NAME)
 
 
 def pm(m, sd):
+    """mean with a small '+- s.d.' after it"""
     return f"{m:.2f}\\,{{\\scriptsize$\\pm${sd:.2f}}}"
 
 
 def f2(x):
+    """two decimals, or a dash when missing"""
     return "--" if pd.isna(x) else f"{x:.2f}"
 
 
 def bold(s, on):
+    """wrap in \\textbf when on"""
     return rf"\textbf{{{s}}}" if on else s
 
 
@@ -34,12 +44,14 @@ def same2(a, b):
 
 
 def write(name, body):
+    """save rows to paper/tables/<name>"""
     (OUT / name).write_text(body)
     print("wrote", name)
 
 
 def task1():
-    cv = pd.read_csv(ROOT / "results_gwtcw/cv_metrics.csv")
+    """Table 3: GW-TCW classification (rows sorted by sign-symmetric AUC)."""
+    cv = pd.read_csv(RESULTS / "task1_gwtcw/cv_metrics.csv")
     g = cv.groupby(["method", "mode", "head"])
     auc, sd, bacc = g.auc.mean(), g.auc.std(), g.bacc.mean()
 
@@ -55,8 +67,7 @@ def task1():
             row("1D-CNN (reference notebook)", "end-to-end", "trained")]
     refs[1]["name"], refs[2]["name"] = r"$|$FFT$|$ + log.\ reg.", "1D-CNN"
     refs[0]["name"] = "MiniRocket + ridge"
-    best = {k: max(r[k] for r in rows + refs if r[k] is not None and not pd.isna(r[k]))
-            for k in ["auc", "bacc", "rec", "knn", "one"]}
+    # bold marks the best frozen model in each column
     best_frozen = {k: max(r[k] for r in rows) for k in ["auc", "bacc", "rec", "knn", "one"]}
     lines = []
     for r in rows:
@@ -80,8 +91,9 @@ def task1():
 
 
 def task2():
-    sa = pd.read_csv(ROOT / "results_nasa/signal_auc.csv")
-    ma = pd.read_csv(ROOT / "results_nasa/measurement_auc.csv")
+    """Table 4: NASA detection within and across specimens (rows sorted by cross-specimen AUC)."""
+    sa = pd.read_csv(RESULTS / "task2_nasa/signal_auc.csv")
+    ma = pd.read_csv(RESULTS / "task2_nasa/measurement_auc.csv")
     gs = sa.groupby(["setting", "method", "detector"]).auc_signal
     gm = ma.groupby(["setting", "method", "detector"]).detected_zero_fa.mean()
     t = {"mean": gs.mean(), "std": gs.std(), "detected_zero_fa": gm}
@@ -134,7 +146,8 @@ def task2():
 
 
 def task3():
-    n = pd.read_csv(ROOT / "results_ogw1_network/network_localisation.csv")
+    """Tables 5, 6, 10 and 11: OGW-1 path-level and network-level localisation, RAPID."""
+    n = pd.read_csv(RESULTS / "task3_ogw1/network_localisation.csv")
     lr = n[n.approach == "logistic regression on DI map"].pivot_table(index="method", columns="freq", values="acc")
     ctrl = n[n.approach.str.startswith("control")].set_index("method")
     rap = n[n.approach == "RAPID (training-free)"].pivot_table(index="method", columns="freq", values="acc")
@@ -160,7 +173,7 @@ def task3():
         lines.append(" & ".join(c) + r" \\")
     write("task3_rapid.tex", "\n".join(lines) + "\n")
 
-    p = pd.read_csv(ROOT / "results_ogw1/metrics.csv")
+    p = pd.read_csv(RESULTS / "task3_ogw1/metrics.csv")
     g = p.groupby(["method", "head", "split"])[["acc", "acc_structure"]].mean()
     spl = ["random 90/10", "grouped (position, path)", "unseen positions"]
 
@@ -186,7 +199,8 @@ def task3():
 
 
 def growth():
-    g = pd.read_csv(ROOT / "results_nasa/growth_curve.csv")
+    """Table 9: damage growth, cycle counts with at least three specimens."""
+    g = pd.read_csv(RESULTS / "task2_nasa/growth_curve.csv")
     g = g[g.detector == "same-path distance"]
     piv = g.pivot_table(index="method", columns="cycles", values="ratio")
     ns = g.groupby("cycles").n_specimens.min()

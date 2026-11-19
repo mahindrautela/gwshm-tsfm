@@ -1,31 +1,29 @@
-"""Copy the small result tables behind the paper into paper_results/ (tracked in git).
+"""Copy the result tables behind the paper from results/ into paper_results/ (kept in git).
 
     python scripts/export_results.py
 """
+
 import shutil
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gwtsfm.config import RESULTS, ROOT  # noqa: E402
+
 FILES = {
-    "task1_gwtcw": ["results_gwtcw/cv_metrics.csv", "results_gwtcw/fewshot.csv", "results_gwtcw/data_summary.json"],
-    "task2_nasa": ["results_nasa/summary_table.csv", "results_nasa/tables.md", "results_nasa/signal_auc.csv",
-                   "results_nasa/measurement_auc.csv", "results_nasa/growth_curve.csv",
-                   "results_nasa/healthy_spread.csv"],
-    "task3_ogw1": ["results_ogw1/metrics.csv", "results_ogw1_network/network_localisation.csv",
-                   "results_ogw1_network/spearman.csv"],
+    "task1_gwtcw": ["cv_metrics.csv", "fewshot.csv", "data_summary.json"],
+    "task2_nasa": ["signal_auc.csv", "measurement_auc.csv", "growth_curve.csv"],
+    "task3_ogw1": ["metrics.csv", "network_localisation.csv", "spearman.csv"],
 }
 
-
-def main(root=Path("."), out=Path("paper_results")):
-    for task, files in FILES.items():
-        (out / task).mkdir(parents=True, exist_ok=True)
-        for f in files:
-            src = root / f
-            if src.exists():
-                shutil.copy2(src, out / task / src.name)
-                print(f"{task}/{src.name}")
-            else:
-                print(f"missing: {f}")
-
-
 if __name__ == "__main__":
-    main()
+    for task, names in FILES.items():
+        dst = ROOT / "paper_results" / task
+        dst.mkdir(parents=True, exist_ok=True)
+        for name in names:
+            src = RESULTS / task / name
+            if src.exists():
+                shutil.copy2(src, dst / name)
+                print(f"{task}/{name}")
+            else:
+                print(f"missing: {src}")

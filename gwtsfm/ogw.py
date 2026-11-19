@@ -1,264 +1,105 @@
-"""I/O for the Open Guided Waves (OGW) CFRP temperature dataset.
+"""Open Guided Waves (OGW) dataset 1: file reader and plate geometry (Task 3).
 
-Moll et al., "Temperature affected guided wave propagation in a composite plate
-complementing the Open Guided Waves Platform", Scientific Data 6:191 (2019).
+Moll et al., "Open Guided Waves: online platform for ultrasonic guided wave
+measurements", Structural Health Monitoring 18(5-6), 2019.
 
-On-disk layout (as distributed):
-
-    <root>/OGW_CFRP_Temperature_udam/<YYYYMMDDTHHMMSS>/pc_f<freq>kHz.h5
-    <root>/OGW_CFRP_Temperature_dam_D04/<timestamp>/pc_f<freq>kHz.h5
-    ... (dam_D12, dam_D16, dam_D24)
-
-Each timestamped folder is one temperature step.  Each H5 file holds
-
-    pitchcatch/catch   : (66, n_samples) received signals, one row per
-                         transducer pair (i, j), i < j, lexicographic order
-    Temperature/values : surface temperatures from the two probes (deg C)
-
-The loader below reads these, decimates them, and caches one compact
-``.npz`` per excitation frequency so that experiments never touch the raw
-(~tens of GB) files again.
+The plate is 500 x 500 mm with 12 transducers: T1-T6 along the top edge (y = 470 mm)
+and T7-T12 along the bottom edge (y = 30 mm). A reversible defect was placed at 28
+positions D1-D28, which form seven 2 x 2 clusters (zones). Each OGW file holds one
+measurement: the signal received on each of the 66 transducer pairs.
 """
 
 from __future__ import annotations
 
 import itertools
-import json
-import os
-import re
-from dataclasses import dataclass, field
-from pathlib import Path
 
 import h5py
 import numpy as np
 from scipy import signal as sps
 
-FREQS_KHZ = list(range(40, 261, 20))
-N_TRANSDUCERS = 12
-PAIRS = list(itertools.combinations(range(1, N_TRANSDUCERS + 1), 2))  # 66 pairs
-FOLDERS = {
-    "udam": "OGW_CFRP_Temperature_udam",
-    "D04": "OGW_CFRP_Temperature_dam_D04",
-    "D12": "OGW_CFRP_Temperature_dam_D12",
-    "D16": "OGW_CFRP_Temperature_dam_D16",
-    "D24": "OGW_CFRP_Temperature_dam_D24",
-}
-# Sampling rate used when the files carry no explicit attribute.  Verified
-# against the files at load time where possible (see ``_infer_fs``).
-DEFAULT_FS = 10e6
+# The 66 transducer pairs (i, j) with i < j, in the order used throughout this project.
+PAIRS = list(itertools.combinations(range(1, 13), 2))
 
-_TS_RE = re.compile(r"^\d{8}T\d{6}$")
+# The 36 paths that cross the plate, from a top transducer (T1-T6) to a bottom one (T7-T12).
+CROSS_PATHS = [PAIRS.index((i, j)) for i in range(1, 7) for j in range(7, 13)]
 
-
-def pair_index(i: int, j: int) -> int:
-    """Row index of the pair (i, j) in ``pitchcatch/catch`` (1-based ids)."""
-    a, b = (i, j) if i < j else (j, i)
-    return PAIRS.index((a, b))
+# Transducer and defect-centre coordinates in mm (from the OGW dataset description).
+TRANSDUCER_XY = {1: (450, 470), 2: (370, 470), 3: (290, 470), 4: (210, 470), 5: (130, 470),
+                 6: (50, 470), 7: (450, 30), 8: (370, 30), 9: (290, 30), 10: (210, 30),
+                 11: (130, 30), 12: (50, 30)}
+DAMAGE_XY = {1: (50, 415), 2: (65, 415), 3: (50, 400), 4: (65, 400),
+             5: (250, 427), 6: (265, 427), 7: (250, 412), 8: (265, 412),
+             9: (180, 345), 10: (195, 345), 11: (180, 330), 12: (195, 330),
+             13: (320, 275), 14: (335, 275), 15: (320, 260), 16: (335, 260),
+             17: (130, 195), 18: (145, 195), 19: (130, 180), 20: (145, 180),
+             21: (435, 205), 22: (450, 205), 23: (435, 190), 24: (450, 190),
+             25: (250, 90), 26: (265, 90), 27: (250, 75), 28: (265, 75)}
 
 
-def pair_name(k: int) -> str:
-    i, j = PAIRS[k]
-    return f"T{i}-T{j}"
+def zone_of(position: int) -> int:
+    """Damage zone 1-7 of position 1-28: four neighbouring positions per zone."""
+    return (position - 1) // 4 + 1
 
 
-def _first_existing(group: h5py.Group, names) -> object | None:
-    for n in names:
-        if n in group:
-            return group[n]
-        if n in group.attrs:
-            return group.attrs[n]
-    return None
+def phase_of(position: int) -> int:
+    """Measurement phase 0-2 of a damage position.
+
+    The dataset was recorded as 20 baselines, D1-D11, 20 baselines, D12-D20, 20 baselines,
+    D21-D28. Each damage case is compared with the baselines of its own phase.
+    """
+    return 0 if position <= 11 else (1 if position <= 20 else 2)
 
 
-def _jsonable(v):
-    try:
-        a = np.asarray(v)
-        if a.dtype.kind == "S":
-            out = [s.decode(errors="replace") for s in a.ravel()]
-        else:
-            out = a.tolist()
-        json.dumps(out)
-        return out
-    except Exception:  # exotic attr types (e.g. h5py.Empty)
-        return str(v)
+def path_distance(cross: np.ndarray, tpos: np.ndarray, dpos: np.ndarray) -> np.ndarray:
+    """Distance (mm) from each damage centre to each transmitter-receiver segment.
 
-
-def describe_h5(path) -> dict:
-    """Return a JSON-able description of an OGW H5 file (structure + attrs)."""
-    out: dict = {"datasets": {}, "attrs": {}}
-
-    def visit(name, obj):
-        if isinstance(obj, h5py.Dataset):
-            shape = list(obj.shape) if obj.shape is not None else None
-            out["datasets"][name] = {"shape": shape, "dtype": str(obj.dtype)}
-            if shape is not None and obj.size <= 16:
-                out["datasets"][name]["value"] = _jsonable(obj[()])
-        for k, v in obj.attrs.items():
-            out["attrs"][f"{name}@{k}"] = _jsonable(v)
-
-    with h5py.File(path, "r") as f:
-        for k, v in f.attrs.items():
-            out["attrs"][f"/@{k}"] = _jsonable(v)
-        f.visititems(visit)
+    cross: (P, 2) 1-based transducer ids of each path; tpos: (12, 2) transducer xy;
+    dpos: (K, 2) damage xy. Returns (K, P).
+    """
+    T = tpos[cross[:, 0] - 1]
+    R = tpos[cross[:, 1] - 1]
+    v = R - T
+    out = np.empty((len(dpos), len(cross)))
+    for k, d in enumerate(dpos):
+        # closest point on the segment T -> R, then its distance to the damage centre
+        t = np.clip(((d - T) * v).sum(1) / (v * v).sum(1), 0, 1)
+        out[k] = np.linalg.norm(T + t[:, None] * v - d, axis=1)
     return out
 
 
-def _infer_fs(f: h5py.File) -> float | None:
-    """Try to read the sampling rate from common attribute/dataset names."""
-    if "command/pitchcatch/sampling_frequency" in f:  # real OGW files
-        return float(np.asarray(f["command/pitchcatch/sampling_frequency"][()]).ravel()[0])
-    for grp in (f, f.get("pitchcatch")):
-        if grp is None:
-            continue
-        for name in ("fs", "Fs", "samplingrate", "sampling_rate", "SampleFrequency",
-                     "sample_frequency", "samplefrequency"):
-            v = _first_existing(grp, [name])
-            if v is not None:
-                return float(np.asarray(v[()] if hasattr(v, "shape") else v).ravel()[0])
-        for name in ("dt", "Ts", "sampletime", "time_step"):
-            v = _first_existing(grp, [name])
-            if v is not None:
-                return 1.0 / float(np.asarray(v[()] if hasattr(v, "shape") else v).ravel()[0])
-        for name in ("time", "t", "Time"):
-            v = _first_existing(grp, [name])
-            if v is not None and hasattr(v, "shape") and v.size > 2:
-                t = np.asarray(v[()]).ravel()
-                return 1.0 / float(np.median(np.diff(t)))
-    return None
-
-
 def read_h5(path, with_onset: bool = False):
-    """Read one OGW file (path or file-like).
+    """Read one OGW measurement file (a path or a file-like object).
 
-    Returns (catch [66, N] float32 in canonical pair order, mean temperature,
-    fs or None) and, if ``with_onset``, the excitation onset sample (from the
-    recorded excitation ``pitchcatch/pitch``) or None.
+    Returns (signals, mean temperature, sampling rate) and, with ``with_onset``, the
+    sample at which the excitation starts. ``signals`` is (66, N) float32 with rows in
+    the order of PAIRS. The sampling rate is None if the file does not state it.
     """
     with h5py.File(path, "r") as f:
         x = np.asarray(f["pitchcatch"]["catch"], dtype=np.float32)
         temps = np.asarray(f["Temperature"]["values"], dtype=np.float64).ravel()
-        fs = _infer_fs(f)
+        fs = None
+        if "command/pitchcatch/sampling_frequency" in f:
+            fs = float(np.asarray(f["command/pitchcatch/sampling_frequency"][()]).ravel()[0])
         onset = None
         if with_onset and "pitchcatch/pitch" in f:
+            # first sample where the recorded excitation exceeds 1% of its peak
             p = np.abs(np.asarray(f["pitchcatch/pitch"][0], dtype=np.float64))
             onset = int(np.argmax(p > 0.01 * p.max()))
-        if "command/pitchcatch/channels" in f:  # reorder rows to canonical (i<j) order
+        if "command/pitchcatch/channels" in f:
+            # the file lists the transducer pair (0-based) of each row: reorder to PAIRS
             ch = np.asarray(f["command/pitchcatch/channels"][()]).astype(int) + 1
             order = [PAIRS.index(tuple(sorted(r))) for r in ch]
             if order != list(range(len(PAIRS))):
                 y = np.empty_like(x)
                 y[order] = x
                 x = y
-    if x.shape[0] != len(PAIRS) and x.shape[1] == len(PAIRS):
-        x = x.T
     if with_onset:
         return x, float(np.nanmean(temps)), fs, onset
     return x, float(np.nanmean(temps)), fs
 
 
-def list_measurements(root: str | os.PathLike, state: str) -> list[Path]:
-    """Timestamped measurement folders for a state ('udam', 'D04', ...), in time order."""
-    base = Path(root) / FOLDERS[state]
-    if not base.exists():
-        return []
-    dirs = [d for d in base.iterdir() if d.is_dir() and _TS_RE.match(d.name)]
-    return sorted(dirs, key=lambda d: d.name)
-
-
-def decimation_factor(fs: float, f_khz: float, oversample: float = 8.0) -> int:
-    """Integer decimation keeping >= ``oversample`` samples per carrier period."""
-    return max(1, int(np.floor(fs / (oversample * f_khz * 1e3))))
-
-
 def decimate(x: np.ndarray, q: int) -> np.ndarray:
-    """Zero-phase anti-aliased decimation along the last axis."""
+    """Reduce the sampling rate by an integer factor q (zero-phase anti-aliasing filter)."""
     if q <= 1:
         return x.astype(np.float32)
     return sps.decimate(x, q, ftype="fir", zero_phase=True, axis=-1).astype(np.float32)
-
-
-@dataclass
-class FreqCache:
-    """All measurements of one excitation frequency, decimated."""
-
-    f_khz: int
-    fs: float                      # sampling rate after decimation
-    X: np.ndarray                  # (n_meas, 66, n_samples) float32
-    temp: np.ndarray               # (n_meas,) mean surface temperature
-    state: np.ndarray              # (n_meas,) str: 'udam', 'D04', ...
-    stamp: np.ndarray              # (n_meas,) str timestamp
-    meta: dict = field(default_factory=dict)
-
-    @property
-    def label(self) -> np.ndarray:
-        return (self.state != "udam").astype(int)
-
-    def save(self, path: str | os.PathLike) -> None:
-        np.savez(path, f_khz=self.f_khz, fs=self.fs, X=self.X, temp=self.temp,
-                 state=self.state, stamp=self.stamp, meta=json.dumps(self.meta))
-
-    @classmethod
-    def load(cls, path: str | os.PathLike, mmap: bool = False) -> "FreqCache":
-        d = np.load(path, mmap_mode="r" if mmap else None, allow_pickle=False)
-        return cls(f_khz=int(d["f_khz"]), fs=float(d["fs"]), X=d["X"], temp=d["temp"],
-                   state=d["state"], stamp=d["stamp"], meta=json.loads(str(d["meta"])))
-
-
-def build_cache(root: str | os.PathLike, f_khz: int, states=tuple(FOLDERS),
-                oversample: float = 8.0, fs_default: float = DEFAULT_FS,
-                verbose: bool = True) -> FreqCache:
-    """Read every measurement of one frequency and return a decimated cache."""
-    Xs, temps, sts, stamps = [], [], [], []
-    fs_seen = None
-    q = None
-    for st in states:
-        dirs = list_measurements(root, st)
-        for d in dirs:
-            fp = d / f"pc_f{f_khz}kHz.h5"
-            if not fp.exists():
-                continue
-            x, t, fs = read_h5(fp)
-            fs = fs or fs_default
-            if fs_seen is None:
-                fs_seen = fs
-                q = decimation_factor(fs, f_khz, oversample)
-            Xs.append(decimate(x, q))
-            temps.append(t)
-            sts.append(st)
-            stamps.append(d.name)
-        if verbose:
-            print(f"  f={f_khz} kHz  {st}: {sum(s == st for s in sts)} measurements")
-    if not Xs:
-        raise FileNotFoundError(f"no files for f={f_khz} kHz under {root}")
-    n = min(x.shape[-1] for x in Xs)
-    X = np.stack([x[..., :n] for x in Xs])
-    return FreqCache(f_khz=f_khz, fs=fs_seen / q, X=X, temp=np.asarray(temps),
-                     state=np.asarray(sts), stamp=np.asarray(stamps),
-                     meta={"fs_raw": fs_seen, "decimation": q,
-                           "fs_source": "file" if fs_seen != fs_default else "default"})
-
-
-def split_reference(cache: FreqCache) -> tuple[np.ndarray, np.ndarray]:
-    """Indices of the reference set and of the test set.
-
-    Following Moll et al. (2019), the first heating ramp of the intact plate
-    (the first ~81 'udam' measurements, 20 -> 60 deg C) is the reference /
-    baseline set.  Everything else (later intact measurements and all damaged
-    measurements) is the test set.  The ramp end is detected as the first
-    temperature maximum, so the split does not depend on an exact count.
-    """
-    ud = np.flatnonzero(cache.state == "udam")
-    order = ud[np.argsort(cache.stamp[ud])]
-    t = cache.temp[order]
-    # end of first heating ramp: first index where the running max stops growing
-    # for several consecutive steps (robust to probe noise)
-    run_max = np.maximum.accumulate(t)
-    end = len(t)
-    for k in range(1, len(t)):
-        if run_max[k] - t[k] > 1.0:  # temperature dropped by > 1 deg from the peak
-            end = k
-            break
-    end = int(np.argmax(t[:end])) + 1
-    ref = order[:end]
-    test = np.setdiff1d(np.arange(len(cache.temp)), ref)
-    return ref, test

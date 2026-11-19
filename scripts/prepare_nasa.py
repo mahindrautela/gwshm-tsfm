@@ -1,12 +1,22 @@
-"""Extract NASA PCoE CFRP composites (layup 2) Lamb-wave measurements into one npz.
+"""Extract the NASA PCoE CFRP measurements used in Task 2 into one array file.
 
 Saxena, Goebel, Larrosa, Chang, "CFRP Composites Data Set", NASA Prognostics Data
-Repository.  Each .mat file is one measurement (specimen, fatigue cycles, boundary
-condition, repetition) holding 252 signals: 36 paths (actuators 1-6 -> sensors
-7-12) x 7 excitation frequencies (150-450 kHz), 2000 samples at 1.2 MHz.
+Repository. Each .mat file in Layup2.zip is one measurement of one coupon (specimen) at
+a number of fatigue cycles, under a boundary condition, with a repetition number. A
+measurement holds 252 signals: 36 paths (actuators 1-6 to sensors 7-12) x 7 excitation
+frequencies (150-450 kHz), 2,000 samples at 1.2 MHz.
 
-python scripts/prepare_nasa.py --zip data_ext/nasa/Layup2.zip --out data/nasa/l2.npz \
-    --condition 1 --baseline-max-cycles 3 --baseline-per-specimen 8
+We keep, for every layup-2 specimen, under the loaded boundary condition (condition 1):
+  * healthy: 8 measurements chosen at random among those at <= 3 cycles
+  * later:   the first repetition at each of 10, 110, 1k, 10k, 20k, 30k, 50k, 100k,
+             150k and 200k cycles, where it exists (20k is the "damaged" state)
+
+Output data/nasa/layup2.npz:
+    X (62, 7, 36, 2000) signals [measurement, frequency, path, sample]
+    specimen, cycles, bc, rep, condition: one entry per measurement
+    freqs (7,), paths (36, 2), fs
+
+    python scripts/prepare_nasa.py --zip data/nasa/Layup2.zip
 """
 
 from __future__ import annotations
@@ -14,16 +24,23 @@ from __future__ import annotations
 import argparse
 import io
 import re
+import sys
 import zipfile
 from pathlib import Path
 
 import numpy as np
 import scipy.io as sio
 
-PAT = re.compile(r"/(L2S\d+)_(\d+)_(\d)_(\d+)\.mat$")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gwtsfm.config import DATA, SEED  # noqa: E402
+
+# file names look like .../L2S11_10000_1_2.mat = specimen, cycles, boundary condition, repetition
+NAME = re.compile(r"/(L2S\d+)_(\d+)_(\d)_(\d+)\.mat$")
+LATER_CYCLES = [10, 110, 1000, 10000, 20000, 30000, 50000, 100000, 150000, 200000]
 
 
-def read(z, name):
+def read_measurement(z: zipfile.ZipFile, name: str):
+    """Read one .mat file into an array (frequency, path, sample) plus its metadata."""
     c = sio.loadmat(io.BytesIO(z.read(name)), squeeze_me=True, struct_as_record=False)["coupon"]
     p = c.path_data
     freqs = sorted({int(q.frequency) for q in p})
@@ -34,42 +51,47 @@ def read(z, name):
     return X, freqs, paths, str(c.condition), float(p[0].sampling_rate)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--zip", required=True)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--condition", type=int, default=1)
-    ap.add_argument("--baseline-max-cycles", type=int, default=3)
-    ap.add_argument("--baseline-per-specimen", type=int, default=8)
-    ap.add_argument("--damage-cycles", type=int, nargs="+",
-                    default=[10, 110, 1000, 10000, 20000, 30000, 50000, 100000, 150000, 200000])
-    args = ap.parse_args()
-    z = zipfile.ZipFile(args.zip)
-    files = []
-    for n in z.namelist():
-        m = PAT.search(n)
-        if m and "/._" not in n:
-            files.append((m.group(1), int(m.group(2)), int(m.group(3)), int(m.group(4)), n))
-    rng = np.random.default_rng(0)
+def select(files, condition, max_healthy_cycles, healthy_per_specimen):
+    """Pick the healthy and later measurements of every specimen (see module docstring)."""
+    rng = np.random.default_rng(SEED)
     pick = []
     for s in sorted({f[0] for f in files}):
-        early = [f for f in files if f[0] == s and f[1] <= args.baseline_max_cycles and f[2] == args.condition]
-        early = sorted(early)
-        idx = rng.choice(len(early), min(args.baseline_per_specimen, len(early)), replace=False)
+        early = sorted(f for f in files
+                       if f[0] == s and f[1] <= max_healthy_cycles and f[2] == condition)
+        idx = rng.choice(len(early), min(healthy_per_specimen, len(early)), replace=False)
         pick += [early[i] for i in sorted(idx)]
-        later = [f for f in files if f[0] == s and f[1] in args.damage_cycles and f[2] == args.condition]
-        # one repetition per cycle count (the first)
         seen = set()
-        for f in sorted(later):
-            if f[1] not in seen:
+        for f in sorted(f for f in files if f[0] == s and f[1] in LATER_CYCLES and f[2] == condition):
+            if f[1] not in seen:  # first repetition at each cycle count
                 pick.append(f)
                 seen.add(f[1])
+    return pick
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--zip", default=str(DATA / "nasa" / "Layup2.zip"))
+    ap.add_argument("--out", default=str(DATA / "nasa" / "layup2.npz"))
+    ap.add_argument("--condition", type=int, default=1, help="boundary condition (1 = loaded)")
+    ap.add_argument("--max-healthy-cycles", type=int, default=3)
+    ap.add_argument("--healthy-per-specimen", type=int, default=8)
+    args = ap.parse_args()
+
+    z = zipfile.ZipFile(args.zip)
+    files = []  # (specimen, cycles, condition, repetition, file name)
+    for n in z.namelist():
+        m = NAME.search(n)
+        if m and "/._" not in n:  # skip macOS resource-fork copies
+            files.append((m.group(1), int(m.group(2)), int(m.group(3)), int(m.group(4)), n))
+
     Xs, meta = [], []
-    for s, cy, bc, rep, n in pick:
-        X, freqs, paths, cond, fs = read(z, n)
+    for s, cycles, bc, rep, n in select(files, args.condition, args.max_healthy_cycles,
+                                        args.healthy_per_specimen):
+        X, freqs, paths, cond, fs = read_measurement(z, n)
         Xs.append(X)
-        meta.append((s, cy, bc, rep, cond))
-        print(f"{s} cycles={cy:>6} bc={bc} ({cond}) rep={rep}  {X.shape}", flush=True)
+        meta.append((s, cycles, bc, rep, cond))
+        print(f"{s} cycles={cycles:>6} bc={bc} ({cond}) rep={rep}  {X.shape}", flush=True)
+
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     np.savez(args.out, X=np.stack(Xs), specimen=np.array([m[0] for m in meta]),
              cycles=np.array([m[1] for m in meta]), bc=np.array([m[2] for m in meta]),

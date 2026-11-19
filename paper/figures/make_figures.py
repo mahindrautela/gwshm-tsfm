@@ -2,7 +2,8 @@
 
     python paper/figures/make_figures.py
 
-Reads results_* and data/ogw1/loc.npz; writes paper/figures/*.pdf.
+Reads results/ and data/ogw1/residuals.npz; writes paper/figures/*.pdf
+(Figure 1 is drawn in LaTeX inside main.tex).
 """
 import sys
 from pathlib import Path
@@ -13,13 +14,13 @@ matplotlib.use("pdf")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
-from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 from scipy.stats import spearmanr  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from gwtsfm.config import DATA, MODELS, RESULTS  # noqa: E402
+from gwtsfm.ogw import path_distance  # noqa: E402
+
 OUT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT / "scripts"))
-from ogw1_spearman import proximity  # noqa: E402
 
 # palette (validated on a white surface): categorical slots 1-4, one-hue blue ramp, neutrals
 BLUE, ORANGE, AQUA, YELLOW = "#2a78d6", "#eb6834", "#1baf7a", "#eda100"
@@ -39,14 +40,15 @@ plt.rcParams.update({
     "pdf.fonttype": 42, "savefig.bbox": "tight", "savefig.pad_inches": 0.02,
 })
 
-TSFM = ["Chronos-2", "Chronos-Bolt (base)", "TiRex", "MOMENT-1 (base)", "Mantis-8M", "TTM-R2"]
+TSFM = list(MODELS.values())
 
 
 def fig_task1():
-    f = pd.read_csv(ROOT / "results_gwtcw/fewshot.csv")
+    """Figure 2: AUC against the number of labelled configurations (Task 1)."""
+    f = pd.read_csv(RESULTS / "task1_gwtcw/fewshot.csv")
     f.loc[f.n_configs > 64, "n_configs"] = 124  # "all": every training configuration of the fold
     m = f.groupby(["method", "n_configs"]).auc.mean().unstack()
-    cv = pd.read_csv(ROOT / "results_gwtcw/cv_metrics.csv")
+    cv = pd.read_csv(RESULTS / "task1_gwtcw/cv_metrics.csv")
     ss = cv[cv["mode"] == "sign-symmetric"].groupby("method").auc.mean()
     x = m.columns.values.astype(float)
     tsfm = m.loc[TSFM]
@@ -78,7 +80,8 @@ def fig_task1():
 
 
 def fig_task2():
-    s = pd.read_csv(ROOT / "results_nasa/measurement_scores.csv")
+    """Figure 3: cross-specimen measurement scores over fatigue cycles (Task 2)."""
+    s = pd.read_csv(RESULTS / "task2_nasa/measurement_scores.csv")
     s = s[s.setting == "cross-specimen"]
     panels = [("Mantis-8M", "same-path distance", "Mantis-8M embeddings, same-path distance"),
               ("Raw signal", "baseline subtraction (1 - correlation)",
@@ -120,11 +123,12 @@ def fig_task2():
 
 
 def fig_task3(case=9, top=8):
-    loc = np.load(ROOT / "data/ogw1/loc.npz", allow_pickle=True)
-    di = np.load(ROOT / "results_ogw1_network/di_maps.npz")
+    """Figure 4: damage-index maps of case D10 and the Spearman dot plot (Task 3)."""
+    loc = np.load(DATA / "ogw1" / "residuals.npz", allow_pickle=True)
+    di = np.load(RESULTS / "task3_ogw1/di_maps.npz")
     cross, tpos, dpos, freqs = loc["cross"], loc["tpos"], loc["dpos"], list(loc["freqs"])
-    prox = proximity(cross, tpos, dpos)
-    sp = pd.read_csv(ROOT / "results_ogw1_network/spearman.csv")
+    prox = -path_distance(cross, tpos, dpos)  # closeness of each path to the damage
+    sp = pd.read_csv(RESULTS / "task3_ogw1/spearman.csv")
 
     fig = plt.figure(figsize=(6.75, 2.45))
     left, right = fig.subfigures(1, 2, width_ratios=[1, 1.45], wspace=0.04)
