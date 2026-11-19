@@ -1,0 +1,625 @@
+method,detector,setting,draw,specimen,auc_measurement,detected_zero_fa
+Chronos-2,PCA+ocSVM,cross-specimen,0,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,cross-specimen,0,L2S17,0.25,0.0
+Chronos-2,PCA+ocSVM,cross-specimen,0,L2S18,1.0,1.0
+Chronos-2,PCA+ocSVM,cross-specimen,0,L2S20,0.75,0.0
+Chronos-2,PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,within-specimen,0,L2S17,0.25,0.0
+Chronos-2,PCA+ocSVM,within-specimen,0,L2S18,0.0,0.0
+Chronos-2,PCA+ocSVM,within-specimen,0,L2S20,0.5,0.0
+Chronos-2,PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,within-specimen,1,L2S17,0.0,0.0
+Chronos-2,PCA+ocSVM,within-specimen,1,L2S18,0.5,0.0
+Chronos-2,PCA+ocSVM,within-specimen,1,L2S20,0.5,0.0
+Chronos-2,PCA+ocSVM,within-specimen,2,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,within-specimen,2,L2S17,0.0,0.0
+Chronos-2,PCA+ocSVM,within-specimen,2,L2S18,0.0,0.0
+Chronos-2,PCA+ocSVM,within-specimen,2,L2S20,0.75,0.0
+Chronos-2,PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,within-specimen,3,L2S17,0.25,0.0
+Chronos-2,PCA+ocSVM,within-specimen,3,L2S18,0.25,0.0
+Chronos-2,PCA+ocSVM,within-specimen,3,L2S20,0.25,0.0
+Chronos-2,PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+Chronos-2,PCA+ocSVM,within-specimen,4,L2S17,0.25,0.0
+Chronos-2,PCA+ocSVM,within-specimen,4,L2S18,0.5,0.0
+Chronos-2,PCA+ocSVM,within-specimen,4,L2S20,0.75,0.0
+Chronos-2,kNN distance,cross-specimen,0,L2S11,0.0,0.0
+Chronos-2,kNN distance,cross-specimen,0,L2S17,0.0,0.0
+Chronos-2,kNN distance,cross-specimen,0,L2S18,0.375,0.0
+Chronos-2,kNN distance,cross-specimen,0,L2S20,0.5,0.0
+Chronos-2,kNN distance,within-specimen,0,L2S11,1.0,1.0
+Chronos-2,kNN distance,within-specimen,0,L2S17,1.0,1.0
+Chronos-2,kNN distance,within-specimen,0,L2S18,1.0,1.0
+Chronos-2,kNN distance,within-specimen,0,L2S20,1.0,1.0
+Chronos-2,kNN distance,within-specimen,1,L2S11,0.5,0.0
+Chronos-2,kNN distance,within-specimen,1,L2S17,1.0,1.0
+Chronos-2,kNN distance,within-specimen,1,L2S18,1.0,1.0
+Chronos-2,kNN distance,within-specimen,1,L2S20,1.0,1.0
+Chronos-2,kNN distance,within-specimen,2,L2S11,0.5,0.0
+Chronos-2,kNN distance,within-specimen,2,L2S17,1.0,1.0
+Chronos-2,kNN distance,within-specimen,2,L2S18,1.0,1.0
+Chronos-2,kNN distance,within-specimen,2,L2S20,1.0,1.0
+Chronos-2,kNN distance,within-specimen,3,L2S11,0.75,0.0
+Chronos-2,kNN distance,within-specimen,3,L2S17,1.0,1.0
+Chronos-2,kNN distance,within-specimen,3,L2S18,1.0,1.0
+Chronos-2,kNN distance,within-specimen,3,L2S20,1.0,1.0
+Chronos-2,kNN distance,within-specimen,4,L2S11,0.75,0.0
+Chronos-2,kNN distance,within-specimen,4,L2S17,1.0,1.0
+Chronos-2,kNN distance,within-specimen,4,L2S18,1.0,1.0
+Chronos-2,kNN distance,within-specimen,4,L2S20,1.0,1.0
+Chronos-2,same-path distance,cross-specimen,0,L2S11,1.0,1.0
+Chronos-2,same-path distance,cross-specimen,0,L2S17,0.0,0.0
+Chronos-2,same-path distance,cross-specimen,0,L2S18,1.0,1.0
+Chronos-2,same-path distance,cross-specimen,0,L2S20,0.75,0.0
+Chronos-2,same-path distance,within-specimen,0,L2S11,1.0,1.0
+Chronos-2,same-path distance,within-specimen,0,L2S17,1.0,1.0
+Chronos-2,same-path distance,within-specimen,0,L2S18,1.0,1.0
+Chronos-2,same-path distance,within-specimen,0,L2S20,1.0,1.0
+Chronos-2,same-path distance,within-specimen,1,L2S11,1.0,1.0
+Chronos-2,same-path distance,within-specimen,1,L2S17,1.0,1.0
+Chronos-2,same-path distance,within-specimen,1,L2S18,1.0,1.0
+Chronos-2,same-path distance,within-specimen,1,L2S20,1.0,1.0
+Chronos-2,same-path distance,within-specimen,2,L2S11,1.0,1.0
+Chronos-2,same-path distance,within-specimen,2,L2S17,1.0,1.0
+Chronos-2,same-path distance,within-specimen,2,L2S18,1.0,1.0
+Chronos-2,same-path distance,within-specimen,2,L2S20,1.0,1.0
+Chronos-2,same-path distance,within-specimen,3,L2S11,1.0,1.0
+Chronos-2,same-path distance,within-specimen,3,L2S17,1.0,1.0
+Chronos-2,same-path distance,within-specimen,3,L2S18,1.0,1.0
+Chronos-2,same-path distance,within-specimen,3,L2S20,1.0,1.0
+Chronos-2,same-path distance,within-specimen,4,L2S11,1.0,1.0
+Chronos-2,same-path distance,within-specimen,4,L2S17,1.0,1.0
+Chronos-2,same-path distance,within-specimen,4,L2S18,1.0,1.0
+Chronos-2,same-path distance,within-specimen,4,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,cross-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,cross-specimen,0,L2S17,0.5,0.0
+Chronos-Bolt (base),PCA+ocSVM,cross-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,cross-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,0,L2S17,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,1,L2S17,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,1,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,1,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,2,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,2,L2S17,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,2,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,2,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,3,L2S17,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,3,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,3,L2S20,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,4,L2S17,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,4,L2S18,1.0,1.0
+Chronos-Bolt (base),PCA+ocSVM,within-specimen,4,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,cross-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,cross-specimen,0,L2S17,0.0,0.0
+Chronos-Bolt (base),kNN distance,cross-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,cross-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,0,L2S17,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,1,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,1,L2S17,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,1,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,1,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,2,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,2,L2S17,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,2,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,2,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,3,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,3,L2S17,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,3,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,3,L2S20,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,4,L2S11,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,4,L2S17,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,4,L2S18,1.0,1.0
+Chronos-Bolt (base),kNN distance,within-specimen,4,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,cross-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,cross-specimen,0,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,cross-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,cross-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,0,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,0,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,0,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,0,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,1,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,1,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,1,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,1,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,2,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,2,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,2,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,2,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,3,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,3,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,3,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,3,L2S20,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,4,L2S11,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,4,L2S17,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,4,L2S18,1.0,1.0
+Chronos-Bolt (base),same-path distance,within-specimen,4,L2S20,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,cross-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,cross-specimen,0,L2S17,0.0,0.0
+MOMENT-1 (base),PCA+ocSVM,cross-specimen,0,L2S18,0.0,0.0
+MOMENT-1 (base),PCA+ocSVM,cross-specimen,0,L2S20,0.125,0.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,0,L2S17,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,0,L2S18,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,0,L2S20,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,1,L2S17,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,1,L2S18,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,1,L2S20,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,2,L2S11,0.25,0.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,2,L2S17,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,2,L2S18,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,2,L2S20,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,3,L2S17,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,3,L2S18,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,3,L2S20,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,4,L2S17,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,4,L2S18,1.0,1.0
+MOMENT-1 (base),PCA+ocSVM,within-specimen,4,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,cross-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,cross-specimen,0,L2S17,0.0,0.0
+MOMENT-1 (base),kNN distance,cross-specimen,0,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,cross-specimen,0,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,0,L2S17,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,0,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,0,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,1,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,1,L2S17,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,1,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,1,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,2,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,2,L2S17,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,2,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,2,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,3,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,3,L2S17,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,3,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,3,L2S20,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,4,L2S11,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,4,L2S17,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,4,L2S18,1.0,1.0
+MOMENT-1 (base),kNN distance,within-specimen,4,L2S20,1.0,1.0
+MOMENT-1 (base),same-path distance,cross-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,cross-specimen,0,L2S17,0.0,0.0
+MOMENT-1 (base),same-path distance,cross-specimen,0,L2S18,0.0,0.0
+MOMENT-1 (base),same-path distance,cross-specimen,0,L2S20,0.0,0.0
+MOMENT-1 (base),same-path distance,within-specimen,0,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,0,L2S17,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,0,L2S18,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,0,L2S20,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,1,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,1,L2S17,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,1,L2S18,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,1,L2S20,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,2,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,2,L2S17,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,2,L2S18,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,2,L2S20,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,3,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,3,L2S17,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,3,L2S18,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,3,L2S20,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,4,L2S11,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,4,L2S17,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,4,L2S18,1.0,1.0
+MOMENT-1 (base),same-path distance,within-specimen,4,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,cross-specimen,0,L2S11,0.125,0.0
+Mantis-8M,PCA+ocSVM,cross-specimen,0,L2S17,1.0,1.0
+Mantis-8M,PCA+ocSVM,cross-specimen,0,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,cross-specimen,0,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,0,L2S17,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,0,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,0,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,1,L2S17,0.0,0.0
+Mantis-8M,PCA+ocSVM,within-specimen,1,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,1,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,2,L2S11,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,2,L2S17,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,2,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,2,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,3,L2S17,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,3,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,3,L2S20,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,4,L2S17,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,4,L2S18,1.0,1.0
+Mantis-8M,PCA+ocSVM,within-specimen,4,L2S20,1.0,1.0
+Mantis-8M,kNN distance,cross-specimen,0,L2S11,1.0,1.0
+Mantis-8M,kNN distance,cross-specimen,0,L2S17,0.0,0.0
+Mantis-8M,kNN distance,cross-specimen,0,L2S18,1.0,1.0
+Mantis-8M,kNN distance,cross-specimen,0,L2S20,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,0,L2S11,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,0,L2S17,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,0,L2S18,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,0,L2S20,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,1,L2S11,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,1,L2S17,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,1,L2S18,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,1,L2S20,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,2,L2S11,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,2,L2S17,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,2,L2S18,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,2,L2S20,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,3,L2S11,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,3,L2S17,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,3,L2S18,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,3,L2S20,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,4,L2S11,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,4,L2S17,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,4,L2S18,1.0,1.0
+Mantis-8M,kNN distance,within-specimen,4,L2S20,1.0,1.0
+Mantis-8M,same-path distance,cross-specimen,0,L2S11,1.0,1.0
+Mantis-8M,same-path distance,cross-specimen,0,L2S17,1.0,1.0
+Mantis-8M,same-path distance,cross-specimen,0,L2S18,1.0,1.0
+Mantis-8M,same-path distance,cross-specimen,0,L2S20,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,0,L2S11,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,0,L2S17,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,0,L2S18,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,0,L2S20,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,1,L2S11,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,1,L2S17,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,1,L2S18,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,1,L2S20,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,2,L2S11,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,2,L2S17,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,2,L2S18,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,2,L2S20,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,3,L2S11,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,3,L2S17,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,3,L2S18,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,3,L2S20,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,4,L2S11,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,4,L2S17,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,4,L2S18,1.0,1.0
+Mantis-8M,same-path distance,within-specimen,4,L2S20,1.0,1.0
+Raw signal,PCA+ocSVM,cross-specimen,0,L2S11,0.5,0.0
+Raw signal,PCA+ocSVM,cross-specimen,0,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,cross-specimen,0,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,cross-specimen,0,L2S20,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,0,L2S11,0.5,0.0
+Raw signal,PCA+ocSVM,within-specimen,0,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,0,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,0,L2S20,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,1,L2S11,0.5,0.0
+Raw signal,PCA+ocSVM,within-specimen,1,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,1,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,1,L2S20,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,2,L2S11,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,2,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,2,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,2,L2S20,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,3,L2S11,0.5,0.0
+Raw signal,PCA+ocSVM,within-specimen,3,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,3,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,3,L2S20,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,4,L2S11,0.5,0.0
+Raw signal,PCA+ocSVM,within-specimen,4,L2S17,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,4,L2S18,0.0,0.0
+Raw signal,PCA+ocSVM,within-specimen,4,L2S20,0.0,0.0
+Raw signal,baseline subtraction (1 - correlation),cross-specimen,0,L2S11,0.0,0.0
+Raw signal,baseline subtraction (1 - correlation),cross-specimen,0,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),cross-specimen,0,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),cross-specimen,0,L2S20,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,0,L2S11,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,0,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,0,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,0,L2S20,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,1,L2S11,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,1,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,1,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,1,L2S20,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,2,L2S11,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,2,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,2,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,2,L2S20,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,3,L2S11,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,3,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,3,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,3,L2S20,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,4,L2S11,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,4,L2S17,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,4,L2S18,1.0,1.0
+Raw signal,baseline subtraction (1 - correlation),within-specimen,4,L2S20,1.0,1.0
+Raw signal,baseline subtraction (residual energy),cross-specimen,0,L2S11,0.0,0.0
+Raw signal,baseline subtraction (residual energy),cross-specimen,0,L2S17,0.0,0.0
+Raw signal,baseline subtraction (residual energy),cross-specimen,0,L2S18,0.0,0.0
+Raw signal,baseline subtraction (residual energy),cross-specimen,0,L2S20,0.0,0.0
+Raw signal,baseline subtraction (residual energy),within-specimen,0,L2S11,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,0,L2S17,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,0,L2S18,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,0,L2S20,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,1,L2S11,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,1,L2S17,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,1,L2S18,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,1,L2S20,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,2,L2S11,0.0,0.0
+Raw signal,baseline subtraction (residual energy),within-specimen,2,L2S17,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,2,L2S18,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,2,L2S20,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,3,L2S11,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,3,L2S17,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,3,L2S18,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,3,L2S20,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,4,L2S11,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,4,L2S17,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,4,L2S18,1.0,1.0
+Raw signal,baseline subtraction (residual energy),within-specimen,4,L2S20,1.0,1.0
+Raw signal,kNN distance,cross-specimen,0,L2S11,0.5,0.0
+Raw signal,kNN distance,cross-specimen,0,L2S17,0.0,0.0
+Raw signal,kNN distance,cross-specimen,0,L2S18,0.0,0.0
+Raw signal,kNN distance,cross-specimen,0,L2S20,0.0,0.0
+Raw signal,kNN distance,within-specimen,0,L2S11,0.5,0.0
+Raw signal,kNN distance,within-specimen,0,L2S17,1.0,1.0
+Raw signal,kNN distance,within-specimen,0,L2S18,1.0,1.0
+Raw signal,kNN distance,within-specimen,0,L2S20,1.0,1.0
+Raw signal,kNN distance,within-specimen,1,L2S11,0.5,0.0
+Raw signal,kNN distance,within-specimen,1,L2S17,1.0,1.0
+Raw signal,kNN distance,within-specimen,1,L2S18,1.0,1.0
+Raw signal,kNN distance,within-specimen,1,L2S20,0.75,0.0
+Raw signal,kNN distance,within-specimen,2,L2S11,0.0,0.0
+Raw signal,kNN distance,within-specimen,2,L2S17,1.0,1.0
+Raw signal,kNN distance,within-specimen,2,L2S18,1.0,1.0
+Raw signal,kNN distance,within-specimen,2,L2S20,1.0,1.0
+Raw signal,kNN distance,within-specimen,3,L2S11,1.0,1.0
+Raw signal,kNN distance,within-specimen,3,L2S17,1.0,1.0
+Raw signal,kNN distance,within-specimen,3,L2S18,1.0,1.0
+Raw signal,kNN distance,within-specimen,3,L2S20,1.0,1.0
+Raw signal,kNN distance,within-specimen,4,L2S11,1.0,1.0
+Raw signal,kNN distance,within-specimen,4,L2S17,1.0,1.0
+Raw signal,kNN distance,within-specimen,4,L2S18,1.0,1.0
+Raw signal,kNN distance,within-specimen,4,L2S20,1.0,1.0
+Raw signal,same-path distance,cross-specimen,0,L2S11,0.5,0.0
+Raw signal,same-path distance,cross-specimen,0,L2S17,0.0,0.0
+Raw signal,same-path distance,cross-specimen,0,L2S18,0.0,0.0
+Raw signal,same-path distance,cross-specimen,0,L2S20,0.0,0.0
+Raw signal,same-path distance,within-specimen,0,L2S11,1.0,1.0
+Raw signal,same-path distance,within-specimen,0,L2S17,1.0,1.0
+Raw signal,same-path distance,within-specimen,0,L2S18,1.0,1.0
+Raw signal,same-path distance,within-specimen,0,L2S20,1.0,1.0
+Raw signal,same-path distance,within-specimen,1,L2S11,1.0,1.0
+Raw signal,same-path distance,within-specimen,1,L2S17,1.0,1.0
+Raw signal,same-path distance,within-specimen,1,L2S18,1.0,1.0
+Raw signal,same-path distance,within-specimen,1,L2S20,1.0,1.0
+Raw signal,same-path distance,within-specimen,2,L2S11,0.0,0.0
+Raw signal,same-path distance,within-specimen,2,L2S17,1.0,1.0
+Raw signal,same-path distance,within-specimen,2,L2S18,1.0,1.0
+Raw signal,same-path distance,within-specimen,2,L2S20,1.0,1.0
+Raw signal,same-path distance,within-specimen,3,L2S11,1.0,1.0
+Raw signal,same-path distance,within-specimen,3,L2S17,1.0,1.0
+Raw signal,same-path distance,within-specimen,3,L2S18,1.0,1.0
+Raw signal,same-path distance,within-specimen,3,L2S20,1.0,1.0
+Raw signal,same-path distance,within-specimen,4,L2S11,1.0,1.0
+Raw signal,same-path distance,within-specimen,4,L2S17,1.0,1.0
+Raw signal,same-path distance,within-specimen,4,L2S18,1.0,1.0
+Raw signal,same-path distance,within-specimen,4,L2S20,1.0,1.0
+TTM-R2,PCA+ocSVM,cross-specimen,0,L2S11,0.75,0.0
+TTM-R2,PCA+ocSVM,cross-specimen,0,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,cross-specimen,0,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,cross-specimen,0,L2S20,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+TTM-R2,PCA+ocSVM,within-specimen,0,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,0,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,0,L2S20,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+TTM-R2,PCA+ocSVM,within-specimen,1,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,1,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,1,L2S20,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,2,L2S11,1.0,1.0
+TTM-R2,PCA+ocSVM,within-specimen,2,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,2,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,2,L2S20,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+TTM-R2,PCA+ocSVM,within-specimen,3,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,3,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,3,L2S20,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+TTM-R2,PCA+ocSVM,within-specimen,4,L2S17,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,4,L2S18,0.0,0.0
+TTM-R2,PCA+ocSVM,within-specimen,4,L2S20,0.0,0.0
+TTM-R2,kNN distance,cross-specimen,0,L2S11,1.0,1.0
+TTM-R2,kNN distance,cross-specimen,0,L2S17,0.25,0.0
+TTM-R2,kNN distance,cross-specimen,0,L2S18,1.0,1.0
+TTM-R2,kNN distance,cross-specimen,0,L2S20,1.0,1.0
+TTM-R2,kNN distance,within-specimen,0,L2S11,1.0,1.0
+TTM-R2,kNN distance,within-specimen,0,L2S17,1.0,1.0
+TTM-R2,kNN distance,within-specimen,0,L2S18,1.0,1.0
+TTM-R2,kNN distance,within-specimen,0,L2S20,1.0,1.0
+TTM-R2,kNN distance,within-specimen,1,L2S11,1.0,1.0
+TTM-R2,kNN distance,within-specimen,1,L2S17,1.0,1.0
+TTM-R2,kNN distance,within-specimen,1,L2S18,1.0,1.0
+TTM-R2,kNN distance,within-specimen,1,L2S20,1.0,1.0
+TTM-R2,kNN distance,within-specimen,2,L2S11,1.0,1.0
+TTM-R2,kNN distance,within-specimen,2,L2S17,1.0,1.0
+TTM-R2,kNN distance,within-specimen,2,L2S18,1.0,1.0
+TTM-R2,kNN distance,within-specimen,2,L2S20,1.0,1.0
+TTM-R2,kNN distance,within-specimen,3,L2S11,1.0,1.0
+TTM-R2,kNN distance,within-specimen,3,L2S17,1.0,1.0
+TTM-R2,kNN distance,within-specimen,3,L2S18,1.0,1.0
+TTM-R2,kNN distance,within-specimen,3,L2S20,1.0,1.0
+TTM-R2,kNN distance,within-specimen,4,L2S11,1.0,1.0
+TTM-R2,kNN distance,within-specimen,4,L2S17,1.0,1.0
+TTM-R2,kNN distance,within-specimen,4,L2S18,1.0,1.0
+TTM-R2,kNN distance,within-specimen,4,L2S20,1.0,1.0
+TTM-R2,same-path distance,cross-specimen,0,L2S11,0.0,0.0
+TTM-R2,same-path distance,cross-specimen,0,L2S17,0.0,0.0
+TTM-R2,same-path distance,cross-specimen,0,L2S18,1.0,1.0
+TTM-R2,same-path distance,cross-specimen,0,L2S20,1.0,1.0
+TTM-R2,same-path distance,within-specimen,0,L2S11,1.0,1.0
+TTM-R2,same-path distance,within-specimen,0,L2S17,1.0,1.0
+TTM-R2,same-path distance,within-specimen,0,L2S18,1.0,1.0
+TTM-R2,same-path distance,within-specimen,0,L2S20,1.0,1.0
+TTM-R2,same-path distance,within-specimen,1,L2S11,1.0,1.0
+TTM-R2,same-path distance,within-specimen,1,L2S17,1.0,1.0
+TTM-R2,same-path distance,within-specimen,1,L2S18,1.0,1.0
+TTM-R2,same-path distance,within-specimen,1,L2S20,1.0,1.0
+TTM-R2,same-path distance,within-specimen,2,L2S11,1.0,1.0
+TTM-R2,same-path distance,within-specimen,2,L2S17,1.0,1.0
+TTM-R2,same-path distance,within-specimen,2,L2S18,1.0,1.0
+TTM-R2,same-path distance,within-specimen,2,L2S20,1.0,1.0
+TTM-R2,same-path distance,within-specimen,3,L2S11,1.0,1.0
+TTM-R2,same-path distance,within-specimen,3,L2S17,1.0,1.0
+TTM-R2,same-path distance,within-specimen,3,L2S18,1.0,1.0
+TTM-R2,same-path distance,within-specimen,3,L2S20,1.0,1.0
+TTM-R2,same-path distance,within-specimen,4,L2S11,1.0,1.0
+TTM-R2,same-path distance,within-specimen,4,L2S17,1.0,1.0
+TTM-R2,same-path distance,within-specimen,4,L2S18,1.0,1.0
+TTM-R2,same-path distance,within-specimen,4,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,cross-specimen,0,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,cross-specimen,0,L2S17,0.0,0.0
+TiRex,PCA+ocSVM,cross-specimen,0,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,cross-specimen,0,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,0,L2S17,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,0,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,0,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,1,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,1,L2S17,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,1,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,1,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,2,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,2,L2S17,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,2,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,2,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,3,L2S17,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,3,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,3,L2S20,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,4,L2S17,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,4,L2S18,1.0,1.0
+TiRex,PCA+ocSVM,within-specimen,4,L2S20,1.0,1.0
+TiRex,kNN distance,cross-specimen,0,L2S11,1.0,1.0
+TiRex,kNN distance,cross-specimen,0,L2S17,0.125,0.0
+TiRex,kNN distance,cross-specimen,0,L2S18,1.0,1.0
+TiRex,kNN distance,cross-specimen,0,L2S20,1.0,1.0
+TiRex,kNN distance,within-specimen,0,L2S11,1.0,1.0
+TiRex,kNN distance,within-specimen,0,L2S17,1.0,1.0
+TiRex,kNN distance,within-specimen,0,L2S18,1.0,1.0
+TiRex,kNN distance,within-specimen,0,L2S20,1.0,1.0
+TiRex,kNN distance,within-specimen,1,L2S11,1.0,1.0
+TiRex,kNN distance,within-specimen,1,L2S17,1.0,1.0
+TiRex,kNN distance,within-specimen,1,L2S18,1.0,1.0
+TiRex,kNN distance,within-specimen,1,L2S20,1.0,1.0
+TiRex,kNN distance,within-specimen,2,L2S11,1.0,1.0
+TiRex,kNN distance,within-specimen,2,L2S17,1.0,1.0
+TiRex,kNN distance,within-specimen,2,L2S18,1.0,1.0
+TiRex,kNN distance,within-specimen,2,L2S20,1.0,1.0
+TiRex,kNN distance,within-specimen,3,L2S11,1.0,1.0
+TiRex,kNN distance,within-specimen,3,L2S17,1.0,1.0
+TiRex,kNN distance,within-specimen,3,L2S18,1.0,1.0
+TiRex,kNN distance,within-specimen,3,L2S20,1.0,1.0
+TiRex,kNN distance,within-specimen,4,L2S11,1.0,1.0
+TiRex,kNN distance,within-specimen,4,L2S17,1.0,1.0
+TiRex,kNN distance,within-specimen,4,L2S18,1.0,1.0
+TiRex,kNN distance,within-specimen,4,L2S20,1.0,1.0
+TiRex,same-path distance,cross-specimen,0,L2S11,1.0,1.0
+TiRex,same-path distance,cross-specimen,0,L2S17,0.375,0.0
+TiRex,same-path distance,cross-specimen,0,L2S18,1.0,1.0
+TiRex,same-path distance,cross-specimen,0,L2S20,1.0,1.0
+TiRex,same-path distance,within-specimen,0,L2S11,1.0,1.0
+TiRex,same-path distance,within-specimen,0,L2S17,1.0,1.0
+TiRex,same-path distance,within-specimen,0,L2S18,1.0,1.0
+TiRex,same-path distance,within-specimen,0,L2S20,1.0,1.0
+TiRex,same-path distance,within-specimen,1,L2S11,1.0,1.0
+TiRex,same-path distance,within-specimen,1,L2S17,1.0,1.0
+TiRex,same-path distance,within-specimen,1,L2S18,1.0,1.0
+TiRex,same-path distance,within-specimen,1,L2S20,1.0,1.0
+TiRex,same-path distance,within-specimen,2,L2S11,1.0,1.0
+TiRex,same-path distance,within-specimen,2,L2S17,1.0,1.0
+TiRex,same-path distance,within-specimen,2,L2S18,1.0,1.0
+TiRex,same-path distance,within-specimen,2,L2S20,1.0,1.0
+TiRex,same-path distance,within-specimen,3,L2S11,1.0,1.0
+TiRex,same-path distance,within-specimen,3,L2S17,1.0,1.0
+TiRex,same-path distance,within-specimen,3,L2S18,1.0,1.0
+TiRex,same-path distance,within-specimen,3,L2S20,1.0,1.0
+TiRex,same-path distance,within-specimen,4,L2S11,1.0,1.0
+TiRex,same-path distance,within-specimen,4,L2S17,1.0,1.0
+TiRex,same-path distance,within-specimen,4,L2S18,1.0,1.0
+TiRex,same-path distance,within-specimen,4,L2S20,1.0,1.0
+|FFT| spectrum,PCA+ocSVM,cross-specimen,0,L2S11,0.5,0.0
+|FFT| spectrum,PCA+ocSVM,cross-specimen,0,L2S17,0.125,0.0
+|FFT| spectrum,PCA+ocSVM,cross-specimen,0,L2S18,0.75,0.0
+|FFT| spectrum,PCA+ocSVM,cross-specimen,0,L2S20,0.75,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,0,L2S11,1.0,1.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,0,L2S17,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,0,L2S18,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,0,L2S20,0.25,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,1,L2S11,0.5,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,1,L2S17,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,1,L2S18,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,1,L2S20,0.25,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,2,L2S11,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,2,L2S17,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,2,L2S18,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,2,L2S20,0.75,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,3,L2S11,1.0,1.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,3,L2S17,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,3,L2S18,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,3,L2S20,0.5,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,4,L2S11,1.0,1.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,4,L2S17,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,4,L2S18,0.0,0.0
+|FFT| spectrum,PCA+ocSVM,within-specimen,4,L2S20,0.25,0.0
+|FFT| spectrum,kNN distance,cross-specimen,0,L2S11,0.0,0.0
+|FFT| spectrum,kNN distance,cross-specimen,0,L2S17,0.0,0.0
+|FFT| spectrum,kNN distance,cross-specimen,0,L2S18,0.0,0.0
+|FFT| spectrum,kNN distance,cross-specimen,0,L2S20,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,0,L2S11,0.25,0.0
+|FFT| spectrum,kNN distance,within-specimen,0,L2S17,1.0,1.0
+|FFT| spectrum,kNN distance,within-specimen,0,L2S18,1.0,1.0
+|FFT| spectrum,kNN distance,within-specimen,0,L2S20,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,1,L2S11,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,1,L2S17,0.25,0.0
+|FFT| spectrum,kNN distance,within-specimen,1,L2S18,0.5,0.0
+|FFT| spectrum,kNN distance,within-specimen,1,L2S20,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,2,L2S11,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,2,L2S17,0.75,0.0
+|FFT| spectrum,kNN distance,within-specimen,2,L2S18,0.5,0.0
+|FFT| spectrum,kNN distance,within-specimen,2,L2S20,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,3,L2S11,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,3,L2S17,1.0,1.0
+|FFT| spectrum,kNN distance,within-specimen,3,L2S18,0.5,0.0
+|FFT| spectrum,kNN distance,within-specimen,3,L2S20,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,4,L2S11,0.0,0.0
+|FFT| spectrum,kNN distance,within-specimen,4,L2S17,1.0,1.0
+|FFT| spectrum,kNN distance,within-specimen,4,L2S18,0.75,0.0
+|FFT| spectrum,kNN distance,within-specimen,4,L2S20,0.0,0.0
+|FFT| spectrum,same-path distance,cross-specimen,0,L2S11,0.5,0.0
+|FFT| spectrum,same-path distance,cross-specimen,0,L2S17,0.0,0.0
+|FFT| spectrum,same-path distance,cross-specimen,0,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,cross-specimen,0,L2S20,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,0,L2S11,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,0,L2S17,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,0,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,0,L2S20,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,1,L2S11,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,1,L2S17,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,1,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,1,L2S20,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,2,L2S11,0.0,0.0
+|FFT| spectrum,same-path distance,within-specimen,2,L2S17,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,2,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,2,L2S20,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,3,L2S11,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,3,L2S17,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,3,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,3,L2S20,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,4,L2S11,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,4,L2S17,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,4,L2S18,1.0,1.0
+|FFT| spectrum,same-path distance,within-specimen,4,L2S20,1.0,1.0

@@ -12,7 +12,15 @@ feature extractors with only a light head, on three guided-wave SHM tasks:
 Models: Chronos-2, Chronos-Bolt (base), TiRex, MOMENT-1 (base), Mantis-8M, TTM-R2.
 No model is trained or fine-tuned.
 
-> **Status:** experiments running; results and the paper draft are being added.
+## Results (frozen models, no fine-tuning)
+
+| Task | Headline |
+|---|---|
+| 1. GW-TCW classification, unseen sensor paths | logistic regression on frozen embeddings: AUC 0.83–0.86 for five of six models (MOMENT, TiRex 0.86; TTM-R2 0.74); MiniRocket 0.90; 1D-CNN 0.69 (1.00 on the leaky random split) |
+| 2. NASA delamination, healthy data only | same-path embedding distance: AUC 0.95–0.98 within a specimen for five of six models (Chronos-2 0.88), baseline subtraction 0.97; with references from other coupons Mantis (0.81) and Chronos-Bolt (0.67) flag all 4 damaged coupons at zero false alarms, raw methods ≤ 3/4 |
+| 3. OGW-1 localisation, unseen damage positions | per path: near chance for every method; network level (36-path damage-index map): all six models localise 28/28 positions with 40/60/80 kHz combined, MOMENT and TiRex at every single frequency; physics residual energy 0.89 (0.25 at 80 kHz) |
+
+Result tables behind the paper are in [`paper_results/`](paper_results).
 
 ## Setup
 
@@ -58,6 +66,12 @@ python scripts/gwtcw_classify.py --data data/gwtcw/gwtcw.npz --emb data/gwtcw_em
 python scripts/nasa_anomaly.py   --data data/nasa/l2.npz --emb data/nasa_emb --out results_nasa
 python scripts/ogw1_localize.py  --data data/ogw1/loc.npz --emb data/ogw1_emb_R --out results_ogw1
 python scripts/ogw1_network.py   --data data/ogw1/loc.npz --embR data/ogw1_emb_R --embB data/ogw1_emb_B --out results_ogw1_network
+python scripts/ogw1_spearman.py  --loc data/ogw1/loc.npz --di results_ogw1_network/di_maps.npz --out results_ogw1_network/spearman.csv
+
+# tables, figures, and the copy kept in git
+python scripts/summarize_gwtcw.py --results results_gwtcw --out report_gwtcw
+python scripts/summarize_nasa.py  --results results_nasa
+python scripts/export_results.py
 ```
 
 ## Layout
@@ -67,5 +81,6 @@ gwtsfm/embed.py      frozen TSFM embedders (mean-pooled tokens; MOMENT/Mantis on
 gwtsfm/evalkit.py    heads (logistic regression, k-NN), one-class detectors, MiniRocket, 1D-CNN
 gwtsfm/ogw.py        OGW H5 reader (channel order, sampling rate, excitation onset), decimation
 scripts/             data preparation, embedding extraction, the three task evaluations
+paper_results/       result tables behind the paper (per-fold metrics, summaries)
 archive/forecasting/ an earlier exploratory study (forecasting along the temperature axis), not used
 ```

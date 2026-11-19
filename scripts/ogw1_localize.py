@@ -47,6 +47,8 @@ def main():
     ap.add_argument("--only-trained", action="store_true",
                     help="reuse frozen-model rows from metrics_frozen.csv; run only the trained references")
     ap.add_argument("--trained-random-reps", type=int, default=3)
+    ap.add_argument("--trained-skip-grouped", action="store_true")
+    ap.add_argument("--cnn-epochs", type=int, default=60)
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -103,14 +105,16 @@ def main():
         pd.DataFrame(rows).to_csv(out / "metrics.csv", index=False)
     if not args.skip_trained:
         for split, k, tr, te in splits:
-            if split == "random 90/10" and k >= args.trained_random_reps:
+            if (split == "random 90/10" and k >= args.trained_random_reps) or \
+                    (args.trained_skip_grouped and split.startswith("grouped")):
                 continue  # trained references: 3 random repetitions are enough
             t0 = time.time()
             add("MiniRocket", "trained from scratch", "ridge", split, k, te,
                 ek.minirocket_proba(X, zone, tr, te, extra=onehot), time.time() - t0)
             t0 = time.time()
             add("1D-CNN", "trained from scratch", "end-to-end", split, k, te,
-                ek.cnn_proba(X, zone, tr, te, groups=g, n_classes=7), time.time() - t0)
+                ek.cnn_proba(X, zone, tr, te, groups=g, n_classes=7, epochs=args.cnn_epochs),
+                time.time() - t0)
             print(f"trained refs {split} fold {k} done", flush=True)
             pd.DataFrame(rows).to_csv(out / "metrics.csv", index=False)
     M = pd.DataFrame(rows)

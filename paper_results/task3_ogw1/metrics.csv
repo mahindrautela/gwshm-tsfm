@@ -1,0 +1,315 @@
+method,family,head,split,fold,seconds,acc,f1,acc_structure,n_test
+Raw residual,trained from scratch,logistic regression,random 90/10,0,,0.1887417218543046,0.190633359530173,0.1927710843373494,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,0,,0.1887417218543046,0.1824685544872797,0.2891566265060241,302
+Raw residual,trained from scratch,logistic regression,random 90/10,1,,0.1821192052980132,0.1775366077720467,0.1927710843373494,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,1,,0.1854304635761589,0.1727299878037957,0.2289156626506024,302
+Raw residual,trained from scratch,logistic regression,random 90/10,2,,0.1688741721854304,0.1609826325181309,0.1325301204819277,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,2,,0.2086092715231788,0.2028834957406386,0.2891566265060241,302
+Raw residual,trained from scratch,logistic regression,random 90/10,3,,0.195364238410596,0.1929962132996063,0.2560975609756097,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,3,,0.1920529801324503,0.1765003553373326,0.2439024390243902,302
+Raw residual,trained from scratch,logistic regression,random 90/10,4,,0.2251655629139073,0.2184166882418348,0.2375,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,4,,0.195364238410596,0.1938934964449524,0.2125,302
+Raw residual,trained from scratch,logistic regression,random 90/10,5,,0.195364238410596,0.1919509029797033,0.1951219512195122,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,5,,0.162251655629139,0.158318587376861,0.1585365853658536,302
+Raw residual,trained from scratch,logistic regression,random 90/10,6,,0.1920529801324503,0.1902915381648365,0.2222222222222222,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,6,,0.1754966887417218,0.1601259149284686,0.3209876543209876,302
+Raw residual,trained from scratch,logistic regression,random 90/10,7,,0.162251655629139,0.1603127957660872,0.1566265060240964,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,7,,0.1821192052980132,0.1811258390724776,0.216867469879518,302
+Raw residual,trained from scratch,logistic regression,random 90/10,8,,0.152317880794702,0.1482127904198808,0.238095238095238,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,8,,0.195364238410596,0.1818283263191779,0.238095238095238,302
+Raw residual,trained from scratch,logistic regression,random 90/10,9,,0.1920529801324503,0.1929296891155652,0.253012048192771,302
+Raw residual,trained from scratch,kNN (k=5),random 90/10,9,,0.195364238410596,0.190476333547682,0.2650602409638554,302
+Raw residual,trained from scratch,logistic regression,"grouped (position, path)",0,,0.1683168316831683,0.1674495826786774,0.1666666666666666,606
+Raw residual,trained from scratch,kNN (k=5),"grouped (position, path)",0,,0.1683168316831683,0.1591565290440386,0.1785714285714285,606
+Raw residual,trained from scratch,logistic regression,"grouped (position, path)",1,,0.1386138613861386,0.1374785146635183,0.1547619047619047,606
+Raw residual,trained from scratch,kNN (k=5),"grouped (position, path)",1,,0.1716171617161716,0.163790841940519,0.2261904761904762,606
+Raw residual,trained from scratch,logistic regression,"grouped (position, path)",2,,0.1386138613861386,0.1402838751673701,0.1904761904761904,606
+Raw residual,trained from scratch,kNN (k=5),"grouped (position, path)",2,,0.1716171617161716,0.1624193204795903,0.1547619047619047,606
+Raw residual,trained from scratch,logistic regression,"grouped (position, path)",3,,0.1276948590381426,0.1251957887592101,0.1547619047619047,603
+Raw residual,trained from scratch,kNN (k=5),"grouped (position, path)",3,,0.1641791044776119,0.1598449629930523,0.1547619047619047,603
+Raw residual,trained from scratch,logistic regression,"grouped (position, path)",4,,0.1525704809286898,0.1481706468208275,0.1547619047619047,603
+Raw residual,trained from scratch,kNN (k=5),"grouped (position, path)",4,,0.1558872305140962,0.1472826969641727,0.2261904761904762,603
+Raw residual,trained from scratch,logistic regression,unseen positions,0,,0.2248677248677248,0.2204114021360283,0.4761904761904761,756
+Raw residual,trained from scratch,kNN (k=5),unseen positions,0,,0.2063492063492063,0.2013410750857618,0.4761904761904761,756
+Raw residual,trained from scratch,logistic regression,unseen positions,1,,0.1944444444444444,0.1920718997262163,0.3809523809523809,756
+Raw residual,trained from scratch,kNN (k=5),unseen positions,1,,0.2037037037037037,0.1920526062167214,0.4761904761904761,756
+Raw residual,trained from scratch,logistic regression,unseen positions,2,,0.201058201058201,0.2007376219861111,0.4761904761904761,756
+Raw residual,trained from scratch,kNN (k=5),unseen positions,2,,0.2275132275132275,0.2212687942411444,0.5238095238095238,756
+Raw residual,trained from scratch,logistic regression,unseen positions,3,,0.1997354497354497,0.2003552450261605,0.5238095238095238,756
+Raw residual,trained from scratch,kNN (k=5),unseen positions,3,,0.2023809523809523,0.1956597818089402,0.6666666666666666,756
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,0,,0.2119205298013245,0.2113106098245261,0.216867469879518,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,0,,0.2284768211920529,0.2107372460576695,0.3132530120481928,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,1,,0.1754966887417218,0.1734191795312938,0.216867469879518,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,1,,0.2417218543046357,0.2321711417483426,0.4096385542168674,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,2,,0.1821192052980132,0.1810637165250734,0.1927710843373494,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,2,,0.2185430463576159,0.2134264232008593,0.3132530120481928,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,3,,0.119205298013245,0.1175717914954631,0.1097560975609756,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,3,,0.2516556291390728,0.2398626894069464,0.3658536585365853,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,4,,0.1490066225165563,0.144161327115933,0.1625,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,4,,0.2317880794701986,0.2240985949033894,0.3,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,5,,0.162251655629139,0.1618297830707636,0.1951219512195122,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,5,,0.2185430463576159,0.2188620462647252,0.2682926829268293,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,6,,0.1854304635761589,0.1821475142587778,0.2592592592592592,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,6,,0.2218543046357615,0.2207075873827792,0.3333333333333333,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,7,,0.1556291390728476,0.1559090756969697,0.180722891566265,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,7,,0.2086092715231788,0.2029884728624218,0.2650602409638554,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,8,,0.1655629139072847,0.161463272797116,0.1547619047619047,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,8,,0.2483443708609271,0.2395773010944416,0.3571428571428571,302
+|FFT| spectrum,trained from scratch,logistic regression,random 90/10,9,,0.1390728476821192,0.1378035531040039,0.2048192771084337,302
+|FFT| spectrum,trained from scratch,kNN (k=5),random 90/10,9,,0.2549668874172185,0.2491906891769657,0.3132530120481928,302
+|FFT| spectrum,trained from scratch,logistic regression,"grouped (position, path)",0,,0.1501650165016501,0.1508765108776746,0.0952380952380952,606
+|FFT| spectrum,trained from scratch,kNN (k=5),"grouped (position, path)",0,,0.2293729372937293,0.2233993300563115,0.4404761904761904,606
+|FFT| spectrum,trained from scratch,logistic regression,"grouped (position, path)",1,,0.1254125412541254,0.1249359853069146,0.1071428571428571,606
+|FFT| spectrum,trained from scratch,kNN (k=5),"grouped (position, path)",1,,0.2095709570957095,0.1934424050980499,0.2857142857142857,606
+|FFT| spectrum,trained from scratch,logistic regression,"grouped (position, path)",2,,0.132013201320132,0.1317874364572937,0.1071428571428571,606
+|FFT| spectrum,trained from scratch,kNN (k=5),"grouped (position, path)",2,,0.2277227722772277,0.2232894001055539,0.3452380952380952,606
+|FFT| spectrum,trained from scratch,logistic regression,"grouped (position, path)",3,,0.1077943615257048,0.1078169199526914,0.119047619047619,603
+|FFT| spectrum,trained from scratch,kNN (k=5),"grouped (position, path)",3,,0.1973466003316749,0.1909119898619207,0.3333333333333333,603
+|FFT| spectrum,trained from scratch,logistic regression,"grouped (position, path)",4,,0.1243781094527363,0.1229145445576895,0.0476190476190476,603
+|FFT| spectrum,trained from scratch,kNN (k=5),"grouped (position, path)",4,,0.1973466003316749,0.1938016935471991,0.3571428571428571,603
+|FFT| spectrum,trained from scratch,logistic regression,unseen positions,0,,0.1759259259259259,0.1759536119870691,0.238095238095238,756
+|FFT| spectrum,trained from scratch,kNN (k=5),unseen positions,0,,0.2711640211640211,0.2680390954976986,0.7619047619047619,756
+|FFT| spectrum,trained from scratch,logistic regression,unseen positions,1,,0.1507936507936507,0.150131573204742,0.1428571428571428,756
+|FFT| spectrum,trained from scratch,kNN (k=5),unseen positions,1,,0.2552910052910053,0.2433624998460519,0.6666666666666666,756
+|FFT| spectrum,trained from scratch,logistic regression,unseen positions,2,,0.1521164021164021,0.1516444768618238,0.2857142857142857,756
+|FFT| spectrum,trained from scratch,kNN (k=5),unseen positions,2,,0.291005291005291,0.2852998815947802,0.7619047619047619,756
+|FFT| spectrum,trained from scratch,logistic regression,unseen positions,3,,0.1706349206349206,0.1700899132580891,0.1904761904761904,756
+|FFT| spectrum,trained from scratch,kNN (k=5),unseen positions,3,,0.2539682539682539,0.2501647923989074,0.6190476190476191,756
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,0,,0.2251655629139073,0.2252691862942915,0.2891566265060241,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,0,,0.2450331125827814,0.2375303402804154,0.2771084337349397,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,1,,0.2317880794701986,0.2237954560583064,0.2650602409638554,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,1,,0.2483443708609271,0.2347421518307162,0.2650602409638554,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,2,,0.2251655629139073,0.2229189251718327,0.2771084337349397,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,2,,0.2483443708609271,0.2434091636120641,0.3132530120481928,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,3,,0.2483443708609271,0.247712447435098,0.3658536585365853,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,3,,0.23841059602649,0.2293617832040504,0.3658536585365853,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,4,,0.2218543046357615,0.2224115226963659,0.3,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,4,,0.2483443708609271,0.2388067143142538,0.3375,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,5,,0.2185430463576159,0.222207266734111,0.2682926829268293,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,5,,0.2119205298013245,0.2054453039966575,0.2804878048780488,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,6,,0.2185430463576159,0.2193359109119798,0.2592592592592592,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,6,,0.23841059602649,0.2281989611764106,0.3086419753086419,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,7,,0.2019867549668874,0.2013596661154882,0.2048192771084337,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,7,,0.271523178807947,0.2591189466797574,0.3373493975903614,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,8,,0.2086092715231788,0.2055065656615268,0.2619047619047619,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,8,,0.2582781456953642,0.2448467842077871,0.3095238095238095,302
+Chronos-2,foundation model (frozen),logistic regression,random 90/10,9,,0.2417218543046357,0.2423306605849674,0.2891566265060241,302
+Chronos-2,foundation model (frozen),kNN (k=5),random 90/10,9,,0.2549668874172185,0.241035350056513,0.3855421686746988,302
+Chronos-2,foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.2277227722772277,0.227872557035978,0.3214285714285714,606
+Chronos-2,foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2458745874587458,0.2381940064600098,0.4285714285714285,606
+Chronos-2,foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.1864686468646864,0.1853938701534897,0.2619047619047619,606
+Chronos-2,foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.2326732673267326,0.2222701995945449,0.3333333333333333,606
+Chronos-2,foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.198019801980198,0.1967348451005345,0.2976190476190476,606
+Chronos-2,foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.2508250825082508,0.234225515269915,0.4642857142857143,606
+Chronos-2,foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.1724709784411277,0.1723767363493098,0.2142857142857142,603
+Chronos-2,foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.2271973466003316,0.2231394883612561,0.3809523809523809,603
+Chronos-2,foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.2006633499170812,0.1970624731470598,0.25,603
+Chronos-2,foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.2371475953565505,0.2271516933373813,0.3214285714285714,603
+Chronos-2,foundation model (frozen),logistic regression,unseen positions,0,,0.2473544973544973,0.2470862715345938,0.5238095238095238,756
+Chronos-2,foundation model (frozen),kNN (k=5),unseen positions,0,,0.2619047619047619,0.2523595587168812,0.5238095238095238,756
+Chronos-2,foundation model (frozen),logistic regression,unseen positions,1,,0.2486772486772486,0.2465046644753491,0.6190476190476191,756
+Chronos-2,foundation model (frozen),kNN (k=5),unseen positions,1,,0.2433862433862433,0.2332878737125003,0.6666666666666666,756
+Chronos-2,foundation model (frozen),logistic regression,unseen positions,2,,0.2169312169312169,0.217609469972551,0.3809523809523809,756
+Chronos-2,foundation model (frozen),kNN (k=5),unseen positions,2,,0.2552910052910053,0.2481462401559906,0.7619047619047619,756
+Chronos-2,foundation model (frozen),logistic regression,unseen positions,3,,0.1957671957671957,0.1962718706529807,0.3809523809523809,756
+Chronos-2,foundation model (frozen),kNN (k=5),unseen positions,3,,0.2513227513227513,0.2396949529315871,0.7142857142857143,756
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,0,,0.2019867549668874,0.2010011802596199,0.2409638554216867,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,0,,0.2350993377483443,0.2229988064240685,0.3253012048192771,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,1,,0.2317880794701986,0.2264778012524772,0.2771084337349397,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,1,,0.2251655629139073,0.2122881530456812,0.3373493975903614,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,2,,0.1887417218543046,0.1839926604972525,0.2289156626506024,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,2,,0.2483443708609271,0.2420680358450294,0.3614457831325301,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,3,,0.2019867549668874,0.201240005016199,0.2073170731707317,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,3,,0.2317880794701986,0.220449209961851,0.3414634146341463,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,4,,0.2582781456953642,0.2573363186606315,0.2625,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,4,,0.2483443708609271,0.2376765781151401,0.325,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,5,,0.1920529801324503,0.1936415278313667,0.2439024390243902,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,5,,0.195364238410596,0.1920284455319245,0.3292682926829268,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,6,,0.2317880794701986,0.2312479917921099,0.2469135802469135,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,6,,0.2417218543046357,0.2302438066227526,0.2962962962962963,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,7,,0.2284768211920529,0.2292713340974887,0.3373493975903614,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,7,,0.2682119205298013,0.2547724228734875,0.3855421686746988,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,8,,0.195364238410596,0.1980742848173849,0.238095238095238,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,8,,0.2350993377483443,0.2222712505122686,0.3095238095238095,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,random 90/10,9,,0.2185430463576159,0.2173117903147287,0.2650602409638554,302
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),random 90/10,9,,0.2582781456953642,0.2482132992234048,0.2771084337349397,302
+Chronos-Bolt (base),foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.193069306930693,0.1926783515333892,0.238095238095238,606
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2293729372937293,0.2226054215229228,0.3809523809523809,606
+Chronos-Bolt (base),foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.1881188118811881,0.18678363673584,0.2261904761904762,606
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.231023102310231,0.2222702015174648,0.4761904761904761,606
+Chronos-Bolt (base),foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.1765676567656765,0.1748722377799908,0.2857142857142857,606
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.2689768976897689,0.2506268532413481,0.3571428571428571,606
+Chronos-Bolt (base),foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.1459369817578772,0.1460754988400638,0.1785714285714285,603
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.2189054726368159,0.2121359075712781,0.3333333333333333,603
+Chronos-Bolt (base),foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.1691542288557214,0.1674390600600912,0.1785714285714285,603
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.2553897180762852,0.2490019269024634,0.4642857142857143,603
+Chronos-Bolt (base),foundation model (frozen),logistic regression,unseen positions,0,,0.2341269841269841,0.2325524973292083,0.5714285714285714,756
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),unseen positions,0,,0.2698412698412698,0.2577131035236821,0.6190476190476191,756
+Chronos-Bolt (base),foundation model (frozen),logistic regression,unseen positions,1,,0.2367724867724867,0.2353681513066486,0.6190476190476191,756
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),unseen positions,1,,0.2367724867724867,0.2267278098360077,0.7142857142857143,756
+Chronos-Bolt (base),foundation model (frozen),logistic regression,unseen positions,2,,0.2089947089947089,0.2093016277189125,0.5238095238095238,756
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),unseen positions,2,,0.2751322751322751,0.2659074740410724,0.7619047619047619,756
+Chronos-Bolt (base),foundation model (frozen),logistic regression,unseen positions,3,,0.1944444444444444,0.1937556755758489,0.3333333333333333,756
+Chronos-Bolt (base),foundation model (frozen),kNN (k=5),unseen positions,3,,0.2526455026455027,0.2416662637145477,0.6666666666666666,756
+TiRex,foundation model (frozen),logistic regression,random 90/10,0,,0.2682119205298013,0.2675382865898034,0.3373493975903614,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,0,,0.1821192052980132,0.1788164440668857,0.216867469879518,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,1,,0.2847682119205298,0.2813615847167472,0.3493975903614458,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,1,,0.2417218543046357,0.2336790995731432,0.3132530120481928,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,2,,0.2847682119205298,0.2846317741364003,0.3734939759036144,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,2,,0.2417218543046357,0.2349711248135618,0.2771084337349397,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,3,,0.2980132450331126,0.2989672862984718,0.4024390243902439,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,3,,0.2086092715231788,0.1954668927696929,0.2560975609756097,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,4,,0.2549668874172185,0.2564019581271504,0.3375,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,4,,0.2317880794701986,0.2243969215014967,0.3,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,5,,0.2615894039735099,0.2598113297398629,0.3536585365853658,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,5,,0.1821192052980132,0.1798369415432069,0.2439024390243902,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,6,,0.2317880794701986,0.2284328839231111,0.2962962962962963,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,6,,0.1920529801324503,0.1809644096816833,0.2716049382716049,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,7,,0.2483443708609271,0.2474494989521565,0.3734939759036144,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,7,,0.2019867549668874,0.1919980500235488,0.2289156626506024,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,8,,0.2152317880794702,0.2129049309506388,0.25,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,8,,0.2019867549668874,0.1956173888662673,0.2023809523809523,302
+TiRex,foundation model (frozen),logistic regression,random 90/10,9,,0.2317880794701986,0.2325492139305846,0.3132530120481928,302
+TiRex,foundation model (frozen),kNN (k=5),random 90/10,9,,0.2549668874172185,0.2514130023279617,0.3012048192771084,302
+TiRex,foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.2442244224422442,0.2448458367110119,0.3333333333333333,606
+TiRex,foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2409240924092409,0.236031563752245,0.3809523809523809,606
+TiRex,foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.2161716171617161,0.2143120797777925,0.3214285714285714,606
+TiRex,foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.2161716171617161,0.2051448916833869,0.3809523809523809,606
+TiRex,foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.2277227722772277,0.2252435027925556,0.2976190476190476,606
+TiRex,foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.2095709570957095,0.2025288250417314,0.3452380952380952,606
+TiRex,foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.208955223880597,0.209159113702848,0.2976190476190476,603
+TiRex,foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.1940298507462686,0.1889357488146187,0.2023809523809523,603
+TiRex,foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.2321724709784411,0.2301673764377181,0.3452380952380952,603
+TiRex,foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.1791044776119403,0.1705297669158296,0.2857142857142857,603
+TiRex,foundation model (frozen),logistic regression,unseen positions,0,,0.2486772486772486,0.2486441503356035,0.7142857142857143,756
+TiRex,foundation model (frozen),kNN (k=5),unseen positions,0,,0.2169312169312169,0.2097234246790848,0.4761904761904761,756
+TiRex,foundation model (frozen),logistic regression,unseen positions,1,,0.2275132275132275,0.227177006009303,0.5714285714285714,756
+TiRex,foundation model (frozen),kNN (k=5),unseen positions,1,,0.2195767195767195,0.2148596185631818,0.5714285714285714,756
+TiRex,foundation model (frozen),logistic regression,unseen positions,2,,0.2566137566137566,0.2532157193353481,0.6666666666666666,756
+TiRex,foundation model (frozen),kNN (k=5),unseen positions,2,,0.2341269841269841,0.2262420369108173,0.6190476190476191,756
+TiRex,foundation model (frozen),logistic regression,unseen positions,3,,0.2248677248677248,0.2237371685864435,0.6190476190476191,756
+TiRex,foundation model (frozen),kNN (k=5),unseen positions,3,,0.2116402116402116,0.2005588806323733,0.4761904761904761,756
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,0,,0.2185430463576159,0.2189267020662369,0.2891566265060241,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,0,,0.2748344370860927,0.2645947586740768,0.3253012048192771,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,1,,0.2748344370860927,0.2740261268825429,0.3373493975903614,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,1,,0.2781456953642384,0.2660017392561998,0.3493975903614458,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,2,,0.1788079470198675,0.1798456013049167,0.2289156626506024,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,2,,0.2649006622516556,0.2613624600298488,0.3975903614457831,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,3,,0.2152317880794702,0.2136562265518919,0.2073170731707317,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,3,,0.2980132450331126,0.2715868036402201,0.4146341463414634,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,4,,0.1986754966887417,0.1982877021108333,0.25,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,4,,0.271523178807947,0.2662941331102853,0.4,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,5,,0.2450331125827814,0.2401045813507332,0.2804878048780488,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,5,,0.2284768211920529,0.224698421878873,0.3048780487804878,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,6,,0.2218543046357615,0.2154780554063777,0.2592592592592592,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,6,,0.2847682119205298,0.2716260099238823,0.3703703703703703,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,7,,0.2549668874172185,0.2555857267203419,0.3493975903614458,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,7,,0.2748344370860927,0.2577406646220705,0.3734939759036144,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,8,,0.2119205298013245,0.2118234447429614,0.2619047619047619,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,8,,0.2350993377483443,0.2351125973491588,0.3809523809523809,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,random 90/10,9,,0.2317880794701986,0.2306958781106725,0.3132530120481928,302
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),random 90/10,9,,0.2682119205298013,0.2578542820442089,0.3253012048192771,302
+MOMENT-1 (base),foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.193069306930693,0.1929216758619537,0.2738095238095238,606
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2904290429042904,0.2810359283695979,0.5119047619047619,606
+MOMENT-1 (base),foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.1947194719471947,0.1956205236380264,0.2261904761904762,606
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.2689768976897689,0.2625824706824097,0.4523809523809524,606
+MOMENT-1 (base),foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.1815181518151815,0.1787159745413181,0.2023809523809523,606
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.2475247524752475,0.232343910675557,0.4523809523809524,606
+MOMENT-1 (base),foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.1774461028192371,0.1767611882370074,0.25,603
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.2271973466003316,0.2229642643027874,0.4285714285714285,603
+MOMENT-1 (base),foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.2072968490878938,0.2058655677866862,0.2619047619047619,603
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.2388059701492537,0.2268013040975176,0.4047619047619047,603
+MOMENT-1 (base),foundation model (frozen),logistic regression,unseen positions,0,,0.2169312169312169,0.2178023599432739,0.5714285714285714,756
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),unseen positions,0,,0.2817460317460317,0.2740564481745085,0.6666666666666666,756
+MOMENT-1 (base),foundation model (frozen),logistic regression,unseen positions,1,,0.2195767195767195,0.2185093036907847,0.4285714285714285,756
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),unseen positions,1,,0.2685185185185185,0.2558554689353113,0.8571428571428571,756
+MOMENT-1 (base),foundation model (frozen),logistic regression,unseen positions,2,,0.2473544973544973,0.2461968063499974,0.5714285714285714,756
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),unseen positions,2,,0.3108465608465608,0.3065190744771567,0.9047619047619048,756
+MOMENT-1 (base),foundation model (frozen),logistic regression,unseen positions,3,,0.2023809523809523,0.202144395478174,0.3809523809523809,756
+MOMENT-1 (base),foundation model (frozen),kNN (k=5),unseen positions,3,,0.2896825396825397,0.2812638775298012,0.8095238095238095,756
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,0,,0.2119205298013245,0.206297492946532,0.2771084337349397,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,0,,0.1887417218543046,0.1849932854398526,0.2409638554216867,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,1,,0.2052980132450331,0.1982561482614856,0.1686746987951807,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,1,,0.195364238410596,0.174884997366925,0.2289156626506024,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,2,,0.1887417218543046,0.1884963038444161,0.2048192771084337,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,2,,0.2185430463576159,0.2081738927946943,0.2409638554216867,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,3,,0.1986754966887417,0.1977507706392283,0.1829268292682926,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,3,,0.2284768211920529,0.2147228962887954,0.3170731707317073,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,4,,0.1688741721854304,0.1651769777855974,0.2625,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,4,,0.2350993377483443,0.2242942135224155,0.275,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,5,,0.1986754966887417,0.1974074198968244,0.2317073170731707,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,5,,0.1854304635761589,0.1832885370451952,0.1951219512195122,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,6,,0.1589403973509933,0.1559432967275517,0.1604938271604938,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,6,,0.1788079470198675,0.1666750605375538,0.2345679012345679,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,7,,0.2417218543046357,0.2417283173448366,0.3012048192771084,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,7,,0.2052980132450331,0.2012313566758284,0.253012048192771,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,8,,0.1821192052980132,0.1829399118497444,0.25,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,8,,0.1721854304635761,0.16315921418163,0.1785714285714285,302
+Mantis-8M,foundation model (frozen),logistic regression,random 90/10,9,,0.1788079470198675,0.1765292955641172,0.144578313253012,302
+Mantis-8M,foundation model (frozen),kNN (k=5),random 90/10,9,,0.2417218543046357,0.2281627997577547,0.2289156626506024,302
+Mantis-8M,foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.1683168316831683,0.1657233693019169,0.1666666666666666,606
+Mantis-8M,foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2013201320132013,0.1900417073092944,0.2857142857142857,606
+Mantis-8M,foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.165016501650165,0.1629019050621657,0.1666666666666666,606
+Mantis-8M,foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.2112211221122112,0.1988671944934528,0.3214285714285714,606
+Mantis-8M,foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.1386138613861386,0.138389951874667,0.1428571428571428,606
+Mantis-8M,foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.2013201320132013,0.1896591784059122,0.2619047619047619,606
+Mantis-8M,foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.1376451077943615,0.1363297204607862,0.1428571428571428,603
+Mantis-8M,foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.2222222222222222,0.2211975818082026,0.3571428571428571,603
+Mantis-8M,foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.1641791044776119,0.1639321828476165,0.1071428571428571,603
+Mantis-8M,foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.1592039800995024,0.1560174444713251,0.2738095238095238,603
+Mantis-8M,foundation model (frozen),logistic regression,unseen positions,0,,0.1878306878306878,0.1868662767499051,0.3809523809523809,756
+Mantis-8M,foundation model (frozen),kNN (k=5),unseen positions,0,,0.2367724867724867,0.2296569689785976,0.7142857142857143,756
+Mantis-8M,foundation model (frozen),logistic regression,unseen positions,1,,0.2275132275132275,0.2272888187723179,0.5714285714285714,756
+Mantis-8M,foundation model (frozen),kNN (k=5),unseen positions,1,,0.2288359788359788,0.2227027034125913,0.6190476190476191,756
+Mantis-8M,foundation model (frozen),logistic regression,unseen positions,2,,0.2195767195767195,0.2185580944682764,0.4285714285714285,756
+Mantis-8M,foundation model (frozen),kNN (k=5),unseen positions,2,,0.2407407407407407,0.2318298864759151,0.6190476190476191,756
+Mantis-8M,foundation model (frozen),logistic regression,unseen positions,3,,0.1984126984126984,0.1964511325785201,0.4761904761904761,756
+Mantis-8M,foundation model (frozen),kNN (k=5),unseen positions,3,,0.2156084656084656,0.2072677244318741,0.6190476190476191,756
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,0,,0.2251655629139073,0.2243522497834142,0.2048192771084337,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,0,,0.1821192052980132,0.1773197834480884,0.2771084337349397,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,1,,0.1688741721854304,0.1654107871267801,0.2048192771084337,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,1,,0.1258278145695364,0.1184206915321554,0.1566265060240964,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,2,,0.1721854304635761,0.1727466856172277,0.1566265060240964,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,2,,0.1754966887417218,0.1711267567225163,0.2409638554216867,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,3,,0.152317880794702,0.1506180071247483,0.1951219512195122,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,3,,0.2119205298013245,0.2031551545489675,0.2439024390243902,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,4,,0.1324503311258278,0.1339158137918136,0.1125,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,4,,0.1986754966887417,0.1963309691405288,0.3,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,5,,0.152317880794702,0.1509868939848876,0.1463414634146341,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,5,,0.1986754966887417,0.191006519662991,0.2560975609756097,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,6,,0.1788079470198675,0.1798740796337894,0.2222222222222222,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,6,,0.1854304635761589,0.1744673748755381,0.1851851851851851,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,7,,0.152317880794702,0.1495095464209005,0.2048192771084337,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,7,,0.2417218543046357,0.2360402535060069,0.3012048192771084,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,8,,0.1721854304635761,0.1659427533756783,0.1785714285714285,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,8,,0.1887417218543046,0.1839732060517394,0.1428571428571428,302
+TTM-R2,foundation model (frozen),logistic regression,random 90/10,9,,0.1688741721854304,0.1662146185303046,0.180722891566265,302
+TTM-R2,foundation model (frozen),kNN (k=5),random 90/10,9,,0.1854304635761589,0.1753226676264687,0.2048192771084337,302
+TTM-R2,foundation model (frozen),logistic regression,"grouped (position, path)",0,,0.1452145214521452,0.1452495614620322,0.1428571428571428,606
+TTM-R2,foundation model (frozen),kNN (k=5),"grouped (position, path)",0,,0.2062706270627062,0.198017249175511,0.3571428571428571,606
+TTM-R2,foundation model (frozen),logistic regression,"grouped (position, path)",1,,0.1336633663366336,0.1331610705005214,0.1071428571428571,606
+TTM-R2,foundation model (frozen),kNN (k=5),"grouped (position, path)",1,,0.193069306930693,0.1821402902873532,0.3333333333333333,606
+TTM-R2,foundation model (frozen),logistic regression,"grouped (position, path)",2,,0.132013201320132,0.1329395075856088,0.1309523809523809,606
+TTM-R2,foundation model (frozen),kNN (k=5),"grouped (position, path)",2,,0.1765676567656765,0.1671207131800671,0.2261904761904762,606
+TTM-R2,foundation model (frozen),logistic regression,"grouped (position, path)",3,,0.1376451077943615,0.1384535228522119,0.0833333333333333,603
+TTM-R2,foundation model (frozen),kNN (k=5),"grouped (position, path)",3,,0.1592039800995024,0.1565406937595418,0.2857142857142857,603
+TTM-R2,foundation model (frozen),logistic regression,"grouped (position, path)",4,,0.1641791044776119,0.1617818773760602,0.2023809523809523,603
+TTM-R2,foundation model (frozen),kNN (k=5),"grouped (position, path)",4,,0.2106135986733001,0.2072105063567279,0.3095238095238095,603
+TTM-R2,foundation model (frozen),logistic regression,unseen positions,0,,0.2169312169312169,0.2161173237661831,0.4285714285714285,756
+TTM-R2,foundation model (frozen),kNN (k=5),unseen positions,0,,0.2235449735449735,0.2174578336351142,0.5714285714285714,756
+TTM-R2,foundation model (frozen),logistic regression,unseen positions,1,,0.1719576719576719,0.171808766255835,0.238095238095238,756
+TTM-R2,foundation model (frozen),kNN (k=5),unseen positions,1,,0.2023809523809523,0.1963197949782011,0.4761904761904761,756
+TTM-R2,foundation model (frozen),logistic regression,unseen positions,2,,0.1970899470899471,0.1966174125219633,0.4761904761904761,756
+TTM-R2,foundation model (frozen),kNN (k=5),unseen positions,2,,0.2367724867724867,0.2291070802836246,0.5238095238095238,756
+TTM-R2,foundation model (frozen),logistic regression,unseen positions,3,,0.1798941798941798,0.1786342487712095,0.238095238095238,756
+TTM-R2,foundation model (frozen),kNN (k=5),unseen positions,3,,0.2222222222222222,0.2169688391121165,0.5238095238095238,756
+MiniRocket,trained from scratch,ridge,random 90/10,0,10.40131425857544,0.25496688741721857,0.25162134183738316,0.37349397590361444,302
+1D-CNN,trained from scratch,end-to-end,random 90/10,0,515.5859112739563,0.2582781456953642,0.24394061997484,0.3614457831325301,302
+MiniRocket,trained from scratch,ridge,unseen positions,0,6.584193706512451,0.21164021164021163,0.21153701238004957,0.2857142857142857,756
+1D-CNN,trained from scratch,end-to-end,unseen positions,0,444.09940910339355,0.25132275132275134,0.22657370642937383,0.38095238095238093,756
+MiniRocket,trained from scratch,ridge,unseen positions,1,6.967153549194336,0.20634920634920634,0.2043466088401684,0.38095238095238093,756
+1D-CNN,trained from scratch,end-to-end,unseen positions,1,529.5705051422119,0.22486772486772486,0.20214561967802863,0.5238095238095238,756
+MiniRocket,trained from scratch,ridge,unseen positions,2,6.491903066635132,0.24338624338624337,0.24214737164228534,0.7142857142857143,756
+1D-CNN,trained from scratch,end-to-end,unseen positions,2,519.381096124649,0.2156084656084656,0.15373993366912972,0.38095238095238093,756
+MiniRocket,trained from scratch,ridge,unseen positions,3,6.666788339614868,0.20767195767195767,0.20876390053112961,0.6190476190476191,756
+1D-CNN,trained from scratch,end-to-end,unseen positions,3,483.24854350090027,0.2328042328042328,0.2136325695128635,0.5238095238095238,756

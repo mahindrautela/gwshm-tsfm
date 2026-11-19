@@ -1,0 +1,280 @@
+method,family,mode,head,fold,seconds,auc,bacc
+Chronos-2,foundation model (frozen),as recorded,logistic regression,0,,0.759765625,0.734375
+Chronos-2,foundation model (frozen),as recorded,kNN (k=5),0,,0.68798828125,0.640625
+Chronos-2,foundation model (frozen),as recorded,one-class (no damage labels),0,,0.544921875,0.5
+Chronos-2,foundation model (frozen),as recorded,logistic regression,1,,0.7950052029136316,0.7580645161290323
+Chronos-2,foundation model (frozen),as recorded,kNN (k=5),1,,0.5525494276795005,0.5161290322580645
+Chronos-2,foundation model (frozen),as recorded,one-class (no damage labels),1,,0.5296566077003122,0.4838709677419355
+Chronos-2,foundation model (frozen),as recorded,logistic regression,2,,0.7523413111342352,0.7258064516129032
+Chronos-2,foundation model (frozen),as recorded,kNN (k=5),2,,0.6774193548387097,0.6451612903225807
+Chronos-2,foundation model (frozen),as recorded,one-class (no damage labels),2,,0.5515088449531738,0.5161290322580645
+Chronos-2,foundation model (frozen),as recorded,logistic regression,3,,0.7398543184183143,0.7419354838709677
+Chronos-2,foundation model (frozen),as recorded,kNN (k=5),3,,0.548907388137357,0.5
+Chronos-2,foundation model (frozen),as recorded,one-class (no damage labels),3,,0.5733610822060353,0.5806451612903226
+Chronos-2,foundation model (frozen),as recorded,logistic regression,4,,0.8355879292403745,0.7419354838709677
+Chronos-2,foundation model (frozen),as recorded,kNN (k=5),4,,0.4927159209157128,0.4838709677419355
+Chronos-2,foundation model (frozen),as recorded,one-class (no damage labels),4,,0.5639958376690947,0.5161290322580645
+Chronos-Bolt (base),foundation model (frozen),as recorded,logistic regression,0,,0.837890625,0.75
+Chronos-Bolt (base),foundation model (frozen),as recorded,kNN (k=5),0,,0.6279296875,0.578125
+Chronos-Bolt (base),foundation model (frozen),as recorded,one-class (no damage labels),0,,0.6337890625,0.59375
+Chronos-Bolt (base),foundation model (frozen),as recorded,logistic regression,1,,0.7513007284079083,0.7580645161290323
+Chronos-Bolt (base),foundation model (frozen),as recorded,kNN (k=5),1,,0.6019771071800208,0.564516129032258
+Chronos-Bolt (base),foundation model (frozen),as recorded,one-class (no damage labels),1,,0.5879292403746097,0.5483870967741935
+Chronos-Bolt (base),foundation model (frozen),as recorded,logistic regression,2,,0.7752341311134234,0.7741935483870968
+Chronos-Bolt (base),foundation model (frozen),as recorded,kNN (k=5),2,,0.5187304890738814,0.532258064516129
+Chronos-Bolt (base),foundation model (frozen),as recorded,one-class (no damage labels),2,,0.558792924037461,0.5483870967741935
+Chronos-Bolt (base),foundation model (frozen),as recorded,logistic regression,3,,0.7585848074921957,0.7096774193548387
+Chronos-Bolt (base),foundation model (frozen),as recorded,kNN (k=5),3,,0.6732570239334027,0.6290322580645161
+Chronos-Bolt (base),foundation model (frozen),as recorded,one-class (no damage labels),3,,0.6222684703433923,0.5161290322580645
+Chronos-Bolt (base),foundation model (frozen),as recorded,logistic regression,4,,0.8470343392299687,0.8064516129032258
+Chronos-Bolt (base),foundation model (frozen),as recorded,kNN (k=5),4,,0.6701352757544226,0.6290322580645161
+Chronos-Bolt (base),foundation model (frozen),as recorded,one-class (no damage labels),4,,0.6836628511966701,0.5483870967741935
+TiRex,foundation model (frozen),as recorded,logistic regression,0,,0.7763671875,0.71875
+TiRex,foundation model (frozen),as recorded,kNN (k=5),0,,0.69873046875,0.625
+TiRex,foundation model (frozen),as recorded,one-class (no damage labels),0,,0.822265625,0.75
+TiRex,foundation model (frozen),as recorded,logistic regression,1,,0.8595213319458896,0.7903225806451613
+TiRex,foundation model (frozen),as recorded,kNN (k=5),1,,0.6056191467221644,0.564516129032258
+TiRex,foundation model (frozen),as recorded,one-class (no damage labels),1,,0.7075962539021853,0.6451612903225806
+TiRex,foundation model (frozen),as recorded,logistic regression,2,,0.753381893860562,0.7580645161290323
+TiRex,foundation model (frozen),as recorded,kNN (k=5),2,,0.6056191467221644,0.6129032258064516
+TiRex,foundation model (frozen),as recorded,one-class (no damage labels),2,,0.582726326742976,0.5483870967741935
+TiRex,foundation model (frozen),as recorded,logistic regression,3,,0.8189386056191468,0.7580645161290323
+TiRex,foundation model (frozen),as recorded,kNN (k=5),3,,0.6519250780437045,0.596774193548387
+TiRex,foundation model (frozen),as recorded,one-class (no damage labels),3,,0.6264308012486992,0.5483870967741935
+TiRex,foundation model (frozen),as recorded,logistic regression,4,,0.7866805411030178,0.7419354838709677
+TiRex,foundation model (frozen),as recorded,kNN (k=5),4,,0.6514047866805411,0.6129032258064516
+TiRex,foundation model (frozen),as recorded,one-class (no damage labels),4,,0.7637877211238293,0.6451612903225806
+MOMENT-1 (base),foundation model (frozen),as recorded,logistic regression,0,,0.787109375,0.75
+MOMENT-1 (base),foundation model (frozen),as recorded,kNN (k=5),0,,0.5927734375,0.578125
+MOMENT-1 (base),foundation model (frozen),as recorded,one-class (no damage labels),0,,0.6533203125,0.59375
+MOMENT-1 (base),foundation model (frozen),as recorded,logistic regression,1,,0.8262226847034339,0.7903225806451613
+MOMENT-1 (base),foundation model (frozen),as recorded,kNN (k=5),1,,0.6259105098855359,0.6129032258064515
+MOMENT-1 (base),foundation model (frozen),as recorded,one-class (no damage labels),1,,0.6732570239334027,0.6451612903225806
+MOMENT-1 (base),foundation model (frozen),as recorded,logistic regression,2,,0.7513007284079084,0.6935483870967742
+MOMENT-1 (base),foundation model (frozen),as recorded,kNN (k=5),2,,0.6227887617065556,0.5645161290322581
+MOMENT-1 (base),foundation model (frozen),as recorded,one-class (no damage labels),2,,0.6118626430801248,0.5806451612903226
+MOMENT-1 (base),foundation model (frozen),as recorded,logistic regression,3,,0.7981269510926118,0.7903225806451613
+MOMENT-1 (base),foundation model (frozen),as recorded,kNN (k=5),3,,0.5400624349635795,0.5483870967741935
+MOMENT-1 (base),foundation model (frozen),as recorded,one-class (no damage labels),3,,0.6212278876170656,0.5483870967741935
+MOMENT-1 (base),foundation model (frozen),as recorded,logistic regression,4,,0.886576482830385,0.8064516129032258
+MOMENT-1 (base),foundation model (frozen),as recorded,kNN (k=5),4,,0.5145681581685744,0.5
+MOMENT-1 (base),foundation model (frozen),as recorded,one-class (no damage labels),4,,0.7554630593132154,0.6774193548387096
+Mantis-8M,foundation model (frozen),as recorded,logistic regression,0,,0.685546875,0.59375
+Mantis-8M,foundation model (frozen),as recorded,kNN (k=5),0,,0.7041015625,0.640625
+Mantis-8M,foundation model (frozen),as recorded,one-class (no damage labels),0,,0.8125,0.71875
+Mantis-8M,foundation model (frozen),as recorded,logistic regression,1,,0.7887617065556711,0.7903225806451613
+Mantis-8M,foundation model (frozen),as recorded,kNN (k=5),1,,0.7127991675338189,0.6612903225806451
+Mantis-8M,foundation model (frozen),as recorded,one-class (no damage labels),1,,0.7471383975026014,0.6774193548387096
+Mantis-8M,foundation model (frozen),as recorded,logistic regression,2,,0.8074921956295525,0.7903225806451613
+Mantis-8M,foundation model (frozen),as recorded,kNN (k=5),2,,0.6899063475546305,0.6451612903225806
+Mantis-8M,foundation model (frozen),as recorded,one-class (no damage labels),2,,0.7554630593132154,0.7419354838709677
+Mantis-8M,foundation model (frozen),as recorded,logistic regression,3,,0.7877211238293443,0.7580645161290323
+Mantis-8M,foundation model (frozen),as recorded,kNN (k=5),3,,0.7242455775234131,0.6774193548387096
+Mantis-8M,foundation model (frozen),as recorded,one-class (no damage labels),3,,0.7492195629552549,0.7096774193548387
+Mantis-8M,foundation model (frozen),as recorded,logistic regression,4,,0.8792924037460979,0.7580645161290323
+Mantis-8M,foundation model (frozen),as recorded,kNN (k=5),4,,0.6768990634755463,0.5967741935483871
+Mantis-8M,foundation model (frozen),as recorded,one-class (no damage labels),4,,0.785639958376691,0.7096774193548387
+TTM-R2,foundation model (frozen),as recorded,logistic regression,0,,0.7802734375,0.734375
+TTM-R2,foundation model (frozen),as recorded,kNN (k=5),0,,0.6923828125,0.671875
+TTM-R2,foundation model (frozen),as recorded,one-class (no damage labels),0,,0.7568359375,0.6875
+TTM-R2,foundation model (frozen),as recorded,logistic regression,1,,0.8054110301768991,0.7580645161290323
+TTM-R2,foundation model (frozen),as recorded,kNN (k=5),1,,0.6696149843912591,0.6129032258064516
+TTM-R2,foundation model (frozen),as recorded,one-class (no damage labels),1,,0.7003121748178981,0.6451612903225806
+TTM-R2,foundation model (frozen),as recorded,logistic regression,2,,0.623309053069719,0.6451612903225806
+TTM-R2,foundation model (frozen),as recorded,kNN (k=5),2,,0.5385015608740895,0.5806451612903225
+TTM-R2,foundation model (frozen),as recorded,one-class (no damage labels),2,,0.5910509885535901,0.5806451612903226
+TTM-R2,foundation model (frozen),as recorded,logistic regression,3,,0.7190426638917793,0.7096774193548387
+TTM-R2,foundation model (frozen),as recorded,kNN (k=5),3,,0.5931321540062435,0.596774193548387
+TTM-R2,foundation model (frozen),as recorded,one-class (no damage labels),3,,0.6826222684703434,0.6129032258064516
+TTM-R2,foundation model (frozen),as recorded,logistic regression,4,,0.6909469302809572,0.6451612903225806
+TTM-R2,foundation model (frozen),as recorded,kNN (k=5),4,,0.6165452653485952,0.6129032258064516
+TTM-R2,foundation model (frozen),as recorded,one-class (no damage labels),4,,0.7398543184183143,0.7096774193548387
+Raw signal,trained from scratch,as recorded,logistic regression,0,,0.734375,0.671875
+Raw signal,trained from scratch,as recorded,kNN (k=5),0,,0.69677734375,0.671875
+Raw signal,trained from scratch,as recorded,one-class (no damage labels),0,,0.5947265625,0.59375
+Raw signal,trained from scratch,as recorded,logistic regression,1,,0.7315296566077003,0.6774193548387097
+Raw signal,trained from scratch,as recorded,kNN (k=5),1,,0.6930280957336108,0.6290322580645161
+Raw signal,trained from scratch,as recorded,one-class (no damage labels),1,,0.6024973985431842,0.5806451612903226
+Raw signal,trained from scratch,as recorded,logistic regression,2,,0.5182101977107181,0.5161290322580645
+Raw signal,trained from scratch,as recorded,kNN (k=5),2,,0.5723204994797085,0.6129032258064515
+Raw signal,trained from scratch,as recorded,one-class (no damage labels),2,,0.43184183142559834,0.45161290322580644
+Raw signal,trained from scratch,as recorded,logistic regression,3,,0.5889698231009365,0.5
+Raw signal,trained from scratch,as recorded,kNN (k=5),3,,0.6633714880332986,0.6451612903225806
+Raw signal,trained from scratch,as recorded,one-class (no damage labels),3,,0.5348595213319459,0.5161290322580645
+Raw signal,trained from scratch,as recorded,logistic regression,4,,0.6763787721123828,0.6290322580645161
+Raw signal,trained from scratch,as recorded,kNN (k=5),4,,0.6519250780437045,0.5967741935483871
+Raw signal,trained from scratch,as recorded,one-class (no damage labels),4,,0.5098855359001041,0.5161290322580645
+|FFT| spectrum,trained from scratch,as recorded,logistic regression,0,,0.751953125,0.640625
+|FFT| spectrum,trained from scratch,as recorded,kNN (k=5),0,,0.65869140625,0.625
+|FFT| spectrum,trained from scratch,as recorded,one-class (no damage labels),0,,0.3984375,0.4375
+|FFT| spectrum,trained from scratch,as recorded,logistic regression,1,,0.7127991675338189,0.7258064516129032
+|FFT| spectrum,trained from scratch,as recorded,kNN (k=5),1,,0.5910509885535901,0.5806451612903225
+|FFT| spectrum,trained from scratch,as recorded,one-class (no damage labels),1,,0.4203954214360041,0.45161290322580644
+|FFT| spectrum,trained from scratch,as recorded,logistic regression,2,,0.6118626430801248,0.6129032258064516
+|FFT| spectrum,trained from scratch,as recorded,kNN (k=5),2,,0.49167533818938614,0.4838709677419355
+|FFT| spectrum,trained from scratch,as recorded,one-class (no damage labels),2,,0.40478668054110306,0.41935483870967744
+|FFT| spectrum,trained from scratch,as recorded,logistic regression,3,,0.6909469302809573,0.596774193548387
+|FFT| spectrum,trained from scratch,as recorded,kNN (k=5),3,,0.5535900104058273,0.5161290322580645
+|FFT| spectrum,trained from scratch,as recorded,one-class (no damage labels),3,,0.4276795005202914,0.45161290322580644
+|FFT| spectrum,trained from scratch,as recorded,logistic regression,4,,0.7138397502601456,0.6451612903225806
+|FFT| spectrum,trained from scratch,as recorded,kNN (k=5),4,,0.649843912591051,0.6290322580645161
+|FFT| spectrum,trained from scratch,as recorded,one-class (no damage labels),4,,0.4640998959417273,0.4838709677419355
+Peak polarity only,artefact probe,as recorded,logistic regression,0,,0.484375,0.484375
+Peak polarity only,artefact probe,as recorded,logistic regression,1,,0.5161290322580645,0.5161290322580645
+Peak polarity only,artefact probe,as recorded,logistic regression,2,,0.532258064516129,0.532258064516129
+Peak polarity only,artefact probe,as recorded,logistic regression,3,,0.5483870967741935,0.5483870967741935
+Peak polarity only,artefact probe,as recorded,logistic regression,4,,0.48387096774193544,0.4838709677419355
+MiniRocket,trained from scratch,as recorded,ridge,0,28.480888843536377,0.9228515625,0.828125
+1D-CNN (reference notebook),trained from scratch,as recorded,end-to-end,0,87.69912242889404,0.8212890625,0.765625
+MiniRocket,trained from scratch,as recorded,ridge,1,0.8348958492279053,0.9136316337148803,0.8870967741935484
+1D-CNN (reference notebook),trained from scratch,as recorded,end-to-end,1,80.28015542030334,0.797086368366285,0.7741935483870968
+MiniRocket,trained from scratch,as recorded,ridge,2,0.7607452869415283,0.8969823100936524,0.8225806451612903
+1D-CNN (reference notebook),trained from scratch,as recorded,end-to-end,2,72.99903154373169,0.7284079084287199,0.6774193548387097
+MiniRocket,trained from scratch,as recorded,ridge,3,0.7936069965362549,0.8949011446409989,0.8064516129032258
+1D-CNN (reference notebook),trained from scratch,as recorded,end-to-end,3,28.514597415924072,0.6982310093652445,0.6290322580645161
+MiniRocket,trained from scratch,as recorded,ridge,4,0.7253153324127197,0.9177939646201874,0.8064516129032258
+1D-CNN (reference notebook),trained from scratch,as recorded,end-to-end,4,7.485206365585327,0.712799167533819,0.6451612903225806
+Chronos-2,foundation model (frozen),sign-symmetric,logistic regression,0,,0.8056640625,0.71875
+Chronos-2,foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.6953125,0.640625
+Chronos-2,foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.5576171875,0.53125
+Chronos-2,foundation model (frozen),sign-symmetric,logistic regression,1,,0.8158168574401665,0.7741935483870968
+Chronos-2,foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.6472424557752341,0.6290322580645161
+Chronos-2,foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.5275754422476587,0.4838709677419355
+Chronos-2,foundation model (frozen),sign-symmetric,logistic regression,2,,0.813735691987513,0.8225806451612903
+Chronos-2,foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.7117585848074922,0.6612903225806452
+Chronos-2,foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.5494276795005203,0.5161290322580645
+Chronos-2,foundation model (frozen),sign-symmetric,logistic regression,3,,0.8688865764828303,0.8548387096774194
+Chronos-2,foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.6612903225806451,0.5806451612903225
+Chronos-2,foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.5681581685744017,0.5483870967741935
+Chronos-2,foundation model (frozen),sign-symmetric,logistic regression,4,,0.9115504682622269,0.8225806451612903
+Chronos-2,foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.6940686784599376,0.6290322580645161
+Chronos-2,foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.558792924037461,0.4838709677419355
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,logistic regression,0,,0.853515625,0.78125
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.591796875,0.5
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.615234375,0.625
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,logistic regression,1,,0.8012486992715921,0.7741935483870968
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.610822060353798,0.5806451612903225
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.5504682622268471,0.5483870967741935
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,logistic regression,2,,0.8470343392299687,0.7903225806451613
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.6160249739854319,0.6129032258064516
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.5515088449531738,0.5483870967741935
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,logistic regression,3,,0.8678459937565037,0.8387096774193549
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.623309053069719,0.532258064516129
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.6077003121748179,0.5161290322580645
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,logistic regression,4,,0.8699271592091571,0.8064516129032258
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.7101977107180021,0.6612903225806451
+Chronos-Bolt (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.6420395421436003,0.5483870967741935
+TiRex,foundation model (frozen),sign-symmetric,logistic regression,0,,0.8388671875,0.765625
+TiRex,foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.6494140625,0.609375
+TiRex,foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.689453125,0.625
+TiRex,foundation model (frozen),sign-symmetric,logistic regression,1,,0.9406867845993756,0.8225806451612903
+TiRex,foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.5608740894901145,0.5806451612903225
+TiRex,foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.6285119667013528,0.5806451612903226
+TiRex,foundation model (frozen),sign-symmetric,logistic regression,2,,0.7783558792924038,0.7419354838709677
+TiRex,foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.5395421436004162,0.532258064516129
+TiRex,foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.5057232049947971,0.5161290322580645
+TiRex,foundation model (frozen),sign-symmetric,logistic regression,3,,0.8761706555671176,0.7741935483870968
+TiRex,foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.700312174817898,0.6129032258064516
+TiRex,foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.5775234131113423,0.5161290322580645
+TiRex,foundation model (frozen),sign-symmetric,logistic regression,4,,0.8532778355879292,0.7903225806451613
+TiRex,foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.5790842872008324,0.5967741935483871
+TiRex,foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.6451612903225806,0.5806451612903226
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,logistic regression,0,,0.8828125,0.8125
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.6640625,0.5625
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.685546875,0.5625
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,logistic regression,1,,0.8605619146722164,0.7903225806451613
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.5676378772112383,0.467741935483871
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.6670135275754423,0.5806451612903226
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,logistic regression,2,,0.8033298647242456,0.7096774193548387
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.6326742976066597,0.5967741935483871
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.6690946930280957,0.6129032258064516
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,logistic regression,3,,0.8709677419354839,0.8225806451612903
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.5098855359001041,0.467741935483871
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.6212278876170656,0.5483870967741935
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,logistic regression,4,,0.8938605619146721,0.8064516129032258
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.6722164412070759,0.5967741935483871
+MOMENT-1 (base),foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.7419354838709677,0.7096774193548387
+Mantis-8M,foundation model (frozen),sign-symmetric,logistic regression,0,,0.7294921875,0.640625
+Mantis-8M,foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.80078125,0.671875
+Mantis-8M,foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.8115234375,0.75
+Mantis-8M,foundation model (frozen),sign-symmetric,logistic regression,1,,0.8522372528616026,0.8387096774193548
+Mantis-8M,foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.7950052029136316,0.6290322580645161
+Mantis-8M,foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.7575442247658688,0.7419354838709677
+Mantis-8M,foundation model (frozen),sign-symmetric,logistic regression,2,,0.8387096774193549,0.8064516129032258
+Mantis-8M,foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.7575442247658688,0.6451612903225806
+Mantis-8M,foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.7637877211238293,0.7419354838709677
+Mantis-8M,foundation model (frozen),sign-symmetric,logistic regression,3,,0.8158168574401665,0.6774193548387096
+Mantis-8M,foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.77159209157128,0.6935483870967742
+Mantis-8M,foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.7950052029136315,0.7741935483870968
+Mantis-8M,foundation model (frozen),sign-symmetric,logistic regression,4,,0.8969823100936525,0.8225806451612903
+Mantis-8M,foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.8387096774193548,0.7258064516129032
+Mantis-8M,foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.8335067637877211,0.7419354838709677
+TTM-R2,foundation model (frozen),sign-symmetric,logistic regression,0,,0.8212890625,0.734375
+TTM-R2,foundation model (frozen),sign-symmetric,kNN (k=5),0,,0.48291015625,0.515625
+TTM-R2,foundation model (frozen),sign-symmetric,one-class (no damage labels),0,,0.58203125,0.53125
+TTM-R2,foundation model (frozen),sign-symmetric,logistic regression,1,,0.7159209157127991,0.6612903225806451
+TTM-R2,foundation model (frozen),sign-symmetric,kNN (k=5),1,,0.6529656607700313,0.6129032258064516
+TTM-R2,foundation model (frozen),sign-symmetric,one-class (no damage labels),1,,0.5806451612903226,0.5161290322580645
+TTM-R2,foundation model (frozen),sign-symmetric,logistic regression,2,,0.6961498439125909,0.6612903225806451
+TTM-R2,foundation model (frozen),sign-symmetric,kNN (k=5),2,,0.49271592091571276,0.5161290322580645
+TTM-R2,foundation model (frozen),sign-symmetric,one-class (no damage labels),2,,0.5078043704474505,0.4838709677419355
+TTM-R2,foundation model (frozen),sign-symmetric,logistic regression,3,,0.7336108220603538,0.6935483870967742
+TTM-R2,foundation model (frozen),sign-symmetric,kNN (k=5),3,,0.4875130072840791,0.5161290322580645
+TTM-R2,foundation model (frozen),sign-symmetric,one-class (no damage labels),3,,0.5556711758584807,0.5161290322580645
+TTM-R2,foundation model (frozen),sign-symmetric,logistic regression,4,,0.7492195629552549,0.6612903225806452
+TTM-R2,foundation model (frozen),sign-symmetric,kNN (k=5),4,,0.46670135275754426,0.5
+TTM-R2,foundation model (frozen),sign-symmetric,one-class (no damage labels),4,,0.6056191467221644,0.5806451612903226
+Raw signal,trained from scratch,sign-symmetric,logistic regression,0,,0.5,0.5
+Raw signal,trained from scratch,sign-symmetric,kNN (k=5),0,,0.52587890625,0.546875
+Raw signal,trained from scratch,sign-symmetric,one-class (no damage labels),0,,0.5087890625,0.53125
+Raw signal,trained from scratch,sign-symmetric,logistic regression,1,,0.5,0.5
+Raw signal,trained from scratch,sign-symmetric,kNN (k=5),1,,0.48595213319458896,0.4838709677419355
+Raw signal,trained from scratch,sign-symmetric,one-class (no damage labels),1,,0.49947970863683666,0.4838709677419355
+Raw signal,trained from scratch,sign-symmetric,logistic regression,2,,0.5,0.5
+Raw signal,trained from scratch,sign-symmetric,kNN (k=5),2,,0.5369406867845994,0.5161290322580645
+Raw signal,trained from scratch,sign-symmetric,one-class (no damage labels),2,,0.39021852237252863,0.3870967741935484
+Raw signal,trained from scratch,sign-symmetric,logistic regression,3,,0.5,0.5
+Raw signal,trained from scratch,sign-symmetric,kNN (k=5),3,,0.45681581685744016,0.45161290322580644
+Raw signal,trained from scratch,sign-symmetric,one-class (no damage labels),3,,0.4890738813735692,0.45161290322580644
+Raw signal,trained from scratch,sign-symmetric,logistic regression,4,,0.5,0.5
+Raw signal,trained from scratch,sign-symmetric,kNN (k=5),4,,0.5650364203954213,0.5806451612903226
+Raw signal,trained from scratch,sign-symmetric,one-class (no damage labels),4,,0.46618106139438087,0.5161290322580645
+|FFT| spectrum,trained from scratch,sign-symmetric,logistic regression,0,,0.734375,0.609375
+|FFT| spectrum,trained from scratch,sign-symmetric,kNN (k=5),0,,0.67333984375,0.625
+|FFT| spectrum,trained from scratch,sign-symmetric,one-class (no damage labels),0,,0.40625,0.4375
+|FFT| spectrum,trained from scratch,sign-symmetric,logistic regression,1,,0.704474505723205,0.6935483870967742
+|FFT| spectrum,trained from scratch,sign-symmetric,kNN (k=5),1,,0.5837669094693028,0.5483870967741935
+|FFT| spectrum,trained from scratch,sign-symmetric,one-class (no damage labels),1,,0.4308012486992716,0.45161290322580644
+|FFT| spectrum,trained from scratch,sign-symmetric,logistic regression,2,,0.6170655567117586,0.5806451612903226
+|FFT| spectrum,trained from scratch,sign-symmetric,kNN (k=5),2,,0.4921956295525494,0.5
+|FFT| spectrum,trained from scratch,sign-symmetric,one-class (no damage labels),2,,0.42247658688865763,0.45161290322580644
+|FFT| spectrum,trained from scratch,sign-symmetric,logistic regression,3,,0.6930280957336108,0.6129032258064515
+|FFT| spectrum,trained from scratch,sign-symmetric,kNN (k=5),3,,0.586888657648283,0.532258064516129
+|FFT| spectrum,trained from scratch,sign-symmetric,one-class (no damage labels),3,,0.45161290322580644,0.45161290322580644
+|FFT| spectrum,trained from scratch,sign-symmetric,logistic regression,4,,0.704474505723205,0.6451612903225807
+|FFT| spectrum,trained from scratch,sign-symmetric,kNN (k=5),4,,0.6331945889698231,0.6129032258064515
+|FFT| spectrum,trained from scratch,sign-symmetric,one-class (no damage labels),4,,0.4963579604578564,0.4838709677419355
+Peak polarity only,artefact probe,sign-symmetric,logistic regression,0,,0.5,0.5
+Peak polarity only,artefact probe,sign-symmetric,logistic regression,1,,0.5,0.5
+Peak polarity only,artefact probe,sign-symmetric,logistic regression,2,,0.5,0.5
+Peak polarity only,artefact probe,sign-symmetric,logistic regression,3,,0.5,0.5
+Peak polarity only,artefact probe,sign-symmetric,logistic regression,4,,0.5,0.5
+MiniRocket,trained from scratch,sign-symmetric,ridge,0,1.958747148513794,0.9130859375,0.828125
+1D-CNN (reference notebook),trained from scratch,sign-symmetric,end-to-end,0,52.74878001213074,0.6162109375,0.53125
+MiniRocket,trained from scratch,sign-symmetric,ridge,1,1.583754539489746,0.9542143600416233,0.8709677419354839
+1D-CNN (reference notebook),trained from scratch,sign-symmetric,end-to-end,1,112.14854145050049,0.6805411030176899,0.5806451612903225
+MiniRocket,trained from scratch,sign-symmetric,ridge,2,1.3620355129241943,0.8355879292403746,0.7419354838709677
+1D-CNN (reference notebook),trained from scratch,sign-symmetric,end-to-end,2,133.51687383651733,0.7055150884495318,0.6451612903225806
+MiniRocket,trained from scratch,sign-symmetric,ridge,3,1.3982839584350586,0.9084287200832466,0.8387096774193548
+1D-CNN (reference notebook),trained from scratch,sign-symmetric,end-to-end,3,129.3747045993805,0.663891779396462,0.6129032258064515
+MiniRocket,trained from scratch,sign-symmetric,ridge,4,1.4774487018585205,0.9063475546305931,0.7903225806451613
+1D-CNN (reference notebook),trained from scratch,sign-symmetric,end-to-end,4,121.68484020233154,0.7929240374609781,0.7096774193548387
+MOMENT-1 (base),foundation model (frozen),random split (leaky),logistic regression,0,,1.0,1.0
+MOMENT-1 (base),foundation model (frozen),random split (leaky),kNN (k=5),0,,1.0,1.0
+Mantis-8M,foundation model (frozen),random split (leaky),logistic regression,0,,0.9971680826253541,0.97976011994003
+Mantis-8M,foundation model (frozen),random split (leaky),kNN (k=5),0,,1.0,1.0
+TTM-R2,foundation model (frozen),random split (leaky),logistic regression,0,,0.9948359153756454,0.9465267366316842
+TTM-R2,foundation model (frozen),random split (leaky),kNN (k=5),0,,1.0,1.0
+Raw signal,trained from scratch,random split (leaky),logistic regression,0,,0.800599700149925,0.6881559220389806
+Raw signal,trained from scratch,random split (leaky),kNN (k=5),0,,0.9958354156255206,0.9667666166916542
+1D-CNN (reference notebook),trained from scratch,random split (leaky),end-to-end,0,,0.6936531734132934,0.6516741629185407

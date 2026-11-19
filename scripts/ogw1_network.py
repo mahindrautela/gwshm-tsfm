@@ -106,15 +106,17 @@ def main():
     centres = np.array([dpos[4 * g:4 * g + 4].mean(0) for g in range(7)])
     zone = np.arange(28) // 4
 
-    rng = np.random.default_rng(0)
+    N_CTRL = 10  # independent random draws of healthy maps for the control
     DI = {"Residual energy (physics)": np.stack([di_raw(R[f], B[f]) for f in range(len(freqs))])}
-    CTRL = {"Residual energy (physics)": np.stack([di_raw_baseline(B[f], rng) for f in range(len(freqs))])}
+    CTRL = {"Residual energy (physics)": [np.stack([di_raw_baseline(B[f], np.random.default_rng(s))
+                                                    for f in range(len(freqs))]) for s in range(N_CTRL)]}
     for k, n in EMB.items():
         fr, fb = Path(args.embR) / f"{k}.npy", Path(args.embB) / f"{k}.npy"
         if fr.exists() and fb.exists():
             ER, EB = np.load(fr).astype(np.float32), np.load(fb).astype(np.float32)
             DI[n] = np.stack([di_emb(ER[f], EB[f]) for f in range(len(freqs))])
-            CTRL[n] = np.stack([di_emb_baseline(EB[f], rng) for f in range(len(freqs))])
+            CTRL[n] = [np.stack([di_emb_baseline(EB[f], np.random.default_rng(s)) for f in range(len(freqs))])
+                       for s in range(N_CTRL)]
     rows = []
     for name, D in DI.items():
         for fi, f in enumerate(freqs):
@@ -134,16 +136,19 @@ def main():
             rows.append(dict(method=name, freq=int(f), approach="logistic regression on DI map",
                              acc=accuracy_score(zone, pred), median_error_mm=np.nan))
         # all three frequencies together (supervised): concatenate the maps; plus the control
-        for approach, M in (("logistic regression on DI map", D),
-                            ("control: healthy maps of the same phase", CTRL[name])):
+        def lpo_acc(M):
             F = np.concatenate([np.log(np.maximum(M[fi], 1e-6)) for fi in range(len(freqs))], 1)
             pred = np.zeros(28, int)
             for j in range(4):
                 te = np.flatnonzero(np.arange(28) % 4 == j)
                 tr = np.setdiff1d(np.arange(28), te)
                 pred[te] = ek.fit_proba(lambda: ek.lr(C=0.1), F, zone, tr, te).argmax(1)
-            rows.append(dict(method=name, freq=0, approach=approach,
-                             acc=accuracy_score(zone, pred), median_error_mm=np.nan))
+            return accuracy_score(zone, pred)
+        rows.append(dict(method=name, freq=0, approach="logistic regression on DI map",
+                         acc=lpo_acc(D), median_error_mm=np.nan))
+        cacc = [lpo_acc(M) for M in CTRL[name]]
+        rows.append(dict(method=name, freq=0, approach="control: healthy maps of the same phase",
+                         acc=float(np.mean(cacc)), acc_max=float(np.max(cacc)), median_error_mm=np.nan))
         # path-level separability of the DI: AUC of near (<= 10 mm) vs far (> 120 mm) paths
     T = pd.DataFrame(rows)
     T.to_csv(out / "network_localisation.csv", index=False)

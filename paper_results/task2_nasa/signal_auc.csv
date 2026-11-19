@@ -1,0 +1,625 @@
+method,kind,detector,setting,draw,specimen,auc_signal,n_pos,n_neg
+Raw signal,raw,kNN distance,within-specimen,0,L2S11,0.6801303854875285,252,1008
+Raw signal,raw,same-path distance,within-specimen,0,L2S11,0.800366906021668,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,0,L2S11,0.429476883345931,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,0,L2S11,0.8254794973544975,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,0,L2S11,0.8950971592340641,252,1008
+Raw signal,raw,kNN distance,within-specimen,1,L2S11,0.5259275006298816,252,1008
+Raw signal,raw,same-path distance,within-specimen,1,L2S11,0.7443389392794154,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,1,L2S11,0.38202711640211645,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,1,L2S11,0.7368197278911566,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,1,L2S11,0.8502023494583018,252,1008
+Raw signal,raw,kNN distance,within-specimen,2,L2S11,0.3446042768959436,252,1008
+Raw signal,raw,same-path distance,within-specimen,2,L2S11,0.4865795855379189,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,2,L2S11,0.21423453640715545,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,2,L2S11,0.5198373330813807,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,2,L2S11,0.8638550327538422,252,1008
+Raw signal,raw,kNN distance,within-specimen,3,L2S11,0.7519132653061225,252,1008
+Raw signal,raw,same-path distance,within-specimen,3,L2S11,0.8220860103300579,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,3,L2S11,0.4190995842781557,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,3,L2S11,0.8496315192743763,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,3,L2S11,0.9177020345175108,252,1008
+Raw signal,raw,kNN distance,within-specimen,4,L2S11,0.7609363189720332,252,1008
+Raw signal,raw,same-path distance,within-specimen,4,L2S11,0.8221489984882842,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,4,L2S11,0.4216191106072058,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,4,L2S11,0.8551666036785084,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,4,L2S11,0.917513070042832,252,1008
+Raw signal,raw,kNN distance,cross-specimen,0,L2S11,0.3860308012093726,252,2016
+Raw signal,raw,same-path distance,cross-specimen,0,L2S11,0.4728658824640967,252,2016
+Raw signal,raw,PCA+ocSVM,cross-specimen,0,L2S11,0.465437216553288,252,2016
+Raw signal,raw,baseline subtraction (residual energy),cross-specimen,0,L2S11,0.23560326908541193,252,2016
+Raw signal,raw,baseline subtraction (1 - correlation),cross-specimen,0,L2S11,0.4196605725623582,252,2016
+Raw signal,raw,kNN distance,within-specimen,0,L2S17,0.99683878180902,252,1008
+Raw signal,raw,same-path distance,within-specimen,0,L2S17,0.9961774061476443,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,0,L2S17,0.18461041824137062,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,0,L2S17,0.999834656084656,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,0,L2S17,0.9989882527084908,252,1008
+Raw signal,raw,kNN distance,within-specimen,1,L2S17,0.9291068279163518,252,1008
+Raw signal,raw,same-path distance,within-specimen,1,L2S17,0.9885322184429328,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,1,L2S17,0.12670068027210885,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,1,L2S17,0.9957482993197279,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,1,L2S17,0.9997716679264299,252,1008
+Raw signal,raw,kNN distance,within-specimen,2,L2S17,0.9771116780045352,252,1008
+Raw signal,raw,same-path distance,within-specimen,2,L2S17,0.9960789871504157,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,2,L2S17,0.18119724741748552,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,2,L2S17,0.9999291383219954,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,2,L2S17,0.9995984504913077,252,1008
+Raw signal,raw,kNN distance,within-specimen,3,L2S17,0.9971694696397077,252,1008
+Raw signal,raw,same-path distance,within-specimen,3,L2S17,0.996086860670194,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,3,L2S17,0.1638361363063744,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,3,L2S17,0.9999212648022171,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,3,L2S17,0.999637818090199,252,1008
+Raw signal,raw,kNN distance,within-specimen,4,L2S17,0.9946814373897708,252,1008
+Raw signal,raw,same-path distance,within-specimen,4,L2S17,0.9957601095993953,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,4,L2S17,0.18587018140589567,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,4,L2S17,0.9996850592088687,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,4,L2S17,0.9983386873267825,252,1008
+Raw signal,raw,kNN distance,cross-specimen,0,L2S17,0.020107001133786846,252,2016
+Raw signal,raw,same-path distance,cross-specimen,0,L2S17,0.14915989543965735,252,2016
+Raw signal,raw,PCA+ocSVM,cross-specimen,0,L2S17,0.20521345112118922,252,2016
+Raw signal,raw,baseline subtraction (residual energy),cross-specimen,0,L2S17,0.1154769778281683,252,2016
+Raw signal,raw,baseline subtraction (1 - correlation),cross-specimen,0,L2S17,0.515038422776518,252,2016
+Raw signal,raw,kNN distance,within-specimen,0,L2S18,0.9919768833459309,252,1008
+Raw signal,raw,same-path distance,within-specimen,0,L2S18,0.9803595049130763,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,0,L2S18,0.19779462711010332,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,0,L2S18,0.982166477702192,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,0,L2S18,0.9802807697152937,252,1008
+Raw signal,raw,kNN distance,within-specimen,1,L2S18,0.9246622260015117,252,1008
+Raw signal,raw,same-path distance,within-specimen,1,L2S18,0.9679193436633913,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,1,L2S18,0.19288155076845553,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,1,L2S18,0.9812531494079113,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,1,L2S18,0.9837687389770723,252,1008
+Raw signal,raw,kNN distance,within-specimen,2,L2S18,0.9038958175862938,252,1008
+Raw signal,raw,same-path distance,within-specimen,2,L2S18,0.9604158793146889,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,2,L2S18,0.18514581758629378,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,2,L2S18,0.9784147455278407,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,2,L2S18,0.9839537666918619,252,1008
+Raw signal,raw,kNN distance,within-specimen,3,L2S18,0.9159659234063995,252,1008
+Raw signal,raw,same-path distance,within-specimen,3,L2S18,0.9604828042328043,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,3,L2S18,0.16301335348954396,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,3,L2S18,0.9559634038800705,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,3,L2S18,0.9868276014109347,252,1008
+Raw signal,raw,kNN distance,within-specimen,4,L2S18,0.9658525447215924,252,1008
+Raw signal,raw,same-path distance,within-specimen,4,L2S18,0.9825404698916603,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,4,L2S18,0.17243008314436883,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,4,L2S18,0.983843537414966,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,4,L2S18,0.9874063051146384,252,1008
+Raw signal,raw,kNN distance,cross-specimen,0,L2S18,0.09879102103804484,252,2016
+Raw signal,raw,same-path distance,cross-specimen,0,L2S18,0.12358670319979842,252,2016
+Raw signal,raw,PCA+ocSVM,cross-specimen,0,L2S18,0.23986481166540688,252,2016
+Raw signal,raw,baseline subtraction (residual energy),cross-specimen,0,L2S18,0.20539060531620057,252,2016
+Raw signal,raw,baseline subtraction (1 - correlation),cross-specimen,0,L2S18,0.6313224363819602,252,2016
+Raw signal,raw,kNN distance,within-specimen,0,L2S20,0.7303358843537415,252,1008
+Raw signal,raw,same-path distance,within-specimen,0,L2S20,0.9328113189720332,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,0,L2S20,0.1719812925170068,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,0,L2S20,0.9050138573948099,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,0,L2S20,0.9913509385235575,252,1008
+Raw signal,raw,kNN distance,within-specimen,1,L2S20,0.7994142101284959,252,1008
+Raw signal,raw,same-path distance,within-specimen,1,L2S20,0.9332482993197277,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,1,L2S20,0.17282769589317204,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,1,L2S20,0.8992622511967749,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,1,L2S20,0.9972993827160495,252,1008
+Raw signal,raw,kNN distance,within-specimen,2,L2S20,0.7678807634164777,252,1008
+Raw signal,raw,same-path distance,within-specimen,2,L2S20,0.983032564877803,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,2,L2S20,0.20419186192995714,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,2,L2S20,0.9851741622574957,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,2,L2S20,0.9856938145628622,252,1008
+Raw signal,raw,kNN distance,within-specimen,3,L2S20,0.747878086419753,252,1008
+Raw signal,raw,same-path distance,within-specimen,3,L2S20,0.9481607457797935,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,3,L2S20,0.19292485512723606,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,3,L2S20,0.9630968127991938,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,3,L2S20,0.9878747795414462,252,1008
+Raw signal,raw,kNN distance,within-specimen,4,L2S20,0.77694318468128,252,1008
+Raw signal,raw,same-path distance,within-specimen,4,L2S20,0.9090923406399597,252,1008
+Raw signal,raw,PCA+ocSVM,within-specimen,4,L2S20,0.1547933988410179,252,1008
+Raw signal,raw,baseline subtraction (residual energy),within-specimen,4,L2S20,0.8727048689846308,252,1008
+Raw signal,raw,baseline subtraction (1 - correlation),within-specimen,4,L2S20,0.9922996976568406,252,1008
+Raw signal,raw,kNN distance,cross-specimen,0,L2S20,0.10496386054421769,252,2016
+Raw signal,raw,same-path distance,cross-specimen,0,L2S20,0.19731631078357267,252,2016
+Raw signal,raw,PCA+ocSVM,cross-specimen,0,L2S20,0.1926414084152179,252,2016
+Raw signal,raw,baseline subtraction (residual energy),cross-specimen,0,L2S20,0.22000976316452506,252,2016
+Raw signal,raw,baseline subtraction (1 - correlation),cross-specimen,0,L2S20,0.6984402557319224,252,2016
+|FFT| spectrum,fft,kNN distance,within-specimen,0,L2S11,0.41604072184429325,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,0,L2S11,0.6436011904761905,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,0,L2S11,0.7020856953892669,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,1,L2S11,0.2992842970521542,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,1,L2S11,0.6228308453010833,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,1,L2S11,0.6600489732930209,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,2,L2S11,0.23096182917611488,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,2,L2S11,0.4319019274376417,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,2,L2S11,0.3178224993701184,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,3,L2S11,0.4581168115394306,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,3,L2S11,0.6611630763416477,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,3,L2S11,0.6798823696145125,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,4,L2S11,0.46134495464852615,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,4,L2S11,0.6560216679264298,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,4,L2S11,0.6756975938523557,252,1008
+|FFT| spectrum,fft,kNN distance,cross-specimen,0,L2S11,0.30069168871252205,252,2016
+|FFT| spectrum,fft,same-path distance,cross-specimen,0,L2S11,0.547520628621819,252,2016
+|FFT| spectrum,fft,PCA+ocSVM,cross-specimen,0,L2S11,0.5458042013101537,252,2016
+|FFT| spectrum,fft,kNN distance,within-specimen,0,L2S17,0.6980505165028974,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,0,L2S17,0.84274218946838,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,0,L2S17,0.42429217057193247,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,1,L2S17,0.5021967120181406,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,1,L2S17,0.7735930020156211,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,1,L2S17,0.3473796926177879,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,2,L2S17,0.6046075837742505,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,2,L2S17,0.818428760393046,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,2,L2S17,0.44698759133282945,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,3,L2S17,0.6851064499874024,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,3,L2S17,0.8256881456286218,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,3,L2S17,0.4211506361803981,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,4,L2S17,0.7292926429831192,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,4,L2S17,0.845316830435878,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,4,L2S17,0.4359449798437894,252,1008
+|FFT| spectrum,fft,kNN distance,cross-specimen,0,L2S17,0.056919642857142856,252,2016
+|FFT| spectrum,fft,same-path distance,cross-specimen,0,L2S17,0.4844419249181154,252,2016
+|FFT| spectrum,fft,PCA+ocSVM,cross-specimen,0,L2S17,0.4588825113378685,252,2016
+|FFT| spectrum,fft,kNN distance,within-specimen,0,L2S18,0.7066050957420005,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,0,L2S18,0.7219309019904258,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,0,L2S18,0.41663123582766437,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,1,L2S18,0.5935098576467625,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,1,L2S18,0.7132188523557571,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,1,L2S18,0.423048154446964,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,2,L2S18,0.6008204207608969,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,2,L2S18,0.7274344923154447,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,2,L2S18,0.4163162950365332,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,3,L2S18,0.5413281053162006,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,3,L2S18,0.7159037226001512,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,3,L2S18,0.33545524691358025,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,4,L2S18,0.6602418745275888,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,4,L2S18,0.7451577853363567,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,4,L2S18,0.4005928760393046,252,1008
+|FFT| spectrum,fft,kNN distance,cross-specimen,0,L2S18,0.08100080309901739,252,2016
+|FFT| spectrum,fft,same-path distance,cross-specimen,0,L2S18,0.6063122008062485,252,2016
+|FFT| spectrum,fft,PCA+ocSVM,cross-specimen,0,L2S18,0.58250070861678,252,2016
+|FFT| spectrum,fft,kNN distance,within-specimen,0,L2S20,0.3020439657344419,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,0,L2S20,0.6993890148652053,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,0,L2S20,0.4137574011085916,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,1,L2S20,0.30217781557067275,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,1,L2S20,0.7301193625598388,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,1,L2S20,0.44662540942302853,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,2,L2S20,0.312724395313681,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,2,L2S20,0.7828128936759888,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,2,L2S20,0.5701845553036029,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,3,L2S20,0.361304012345679,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,3,L2S20,0.7529013920382968,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,3,L2S20,0.5269746787603931,252,1008
+|FFT| spectrum,fft,kNN distance,within-specimen,4,L2S20,0.2772305681531872,252,1008
+|FFT| spectrum,fft,same-path distance,within-specimen,4,L2S20,0.7008574263038547,252,1008
+|FFT| spectrum,fft,PCA+ocSVM,within-specimen,4,L2S20,0.3806846812799194,252,1008
+|FFT| spectrum,fft,kNN distance,cross-specimen,0,L2S20,0.07063531431090955,252,2016
+|FFT| spectrum,fft,same-path distance,cross-specimen,0,L2S20,0.5874925201562107,252,2016
+|FFT| spectrum,fft,PCA+ocSVM,cross-specimen,0,L2S20,0.5851481796422273,252,2016
+Chronos-2,tsfm,kNN distance,within-specimen,0,L2S11,0.6447192302847065,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,0,L2S11,0.8847041131267321,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.5936870118417739,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,1,L2S11,0.5724698444192492,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,1,L2S11,0.8635991433610481,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.581510613504661,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,2,L2S11,0.5383558515998993,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,2,L2S11,0.782757779037541,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.5631023242630385,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,3,L2S11,0.726800673973293,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,3,L2S11,0.883723859914336,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.5922540312421265,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,4,L2S11,0.7310602481733435,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,4,L2S11,0.8853182476694381,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.5873645754598136,252,1008
+Chronos-2,tsfm,kNN distance,cross-specimen,0,L2S11,0.41262951940035275,252,2016
+Chronos-2,tsfm,same-path distance,cross-specimen,0,L2S11,0.6098592214663643,252,2016
+Chronos-2,tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.603788737717309,252,2016
+Chronos-2,tsfm,kNN distance,within-specimen,0,L2S17,0.9452751007810531,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,0,L2S17,0.9341498173343412,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.46992709120685316,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,1,L2S17,0.9172099395313681,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,1,L2S17,0.9278470647518267,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.4664233749055177,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,2,L2S17,0.9358741181657848,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,2,L2S17,0.9526880196523053,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.4636518959435626,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,3,L2S17,0.9652108528596623,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,3,L2S17,0.9419682224741748,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.4665532879818594,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,4,L2S17,0.9230048500881836,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,4,L2S17,0.9307720773494583,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.4646557697152935,252,1008
+Chronos-2,tsfm,kNN distance,cross-specimen,0,L2S17,0.4476430618543714,252,2016
+Chronos-2,tsfm,same-path distance,cross-specimen,0,L2S17,0.4606324011085916,252,2016
+Chronos-2,tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.4839596718316957,252,2016
+Chronos-2,tsfm,kNN distance,within-specimen,0,L2S18,0.9094112181909801,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,0,L2S18,0.8611977198286721,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.4928744646006551,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,1,L2S18,0.825577916351726,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,1,L2S18,0.8600678697404888,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.49729938271604934,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,2,L2S18,0.8633708112874781,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,2,L2S18,0.8768305933484504,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.483087679516251,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,3,L2S18,0.8764211703199798,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,3,L2S18,0.8656187011841774,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.4926933736457546,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,4,L2S18,0.9219773557571176,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,4,L2S18,0.9127535273368607,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.4937996031746032,252,1008
+Chronos-2,tsfm,kNN distance,cross-specimen,0,L2S18,0.5006161029226506,252,2016
+Chronos-2,tsfm,same-path distance,cross-specimen,0,L2S18,0.5263369236583524,252,2016
+Chronos-2,tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.5252149470899471,252,2016
+Chronos-2,tsfm,kNN distance,within-specimen,0,L2S20,0.8188814877802972,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,0,L2S20,0.8452558106575963,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.5110426114890401,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,1,L2S20,0.8650714915595866,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,1,L2S20,0.8494543650793651,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.5116488725119678,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,2,L2S20,0.8186059145880573,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,2,L2S20,0.8636267006802721,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.5112237024439406,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,3,L2S20,0.8423170194003528,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,3,L2S20,0.8645597127739986,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.49407517636684306,252,1008
+Chronos-2,tsfm,kNN distance,within-specimen,4,L2S20,0.8528754094230284,252,1008
+Chronos-2,tsfm,same-path distance,within-specimen,4,L2S20,0.854064310909549,252,1008
+Chronos-2,tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.5245535714285714,252,1008
+Chronos-2,tsfm,kNN distance,cross-specimen,0,L2S20,0.5155659486016628,252,2016
+Chronos-2,tsfm,same-path distance,cross-specimen,0,L2S20,0.5529887881078357,252,2016
+Chronos-2,tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.5477666761148904,252,2016
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,0,L2S11,0.8538832199546484,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,0,L2S11,0.97282848324515,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.6160714285714286,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,1,L2S11,0.7635503275384228,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,1,L2S11,0.9579278470647519,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.5761448097757622,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,2,L2S11,0.7729316263542453,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,2,L2S11,0.9215915532879819,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.601410934744268,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,3,L2S11,0.8690751763668431,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,3,L2S11,0.9666871378180902,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.6057334971025448,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,4,L2S11,0.8732166477702192,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,4,L2S11,0.9681712962962963,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.6026785714285714,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,cross-specimen,0,L2S11,0.759631283068783,252,2016
+Chronos-Bolt (base),tsfm,same-path distance,cross-specimen,0,L2S11,0.7274266187956665,252,2016
+Chronos-Bolt (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.650953089569161,252,2016
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,0,L2S17,0.9942602040816326,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,0,L2S17,0.9953073822121441,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.5773297745023935,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,1,L2S17,0.983591584782061,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,1,L2S17,0.9974804736709498,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.5614173910304863,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,2,L2S17,0.9894337364575458,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,2,L2S17,0.9975355883093979,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.5652596686822877,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,3,L2S17,0.9956853111615016,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,3,L2S17,0.9970277462836986,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.5699995275888132,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,4,L2S17,0.9875244079113126,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,4,L2S17,0.9942916981607458,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.5739756550768456,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,cross-specimen,0,L2S17,0.441789099899219,252,2016
+Chronos-Bolt (base),tsfm,same-path distance,cross-specimen,0,L2S17,0.5619094860166288,252,2016
+Chronos-Bolt (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.5109835600907029,252,2016
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,0,L2S18,0.9898943373645754,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,0,L2S18,0.9777888007054674,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.5861914210128496,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,1,L2S18,0.9707144431846813,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,1,L2S18,0.9748519778281683,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.5901084971025448,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,2,L2S18,0.9737221277399849,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,2,L2S18,0.9742024124464601,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.5922855253212397,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,3,L2S18,0.972470238095238,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,3,L2S18,0.975792863441673,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.5866008440413202,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,4,L2S18,0.9905163454270598,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,4,L2S18,0.9888589695137314,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.5847663139329806,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,cross-specimen,0,L2S18,0.6171993102796675,252,2016
+Chronos-Bolt (base),tsfm,same-path distance,cross-specimen,0,L2S18,0.706203546233308,252,2016
+Chronos-Bolt (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.569666871378181,252,2016
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,0,L2S20,0.9587388196019149,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,0,L2S20,0.9846112055933485,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.6310035588309398,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,1,L2S20,0.9745252267573696,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,1,L2S20,0.97878480095742,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.6316570609725372,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,2,L2S20,0.9426335348954397,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,2,L2S20,0.9868394116906021,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.6461797682035776,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,3,L2S20,0.9583766376921139,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,3,L2S20,0.9856938145628622,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.6360347379692618,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,within-specimen,4,L2S20,0.9764345553036029,252,1008
+Chronos-Bolt (base),tsfm,same-path distance,within-specimen,4,L2S20,0.9813043272864701,252,1008
+Chronos-Bolt (base),tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.6346253779289494,252,1008
+Chronos-Bolt (base),tsfm,kNN distance,cross-specimen,0,L2S20,0.6265638778659612,252,2016
+Chronos-Bolt (base),tsfm,same-path distance,cross-specimen,0,L2S20,0.6819373582766439,252,2016
+Chronos-Bolt (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.6092194979843789,252,2016
+TiRex,tsfm,kNN distance,within-specimen,0,L2S11,0.816161186696901,252,1008
+TiRex,tsfm,same-path distance,within-specimen,0,L2S11,0.9845009763164525,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.5930886243386244,252,1008
+TiRex,tsfm,kNN distance,within-specimen,1,L2S11,0.7360166288737716,252,1008
+TiRex,tsfm,same-path distance,within-specimen,1,L2S11,0.9517431972789115,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.5963758188460568,252,1008
+TiRex,tsfm,kNN distance,within-specimen,2,L2S11,0.7054831191735953,252,1008
+TiRex,tsfm,same-path distance,within-specimen,2,L2S11,0.9186940980095742,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.5883920697908793,252,1008
+TiRex,tsfm,kNN distance,within-specimen,3,L2S11,0.8442027273872512,252,1008
+TiRex,tsfm,same-path distance,within-specimen,3,L2S11,0.9759149029982362,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.5888644809775763,252,1008
+TiRex,tsfm,kNN distance,within-specimen,4,L2S11,0.8461435500125974,252,1008
+TiRex,tsfm,same-path distance,within-specimen,4,L2S11,0.9793280738221214,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.588577097505669,252,1008
+TiRex,tsfm,kNN distance,cross-specimen,0,L2S11,0.7631468096497858,252,2016
+TiRex,tsfm,same-path distance,cross-specimen,0,L2S11,0.702469529478458,252,2016
+TiRex,tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.7081935783572687,252,2016
+TiRex,tsfm,kNN distance,within-specimen,0,L2S17,0.9886463844797178,252,1008
+TiRex,tsfm,same-path distance,within-specimen,0,L2S17,0.9977875409423029,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.5906793272864701,252,1008
+TiRex,tsfm,kNN distance,within-specimen,1,L2S17,0.9585656021667927,252,1008
+TiRex,tsfm,same-path distance,within-specimen,1,L2S17,0.9972954459561603,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.5887936192995717,252,1008
+TiRex,tsfm,kNN distance,within-specimen,2,L2S17,0.9756786974048878,252,1008
+TiRex,tsfm,same-path distance,within-specimen,2,L2S17,0.9988662131519275,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.5859630889392795,252,1008
+TiRex,tsfm,kNN distance,within-specimen,3,L2S17,0.9908116024187453,252,1008
+TiRex,tsfm,same-path distance,within-specimen,3,L2S17,0.9988071617535903,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.5855615394305871,252,1008
+TiRex,tsfm,kNN distance,within-specimen,4,L2S17,0.975481859410431,252,1008
+TiRex,tsfm,same-path distance,within-specimen,4,L2S17,0.9965159674981103,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.5896439594356261,252,1008
+TiRex,tsfm,kNN distance,cross-specimen,0,L2S17,0.5018542139077853,252,2016
+TiRex,tsfm,same-path distance,cross-specimen,0,L2S17,0.5168070121567145,252,2016
+TiRex,tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.4350198412698413,252,2016
+TiRex,tsfm,kNN distance,within-specimen,0,L2S18,0.9633093978332073,252,1008
+TiRex,tsfm,same-path distance,within-specimen,0,L2S18,0.9874811035525322,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.5725584215167548,252,1008
+TiRex,tsfm,kNN distance,within-specimen,1,L2S18,0.9198003275384228,252,1008
+TiRex,tsfm,same-path distance,within-specimen,1,L2S18,0.9889691987906274,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.5572089947089947,252,1008
+TiRex,tsfm,kNN distance,within-specimen,2,L2S18,0.9331538170823884,252,1008
+TiRex,tsfm,same-path distance,within-specimen,2,L2S18,0.9861583522297808,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.5544060216679265,252,1008
+TiRex,tsfm,kNN distance,within-specimen,3,L2S18,0.9300713340891913,252,1008
+TiRex,tsfm,same-path distance,within-specimen,3,L2S18,0.9859497039556563,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.5534375787351977,252,1008
+TiRex,tsfm,kNN distance,within-specimen,4,L2S18,0.9618606701940036,252,1008
+TiRex,tsfm,same-path distance,within-specimen,4,L2S18,0.9945554610733183,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.5685586734693877,252,1008
+TiRex,tsfm,kNN distance,cross-specimen,0,L2S18,0.6269762534643488,252,2016
+TiRex,tsfm,same-path distance,cross-specimen,0,L2S18,0.7313122008062485,252,2016
+TiRex,tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.6280568940539178,252,2016
+TiRex,tsfm,kNN distance,within-specimen,0,L2S20,0.9222253716301335,252,1008
+TiRex,tsfm,same-path distance,within-specimen,0,L2S20,0.9558059334845048,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.6655919312169312,252,1008
+TiRex,tsfm,kNN distance,within-specimen,1,L2S20,0.9442121756109851,252,1008
+TiRex,tsfm,same-path distance,within-specimen,1,L2S20,0.9634156903502141,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.6667650856638951,252,1008
+TiRex,tsfm,kNN distance,within-specimen,2,L2S20,0.8995063303099017,252,1008
+TiRex,tsfm,same-path distance,within-specimen,2,L2S20,0.9770723104056438,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.6753590325018897,252,1008
+TiRex,tsfm,kNN distance,within-specimen,3,L2S20,0.9395549886621315,252,1008
+TiRex,tsfm,same-path distance,within-specimen,3,L2S20,0.9757220017636684,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.6706427941546989,252,1008
+TiRex,tsfm,kNN distance,within-specimen,4,L2S20,0.9336852796674225,252,1008
+TiRex,tsfm,same-path distance,within-specimen,4,L2S20,0.9481725560594608,252,1008
+TiRex,tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.6535730032753843,252,1008
+TiRex,tsfm,kNN distance,cross-specimen,0,L2S20,0.6124003999748047,252,2016
+TiRex,tsfm,same-path distance,cross-specimen,0,L2S20,0.6937102387251197,252,2016
+TiRex,tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.6197070263290502,252,2016
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,0,L2S11,0.8569971970269589,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,0,L2S11,0.9078483245149912,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.608926209372638,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,1,L2S11,0.8086380385487528,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,1,L2S11,0.8986992945326279,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.5556539745527841,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,2,L2S11,0.6803547808012094,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,2,L2S11,0.7832183799445704,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.5044642857142858,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,3,L2S11,0.8866252519526329,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,3,L2S11,0.9022659989921894,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.5841718631897204,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,4,L2S11,0.888247197026959,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,4,L2S11,0.9051752645502646,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.5867071365583271,252,1008
+MOMENT-1 (base),tsfm,kNN distance,cross-specimen,0,L2S11,0.5737886589821113,252,2016
+MOMENT-1 (base),tsfm,same-path distance,cross-specimen,0,L2S11,0.6323479623330814,252,2016
+MOMENT-1 (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.6480871283698665,252,2016
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,0,L2S17,0.9874023683547493,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,0,L2S17,0.9765526581002772,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.6002180964978584,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,1,L2S17,0.9659667107583774,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,1,L2S17,0.9705333522297808,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.5466978458049887,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,2,L2S17,0.9825483434114386,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,2,L2S17,0.9818161060720584,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.6040131330309901,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,3,L2S17,0.9912682665658856,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,3,L2S17,0.9795760896951373,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.5863607016880826,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,4,L2S17,0.9638999118165785,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,4,L2S17,0.9663446397077349,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.6097608024691358,252,1008
+MOMENT-1 (base),tsfm,kNN distance,cross-specimen,0,L2S17,0.3391006865709247,252,2016
+MOMENT-1 (base),tsfm,same-path distance,cross-specimen,0,L2S17,0.45326081821617537,252,2016
+MOMENT-1 (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.41773156021667923,252,2016
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,0,L2S18,0.9831113000755858,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,0,L2S18,0.9802768329554044,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.6688122008062484,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,1,L2S18,0.9589002267573695,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,1,L2S18,0.9783989984882843,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.692058767951625,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,2,L2S18,0.9644549949609473,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,2,L2S18,0.9790446271101033,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.6772486772486772,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,3,L2S18,0.9645494771982868,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,3,L2S18,0.9787808641975309,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.6651706979087931,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,4,L2S18,0.9817964222726128,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,4,L2S18,0.9883078231292517,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.6564350277147897,252,1008
+MOMENT-1 (base),tsfm,kNN distance,cross-specimen,0,L2S18,0.6323971718316956,252,2016
+MOMENT-1 (base),tsfm,same-path distance,cross-specimen,0,L2S18,0.40780895691609975,252,2016
+MOMENT-1 (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.3915501385739481,252,2016
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,0,L2S20,0.9358150667674477,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,0,L2S20,0.9774502393550013,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.6588010204081631,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,1,L2S20,0.9536800831443689,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,1,L2S20,0.980824042579995,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.6456916099773243,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,2,L2S20,0.9258511274880322,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,2,L2S20,0.9880716175359032,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.7047548185941043,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,3,L2S20,0.9388345616024187,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,3,L2S20,0.9823790627362057,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.6916021038044848,252,1008
+MOMENT-1 (base),tsfm,kNN distance,within-specimen,4,L2S20,0.9531407470395565,252,1008
+MOMENT-1 (base),tsfm,same-path distance,within-specimen,4,L2S20,0.9756235827664399,252,1008
+MOMENT-1 (base),tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.6333419942050895,252,1008
+MOMENT-1 (base),tsfm,kNN distance,cross-specimen,0,L2S20,0.6673083585285967,252,2016
+MOMENT-1 (base),tsfm,same-path distance,cross-specimen,0,L2S20,0.39582545981355505,252,2016
+MOMENT-1 (base),tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.41453097442680775,252,2016
+Mantis-8M,tsfm,kNN distance,within-specimen,0,L2S11,0.9346615961199294,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,0,L2S11,0.9757180650037793,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.5500244079113126,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,1,L2S11,0.9080018581506676,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,1,L2S11,0.9655179201310155,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.5514888825900731,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,2,L2S11,0.6349639392794154,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,2,L2S11,0.7432248362307887,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.5258212081128748,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,3,L2S11,0.9365000629881582,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,3,L2S11,0.9653919438145628,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.5775856638951877,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,4,L2S11,0.9383267195767196,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,4,L2S11,0.9668603552532125,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.5715151801461325,252,1008
+Mantis-8M,tsfm,kNN distance,cross-specimen,0,L2S11,0.8769988898337113,252,2016
+Mantis-8M,tsfm,same-path distance,cross-specimen,0,L2S11,0.8852670697908793,252,2016
+Mantis-8M,tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.4407930996472663,252,2016
+Mantis-8M,tsfm,kNN distance,within-specimen,0,L2S17,0.9989882527084908,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,0,L2S17,0.9974765369110608,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.5216954837490553,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,1,L2S17,0.9979017069790879,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,1,L2S17,0.996811224489796,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.47461183547493074,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,2,L2S17,0.9985000944822373,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,2,L2S17,0.9995039682539683,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.5514967561098514,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,3,L2S17,0.9991535966238347,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,3,L2S17,0.9991693436633914,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.5316948538674728,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,4,L2S17,0.9932878243890149,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,4,L2S17,0.9948389077853363,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.5209002582514488,252,1008
+Mantis-8M,tsfm,kNN distance,cross-specimen,0,L2S17,0.45542406777525823,252,2016
+Mantis-8M,tsfm,same-path distance,cross-specimen,0,L2S17,0.8007487717309146,252,2016
+Mantis-8M,tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.6879409171075838,252,2016
+Mantis-8M,tsfm,kNN distance,within-specimen,0,L2S18,0.9976379440665155,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,0,L2S18,0.9962994457042076,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.49298469387755106,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,1,L2S18,0.9935200932224741,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,1,L2S18,0.9972560783572688,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.5482213718820862,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,2,L2S18,0.9945712081128748,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,2,L2S18,0.9974765369110608,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.5933956916099773,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,3,L2S18,0.9957837301587301,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,3,L2S18,0.9974096119929453,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.5477253401360545,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,4,L2S18,0.9988780234315948,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,4,L2S18,0.9994527903754094,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.510369425547997,252,1008
+Mantis-8M,tsfm,kNN distance,cross-specimen,0,L2S18,0.7084455309901738,252,2016
+Mantis-8M,tsfm,same-path distance,cross-specimen,0,L2S18,0.7740496661627614,252,2016
+Mantis-8M,tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.5845537288989671,252,2016
+Mantis-8M,tsfm,kNN distance,within-specimen,0,L2S20,0.9885204081632654,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,0,L2S20,0.9980867346938775,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.5449026832955404,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,1,L2S20,0.9826034580498866,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,1,L2S20,0.9968466553287982,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.6710758377425045,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,2,L2S20,0.9831979087931468,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,2,L2S20,0.9986536281179139,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.710557602670698,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,3,L2S20,0.9817058767951625,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,3,L2S20,0.9980946082136559,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.7166950113378685,252,1008
+Mantis-8M,tsfm,kNN distance,within-specimen,4,L2S20,0.9853788737717308,252,1008
+Mantis-8M,tsfm,same-path distance,within-specimen,4,L2S20,0.9964254220206601,252,1008
+Mantis-8M,tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.5703302154195011,252,1008
+Mantis-8M,tsfm,kNN distance,cross-specimen,0,L2S20,0.8258790784832452,252,2016
+Mantis-8M,tsfm,same-path distance,cross-specimen,0,L2S20,0.7905427217183167,252,2016
+Mantis-8M,tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.6089951026706979,252,2016
+TTM-R2,tsfm,kNN distance,within-specimen,0,L2S11,0.9013999118165785,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,0,L2S11,0.9462474804736709,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,0,L2S11,0.5896164021164021,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,1,L2S11,0.7823916603678509,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,1,L2S11,0.8841490299823632,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,1,L2S11,0.6201538485764677,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,2,L2S11,0.834498614260519,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,2,L2S11,0.8863024376417235,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,2,L2S11,0.5843332703451752,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,3,L2S11,0.8873692995716805,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,3,L2S11,0.9370748299319728,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,3,L2S11,0.6140479339884102,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,4,L2S11,0.8933177437641723,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,4,L2S11,0.9450546422272612,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,4,L2S11,0.6133117598891409,252,1008
+TTM-R2,tsfm,kNN distance,cross-specimen,0,L2S11,0.7381995622323002,252,2016
+TTM-R2,tsfm,same-path distance,cross-specimen,0,L2S11,0.46010487528344673,252,2016
+TTM-R2,tsfm,PCA+ocSVM,cross-specimen,0,L2S11,0.5088085002519527,252,2016
+TTM-R2,tsfm,kNN distance,within-specimen,0,L2S17,0.9986969324766943,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,0,L2S17,0.9977521101033006,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,0,L2S17,0.31761778785588307,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,1,L2S17,0.9908470332577476,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,1,L2S17,0.9968190980095741,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,1,L2S17,0.3053469072814311,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,2,L2S17,0.9952365205341396,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,2,L2S17,0.9962915721844292,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,2,L2S17,0.32141282438901486,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,3,L2S17,0.9987914147140338,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,3,L2S17,0.996952947845805,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,3,L2S17,0.3131653124212648,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,4,L2S17,0.9954609158478206,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,4,L2S17,0.9969293272864702,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,4,L2S17,0.31890510833963215,252,1008
+TTM-R2,tsfm,kNN distance,cross-specimen,0,L2S17,0.48518203577727387,252,2016
+TTM-R2,tsfm,same-path distance,cross-specimen,0,L2S17,0.4422162383471907,252,2016
+TTM-R2,tsfm,PCA+ocSVM,cross-specimen,0,L2S17,0.4211171737213405,252,2016
+TTM-R2,tsfm,kNN distance,within-specimen,0,L2S18,0.9960907974300831,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,0,L2S18,0.9858945893172083,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,0,L2S18,0.4356497228521038,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,1,L2S18,0.9839301461325272,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,1,L2S18,0.9849615772234821,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,1,L2S18,0.4266935941043084,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,2,L2S18,0.9855442176870748,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,2,L2S18,0.9826506991685563,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,2,L2S18,0.4226544784580499,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,3,L2S18,0.9875440917107584,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,3,L2S18,0.9868118543713782,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,3,L2S18,0.41689499874023683,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,4,L2S18,0.9958782123960694,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,4,L2S18,0.9922248992189469,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,4,L2S18,0.42805177626606195,252,1008
+TTM-R2,tsfm,kNN distance,cross-specimen,0,L2S18,0.627208522297808,252,2016
+TTM-R2,tsfm,same-path distance,cross-specimen,0,L2S18,0.5628169091710757,252,2016
+TTM-R2,tsfm,PCA+ocSVM,cross-specimen,0,L2S18,0.4338407816830436,252,2016
+TTM-R2,tsfm,kNN distance,within-specimen,0,L2S20,0.9719348387503149,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,0,L2S20,0.9747771793902745,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,0,L2S20,0.3966994205089443,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,1,L2S20,0.9800918052406149,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,1,L2S20,0.9840246283698666,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,1,L2S20,0.39696318342151676,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,2,L2S20,0.9676831380700428,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,2,L2S20,0.9872645817586293,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,2,L2S20,0.3991638321995465,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,3,L2S20,0.9804933547493071,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,3,L2S20,0.9835404069035022,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,3,L2S20,0.39056201184177375,252,1008
+TTM-R2,tsfm,kNN distance,within-specimen,4,L2S20,0.9784934807256236,252,1008
+TTM-R2,tsfm,same-path distance,within-specimen,4,L2S20,0.9721710443436634,252,1008
+TTM-R2,tsfm,PCA+ocSVM,within-specimen,4,L2S20,0.4010652872260015,252,1008
+TTM-R2,tsfm,kNN distance,cross-specimen,0,L2S20,0.6947593852355757,252,2016
+TTM-R2,tsfm,same-path distance,cross-specimen,0,L2S20,0.5598426870748299,252,2016
+TTM-R2,tsfm,PCA+ocSVM,cross-specimen,0,L2S20,0.4278844639707735,252,2016

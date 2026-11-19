@@ -1,0 +1,1241 @@
+method,family,fold,n_configs,draw,n_signals,auc
+Chronos-2,foundation model (frozen),0,2,0,4,0.517578125
+Chronos-2,foundation model (frozen),0,2,1,4,0.50830078125
+Chronos-2,foundation model (frozen),0,2,2,4,0.5322265625
+Chronos-2,foundation model (frozen),0,2,3,4,0.5458984375
+Chronos-2,foundation model (frozen),0,2,4,4,0.5400390625
+Chronos-2,foundation model (frozen),0,4,0,8,0.48828125
+Chronos-2,foundation model (frozen),0,4,1,8,0.5595703125
+Chronos-2,foundation model (frozen),0,4,2,8,0.537109375
+Chronos-2,foundation model (frozen),0,4,3,8,0.4755859375
+Chronos-2,foundation model (frozen),0,4,4,8,0.5400390625
+Chronos-2,foundation model (frozen),0,8,0,16,0.6083984375
+Chronos-2,foundation model (frozen),0,8,1,16,0.5927734375
+Chronos-2,foundation model (frozen),0,8,2,16,0.583984375
+Chronos-2,foundation model (frozen),0,8,3,16,0.5498046875
+Chronos-2,foundation model (frozen),0,8,4,16,0.6318359375
+Chronos-2,foundation model (frozen),0,16,0,32,0.57421875
+Chronos-2,foundation model (frozen),0,16,1,32,0.583984375
+Chronos-2,foundation model (frozen),0,16,2,32,0.607421875
+Chronos-2,foundation model (frozen),0,16,3,32,0.578125
+Chronos-2,foundation model (frozen),0,16,4,32,0.52734375
+Chronos-2,foundation model (frozen),0,32,0,64,0.6259765625
+Chronos-2,foundation model (frozen),0,32,1,64,0.603515625
+Chronos-2,foundation model (frozen),0,32,2,64,0.76171875
+Chronos-2,foundation model (frozen),0,32,3,64,0.6259765625
+Chronos-2,foundation model (frozen),0,32,4,64,0.712890625
+Chronos-2,foundation model (frozen),0,64,0,128,0.7412109375
+Chronos-2,foundation model (frozen),0,64,1,128,0.7294921875
+Chronos-2,foundation model (frozen),0,64,2,128,0.7607421875
+Chronos-2,foundation model (frozen),0,64,3,128,0.7998046875
+Chronos-2,foundation model (frozen),0,64,4,128,0.6611328125
+Chronos-2,foundation model (frozen),0,124,0,248,0.8056640625
+Chronos-2,foundation model (frozen),1,2,0,4,0.5712799167533819
+Chronos-2,foundation model (frozen),1,2,1,4,0.5629552549427679
+Chronos-2,foundation model (frozen),1,2,2,4,0.47138397502601465
+Chronos-2,foundation model (frozen),1,2,3,4,0.4505723204994797
+Chronos-2,foundation model (frozen),1,2,4,4,0.5338189386056191
+Chronos-2,foundation model (frozen),1,4,0,8,0.6056191467221644
+Chronos-2,foundation model (frozen),1,4,1,8,0.49635796045785635
+Chronos-2,foundation model (frozen),1,4,2,8,0.5254942767950052
+Chronos-2,foundation model (frozen),1,4,3,8,0.4297606659729448
+Chronos-2,foundation model (frozen),1,4,4,8,0.5900104058272633
+Chronos-2,foundation model (frozen),1,8,0,16,0.6035379812695109
+Chronos-2,foundation model (frozen),1,8,1,16,0.5161290322580645
+Chronos-2,foundation model (frozen),1,8,2,16,0.5265348595213319
+Chronos-2,foundation model (frozen),1,8,3,16,0.5816857440166494
+Chronos-2,foundation model (frozen),1,8,4,16,0.5244536940686785
+Chronos-2,foundation model (frozen),1,16,0,32,0.5712799167533819
+Chronos-2,foundation model (frozen),1,16,1,32,0.5556711758584808
+Chronos-2,foundation model (frozen),1,16,2,32,0.5265348595213319
+Chronos-2,foundation model (frozen),1,16,3,32,0.5494276795005203
+Chronos-2,foundation model (frozen),1,16,4,32,0.5535900104058273
+Chronos-2,foundation model (frozen),1,32,0,64,0.6326742976066597
+Chronos-2,foundation model (frozen),1,32,1,64,0.619146722164412
+Chronos-2,foundation model (frozen),1,32,2,64,0.6045785639958376
+Chronos-2,foundation model (frozen),1,32,3,64,0.6795005202913631
+Chronos-2,foundation model (frozen),1,32,4,64,0.676378772112383
+Chronos-2,foundation model (frozen),1,64,0,128,0.6857440166493236
+Chronos-2,foundation model (frozen),1,64,1,128,0.7200832466181062
+Chronos-2,foundation model (frozen),1,64,2,128,0.7419354838709677
+Chronos-2,foundation model (frozen),1,64,3,128,0.7388137356919875
+Chronos-2,foundation model (frozen),1,64,4,128,0.6899063475546305
+Chronos-2,foundation model (frozen),1,125,0,250,0.8158168574401665
+Chronos-2,foundation model (frozen),2,2,0,4,0.47138397502601453
+Chronos-2,foundation model (frozen),2,2,1,4,0.49323621227887615
+Chronos-2,foundation model (frozen),2,2,2,4,0.5348595213319459
+Chronos-2,foundation model (frozen),2,2,3,4,0.5317377731529657
+Chronos-2,foundation model (frozen),2,2,4,4,0.5150884495317378
+Chronos-2,foundation model (frozen),2,4,0,8,0.4755463059313216
+Chronos-2,foundation model (frozen),2,4,1,8,0.5775234131113424
+Chronos-2,foundation model (frozen),2,4,2,8,0.5411030176899064
+Chronos-2,foundation model (frozen),2,4,3,8,0.4786680541103018
+Chronos-2,foundation model (frozen),2,4,4,8,0.5442247658688866
+Chronos-2,foundation model (frozen),2,8,0,16,0.49115504682622263
+Chronos-2,foundation model (frozen),2,8,1,16,0.6087408949011446
+Chronos-2,foundation model (frozen),2,8,2,16,0.5775234131113424
+Chronos-2,foundation model (frozen),2,8,3,16,0.5036420395421437
+Chronos-2,foundation model (frozen),2,8,4,16,0.6139438085327783
+Chronos-2,foundation model (frozen),2,16,0,32,0.5400624349635796
+Chronos-2,foundation model (frozen),2,16,1,32,0.6514047866805411
+Chronos-2,foundation model (frozen),2,16,2,32,0.5837669094693029
+Chronos-2,foundation model (frozen),2,16,3,32,0.6316337148803329
+Chronos-2,foundation model (frozen),2,16,4,32,0.5639958376690948
+Chronos-2,foundation model (frozen),2,32,0,64,0.639958376690947
+Chronos-2,foundation model (frozen),2,32,1,64,0.6181061394380853
+Chronos-2,foundation model (frozen),2,32,2,64,0.6867845993756504
+Chronos-2,foundation model (frozen),2,32,3,64,0.6815816857440167
+Chronos-2,foundation model (frozen),2,32,4,64,0.6024973985431842
+Chronos-2,foundation model (frozen),2,64,0,128,0.712799167533819
+Chronos-2,foundation model (frozen),2,64,1,128,0.6847034339229968
+Chronos-2,foundation model (frozen),2,64,2,128,0.6618106139438085
+Chronos-2,foundation model (frozen),2,64,3,128,0.708636836628512
+Chronos-2,foundation model (frozen),2,64,4,128,0.7502601456815817
+Chronos-2,foundation model (frozen),2,125,0,250,0.813735691987513
+Chronos-2,foundation model (frozen),3,2,0,4,0.5577523413111343
+Chronos-2,foundation model (frozen),3,2,1,4,0.5046826222684704
+Chronos-2,foundation model (frozen),3,2,2,4,0.5161290322580645
+Chronos-2,foundation model (frozen),3,2,3,4,0.5639958376690948
+Chronos-2,foundation model (frozen),3,2,4,4,0.4661810613943808
+Chronos-2,foundation model (frozen),3,4,0,8,0.5442247658688866
+Chronos-2,foundation model (frozen),3,4,1,8,0.49739854318418314
+Chronos-2,foundation model (frozen),3,4,2,8,0.5359001040582727
+Chronos-2,foundation model (frozen),3,4,3,8,0.6118626430801248
+Chronos-2,foundation model (frozen),3,4,4,8,0.603537981269511
+Chronos-2,foundation model (frozen),3,8,0,16,0.4682622268470344
+Chronos-2,foundation model (frozen),3,8,1,16,0.6087408949011447
+Chronos-2,foundation model (frozen),3,8,2,16,0.6368366285119667
+Chronos-2,foundation model (frozen),3,8,3,16,0.5744016649323621
+Chronos-2,foundation model (frozen),3,8,4,16,0.5192507804370448
+Chronos-2,foundation model (frozen),3,16,0,32,0.5900104058272633
+Chronos-2,foundation model (frozen),3,16,1,32,0.578563995837669
+Chronos-2,foundation model (frozen),3,16,2,32,0.6118626430801248
+Chronos-2,foundation model (frozen),3,16,3,32,0.5691987513007285
+Chronos-2,foundation model (frozen),3,16,4,32,0.5889698231009365
+Chronos-2,foundation model (frozen),3,32,0,64,0.6191467221644121
+Chronos-2,foundation model (frozen),3,32,1,64,0.6451612903225806
+Chronos-2,foundation model (frozen),3,32,2,64,0.6181061394380853
+Chronos-2,foundation model (frozen),3,32,3,64,0.6462018730489075
+Chronos-2,foundation model (frozen),3,32,4,64,0.59105098855359
+Chronos-2,foundation model (frozen),3,64,0,128,0.72840790842872
+Chronos-2,foundation model (frozen),3,64,1,128,0.7346514047866805
+Chronos-2,foundation model (frozen),3,64,2,128,0.6992715920915712
+Chronos-2,foundation model (frozen),3,64,3,128,0.7398543184183143
+Chronos-2,foundation model (frozen),3,64,4,128,0.740894901144641
+Chronos-2,foundation model (frozen),3,125,0,250,0.8688865764828303
+Chronos-2,foundation model (frozen),4,2,0,4,0.5057232049947971
+Chronos-2,foundation model (frozen),4,2,1,4,0.7211238293444329
+Chronos-2,foundation model (frozen),4,2,2,4,0.4703433922996878
+Chronos-2,foundation model (frozen),4,2,3,4,0.5244536940686785
+Chronos-2,foundation model (frozen),4,2,4,4,0.5764828303850156
+Chronos-2,foundation model (frozen),4,4,0,8,0.5171696149843913
+Chronos-2,foundation model (frozen),4,4,1,8,0.4921956295525495
+Chronos-2,foundation model (frozen),4,4,2,8,0.595213319458897
+Chronos-2,foundation model (frozen),4,4,3,8,0.6576482830385015
+Chronos-2,foundation model (frozen),4,4,4,8,0.5681581685744017
+Chronos-2,foundation model (frozen),4,8,0,16,0.6170655567117587
+Chronos-2,foundation model (frozen),4,8,1,16,0.5026014568158169
+Chronos-2,foundation model (frozen),4,8,2,16,0.5681581685744016
+Chronos-2,foundation model (frozen),4,8,3,16,0.558792924037461
+Chronos-2,foundation model (frozen),4,8,4,16,0.6524453694068678
+Chronos-2,foundation model (frozen),4,16,0,32,0.7273673257023934
+Chronos-2,foundation model (frozen),4,16,1,32,0.6836628511966701
+Chronos-2,foundation model (frozen),4,16,2,32,0.6805411030176899
+Chronos-2,foundation model (frozen),4,16,3,32,0.5098855359001041
+Chronos-2,foundation model (frozen),4,16,4,32,0.6503642039542143
+Chronos-2,foundation model (frozen),4,32,0,64,0.7221644120707597
+Chronos-2,foundation model (frozen),4,32,1,64,0.7460978147762747
+Chronos-2,foundation model (frozen),4,32,2,64,0.7710718002081166
+Chronos-2,foundation model (frozen),4,32,3,64,0.6441207075962538
+Chronos-2,foundation model (frozen),4,32,4,64,0.7065556711758585
+Chronos-2,foundation model (frozen),4,64,0,128,0.7450572320499479
+Chronos-2,foundation model (frozen),4,64,1,128,0.8792924037460979
+Chronos-2,foundation model (frozen),4,64,2,128,0.7929240374609781
+Chronos-2,foundation model (frozen),4,64,3,128,0.8272632674297606
+Chronos-2,foundation model (frozen),4,64,4,128,0.7533818938605619
+Chronos-2,foundation model (frozen),4,125,0,250,0.9115504682622269
+Chronos-Bolt (base),foundation model (frozen),0,2,0,4,0.533203125
+Chronos-Bolt (base),foundation model (frozen),0,2,1,4,0.537109375
+Chronos-Bolt (base),foundation model (frozen),0,2,2,4,0.541015625
+Chronos-Bolt (base),foundation model (frozen),0,2,3,4,0.587890625
+Chronos-Bolt (base),foundation model (frozen),0,2,4,4,0.556640625
+Chronos-Bolt (base),foundation model (frozen),0,4,0,8,0.50390625
+Chronos-Bolt (base),foundation model (frozen),0,4,1,8,0.4423828125
+Chronos-Bolt (base),foundation model (frozen),0,4,2,8,0.5361328125
+Chronos-Bolt (base),foundation model (frozen),0,4,3,8,0.533203125
+Chronos-Bolt (base),foundation model (frozen),0,4,4,8,0.5703125
+Chronos-Bolt (base),foundation model (frozen),0,8,0,16,0.603515625
+Chronos-Bolt (base),foundation model (frozen),0,8,1,16,0.5556640625
+Chronos-Bolt (base),foundation model (frozen),0,8,2,16,0.462890625
+Chronos-Bolt (base),foundation model (frozen),0,8,3,16,0.5380859375
+Chronos-Bolt (base),foundation model (frozen),0,8,4,16,0.57421875
+Chronos-Bolt (base),foundation model (frozen),0,16,0,32,0.5986328125
+Chronos-Bolt (base),foundation model (frozen),0,16,1,32,0.5908203125
+Chronos-Bolt (base),foundation model (frozen),0,16,2,32,0.6162109375
+Chronos-Bolt (base),foundation model (frozen),0,16,3,32,0.5439453125
+Chronos-Bolt (base),foundation model (frozen),0,16,4,32,0.5849609375
+Chronos-Bolt (base),foundation model (frozen),0,32,0,64,0.6455078125
+Chronos-Bolt (base),foundation model (frozen),0,32,1,64,0.6845703125
+Chronos-Bolt (base),foundation model (frozen),0,32,2,64,0.5927734375
+Chronos-Bolt (base),foundation model (frozen),0,32,3,64,0.5712890625
+Chronos-Bolt (base),foundation model (frozen),0,32,4,64,0.599609375
+Chronos-Bolt (base),foundation model (frozen),0,64,0,128,0.7802734375
+Chronos-Bolt (base),foundation model (frozen),0,64,1,128,0.689453125
+Chronos-Bolt (base),foundation model (frozen),0,64,2,128,0.662109375
+Chronos-Bolt (base),foundation model (frozen),0,64,3,128,0.7216796875
+Chronos-Bolt (base),foundation model (frozen),0,64,4,128,0.609375
+Chronos-Bolt (base),foundation model (frozen),0,124,0,248,0.853515625
+Chronos-Bolt (base),foundation model (frozen),1,2,0,4,0.5712799167533819
+Chronos-Bolt (base),foundation model (frozen),1,2,1,4,0.5109261186264309
+Chronos-Bolt (base),foundation model (frozen),1,2,2,4,0.5223725286160249
+Chronos-Bolt (base),foundation model (frozen),1,2,3,4,0.5567117585848076
+Chronos-Bolt (base),foundation model (frozen),1,2,4,4,0.5535900104058273
+Chronos-Bolt (base),foundation model (frozen),1,4,0,8,0.4568158168574402
+Chronos-Bolt (base),foundation model (frozen),1,4,1,8,0.5639958376690947
+Chronos-Bolt (base),foundation model (frozen),1,4,2,8,0.5681581685744017
+Chronos-Bolt (base),foundation model (frozen),1,4,3,8,0.5421436004162331
+Chronos-Bolt (base),foundation model (frozen),1,4,4,8,0.5525494276795005
+Chronos-Bolt (base),foundation model (frozen),1,8,0,16,0.5879292403746098
+Chronos-Bolt (base),foundation model (frozen),1,8,1,16,0.5078043704474506
+Chronos-Bolt (base),foundation model (frozen),1,8,2,16,0.6077003121748179
+Chronos-Bolt (base),foundation model (frozen),1,8,3,16,0.5244536940686785
+Chronos-Bolt (base),foundation model (frozen),1,8,4,16,0.6056191467221644
+Chronos-Bolt (base),foundation model (frozen),1,16,0,32,0.562955254942768
+Chronos-Bolt (base),foundation model (frozen),1,16,1,32,0.5900104058272632
+Chronos-Bolt (base),foundation model (frozen),1,16,2,32,0.5619146722164412
+Chronos-Bolt (base),foundation model (frozen),1,16,3,32,0.6014568158168575
+Chronos-Bolt (base),foundation model (frozen),1,16,4,32,0.5494276795005203
+Chronos-Bolt (base),foundation model (frozen),1,32,0,64,0.7336108220603539
+Chronos-Bolt (base),foundation model (frozen),1,32,1,64,0.582726326742976
+Chronos-Bolt (base),foundation model (frozen),1,32,2,64,0.6139438085327783
+Chronos-Bolt (base),foundation model (frozen),1,32,3,64,0.6170655567117586
+Chronos-Bolt (base),foundation model (frozen),1,32,4,64,0.6805411030176899
+Chronos-Bolt (base),foundation model (frozen),1,64,0,128,0.6867845993756505
+Chronos-Bolt (base),foundation model (frozen),1,64,1,128,0.6264308012486992
+Chronos-Bolt (base),foundation model (frozen),1,64,2,128,0.7117585848074921
+Chronos-Bolt (base),foundation model (frozen),1,64,3,128,0.6503642039542143
+Chronos-Bolt (base),foundation model (frozen),1,64,4,128,0.6576482830385015
+Chronos-Bolt (base),foundation model (frozen),1,125,0,250,0.8012486992715921
+Chronos-Bolt (base),foundation model (frozen),2,2,0,4,0.5785639958376692
+Chronos-Bolt (base),foundation model (frozen),2,2,1,4,0.5452653485952134
+Chronos-Bolt (base),foundation model (frozen),2,2,2,4,0.5567117585848075
+Chronos-Bolt (base),foundation model (frozen),2,2,3,4,0.5379812695109261
+Chronos-Bolt (base),foundation model (frozen),2,2,4,4,0.6004162330905307
+Chronos-Bolt (base),foundation model (frozen),2,4,0,8,0.5286160249739853
+Chronos-Bolt (base),foundation model (frozen),2,4,1,8,0.5234131113423518
+Chronos-Bolt (base),foundation model (frozen),2,4,2,8,0.5535900104058272
+Chronos-Bolt (base),foundation model (frozen),2,4,3,8,0.522372528616025
+Chronos-Bolt (base),foundation model (frozen),2,4,4,8,0.6129032258064516
+Chronos-Bolt (base),foundation model (frozen),2,8,0,16,0.4578563995837669
+Chronos-Bolt (base),foundation model (frozen),2,8,1,16,0.5369406867845994
+Chronos-Bolt (base),foundation model (frozen),2,8,2,16,0.6014568158168574
+Chronos-Bolt (base),foundation model (frozen),2,8,3,16,0.6160249739854319
+Chronos-Bolt (base),foundation model (frozen),2,8,4,16,0.5608740894901144
+Chronos-Bolt (base),foundation model (frozen),2,16,0,32,0.6264308012486993
+Chronos-Bolt (base),foundation model (frozen),2,16,1,32,0.5650364203954215
+Chronos-Bolt (base),foundation model (frozen),2,16,2,32,0.5421436004162331
+Chronos-Bolt (base),foundation model (frozen),2,16,3,32,0.5681581685744017
+Chronos-Bolt (base),foundation model (frozen),2,16,4,32,0.5660770031217482
+Chronos-Bolt (base),foundation model (frozen),2,32,0,64,0.663891779396462
+Chronos-Bolt (base),foundation model (frozen),2,32,1,64,0.655567117585848
+Chronos-Bolt (base),foundation model (frozen),2,32,2,64,0.631633714880333
+Chronos-Bolt (base),foundation model (frozen),2,32,3,64,0.558792924037461
+Chronos-Bolt (base),foundation model (frozen),2,32,4,64,0.6233090530697191
+Chronos-Bolt (base),foundation model (frozen),2,64,0,128,0.7044745057232049
+Chronos-Bolt (base),foundation model (frozen),2,64,1,128,0.7252861602497398
+Chronos-Bolt (base),foundation model (frozen),2,64,2,128,0.6305931321540063
+Chronos-Bolt (base),foundation model (frozen),2,64,3,128,0.7523413111342352
+Chronos-Bolt (base),foundation model (frozen),2,64,4,128,0.6670135275754422
+Chronos-Bolt (base),foundation model (frozen),2,125,0,250,0.8470343392299687
+Chronos-Bolt (base),foundation model (frozen),3,2,0,4,0.5681581685744016
+Chronos-Bolt (base),foundation model (frozen),3,2,1,4,0.63579604578564
+Chronos-Bolt (base),foundation model (frozen),3,2,2,4,0.5920915712799167
+Chronos-Bolt (base),foundation model (frozen),3,2,3,4,0.5400624349635795
+Chronos-Bolt (base),foundation model (frozen),3,2,4,4,0.5754422476586889
+Chronos-Bolt (base),foundation model (frozen),3,4,0,8,0.6045785639958376
+Chronos-Bolt (base),foundation model (frozen),3,4,1,8,0.5972944849115505
+Chronos-Bolt (base),foundation model (frozen),3,4,2,8,0.5691987513007285
+Chronos-Bolt (base),foundation model (frozen),3,4,3,8,0.5848074921956296
+Chronos-Bolt (base),foundation model (frozen),3,4,4,8,0.6212278876170656
+Chronos-Bolt (base),foundation model (frozen),3,8,0,16,0.5639958376690947
+Chronos-Bolt (base),foundation model (frozen),3,8,1,16,0.6451612903225806
+Chronos-Bolt (base),foundation model (frozen),3,8,2,16,0.6462018730489073
+Chronos-Bolt (base),foundation model (frozen),3,8,3,16,0.5306971904266389
+Chronos-Bolt (base),foundation model (frozen),3,8,4,16,0.6534859521331946
+Chronos-Bolt (base),foundation model (frozen),3,16,0,32,0.4963579604578564
+Chronos-Bolt (base),foundation model (frozen),3,16,1,32,0.6409989594172737
+Chronos-Bolt (base),foundation model (frozen),3,16,2,32,0.5723204994797086
+Chronos-Bolt (base),foundation model (frozen),3,16,3,32,0.554630593132154
+Chronos-Bolt (base),foundation model (frozen),3,16,4,32,0.5671175858480749
+Chronos-Bolt (base),foundation model (frozen),3,32,0,64,0.7939646201873048
+Chronos-Bolt (base),foundation model (frozen),3,32,1,64,0.6420395421436005
+Chronos-Bolt (base),foundation model (frozen),3,32,2,64,0.7565036420395421
+Chronos-Bolt (base),foundation model (frozen),3,32,3,64,0.6586888657648282
+Chronos-Bolt (base),foundation model (frozen),3,32,4,64,0.6909469302809573
+Chronos-Bolt (base),foundation model (frozen),3,64,0,128,0.6971904266389178
+Chronos-Bolt (base),foundation model (frozen),3,64,1,128,0.7637877211238293
+Chronos-Bolt (base),foundation model (frozen),3,64,2,128,0.7898022892819979
+Chronos-Bolt (base),foundation model (frozen),3,64,3,128,0.7429760665972945
+Chronos-Bolt (base),foundation model (frozen),3,64,4,128,0.7221644120707597
+Chronos-Bolt (base),foundation model (frozen),3,125,0,250,0.8678459937565037
+Chronos-Bolt (base),foundation model (frozen),4,2,0,4,0.5494276795005203
+Chronos-Bolt (base),foundation model (frozen),4,2,1,4,0.46514047866805414
+Chronos-Bolt (base),foundation model (frozen),4,2,2,4,0.5671175858480749
+Chronos-Bolt (base),foundation model (frozen),4,2,3,4,0.6222684703433924
+Chronos-Bolt (base),foundation model (frozen),4,2,4,4,0.4786680541103018
+Chronos-Bolt (base),foundation model (frozen),4,4,0,8,0.5796045785639958
+Chronos-Bolt (base),foundation model (frozen),4,4,1,8,0.5567117585848075
+Chronos-Bolt (base),foundation model (frozen),4,4,2,8,0.514047866805411
+Chronos-Bolt (base),foundation model (frozen),4,4,3,8,0.5275754422476586
+Chronos-Bolt (base),foundation model (frozen),4,4,4,8,0.5848074921956296
+Chronos-Bolt (base),foundation model (frozen),4,8,0,16,0.5411030176899064
+Chronos-Bolt (base),foundation model (frozen),4,8,1,16,0.5421436004162331
+Chronos-Bolt (base),foundation model (frozen),4,8,2,16,0.5723204994797086
+Chronos-Bolt (base),foundation model (frozen),4,8,3,16,0.6628511966701353
+Chronos-Bolt (base),foundation model (frozen),4,8,4,16,0.6170655567117586
+Chronos-Bolt (base),foundation model (frozen),4,16,0,32,0.6774193548387095
+Chronos-Bolt (base),foundation model (frozen),4,16,1,32,0.6503642039542142
+Chronos-Bolt (base),foundation model (frozen),4,16,2,32,0.7055150884495318
+Chronos-Bolt (base),foundation model (frozen),4,16,3,32,0.6555671175858481
+Chronos-Bolt (base),foundation model (frozen),4,16,4,32,0.5213319458896982
+Chronos-Bolt (base),foundation model (frozen),4,32,0,64,0.6170655567117586
+Chronos-Bolt (base),foundation model (frozen),4,32,1,64,0.6337148803329864
+Chronos-Bolt (base),foundation model (frozen),4,32,2,64,0.8168574401664932
+Chronos-Bolt (base),foundation model (frozen),4,32,3,64,0.7887617065556712
+Chronos-Bolt (base),foundation model (frozen),4,32,4,64,0.6753381893860562
+Chronos-Bolt (base),foundation model (frozen),4,64,0,128,0.7981269510926118
+Chronos-Bolt (base),foundation model (frozen),4,64,1,128,0.8563995837669095
+Chronos-Bolt (base),foundation model (frozen),4,64,2,128,0.6795005202913632
+Chronos-Bolt (base),foundation model (frozen),4,64,3,128,0.6451612903225806
+Chronos-Bolt (base),foundation model (frozen),4,64,4,128,0.781477627471384
+Chronos-Bolt (base),foundation model (frozen),4,125,0,250,0.8699271592091571
+TiRex,foundation model (frozen),0,2,0,4,0.5126953125
+TiRex,foundation model (frozen),0,2,1,4,0.4853515625
+TiRex,foundation model (frozen),0,2,2,4,0.5546875
+TiRex,foundation model (frozen),0,2,3,4,0.5390625
+TiRex,foundation model (frozen),0,2,4,4,0.51953125
+TiRex,foundation model (frozen),0,4,0,8,0.4619140625
+TiRex,foundation model (frozen),0,4,1,8,0.58203125
+TiRex,foundation model (frozen),0,4,2,8,0.5224609375
+TiRex,foundation model (frozen),0,4,3,8,0.4833984375
+TiRex,foundation model (frozen),0,4,4,8,0.5361328125
+TiRex,foundation model (frozen),0,8,0,16,0.591796875
+TiRex,foundation model (frozen),0,8,1,16,0.5146484375
+TiRex,foundation model (frozen),0,8,2,16,0.591796875
+TiRex,foundation model (frozen),0,8,3,16,0.5771484375
+TiRex,foundation model (frozen),0,8,4,16,0.4912109375
+TiRex,foundation model (frozen),0,16,0,32,0.68359375
+TiRex,foundation model (frozen),0,16,1,32,0.6435546875
+TiRex,foundation model (frozen),0,16,2,32,0.708984375
+TiRex,foundation model (frozen),0,16,3,32,0.595703125
+TiRex,foundation model (frozen),0,16,4,32,0.6533203125
+TiRex,foundation model (frozen),0,32,0,64,0.62890625
+TiRex,foundation model (frozen),0,32,1,64,0.671875
+TiRex,foundation model (frozen),0,32,2,64,0.6669921875
+TiRex,foundation model (frozen),0,32,3,64,0.767578125
+TiRex,foundation model (frozen),0,32,4,64,0.673828125
+TiRex,foundation model (frozen),0,64,0,128,0.806640625
+TiRex,foundation model (frozen),0,64,1,128,0.7138671875
+TiRex,foundation model (frozen),0,64,2,128,0.771484375
+TiRex,foundation model (frozen),0,64,3,128,0.798828125
+TiRex,foundation model (frozen),0,64,4,128,0.7626953125
+TiRex,foundation model (frozen),0,124,0,248,0.8388671875
+TiRex,foundation model (frozen),1,2,0,4,0.4640998959417274
+TiRex,foundation model (frozen),1,2,1,4,0.413111342351717
+TiRex,foundation model (frozen),1,2,2,4,0.4703433922996878
+TiRex,foundation model (frozen),1,2,3,4,0.4058272632674298
+TiRex,foundation model (frozen),1,2,4,4,0.6326742976066597
+TiRex,foundation model (frozen),1,4,0,8,0.5723204994797086
+TiRex,foundation model (frozen),1,4,1,8,0.5202913631633715
+TiRex,foundation model (frozen),1,4,2,8,0.6149843912591051
+TiRex,foundation model (frozen),1,4,3,8,0.6056191467221644
+TiRex,foundation model (frozen),1,4,4,8,0.5515088449531736
+TiRex,foundation model (frozen),1,8,0,16,0.6503642039542143
+TiRex,foundation model (frozen),1,8,1,16,0.5712799167533819
+TiRex,foundation model (frozen),1,8,2,16,0.6534859521331946
+TiRex,foundation model (frozen),1,8,3,16,0.6129032258064516
+TiRex,foundation model (frozen),1,8,4,16,0.6108220603537982
+TiRex,foundation model (frozen),1,16,0,32,0.663891779396462
+TiRex,foundation model (frozen),1,16,1,32,0.627471383975026
+TiRex,foundation model (frozen),1,16,2,32,0.6409989594172737
+TiRex,foundation model (frozen),1,16,3,32,0.691987513007284
+TiRex,foundation model (frozen),1,16,4,32,0.676378772112383
+TiRex,foundation model (frozen),1,32,0,64,0.6462018730489074
+TiRex,foundation model (frozen),1,32,1,64,0.7138397502601457
+TiRex,foundation model (frozen),1,32,2,64,0.7200832466181061
+TiRex,foundation model (frozen),1,32,3,64,0.7398543184183143
+TiRex,foundation model (frozen),1,32,4,64,0.7273673257023934
+TiRex,foundation model (frozen),1,64,0,128,0.809573361082206
+TiRex,foundation model (frozen),1,64,1,128,0.841831425598335
+TiRex,foundation model (frozen),1,64,2,128,0.7887617065556712
+TiRex,foundation model (frozen),1,64,3,128,0.8314255983350677
+TiRex,foundation model (frozen),1,64,4,128,0.8022892819979189
+TiRex,foundation model (frozen),1,125,0,250,0.9406867845993756
+TiRex,foundation model (frozen),2,2,0,4,0.5452653485952134
+TiRex,foundation model (frozen),2,2,1,4,0.4838709677419355
+TiRex,foundation model (frozen),2,2,2,4,0.514047866805411
+TiRex,foundation model (frozen),2,2,3,4,0.5931321540062434
+TiRex,foundation model (frozen),2,2,4,4,0.5837669094693028
+TiRex,foundation model (frozen),2,4,0,8,0.6201873048907388
+TiRex,foundation model (frozen),2,4,1,8,0.4953173777315297
+TiRex,foundation model (frozen),2,4,2,8,0.5067637877211237
+TiRex,foundation model (frozen),2,4,3,8,0.6264308012486993
+TiRex,foundation model (frozen),2,4,4,8,0.5515088449531739
+TiRex,foundation model (frozen),2,8,0,16,0.6181061394380855
+TiRex,foundation model (frozen),2,8,1,16,0.5525494276795005
+TiRex,foundation model (frozen),2,8,2,16,0.5338189386056191
+TiRex,foundation model (frozen),2,8,3,16,0.627471383975026
+TiRex,foundation model (frozen),2,8,4,16,0.5993756503642039
+TiRex,foundation model (frozen),2,16,0,32,0.5993756503642039
+TiRex,foundation model (frozen),2,16,1,32,0.5858480749219562
+TiRex,foundation model (frozen),2,16,2,32,0.5858480749219563
+TiRex,foundation model (frozen),2,16,3,32,0.6389177939646201
+TiRex,foundation model (frozen),2,16,4,32,0.5900104058272632
+TiRex,foundation model (frozen),2,32,0,64,0.6586888657648283
+TiRex,foundation model (frozen),2,32,1,64,0.6545265348595213
+TiRex,foundation model (frozen),2,32,2,64,0.7034339229968782
+TiRex,foundation model (frozen),2,32,3,64,0.6139438085327783
+TiRex,foundation model (frozen),2,32,4,64,0.5972944849115505
+TiRex,foundation model (frozen),2,64,0,128,0.7148803329864725
+TiRex,foundation model (frozen),2,64,1,128,0.6992715920915712
+TiRex,foundation model (frozen),2,64,2,128,0.6982310093652445
+TiRex,foundation model (frozen),2,64,3,128,0.745057232049948
+TiRex,foundation model (frozen),2,64,4,128,0.6805411030176899
+TiRex,foundation model (frozen),2,125,0,250,0.7783558792924038
+TiRex,foundation model (frozen),3,2,0,4,0.6462018730489073
+TiRex,foundation model (frozen),3,2,1,4,0.48283038501560877
+TiRex,foundation model (frozen),3,2,2,4,0.5556711758584808
+TiRex,foundation model (frozen),3,2,3,4,0.5296566077003122
+TiRex,foundation model (frozen),3,2,4,4,0.5026014568158168
+TiRex,foundation model (frozen),3,4,0,8,0.5993756503642039
+TiRex,foundation model (frozen),3,4,1,8,0.6462018730489074
+TiRex,foundation model (frozen),3,4,2,8,0.6066597294484911
+TiRex,foundation model (frozen),3,4,3,8,0.6077003121748179
+TiRex,foundation model (frozen),3,4,4,8,0.6815816857440167
+TiRex,foundation model (frozen),3,8,0,16,0.6097814776274714
+TiRex,foundation model (frozen),3,8,1,16,0.6430801248699272
+TiRex,foundation model (frozen),3,8,2,16,0.603537981269511
+TiRex,foundation model (frozen),3,8,3,16,0.5827263267429761
+TiRex,foundation model (frozen),3,8,4,16,0.6056191467221644
+TiRex,foundation model (frozen),3,16,0,32,0.7221644120707595
+TiRex,foundation model (frozen),3,16,1,32,0.7169614984391258
+TiRex,foundation model (frozen),3,16,2,32,0.6722164412070759
+TiRex,foundation model (frozen),3,16,3,32,0.7138397502601456
+TiRex,foundation model (frozen),3,16,4,32,0.6233090530697191
+TiRex,foundation model (frozen),3,32,0,64,0.8116545265348596
+TiRex,foundation model (frozen),3,32,1,64,0.7294484911550467
+TiRex,foundation model (frozen),3,32,2,64,0.7232049947970864
+TiRex,foundation model (frozen),3,32,3,64,0.6305931321540063
+TiRex,foundation model (frozen),3,32,4,64,0.7336108220603537
+TiRex,foundation model (frozen),3,64,0,128,0.813735691987513
+TiRex,foundation model (frozen),3,64,1,128,0.8428720083246617
+TiRex,foundation model (frozen),3,64,2,128,0.8439125910509886
+TiRex,foundation model (frozen),3,64,3,128,0.8491155046826223
+TiRex,foundation model (frozen),3,64,4,128,0.809573361082206
+TiRex,foundation model (frozen),3,125,0,250,0.8761706555671176
+TiRex,foundation model (frozen),4,2,0,4,0.5962539021852237
+TiRex,foundation model (frozen),4,2,1,4,0.33714880332986474
+TiRex,foundation model (frozen),4,2,2,4,0.40478668054110306
+TiRex,foundation model (frozen),4,2,3,4,0.6919875130072841
+TiRex,foundation model (frozen),4,2,4,4,0.376690946930281
+TiRex,foundation model (frozen),4,4,0,8,0.39646201873048903
+TiRex,foundation model (frozen),4,4,1,8,0.6160249739854318
+TiRex,foundation model (frozen),4,4,2,8,0.6014568158168574
+TiRex,foundation model (frozen),4,4,3,8,0.6430801248699272
+TiRex,foundation model (frozen),4,4,4,8,0.6378772112382934
+TiRex,foundation model (frozen),4,8,0,16,0.6878251821019771
+TiRex,foundation model (frozen),4,8,1,16,0.562955254942768
+TiRex,foundation model (frozen),4,8,2,16,0.6742976066597295
+TiRex,foundation model (frozen),4,8,3,16,0.6024973985431842
+TiRex,foundation model (frozen),4,8,4,16,0.6066597294484911
+TiRex,foundation model (frozen),4,16,0,32,0.7221644120707594
+TiRex,foundation model (frozen),4,16,1,32,0.736732570239334
+TiRex,foundation model (frozen),4,16,2,32,0.676378772112383
+TiRex,foundation model (frozen),4,16,3,32,0.6409989594172736
+TiRex,foundation model (frozen),4,16,4,32,0.6607700312174818
+TiRex,foundation model (frozen),4,32,0,64,0.7565036420395421
+TiRex,foundation model (frozen),4,32,1,64,0.6982310093652445
+TiRex,foundation model (frozen),4,32,2,64,0.7627471383975026
+TiRex,foundation model (frozen),4,32,3,64,0.7252861602497399
+TiRex,foundation model (frozen),4,32,4,64,0.745057232049948
+TiRex,foundation model (frozen),4,64,0,128,0.7263267429760666
+TiRex,foundation model (frozen),4,64,1,128,0.7565036420395421
+TiRex,foundation model (frozen),4,64,2,128,0.8720083246618107
+TiRex,foundation model (frozen),4,64,3,128,0.7575442247658689
+TiRex,foundation model (frozen),4,64,4,128,0.8668054110301769
+TiRex,foundation model (frozen),4,125,0,250,0.8532778355879292
+MOMENT-1 (base),foundation model (frozen),0,2,0,4,0.4755859375
+MOMENT-1 (base),foundation model (frozen),0,2,1,4,0.5439453125
+MOMENT-1 (base),foundation model (frozen),0,2,2,4,0.5322265625
+MOMENT-1 (base),foundation model (frozen),0,2,3,4,0.525390625
+MOMENT-1 (base),foundation model (frozen),0,2,4,4,0.57421875
+MOMENT-1 (base),foundation model (frozen),0,4,0,8,0.5322265625
+MOMENT-1 (base),foundation model (frozen),0,4,1,8,0.5283203125
+MOMENT-1 (base),foundation model (frozen),0,4,2,8,0.6005859375
+MOMENT-1 (base),foundation model (frozen),0,4,3,8,0.49609375
+MOMENT-1 (base),foundation model (frozen),0,4,4,8,0.4560546875
+MOMENT-1 (base),foundation model (frozen),0,8,0,16,0.552734375
+MOMENT-1 (base),foundation model (frozen),0,8,1,16,0.5859375
+MOMENT-1 (base),foundation model (frozen),0,8,2,16,0.53515625
+MOMENT-1 (base),foundation model (frozen),0,8,3,16,0.5478515625
+MOMENT-1 (base),foundation model (frozen),0,8,4,16,0.5986328125
+MOMENT-1 (base),foundation model (frozen),0,16,0,32,0.6142578125
+MOMENT-1 (base),foundation model (frozen),0,16,1,32,0.728515625
+MOMENT-1 (base),foundation model (frozen),0,16,2,32,0.626953125
+MOMENT-1 (base),foundation model (frozen),0,16,3,32,0.65625
+MOMENT-1 (base),foundation model (frozen),0,16,4,32,0.513671875
+MOMENT-1 (base),foundation model (frozen),0,32,0,64,0.6630859375
+MOMENT-1 (base),foundation model (frozen),0,32,1,64,0.6845703125
+MOMENT-1 (base),foundation model (frozen),0,32,2,64,0.6982421875
+MOMENT-1 (base),foundation model (frozen),0,32,3,64,0.619140625
+MOMENT-1 (base),foundation model (frozen),0,32,4,64,0.6884765625
+MOMENT-1 (base),foundation model (frozen),0,64,0,128,0.638671875
+MOMENT-1 (base),foundation model (frozen),0,64,1,128,0.705078125
+MOMENT-1 (base),foundation model (frozen),0,64,2,128,0.7080078125
+MOMENT-1 (base),foundation model (frozen),0,64,3,128,0.8115234375
+MOMENT-1 (base),foundation model (frozen),0,64,4,128,0.7216796875
+MOMENT-1 (base),foundation model (frozen),0,124,0,248,0.8828125
+MOMENT-1 (base),foundation model (frozen),1,2,0,4,0.4880332986472425
+MOMENT-1 (base),foundation model (frozen),1,2,1,4,0.574401664932362
+MOMENT-1 (base),foundation model (frozen),1,2,2,4,0.47658688865764826
+MOMENT-1 (base),foundation model (frozen),1,2,3,4,0.5681581685744017
+MOMENT-1 (base),foundation model (frozen),1,2,4,4,0.5650364203954215
+MOMENT-1 (base),foundation model (frozen),1,4,0,8,0.5265348595213318
+MOMENT-1 (base),foundation model (frozen),1,4,1,8,0.6024973985431842
+MOMENT-1 (base),foundation model (frozen),1,4,2,8,0.5036420395421436
+MOMENT-1 (base),foundation model (frozen),1,4,3,8,0.514047866805411
+MOMENT-1 (base),foundation model (frozen),1,4,4,8,0.6056191467221643
+MOMENT-1 (base),foundation model (frozen),1,8,0,16,0.54630593132154
+MOMENT-1 (base),foundation model (frozen),1,8,1,16,0.6774193548387096
+MOMENT-1 (base),foundation model (frozen),1,8,2,16,0.5691987513007284
+MOMENT-1 (base),foundation model (frozen),1,8,3,16,0.49011446409989595
+MOMENT-1 (base),foundation model (frozen),1,8,4,16,0.5889698231009365
+MOMENT-1 (base),foundation model (frozen),1,16,0,32,0.72840790842872
+MOMENT-1 (base),foundation model (frozen),1,16,1,32,0.6493236212278876
+MOMENT-1 (base),foundation model (frozen),1,16,2,32,0.6045785639958376
+MOMENT-1 (base),foundation model (frozen),1,16,3,32,0.5078043704474505
+MOMENT-1 (base),foundation model (frozen),1,16,4,32,0.6191467221644121
+MOMENT-1 (base),foundation model (frozen),1,32,0,64,0.6045785639958376
+MOMENT-1 (base),foundation model (frozen),1,32,1,64,0.6805411030176899
+MOMENT-1 (base),foundation model (frozen),1,32,2,64,0.6305931321540063
+MOMENT-1 (base),foundation model (frozen),1,32,3,64,0.6930280957336108
+MOMENT-1 (base),foundation model (frozen),1,32,4,64,0.7325702393340271
+MOMENT-1 (base),foundation model (frozen),1,64,0,128,0.7190426638917794
+MOMENT-1 (base),foundation model (frozen),1,64,1,128,0.798126951092612
+MOMENT-1 (base),foundation model (frozen),1,64,2,128,0.708636836628512
+MOMENT-1 (base),foundation model (frozen),1,64,3,128,0.7731529656607701
+MOMENT-1 (base),foundation model (frozen),1,64,4,128,0.7981269510926119
+MOMENT-1 (base),foundation model (frozen),1,125,0,250,0.8605619146722164
+MOMENT-1 (base),foundation model (frozen),2,2,0,4,0.4651404786680541
+MOMENT-1 (base),foundation model (frozen),2,2,1,4,0.5150884495317377
+MOMENT-1 (base),foundation model (frozen),2,2,2,4,0.5712799167533819
+MOMENT-1 (base),foundation model (frozen),2,2,3,4,0.5119667013527575
+MOMENT-1 (base),foundation model (frozen),2,2,4,4,0.5192507804370448
+MOMENT-1 (base),foundation model (frozen),2,4,0,8,0.5639958376690948
+MOMENT-1 (base),foundation model (frozen),2,4,1,8,0.5483870967741935
+MOMENT-1 (base),foundation model (frozen),2,4,2,8,0.562955254942768
+MOMENT-1 (base),foundation model (frozen),2,4,3,8,0.5119667013527575
+MOMENT-1 (base),foundation model (frozen),2,4,4,8,0.5359001040582726
+MOMENT-1 (base),foundation model (frozen),2,8,0,16,0.47242455775234127
+MOMENT-1 (base),foundation model (frozen),2,8,1,16,0.5317377731529657
+MOMENT-1 (base),foundation model (frozen),2,8,2,16,0.5556711758584807
+MOMENT-1 (base),foundation model (frozen),2,8,3,16,0.6753381893860562
+MOMENT-1 (base),foundation model (frozen),2,8,4,16,0.5078043704474505
+MOMENT-1 (base),foundation model (frozen),2,16,0,32,0.6867845993756503
+MOMENT-1 (base),foundation model (frozen),2,16,1,32,0.6784599375650364
+MOMENT-1 (base),foundation model (frozen),2,16,2,32,0.5806451612903226
+MOMENT-1 (base),foundation model (frozen),2,16,3,32,0.6066597294484911
+MOMENT-1 (base),foundation model (frozen),2,16,4,32,0.659729448491155
+MOMENT-1 (base),foundation model (frozen),2,32,0,64,0.700312174817898
+MOMENT-1 (base),foundation model (frozen),2,32,1,64,0.6326742976066597
+MOMENT-1 (base),foundation model (frozen),2,32,2,64,0.7055150884495317
+MOMENT-1 (base),foundation model (frozen),2,32,3,64,0.5598335067637876
+MOMENT-1 (base),foundation model (frozen),2,32,4,64,0.63579604578564
+MOMENT-1 (base),foundation model (frozen),2,64,0,128,0.6399583766909469
+MOMENT-1 (base),foundation model (frozen),2,64,1,128,0.7367325702393339
+MOMENT-1 (base),foundation model (frozen),2,64,2,128,0.7398543184183144
+MOMENT-1 (base),foundation model (frozen),2,64,3,128,0.6607700312174818
+MOMENT-1 (base),foundation model (frozen),2,64,4,128,0.7658688865764829
+MOMENT-1 (base),foundation model (frozen),2,125,0,250,0.8033298647242456
+MOMENT-1 (base),foundation model (frozen),3,2,0,4,0.42455775234131116
+MOMENT-1 (base),foundation model (frozen),3,2,1,4,0.5483870967741935
+MOMENT-1 (base),foundation model (frozen),3,2,2,4,0.5057232049947971
+MOMENT-1 (base),foundation model (frozen),3,2,3,4,0.5228928199791884
+MOMENT-1 (base),foundation model (frozen),3,2,4,4,0.42143600416233096
+MOMENT-1 (base),foundation model (frozen),3,4,0,8,0.5411030176899063
+MOMENT-1 (base),foundation model (frozen),3,4,1,8,0.4963579604578563
+MOMENT-1 (base),foundation model (frozen),3,4,2,8,0.5338189386056191
+MOMENT-1 (base),foundation model (frozen),3,4,3,8,0.5442247658688866
+MOMENT-1 (base),foundation model (frozen),3,4,4,8,0.5317377731529657
+MOMENT-1 (base),foundation model (frozen),3,8,0,16,0.5119667013527575
+MOMENT-1 (base),foundation model (frozen),3,8,1,16,0.5796045785639959
+MOMENT-1 (base),foundation model (frozen),3,8,2,16,0.5619146722164412
+MOMENT-1 (base),foundation model (frozen),3,8,3,16,0.5202913631633715
+MOMENT-1 (base),foundation model (frozen),3,8,4,16,0.6264308012486992
+MOMENT-1 (base),foundation model (frozen),3,16,0,32,0.6024973985431843
+MOMENT-1 (base),foundation model (frozen),3,16,1,32,0.6066597294484912
+MOMENT-1 (base),foundation model (frozen),3,16,2,32,0.6066597294484912
+MOMENT-1 (base),foundation model (frozen),3,16,3,32,0.6847034339229968
+MOMENT-1 (base),foundation model (frozen),3,16,4,32,0.54630593132154
+MOMENT-1 (base),foundation model (frozen),3,32,0,64,0.6649323621227888
+MOMENT-1 (base),foundation model (frozen),3,32,1,64,0.6566077003121749
+MOMENT-1 (base),foundation model (frozen),3,32,2,64,0.676378772112383
+MOMENT-1 (base),foundation model (frozen),3,32,3,64,0.651404786680541
+MOMENT-1 (base),foundation model (frozen),3,32,4,64,0.7221644120707597
+MOMENT-1 (base),foundation model (frozen),3,64,0,128,0.7450572320499479
+MOMENT-1 (base),foundation model (frozen),3,64,1,128,0.7898022892819979
+MOMENT-1 (base),foundation model (frozen),3,64,2,128,0.7502601456815817
+MOMENT-1 (base),foundation model (frozen),3,64,3,128,0.7679500520291364
+MOMENT-1 (base),foundation model (frozen),3,64,4,128,0.8043704474505723
+MOMENT-1 (base),foundation model (frozen),3,125,0,250,0.8709677419354839
+MOMENT-1 (base),foundation model (frozen),4,2,0,4,0.5400624349635796
+MOMENT-1 (base),foundation model (frozen),4,2,1,4,0.5764828303850156
+MOMENT-1 (base),foundation model (frozen),4,2,2,4,0.5213319458896982
+MOMENT-1 (base),foundation model (frozen),4,2,3,4,0.4224765868886577
+MOMENT-1 (base),foundation model (frozen),4,2,4,4,0.5660770031217481
+MOMENT-1 (base),foundation model (frozen),4,4,0,8,0.5577523413111343
+MOMENT-1 (base),foundation model (frozen),4,4,1,8,0.5983350676378771
+MOMENT-1 (base),foundation model (frozen),4,4,2,8,0.6024973985431842
+MOMENT-1 (base),foundation model (frozen),4,4,3,8,0.4765868886576483
+MOMENT-1 (base),foundation model (frozen),4,4,4,8,0.5078043704474505
+MOMENT-1 (base),foundation model (frozen),4,8,0,16,0.6077003121748178
+MOMENT-1 (base),foundation model (frozen),4,8,1,16,0.6045785639958375
+MOMENT-1 (base),foundation model (frozen),4,8,2,16,0.599375650364204
+MOMENT-1 (base),foundation model (frozen),4,8,3,16,0.4651404786680541
+MOMENT-1 (base),foundation model (frozen),4,8,4,16,0.6930280957336108
+MOMENT-1 (base),foundation model (frozen),4,16,0,32,0.659729448491155
+MOMENT-1 (base),foundation model (frozen),4,16,1,32,0.6243496357960457
+MOMENT-1 (base),foundation model (frozen),4,16,2,32,0.627471383975026
+MOMENT-1 (base),foundation model (frozen),4,16,3,32,0.59105098855359
+MOMENT-1 (base),foundation model (frozen),4,16,4,32,0.691987513007284
+MOMENT-1 (base),foundation model (frozen),4,32,0,64,0.7637877211238293
+MOMENT-1 (base),foundation model (frozen),4,32,1,64,0.6857440166493236
+MOMENT-1 (base),foundation model (frozen),4,32,2,64,0.7627471383975026
+MOMENT-1 (base),foundation model (frozen),4,32,3,64,0.8106139438085328
+MOMENT-1 (base),foundation model (frozen),4,32,4,64,0.688865764828304
+MOMENT-1 (base),foundation model (frozen),4,64,0,128,0.7825182101977106
+MOMENT-1 (base),foundation model (frozen),4,64,1,128,0.7346514047866806
+MOMENT-1 (base),foundation model (frozen),4,64,2,128,0.8251821019771072
+MOMENT-1 (base),foundation model (frozen),4,64,3,128,0.7804370447450572
+MOMENT-1 (base),foundation model (frozen),4,64,4,128,0.8709677419354838
+MOMENT-1 (base),foundation model (frozen),4,125,0,250,0.8938605619146721
+Mantis-8M,foundation model (frozen),0,2,0,4,0.4970703125
+Mantis-8M,foundation model (frozen),0,2,1,4,0.5908203125
+Mantis-8M,foundation model (frozen),0,2,2,4,0.529296875
+Mantis-8M,foundation model (frozen),0,2,3,4,0.5771484375
+Mantis-8M,foundation model (frozen),0,2,4,4,0.59375
+Mantis-8M,foundation model (frozen),0,4,0,8,0.4931640625
+Mantis-8M,foundation model (frozen),0,4,1,8,0.5009765625
+Mantis-8M,foundation model (frozen),0,4,2,8,0.48046875
+Mantis-8M,foundation model (frozen),0,4,3,8,0.5283203125
+Mantis-8M,foundation model (frozen),0,4,4,8,0.5625
+Mantis-8M,foundation model (frozen),0,8,0,16,0.6318359375
+Mantis-8M,foundation model (frozen),0,8,1,16,0.626953125
+Mantis-8M,foundation model (frozen),0,8,2,16,0.611328125
+Mantis-8M,foundation model (frozen),0,8,3,16,0.5810546875
+Mantis-8M,foundation model (frozen),0,8,4,16,0.572265625
+Mantis-8M,foundation model (frozen),0,16,0,32,0.6279296875
+Mantis-8M,foundation model (frozen),0,16,1,32,0.638671875
+Mantis-8M,foundation model (frozen),0,16,2,32,0.6005859375
+Mantis-8M,foundation model (frozen),0,16,3,32,0.6171875
+Mantis-8M,foundation model (frozen),0,16,4,32,0.6767578125
+Mantis-8M,foundation model (frozen),0,32,0,64,0.69140625
+Mantis-8M,foundation model (frozen),0,32,1,64,0.5966796875
+Mantis-8M,foundation model (frozen),0,32,2,64,0.6259765625
+Mantis-8M,foundation model (frozen),0,32,3,64,0.63671875
+Mantis-8M,foundation model (frozen),0,32,4,64,0.6396484375
+Mantis-8M,foundation model (frozen),0,64,0,128,0.7060546875
+Mantis-8M,foundation model (frozen),0,64,1,128,0.69140625
+Mantis-8M,foundation model (frozen),0,64,2,128,0.6318359375
+Mantis-8M,foundation model (frozen),0,64,3,128,0.6640625
+Mantis-8M,foundation model (frozen),0,64,4,128,0.6318359375
+Mantis-8M,foundation model (frozen),0,124,0,248,0.7294921875
+Mantis-8M,foundation model (frozen),1,2,0,4,0.6670135275754423
+Mantis-8M,foundation model (frozen),1,2,1,4,0.6087408949011446
+Mantis-8M,foundation model (frozen),1,2,2,4,0.6878251821019772
+Mantis-8M,foundation model (frozen),1,2,3,4,0.5702393340270551
+Mantis-8M,foundation model (frozen),1,2,4,4,0.6264308012486992
+Mantis-8M,foundation model (frozen),1,4,0,8,0.6753381893860562
+Mantis-8M,foundation model (frozen),1,4,1,8,0.6618106139438086
+Mantis-8M,foundation model (frozen),1,4,2,8,0.6919875130072841
+Mantis-8M,foundation model (frozen),1,4,3,8,0.63579604578564
+Mantis-8M,foundation model (frozen),1,4,4,8,0.631633714880333
+Mantis-8M,foundation model (frozen),1,8,0,16,0.6867845993756504
+Mantis-8M,foundation model (frozen),1,8,1,16,0.6815816857440166
+Mantis-8M,foundation model (frozen),1,8,2,16,0.6430801248699272
+Mantis-8M,foundation model (frozen),1,8,3,16,0.5993756503642039
+Mantis-8M,foundation model (frozen),1,8,4,16,0.5275754422476586
+Mantis-8M,foundation model (frozen),1,16,0,32,0.6930280957336109
+Mantis-8M,foundation model (frozen),1,16,1,32,0.72840790842872
+Mantis-8M,foundation model (frozen),1,16,2,32,0.5775234131113423
+Mantis-8M,foundation model (frozen),1,16,3,32,0.6753381893860562
+Mantis-8M,foundation model (frozen),1,16,4,32,0.5962539021852237
+Mantis-8M,foundation model (frozen),1,32,0,64,0.7866805411030177
+Mantis-8M,foundation model (frozen),1,32,1,64,0.7492195629552549
+Mantis-8M,foundation model (frozen),1,32,2,64,0.7825182101977107
+Mantis-8M,foundation model (frozen),1,32,3,64,0.7554630593132154
+Mantis-8M,foundation model (frozen),1,32,4,64,0.6337148803329864
+Mantis-8M,foundation model (frozen),1,64,0,128,0.8074921956295525
+Mantis-8M,foundation model (frozen),1,64,1,128,0.8626430801248699
+Mantis-8M,foundation model (frozen),1,64,2,128,0.8168574401664932
+Mantis-8M,foundation model (frozen),1,64,3,128,0.8022892819979188
+Mantis-8M,foundation model (frozen),1,64,4,128,0.8064516129032258
+Mantis-8M,foundation model (frozen),1,125,0,250,0.8522372528616026
+Mantis-8M,foundation model (frozen),2,2,0,4,0.651404786680541
+Mantis-8M,foundation model (frozen),2,2,1,4,0.5598335067637877
+Mantis-8M,foundation model (frozen),2,2,2,4,0.6149843912591051
+Mantis-8M,foundation model (frozen),2,2,3,4,0.644120707596254
+Mantis-8M,foundation model (frozen),2,2,4,4,0.6149843912591051
+Mantis-8M,foundation model (frozen),2,4,0,8,0.4994797086368366
+Mantis-8M,foundation model (frozen),2,4,1,8,0.6139438085327784
+Mantis-8M,foundation model (frozen),2,4,2,8,0.6409989594172736
+Mantis-8M,foundation model (frozen),2,4,3,8,0.5431841831425598
+Mantis-8M,foundation model (frozen),2,4,4,8,0.6701352757544226
+Mantis-8M,foundation model (frozen),2,8,0,16,0.7200832466181062
+Mantis-8M,foundation model (frozen),2,8,1,16,0.6732570239334027
+Mantis-8M,foundation model (frozen),2,8,2,16,0.6160249739854318
+Mantis-8M,foundation model (frozen),2,8,3,16,0.6930280957336108
+Mantis-8M,foundation model (frozen),2,8,4,16,0.6170655567117586
+Mantis-8M,foundation model (frozen),2,16,0,32,0.732570239334027
+Mantis-8M,foundation model (frozen),2,16,1,32,0.6909469302809574
+Mantis-8M,foundation model (frozen),2,16,2,32,0.6732570239334027
+Mantis-8M,foundation model (frozen),2,16,3,32,0.7138397502601457
+Mantis-8M,foundation model (frozen),2,16,4,32,0.5754422476586889
+Mantis-8M,foundation model (frozen),2,32,0,64,0.6451612903225805
+Mantis-8M,foundation model (frozen),2,32,1,64,0.7232049947970864
+Mantis-8M,foundation model (frozen),2,32,2,64,0.6607700312174818
+Mantis-8M,foundation model (frozen),2,32,3,64,0.6659729448491154
+Mantis-8M,foundation model (frozen),2,32,4,64,0.7471383975026015
+Mantis-8M,foundation model (frozen),2,64,0,128,0.7648283038501561
+Mantis-8M,foundation model (frozen),2,64,1,128,0.7617065556711758
+Mantis-8M,foundation model (frozen),2,64,2,128,0.7741935483870968
+Mantis-8M,foundation model (frozen),2,64,3,128,0.7388137356919875
+Mantis-8M,foundation model (frozen),2,64,4,128,0.6784599375650364
+Mantis-8M,foundation model (frozen),2,125,0,250,0.8387096774193549
+Mantis-8M,foundation model (frozen),3,2,0,4,0.6181061394380853
+Mantis-8M,foundation model (frozen),3,2,1,4,0.5150884495317377
+Mantis-8M,foundation model (frozen),3,2,2,4,0.49427679500520294
+Mantis-8M,foundation model (frozen),3,2,3,4,0.6170655567117586
+Mantis-8M,foundation model (frozen),3,2,4,4,0.6503642039542143
+Mantis-8M,foundation model (frozen),3,4,0,8,0.5234131113423517
+Mantis-8M,foundation model (frozen),3,4,1,8,0.6992715920915713
+Mantis-8M,foundation model (frozen),3,4,2,8,0.5202913631633714
+Mantis-8M,foundation model (frozen),3,4,3,8,0.46930280957336107
+Mantis-8M,foundation model (frozen),3,4,4,8,0.6534859521331946
+Mantis-8M,foundation model (frozen),3,8,0,16,0.5254942767950053
+Mantis-8M,foundation model (frozen),3,8,1,16,0.5598335067637876
+Mantis-8M,foundation model (frozen),3,8,2,16,0.5764828303850156
+Mantis-8M,foundation model (frozen),3,8,3,16,0.7190426638917794
+Mantis-8M,foundation model (frozen),3,8,4,16,0.7221644120707597
+Mantis-8M,foundation model (frozen),3,16,0,32,0.7117585848074922
+Mantis-8M,foundation model (frozen),3,16,1,32,0.6149843912591051
+Mantis-8M,foundation model (frozen),3,16,2,32,0.696149843912591
+Mantis-8M,foundation model (frozen),3,16,3,32,0.619146722164412
+Mantis-8M,foundation model (frozen),3,16,4,32,0.7273673257023933
+Mantis-8M,foundation model (frozen),3,32,0,64,0.6597294484911551
+Mantis-8M,foundation model (frozen),3,32,1,64,0.745057232049948
+Mantis-8M,foundation model (frozen),3,32,2,64,0.6919875130072841
+Mantis-8M,foundation model (frozen),3,32,3,64,0.7502601456815817
+Mantis-8M,foundation model (frozen),3,32,4,64,0.6659729448491154
+Mantis-8M,foundation model (frozen),3,64,0,128,0.7825182101977107
+Mantis-8M,foundation model (frozen),3,64,1,128,0.7981269510926119
+Mantis-8M,foundation model (frozen),3,64,2,128,0.7169614984391258
+Mantis-8M,foundation model (frozen),3,64,3,128,0.7960457856399584
+Mantis-8M,foundation model (frozen),3,64,4,128,0.7429760665972944
+Mantis-8M,foundation model (frozen),3,125,0,250,0.8158168574401665
+Mantis-8M,foundation model (frozen),4,2,0,4,0.7263267429760667
+Mantis-8M,foundation model (frozen),4,2,1,4,0.6482830385015609
+Mantis-8M,foundation model (frozen),4,2,2,4,0.5494276795005203
+Mantis-8M,foundation model (frozen),4,2,3,4,0.6524453694068678
+Mantis-8M,foundation model (frozen),4,2,4,4,0.34963579604578565
+Mantis-8M,foundation model (frozen),4,4,0,8,0.4703433922996878
+Mantis-8M,foundation model (frozen),4,4,1,8,0.6077003121748178
+Mantis-8M,foundation model (frozen),4,4,2,8,0.6774193548387096
+Mantis-8M,foundation model (frozen),4,4,3,8,0.6899063475546305
+Mantis-8M,foundation model (frozen),4,4,4,8,0.6982310093652445
+Mantis-8M,foundation model (frozen),4,8,0,16,0.7429760665972944
+Mantis-8M,foundation model (frozen),4,8,1,16,0.7013527575442248
+Mantis-8M,foundation model (frozen),4,8,2,16,0.7159209157127993
+Mantis-8M,foundation model (frozen),4,8,3,16,0.6930280957336108
+Mantis-8M,foundation model (frozen),4,8,4,16,0.5660770031217482
+Mantis-8M,foundation model (frozen),4,16,0,32,0.578563995837669
+Mantis-8M,foundation model (frozen),4,16,1,32,0.7315296566077003
+Mantis-8M,foundation model (frozen),4,16,2,32,0.6368366285119667
+Mantis-8M,foundation model (frozen),4,16,3,32,0.7148803329864725
+Mantis-8M,foundation model (frozen),4,16,4,32,0.6607700312174818
+Mantis-8M,foundation model (frozen),4,32,0,64,0.745057232049948
+Mantis-8M,foundation model (frozen),4,32,1,64,0.7190426638917794
+Mantis-8M,foundation model (frozen),4,32,2,64,0.6992715920915712
+Mantis-8M,foundation model (frozen),4,32,3,64,0.7658688865764828
+Mantis-8M,foundation model (frozen),4,32,4,64,0.558792924037461
+Mantis-8M,foundation model (frozen),4,64,0,128,0.8022892819979189
+Mantis-8M,foundation model (frozen),4,64,1,128,0.8949011446409989
+Mantis-8M,foundation model (frozen),4,64,2,128,0.7565036420395421
+Mantis-8M,foundation model (frozen),4,64,3,128,0.7991675338189386
+Mantis-8M,foundation model (frozen),4,64,4,128,0.8387096774193549
+Mantis-8M,foundation model (frozen),4,125,0,250,0.8969823100936525
+TTM-R2,foundation model (frozen),0,2,0,4,0.5380859375
+TTM-R2,foundation model (frozen),0,2,1,4,0.546875
+TTM-R2,foundation model (frozen),0,2,2,4,0.541015625
+TTM-R2,foundation model (frozen),0,2,3,4,0.5458984375
+TTM-R2,foundation model (frozen),0,2,4,4,0.49609375
+TTM-R2,foundation model (frozen),0,4,0,8,0.583984375
+TTM-R2,foundation model (frozen),0,4,1,8,0.5185546875
+TTM-R2,foundation model (frozen),0,4,2,8,0.5478515625
+TTM-R2,foundation model (frozen),0,4,3,8,0.623046875
+TTM-R2,foundation model (frozen),0,4,4,8,0.5263671875
+TTM-R2,foundation model (frozen),0,8,0,16,0.5322265625
+TTM-R2,foundation model (frozen),0,8,1,16,0.5771484375
+TTM-R2,foundation model (frozen),0,8,2,16,0.533203125
+TTM-R2,foundation model (frozen),0,8,3,16,0.5390625
+TTM-R2,foundation model (frozen),0,8,4,16,0.583984375
+TTM-R2,foundation model (frozen),0,16,0,32,0.615234375
+TTM-R2,foundation model (frozen),0,16,1,32,0.6103515625
+TTM-R2,foundation model (frozen),0,16,2,32,0.638671875
+TTM-R2,foundation model (frozen),0,16,3,32,0.591796875
+TTM-R2,foundation model (frozen),0,16,4,32,0.6533203125
+TTM-R2,foundation model (frozen),0,32,0,64,0.6689453125
+TTM-R2,foundation model (frozen),0,32,1,64,0.6513671875
+TTM-R2,foundation model (frozen),0,32,2,64,0.6953125
+TTM-R2,foundation model (frozen),0,32,3,64,0.6083984375
+TTM-R2,foundation model (frozen),0,32,4,64,0.6748046875
+TTM-R2,foundation model (frozen),0,64,0,128,0.68359375
+TTM-R2,foundation model (frozen),0,64,1,128,0.7109375
+TTM-R2,foundation model (frozen),0,64,2,128,0.6865234375
+TTM-R2,foundation model (frozen),0,64,3,128,0.7216796875
+TTM-R2,foundation model (frozen),0,64,4,128,0.7080078125
+TTM-R2,foundation model (frozen),0,124,0,248,0.8212890625
+TTM-R2,foundation model (frozen),1,2,0,4,0.4973985431841832
+TTM-R2,foundation model (frozen),1,2,1,4,0.509885535900104
+TTM-R2,foundation model (frozen),1,2,2,4,0.5213319458896982
+TTM-R2,foundation model (frozen),1,2,3,4,0.5026014568158168
+TTM-R2,foundation model (frozen),1,2,4,4,0.5306971904266389
+TTM-R2,foundation model (frozen),1,4,0,8,0.4921956295525494
+TTM-R2,foundation model (frozen),1,4,1,8,0.5525494276795004
+TTM-R2,foundation model (frozen),1,4,2,8,0.5161290322580645
+TTM-R2,foundation model (frozen),1,4,3,8,0.4838709677419355
+TTM-R2,foundation model (frozen),1,4,4,8,0.4693028095733612
+TTM-R2,foundation model (frozen),1,8,0,16,0.554630593132154
+TTM-R2,foundation model (frozen),1,8,1,16,0.562955254942768
+TTM-R2,foundation model (frozen),1,8,2,16,0.5327783558792923
+TTM-R2,foundation model (frozen),1,8,3,16,0.5608740894901144
+TTM-R2,foundation model (frozen),1,8,4,16,0.6024973985431842
+TTM-R2,foundation model (frozen),1,16,0,32,0.6045785639958376
+TTM-R2,foundation model (frozen),1,16,1,32,0.5452653485952133
+TTM-R2,foundation model (frozen),1,16,2,32,0.5702393340270551
+TTM-R2,foundation model (frozen),1,16,3,32,0.610822060353798
+TTM-R2,foundation model (frozen),1,16,4,32,0.5837669094693028
+TTM-R2,foundation model (frozen),1,32,0,64,0.595213319458897
+TTM-R2,foundation model (frozen),1,32,1,64,0.6534859521331946
+TTM-R2,foundation model (frozen),1,32,2,64,0.6701352757544224
+TTM-R2,foundation model (frozen),1,32,3,64,0.6503642039542143
+TTM-R2,foundation model (frozen),1,32,4,64,0.5733610822060354
+TTM-R2,foundation model (frozen),1,64,0,128,0.6701352757544224
+TTM-R2,foundation model (frozen),1,64,1,128,0.6347554630593132
+TTM-R2,foundation model (frozen),1,64,2,128,0.6347554630593132
+TTM-R2,foundation model (frozen),1,64,3,128,0.6607700312174818
+TTM-R2,foundation model (frozen),1,64,4,128,0.63579604578564
+TTM-R2,foundation model (frozen),1,125,0,250,0.7159209157127991
+TTM-R2,foundation model (frozen),2,2,0,4,0.5400624349635796
+TTM-R2,foundation model (frozen),2,2,1,4,0.5390218522372529
+TTM-R2,foundation model (frozen),2,2,2,4,0.5411030176899063
+TTM-R2,foundation model (frozen),2,2,3,4,0.48595213319458896
+TTM-R2,foundation model (frozen),2,2,4,4,0.5244536940686785
+TTM-R2,foundation model (frozen),2,4,0,8,0.5306971904266389
+TTM-R2,foundation model (frozen),2,4,1,8,0.477627471383975
+TTM-R2,foundation model (frozen),2,4,2,8,0.47970863683662857
+TTM-R2,foundation model (frozen),2,4,3,8,0.5421436004162331
+TTM-R2,foundation model (frozen),2,4,4,8,0.5213319458896982
+TTM-R2,foundation model (frozen),2,8,0,16,0.5431841831425599
+TTM-R2,foundation model (frozen),2,8,1,16,0.54630593132154
+TTM-R2,foundation model (frozen),2,8,2,16,0.5109261186264308
+TTM-R2,foundation model (frozen),2,8,3,16,0.5379812695109261
+TTM-R2,foundation model (frozen),2,8,4,16,0.5681581685744017
+TTM-R2,foundation model (frozen),2,16,0,32,0.5515088449531738
+TTM-R2,foundation model (frozen),2,16,1,32,0.5567117585848075
+TTM-R2,foundation model (frozen),2,16,2,32,0.663891779396462
+TTM-R2,foundation model (frozen),2,16,3,32,0.6004162330905307
+TTM-R2,foundation model (frozen),2,16,4,32,0.5691987513007284
+TTM-R2,foundation model (frozen),2,32,0,64,0.5775234131113424
+TTM-R2,foundation model (frozen),2,32,1,64,0.6129032258064516
+TTM-R2,foundation model (frozen),2,32,2,64,0.6045785639958376
+TTM-R2,foundation model (frozen),2,32,3,64,0.6503642039542142
+TTM-R2,foundation model (frozen),2,32,4,64,0.5535900104058272
+TTM-R2,foundation model (frozen),2,64,0,128,0.6472424557752342
+TTM-R2,foundation model (frozen),2,64,1,128,0.6462018730489073
+TTM-R2,foundation model (frozen),2,64,2,128,0.6607700312174818
+TTM-R2,foundation model (frozen),2,64,3,128,0.6566077003121749
+TTM-R2,foundation model (frozen),2,64,4,128,0.6149843912591051
+TTM-R2,foundation model (frozen),2,125,0,250,0.6961498439125909
+TTM-R2,foundation model (frozen),3,2,0,4,0.5577523413111343
+TTM-R2,foundation model (frozen),3,2,1,4,0.5078043704474506
+TTM-R2,foundation model (frozen),3,2,2,4,0.5296566077003122
+TTM-R2,foundation model (frozen),3,2,3,4,0.5660770031217481
+TTM-R2,foundation model (frozen),3,2,4,4,0.5244536940686786
+TTM-R2,foundation model (frozen),3,4,0,8,0.5275754422476587
+TTM-R2,foundation model (frozen),3,4,1,8,0.5400624349635796
+TTM-R2,foundation model (frozen),3,4,2,8,0.5556711758584807
+TTM-R2,foundation model (frozen),3,4,3,8,0.5504682622268471
+TTM-R2,foundation model (frozen),3,4,4,8,0.5369406867845993
+TTM-R2,foundation model (frozen),3,8,0,16,0.59105098855359
+TTM-R2,foundation model (frozen),3,8,1,16,0.5744016649323621
+TTM-R2,foundation model (frozen),3,8,2,16,0.5660770031217481
+TTM-R2,foundation model (frozen),3,8,3,16,0.5254942767950052
+TTM-R2,foundation model (frozen),3,8,4,16,0.5660770031217481
+TTM-R2,foundation model (frozen),3,16,0,32,0.5941727367325702
+TTM-R2,foundation model (frozen),3,16,1,32,0.5525494276795005
+TTM-R2,foundation model (frozen),3,16,2,32,0.5941727367325702
+TTM-R2,foundation model (frozen),3,16,3,32,0.6867845993756503
+TTM-R2,foundation model (frozen),3,16,4,32,0.49427679500520294
+TTM-R2,foundation model (frozen),3,32,0,64,0.643080124869927
+TTM-R2,foundation model (frozen),3,32,1,64,0.5733610822060353
+TTM-R2,foundation model (frozen),3,32,2,64,0.6951092611862643
+TTM-R2,foundation model (frozen),3,32,3,64,0.6409989594172737
+TTM-R2,foundation model (frozen),3,32,4,64,0.59105098855359
+TTM-R2,foundation model (frozen),3,64,0,128,0.6722164412070759
+TTM-R2,foundation model (frozen),3,64,1,128,0.6784599375650364
+TTM-R2,foundation model (frozen),3,64,2,128,0.7471383975026014
+TTM-R2,foundation model (frozen),3,64,3,128,0.6534859521331945
+TTM-R2,foundation model (frozen),3,64,4,128,0.6867845993756503
+TTM-R2,foundation model (frozen),3,125,0,250,0.7336108220603538
+TTM-R2,foundation model (frozen),4,2,0,4,0.5067637877211238
+TTM-R2,foundation model (frozen),4,2,1,4,0.4984391259105099
+TTM-R2,foundation model (frozen),4,2,2,4,0.44849115504682624
+TTM-R2,foundation model (frozen),4,2,3,4,0.4973985431841832
+TTM-R2,foundation model (frozen),4,2,4,4,0.5306971904266389
+TTM-R2,foundation model (frozen),4,4,0,8,0.522372528616025
+TTM-R2,foundation model (frozen),4,4,1,8,0.4932362122788761
+TTM-R2,foundation model (frozen),4,4,2,8,0.5744016649323621
+TTM-R2,foundation model (frozen),4,4,3,8,0.4308012486992716
+TTM-R2,foundation model (frozen),4,4,4,8,0.48387096774193544
+TTM-R2,foundation model (frozen),4,8,0,16,0.47970863683662857
+TTM-R2,foundation model (frozen),4,8,1,16,0.5660770031217481
+TTM-R2,foundation model (frozen),4,8,2,16,0.5691987513007284
+TTM-R2,foundation model (frozen),4,8,3,16,0.5317377731529657
+TTM-R2,foundation model (frozen),4,8,4,16,0.5910509885535901
+TTM-R2,foundation model (frozen),4,16,0,32,0.509885535900104
+TTM-R2,foundation model (frozen),4,16,1,32,0.6243496357960459
+TTM-R2,foundation model (frozen),4,16,2,32,0.6534859521331945
+TTM-R2,foundation model (frozen),4,16,3,32,0.6649323621227887
+TTM-R2,foundation model (frozen),4,16,4,32,0.6004162330905307
+TTM-R2,foundation model (frozen),4,32,0,64,0.672216441207076
+TTM-R2,foundation model (frozen),4,32,1,64,0.7242455775234131
+TTM-R2,foundation model (frozen),4,32,2,64,0.5910509885535901
+TTM-R2,foundation model (frozen),4,32,3,64,0.6618106139438085
+TTM-R2,foundation model (frozen),4,32,4,64,0.6014568158168574
+TTM-R2,foundation model (frozen),4,64,0,128,0.6857440166493236
+TTM-R2,foundation model (frozen),4,64,1,128,0.6992715920915712
+TTM-R2,foundation model (frozen),4,64,2,128,0.6753381893860562
+TTM-R2,foundation model (frozen),4,64,3,128,0.6795005202913632
+TTM-R2,foundation model (frozen),4,64,4,128,0.7013527575442248
+TTM-R2,foundation model (frozen),4,125,0,250,0.7492195629552549
+Raw signal,trained from scratch,0,2,0,4,0.5
+Raw signal,trained from scratch,0,2,1,4,0.5
+Raw signal,trained from scratch,0,2,2,4,0.5
+Raw signal,trained from scratch,0,2,3,4,0.5
+Raw signal,trained from scratch,0,2,4,4,0.5
+Raw signal,trained from scratch,0,4,0,8,0.5
+Raw signal,trained from scratch,0,4,1,8,0.5
+Raw signal,trained from scratch,0,4,2,8,0.5
+Raw signal,trained from scratch,0,4,3,8,0.5
+Raw signal,trained from scratch,0,4,4,8,0.5
+Raw signal,trained from scratch,0,8,0,16,0.5
+Raw signal,trained from scratch,0,8,1,16,0.5
+Raw signal,trained from scratch,0,8,2,16,0.5
+Raw signal,trained from scratch,0,8,3,16,0.5
+Raw signal,trained from scratch,0,8,4,16,0.5
+Raw signal,trained from scratch,0,16,0,32,0.5
+Raw signal,trained from scratch,0,16,1,32,0.5
+Raw signal,trained from scratch,0,16,2,32,0.5
+Raw signal,trained from scratch,0,16,3,32,0.5
+Raw signal,trained from scratch,0,16,4,32,0.5
+Raw signal,trained from scratch,0,32,0,64,0.5
+Raw signal,trained from scratch,0,32,1,64,0.5
+Raw signal,trained from scratch,0,32,2,64,0.5
+Raw signal,trained from scratch,0,32,3,64,0.5
+Raw signal,trained from scratch,0,32,4,64,0.5
+Raw signal,trained from scratch,0,64,0,128,0.5
+Raw signal,trained from scratch,0,64,1,128,0.5
+Raw signal,trained from scratch,0,64,2,128,0.5
+Raw signal,trained from scratch,0,64,3,128,0.5
+Raw signal,trained from scratch,0,64,4,128,0.5
+Raw signal,trained from scratch,0,124,0,248,0.5
+Raw signal,trained from scratch,1,2,0,4,0.5
+Raw signal,trained from scratch,1,2,1,4,0.5
+Raw signal,trained from scratch,1,2,2,4,0.5
+Raw signal,trained from scratch,1,2,3,4,0.5
+Raw signal,trained from scratch,1,2,4,4,0.5
+Raw signal,trained from scratch,1,4,0,8,0.5
+Raw signal,trained from scratch,1,4,1,8,0.5
+Raw signal,trained from scratch,1,4,2,8,0.5
+Raw signal,trained from scratch,1,4,3,8,0.5
+Raw signal,trained from scratch,1,4,4,8,0.5
+Raw signal,trained from scratch,1,8,0,16,0.5
+Raw signal,trained from scratch,1,8,1,16,0.5
+Raw signal,trained from scratch,1,8,2,16,0.5
+Raw signal,trained from scratch,1,8,3,16,0.5
+Raw signal,trained from scratch,1,8,4,16,0.5
+Raw signal,trained from scratch,1,16,0,32,0.5
+Raw signal,trained from scratch,1,16,1,32,0.5
+Raw signal,trained from scratch,1,16,2,32,0.5
+Raw signal,trained from scratch,1,16,3,32,0.5
+Raw signal,trained from scratch,1,16,4,32,0.5
+Raw signal,trained from scratch,1,32,0,64,0.5
+Raw signal,trained from scratch,1,32,1,64,0.5
+Raw signal,trained from scratch,1,32,2,64,0.5
+Raw signal,trained from scratch,1,32,3,64,0.5
+Raw signal,trained from scratch,1,32,4,64,0.5
+Raw signal,trained from scratch,1,64,0,128,0.5
+Raw signal,trained from scratch,1,64,1,128,0.5
+Raw signal,trained from scratch,1,64,2,128,0.5
+Raw signal,trained from scratch,1,64,3,128,0.5
+Raw signal,trained from scratch,1,64,4,128,0.5
+Raw signal,trained from scratch,1,125,0,250,0.5
+Raw signal,trained from scratch,2,2,0,4,0.5
+Raw signal,trained from scratch,2,2,1,4,0.5
+Raw signal,trained from scratch,2,2,2,4,0.5
+Raw signal,trained from scratch,2,2,3,4,0.5
+Raw signal,trained from scratch,2,2,4,4,0.5
+Raw signal,trained from scratch,2,4,0,8,0.5
+Raw signal,trained from scratch,2,4,1,8,0.5
+Raw signal,trained from scratch,2,4,2,8,0.5
+Raw signal,trained from scratch,2,4,3,8,0.5
+Raw signal,trained from scratch,2,4,4,8,0.5
+Raw signal,trained from scratch,2,8,0,16,0.5
+Raw signal,trained from scratch,2,8,1,16,0.5
+Raw signal,trained from scratch,2,8,2,16,0.5
+Raw signal,trained from scratch,2,8,3,16,0.5
+Raw signal,trained from scratch,2,8,4,16,0.5
+Raw signal,trained from scratch,2,16,0,32,0.5
+Raw signal,trained from scratch,2,16,1,32,0.5
+Raw signal,trained from scratch,2,16,2,32,0.5
+Raw signal,trained from scratch,2,16,3,32,0.5
+Raw signal,trained from scratch,2,16,4,32,0.5
+Raw signal,trained from scratch,2,32,0,64,0.5
+Raw signal,trained from scratch,2,32,1,64,0.5
+Raw signal,trained from scratch,2,32,2,64,0.5
+Raw signal,trained from scratch,2,32,3,64,0.5
+Raw signal,trained from scratch,2,32,4,64,0.5
+Raw signal,trained from scratch,2,64,0,128,0.5
+Raw signal,trained from scratch,2,64,1,128,0.5
+Raw signal,trained from scratch,2,64,2,128,0.5
+Raw signal,trained from scratch,2,64,3,128,0.5
+Raw signal,trained from scratch,2,64,4,128,0.5
+Raw signal,trained from scratch,2,125,0,250,0.5
+Raw signal,trained from scratch,3,2,0,4,0.5
+Raw signal,trained from scratch,3,2,1,4,0.5
+Raw signal,trained from scratch,3,2,2,4,0.5
+Raw signal,trained from scratch,3,2,3,4,0.5
+Raw signal,trained from scratch,3,2,4,4,0.5
+Raw signal,trained from scratch,3,4,0,8,0.5
+Raw signal,trained from scratch,3,4,1,8,0.5
+Raw signal,trained from scratch,3,4,2,8,0.5
+Raw signal,trained from scratch,3,4,3,8,0.5
+Raw signal,trained from scratch,3,4,4,8,0.5
+Raw signal,trained from scratch,3,8,0,16,0.5
+Raw signal,trained from scratch,3,8,1,16,0.5
+Raw signal,trained from scratch,3,8,2,16,0.5
+Raw signal,trained from scratch,3,8,3,16,0.5
+Raw signal,trained from scratch,3,8,4,16,0.5
+Raw signal,trained from scratch,3,16,0,32,0.5
+Raw signal,trained from scratch,3,16,1,32,0.5
+Raw signal,trained from scratch,3,16,2,32,0.5
+Raw signal,trained from scratch,3,16,3,32,0.5
+Raw signal,trained from scratch,3,16,4,32,0.5
+Raw signal,trained from scratch,3,32,0,64,0.5
+Raw signal,trained from scratch,3,32,1,64,0.5
+Raw signal,trained from scratch,3,32,2,64,0.5
+Raw signal,trained from scratch,3,32,3,64,0.5
+Raw signal,trained from scratch,3,32,4,64,0.5
+Raw signal,trained from scratch,3,64,0,128,0.5
+Raw signal,trained from scratch,3,64,1,128,0.5
+Raw signal,trained from scratch,3,64,2,128,0.5
+Raw signal,trained from scratch,3,64,3,128,0.5
+Raw signal,trained from scratch,3,64,4,128,0.5
+Raw signal,trained from scratch,3,125,0,250,0.5
+Raw signal,trained from scratch,4,2,0,4,0.5
+Raw signal,trained from scratch,4,2,1,4,0.5
+Raw signal,trained from scratch,4,2,2,4,0.5
+Raw signal,trained from scratch,4,2,3,4,0.5
+Raw signal,trained from scratch,4,2,4,4,0.5
+Raw signal,trained from scratch,4,4,0,8,0.5
+Raw signal,trained from scratch,4,4,1,8,0.5
+Raw signal,trained from scratch,4,4,2,8,0.5
+Raw signal,trained from scratch,4,4,3,8,0.5
+Raw signal,trained from scratch,4,4,4,8,0.5
+Raw signal,trained from scratch,4,8,0,16,0.5
+Raw signal,trained from scratch,4,8,1,16,0.5
+Raw signal,trained from scratch,4,8,2,16,0.5
+Raw signal,trained from scratch,4,8,3,16,0.5
+Raw signal,trained from scratch,4,8,4,16,0.5
+Raw signal,trained from scratch,4,16,0,32,0.5
+Raw signal,trained from scratch,4,16,1,32,0.5
+Raw signal,trained from scratch,4,16,2,32,0.5
+Raw signal,trained from scratch,4,16,3,32,0.5
+Raw signal,trained from scratch,4,16,4,32,0.5
+Raw signal,trained from scratch,4,32,0,64,0.5
+Raw signal,trained from scratch,4,32,1,64,0.5
+Raw signal,trained from scratch,4,32,2,64,0.5
+Raw signal,trained from scratch,4,32,3,64,0.5
+Raw signal,trained from scratch,4,32,4,64,0.5
+Raw signal,trained from scratch,4,64,0,128,0.5
+Raw signal,trained from scratch,4,64,1,128,0.5
+Raw signal,trained from scratch,4,64,2,128,0.5
+Raw signal,trained from scratch,4,64,3,128,0.5
+Raw signal,trained from scratch,4,64,4,128,0.5
+Raw signal,trained from scratch,4,125,0,250,0.5
+|FFT| spectrum,trained from scratch,0,2,0,4,0.5859375
+|FFT| spectrum,trained from scratch,0,2,1,4,0.5546875
+|FFT| spectrum,trained from scratch,0,2,2,4,0.564453125
+|FFT| spectrum,trained from scratch,0,2,3,4,0.515625
+|FFT| spectrum,trained from scratch,0,2,4,4,0.5302734375
+|FFT| spectrum,trained from scratch,0,4,0,8,0.578125
+|FFT| spectrum,trained from scratch,0,4,1,8,0.58203125
+|FFT| spectrum,trained from scratch,0,4,2,8,0.45703125
+|FFT| spectrum,trained from scratch,0,4,3,8,0.5224609375
+|FFT| spectrum,trained from scratch,0,4,4,8,0.5400390625
+|FFT| spectrum,trained from scratch,0,8,0,16,0.5224609375
+|FFT| spectrum,trained from scratch,0,8,1,16,0.546875
+|FFT| spectrum,trained from scratch,0,8,2,16,0.6259765625
+|FFT| spectrum,trained from scratch,0,8,3,16,0.603515625
+|FFT| spectrum,trained from scratch,0,8,4,16,0.576171875
+|FFT| spectrum,trained from scratch,0,16,0,32,0.5703125
+|FFT| spectrum,trained from scratch,0,16,1,32,0.5224609375
+|FFT| spectrum,trained from scratch,0,16,2,32,0.5986328125
+|FFT| spectrum,trained from scratch,0,16,3,32,0.6494140625
+|FFT| spectrum,trained from scratch,0,16,4,32,0.53515625
+|FFT| spectrum,trained from scratch,0,32,0,64,0.7021484375
+|FFT| spectrum,trained from scratch,0,32,1,64,0.6826171875
+|FFT| spectrum,trained from scratch,0,32,2,64,0.662109375
+|FFT| spectrum,trained from scratch,0,32,3,64,0.5732421875
+|FFT| spectrum,trained from scratch,0,32,4,64,0.6650390625
+|FFT| spectrum,trained from scratch,0,64,0,128,0.5947265625
+|FFT| spectrum,trained from scratch,0,64,1,128,0.73046875
+|FFT| spectrum,trained from scratch,0,64,2,128,0.6533203125
+|FFT| spectrum,trained from scratch,0,64,3,128,0.7490234375
+|FFT| spectrum,trained from scratch,0,64,4,128,0.7001953125
+|FFT| spectrum,trained from scratch,0,124,0,248,0.734375
+|FFT| spectrum,trained from scratch,1,2,0,4,0.3777315296566077
+|FFT| spectrum,trained from scratch,1,2,1,4,0.5816857440166493
+|FFT| spectrum,trained from scratch,1,2,2,4,0.6212278876170655
+|FFT| spectrum,trained from scratch,1,2,3,4,0.6337148803329865
+|FFT| spectrum,trained from scratch,1,2,4,4,0.6368366285119667
+|FFT| spectrum,trained from scratch,1,4,0,8,0.48595213319458896
+|FFT| spectrum,trained from scratch,1,4,1,8,0.5608740894901145
+|FFT| spectrum,trained from scratch,1,4,2,8,0.54630593132154
+|FFT| spectrum,trained from scratch,1,4,3,8,0.5681581685744016
+|FFT| spectrum,trained from scratch,1,4,4,8,0.5858480749219563
+|FFT| spectrum,trained from scratch,1,8,0,16,0.518210197710718
+|FFT| spectrum,trained from scratch,1,8,1,16,0.5629552549427679
+|FFT| spectrum,trained from scratch,1,8,2,16,0.6326742976066597
+|FFT| spectrum,trained from scratch,1,8,3,16,0.5650364203954215
+|FFT| spectrum,trained from scratch,1,8,4,16,0.6014568158168574
+|FFT| spectrum,trained from scratch,1,16,0,32,0.6212278876170656
+|FFT| spectrum,trained from scratch,1,16,1,32,0.6482830385015608
+|FFT| spectrum,trained from scratch,1,16,2,32,0.6628511966701354
+|FFT| spectrum,trained from scratch,1,16,3,32,0.5608740894901144
+|FFT| spectrum,trained from scratch,1,16,4,32,0.5962539021852238
+|FFT| spectrum,trained from scratch,1,32,0,64,0.5109261186264309
+|FFT| spectrum,trained from scratch,1,32,1,64,0.5983350676378771
+|FFT| spectrum,trained from scratch,1,32,2,64,0.5671175858480749
+|FFT| spectrum,trained from scratch,1,32,3,64,0.6992715920915713
+|FFT| spectrum,trained from scratch,1,32,4,64,0.6545265348595214
+|FFT| spectrum,trained from scratch,1,64,0,128,0.6316337148803329
+|FFT| spectrum,trained from scratch,1,64,1,128,0.6295525494276796
+|FFT| spectrum,trained from scratch,1,64,2,128,0.644120707596254
+|FFT| spectrum,trained from scratch,1,64,3,128,0.6181061394380853
+|FFT| spectrum,trained from scratch,1,64,4,128,0.5796045785639959
+|FFT| spectrum,trained from scratch,1,125,0,250,0.704474505723205
+|FFT| spectrum,trained from scratch,2,2,0,4,0.4797086368366285
+|FFT| spectrum,trained from scratch,2,2,1,4,0.5057232049947971
+|FFT| spectrum,trained from scratch,2,2,2,4,0.4755463059313215
+|FFT| spectrum,trained from scratch,2,2,3,4,0.5494276795005203
+|FFT| spectrum,trained from scratch,2,2,4,4,0.5556711758584807
+|FFT| spectrum,trained from scratch,2,4,0,8,0.6066597294484912
+|FFT| spectrum,trained from scratch,2,4,1,8,0.59105098855359
+|FFT| spectrum,trained from scratch,2,4,2,8,0.5306971904266389
+|FFT| spectrum,trained from scratch,2,4,3,8,0.5764828303850156
+|FFT| spectrum,trained from scratch,2,4,4,8,0.477627471383975
+|FFT| spectrum,trained from scratch,2,8,0,16,0.4963579604578564
+|FFT| spectrum,trained from scratch,2,8,1,16,0.4464099895941728
+|FFT| spectrum,trained from scratch,2,8,2,16,0.5182101977107181
+|FFT| spectrum,trained from scratch,2,8,3,16,0.5327783558792925
+|FFT| spectrum,trained from scratch,2,8,4,16,0.5067637877211238
+|FFT| spectrum,trained from scratch,2,16,0,32,0.5275754422476587
+|FFT| spectrum,trained from scratch,2,16,1,32,0.5775234131113423
+|FFT| spectrum,trained from scratch,2,16,2,32,0.59105098855359
+|FFT| spectrum,trained from scratch,2,16,3,32,0.574401664932362
+|FFT| spectrum,trained from scratch,2,16,4,32,0.6409989594172736
+|FFT| spectrum,trained from scratch,2,32,0,64,0.5525494276795005
+|FFT| spectrum,trained from scratch,2,32,1,64,0.558792924037461
+|FFT| spectrum,trained from scratch,2,32,2,64,0.6139438085327783
+|FFT| spectrum,trained from scratch,2,32,3,64,0.5369406867845994
+|FFT| spectrum,trained from scratch,2,32,4,64,0.5848074921956296
+|FFT| spectrum,trained from scratch,2,64,0,128,0.5858480749219562
+|FFT| spectrum,trained from scratch,2,64,1,128,0.6191467221644121
+|FFT| spectrum,trained from scratch,2,64,2,128,0.542143600416233
+|FFT| spectrum,trained from scratch,2,64,3,128,0.6305931321540063
+|FFT| spectrum,trained from scratch,2,64,4,128,0.5567117585848075
+|FFT| spectrum,trained from scratch,2,125,0,250,0.6170655567117586
+|FFT| spectrum,trained from scratch,3,2,0,4,0.5119667013527576
+|FFT| spectrum,trained from scratch,3,2,1,4,0.5369406867845994
+|FFT| spectrum,trained from scratch,3,2,2,4,0.5379812695109261
+|FFT| spectrum,trained from scratch,3,2,3,4,0.46930280957336107
+|FFT| spectrum,trained from scratch,3,2,4,4,0.5681581685744017
+|FFT| spectrum,trained from scratch,3,4,0,8,0.5109261186264308
+|FFT| spectrum,trained from scratch,3,4,1,8,0.5494276795005204
+|FFT| spectrum,trained from scratch,3,4,2,8,0.5556711758584807
+|FFT| spectrum,trained from scratch,3,4,3,8,0.6233090530697191
+|FFT| spectrum,trained from scratch,3,4,4,8,0.5431841831425598
+|FFT| spectrum,trained from scratch,3,8,0,16,0.5691987513007284
+|FFT| spectrum,trained from scratch,3,8,1,16,0.5567117585848075
+|FFT| spectrum,trained from scratch,3,8,2,16,0.5577523413111343
+|FFT| spectrum,trained from scratch,3,8,3,16,0.6285119667013528
+|FFT| spectrum,trained from scratch,3,8,4,16,0.522372528616025
+|FFT| spectrum,trained from scratch,3,16,0,32,0.6586888657648283
+|FFT| spectrum,trained from scratch,3,16,1,32,0.6711758584807492
+|FFT| spectrum,trained from scratch,3,16,2,32,0.627471383975026
+|FFT| spectrum,trained from scratch,3,16,3,32,0.5941727367325702
+|FFT| spectrum,trained from scratch,3,16,4,32,0.550468262226847
+|FFT| spectrum,trained from scratch,3,32,0,64,0.63579604578564
+|FFT| spectrum,trained from scratch,3,32,1,64,0.6191467221644121
+|FFT| spectrum,trained from scratch,3,32,2,64,0.6097814776274714
+|FFT| spectrum,trained from scratch,3,32,3,64,0.5858480749219563
+|FFT| spectrum,trained from scratch,3,32,4,64,0.6337148803329865
+|FFT| spectrum,trained from scratch,3,64,0,128,0.6971904266389178
+|FFT| spectrum,trained from scratch,3,64,1,128,0.5920915712799167
+|FFT| spectrum,trained from scratch,3,64,2,128,0.6430801248699272
+|FFT| spectrum,trained from scratch,3,64,3,128,0.6503642039542143
+|FFT| spectrum,trained from scratch,3,64,4,128,0.6389177939646201
+|FFT| spectrum,trained from scratch,3,125,0,250,0.6930280957336108
+|FFT| spectrum,trained from scratch,4,2,0,4,0.5681581685744017
+|FFT| spectrum,trained from scratch,4,2,1,4,0.5338189386056191
+|FFT| spectrum,trained from scratch,4,2,2,4,0.5369406867845994
+|FFT| spectrum,trained from scratch,4,2,3,4,0.5275754422476586
+|FFT| spectrum,trained from scratch,4,2,4,4,0.586888657648283
+|FFT| spectrum,trained from scratch,4,4,0,8,0.5837669094693028
+|FFT| spectrum,trained from scratch,4,4,1,8,0.6108220603537982
+|FFT| spectrum,trained from scratch,4,4,2,8,0.627471383975026
+|FFT| spectrum,trained from scratch,4,4,3,8,0.38917793964620184
+|FFT| spectrum,trained from scratch,4,4,4,8,0.6555671175858482
+|FFT| spectrum,trained from scratch,4,8,0,16,0.5858480749219563
+|FFT| spectrum,trained from scratch,4,8,1,16,0.6742976066597295
+|FFT| spectrum,trained from scratch,4,8,2,16,0.6472424557752341
+|FFT| spectrum,trained from scratch,4,8,3,16,0.5650364203954215
+|FFT| spectrum,trained from scratch,4,8,4,16,0.5983350676378772
+|FFT| spectrum,trained from scratch,4,16,0,32,0.6503642039542143
+|FFT| spectrum,trained from scratch,4,16,1,32,0.6097814776274714
+|FFT| spectrum,trained from scratch,4,16,2,32,0.6389177939646202
+|FFT| spectrum,trained from scratch,4,16,3,32,0.5442247658688866
+|FFT| spectrum,trained from scratch,4,16,4,32,0.627471383975026
+|FFT| spectrum,trained from scratch,4,32,0,64,0.6670135275754423
+|FFT| spectrum,trained from scratch,4,32,1,64,0.6087408949011447
+|FFT| spectrum,trained from scratch,4,32,2,64,0.5567117585848075
+|FFT| spectrum,trained from scratch,4,32,3,64,0.6264308012486992
+|FFT| spectrum,trained from scratch,4,32,4,64,0.4932362122788762
+|FFT| spectrum,trained from scratch,4,64,0,128,0.7585848074921957
+|FFT| spectrum,trained from scratch,4,64,1,128,0.7065556711758585
+|FFT| spectrum,trained from scratch,4,64,2,128,0.6815816857440167
+|FFT| spectrum,trained from scratch,4,64,3,128,0.619146722164412
+|FFT| spectrum,trained from scratch,4,64,4,128,0.6399583766909469
+|FFT| spectrum,trained from scratch,4,125,0,250,0.704474505723205
