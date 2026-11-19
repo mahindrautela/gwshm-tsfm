@@ -1,0 +1,12 @@
+# environments
+.venv/
+__pycache__/
+*.pyc
+
+# data and generated outputs (large; reproducible from scripts)
+data/
+results*/
+report*/
+*.npz
+*.parquet
+*.h5
