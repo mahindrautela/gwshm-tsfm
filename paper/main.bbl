@@ -1,0 +1,167 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ansari et~al.(2024)Ansari, Stella, Turkmen, Zhang, Mercado, Shen,
+  Shchur, Rangapuram, Pineda~Arango, Kapoor, et~al.]{ansari2024chronos}
+Ansari, A.~F., Stella, L., Turkmen, C., Zhang, X., Mercado, P., Shen, H.,
+  Shchur, O., Rangapuram, S.~S., Pineda~Arango, S., Kapoor, S., et~al.
+\newblock Chronos: Learning the language of time series.
+\newblock \emph{Transactions on Machine Learning Research}, 2024.
+
+\bibitem[Ansari et~al.(2025)Ansari, Shchur, K{\"u}ken, Auer, Han, Mercado,
+  Rangapuram, Shen, Stella, Zhang, et~al.]{ansari2025chronos2}
+Ansari, A.~F., Shchur, O., K{\"u}ken, J., Auer, A., Han, B., Mercado, P.,
+  Rangapuram, S.~S., Shen, H., Stella, L., Zhang, X., et~al.
+\newblock {Chronos-2}: From univariate to universal forecasting.
+\newblock \emph{arXiv preprint arXiv:2510.15821}, 2025.
+
+\bibitem[Auer et~al.(2025)Auer, Podest, Klotz, B{\"o}ck, Klambauer, and
+  Hochreiter]{auer2025tirex}
+Auer, A., Podest, P., Klotz, D., B{\"o}ck, S., Klambauer, G., and Hochreiter,
+  S.
+\newblock {TiRex}: Zero-shot forecasting across long and short horizons with
+  enhanced in-context learning.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~38, 2025.
+
+\bibitem[Croxford et~al.(2007)Croxford, Wilcox, Drinkwater, and
+  Konstantinidis]{croxford2007strategies}
+Croxford, A.~J., Wilcox, P.~D., Drinkwater, B.~W., and Konstantinidis, G.
+\newblock Strategies for guided-wave structural health monitoring.
+\newblock \emph{Proceedings of the Royal Society A: Mathematical, Physical and
+  Engineering Sciences}, 463\penalty0 (2087), 2007.
+
+\bibitem[Das et~al.(2024)Das, Kong, Sen, and Zhou]{das2024timesfm}
+Das, A., Kong, W., Sen, R., and Zhou, Y.
+\newblock A decoder-only foundation model for time-series forecasting.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}, 2024.
+
+\bibitem[Dempster et~al.(2021)Dempster, Schmidt, and
+  Webb]{dempster2021minirocket}
+Dempster, A., Schmidt, D.~F., and Webb, G.~I.
+\newblock {MiniRocket}: A very fast (almost) deterministic transform for time
+  series classification.
+\newblock In \emph{Proceedings of the 27th ACM SIGKDD Conference on Knowledge
+  Discovery and Data Mining}, pp.\  248--257, 2021.
+
+\bibitem[Ekambaram et~al.(2024)Ekambaram, Jati, Dayama, Mukherjee, Nguyen,
+  Gifford, Reddy, and Kalagnanam]{ekambaram2024ttm}
+Ekambaram, V., Jati, A., Dayama, P., Mukherjee, S., Nguyen, N.~H., Gifford,
+  W.~M., Reddy, C., and Kalagnanam, J.
+\newblock Tiny time mixers ({TTMs}): Fast pre-trained models for enhanced
+  zero/few-shot forecasting of multivariate time series.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+
+\bibitem[Feofanov et~al.(2026)Feofanov, Wen, Xie, Roschmann, Alonso, Guo,
+  Ilbert, Tiomoko, Bouniot, Akata, Pan, Zhang, and Redko]{feofanov2026mantis}
+Feofanov, V., Wen, S., Xie, S., Roschmann, S., Alonso, M., Guo, H., Ilbert, R.,
+  Tiomoko, M., Bouniot, Q., Akata, Z., Pan, L., Zhang, J., and Redko, I.
+\newblock Mantis: Lightweight foundation model for time series classification.
+\newblock In \emph{Proceedings of the 43rd International Conference on Machine
+  Learning}, volume 306 of \emph{PMLR}, pp.\  30692--30719, 2026.
+
+\bibitem[Goswami et~al.(2024)Goswami, Szafer, Choudhry, Cai, Li, and
+  Dubrawski]{goswami2024moment}
+Goswami, M., Szafer, K., Choudhry, A., Cai, Y., Li, S., and Dubrawski, A.
+\newblock {MOMENT}: A family of open time-series foundation models.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}, 2024.
+
+\bibitem[Guo et~al.(2025)Guo, Chen, Zheng, Amiri, Song, Yu, and
+  Wang]{guo2025dcat}
+Guo, J., Chen, B., Zheng, S., Amiri, N., Song, G., Yu, L., and Wang, Y.
+\newblock A dual-contrastive-attention transformer for unsupervised {Lamb} wave
+  defect detection.
+\newblock In \emph{Proceedings of the Annual Conference of the PHM Society},
+  2025.
+
+\bibitem[Hay et~al.(2006)Hay, Royer, Gao, Zhao, and Rose]{hay2006rapid}
+Hay, T.~R., Royer, R.~L., Gao, H., Zhao, X., and Rose, J.~L.
+\newblock A comparison of embedded sensor {Lamb} wave ultrasonic tomography
+  approaches for material loss detection.
+\newblock \emph{Smart Materials and Structures}, 15\penalty0 (4):\penalty0
+  946--951, 2006.
+
+\bibitem[Henkmann et~al.(2025)Henkmann, Memmolo, and Moll]{henkmann2025tinyml}
+Henkmann, J., Memmolo, V., and Moll, J.
+\newblock Tiny machine learning implementation for guided wave-based damage
+  localization.
+\newblock \emph{Sensors}, 25\penalty0 (2):\penalty0 578, 2025.
+
+\bibitem[Kapoor \& Narayanan(2023)Kapoor and Narayanan]{kapoor2023leakage}
+Kapoor, S. and Narayanan, A.
+\newblock Leakage and the reproducibility crisis in machine-learning-based
+  science.
+\newblock \emph{Patterns}, 4\penalty0 (9):\penalty0 100804, 2023.
+
+\bibitem[Kaufman et~al.(2012)Kaufman, Rosset, Perlich, and
+  Stitelman]{kaufman2012leakage}
+Kaufman, S., Rosset, S., Perlich, C., and Stitelman, O.
+\newblock Leakage in data mining: Formulation, detection, and avoidance.
+\newblock \emph{ACM Transactions on Knowledge Discovery from Data}, 6\penalty0
+  (4):\penalty0 15:1--15:21, 2012.
+
+\bibitem[Memmolo et~al.(2016)Memmolo, Maio, Boffa, Monaco, and
+  Ricci]{memmolo2016tomography}
+Memmolo, V., Maio, L., Boffa, N.~D., Monaco, E., and Ricci, F.
+\newblock Damage detection tomography based on guided waves in composite
+  structures using a distributed sensor network.
+\newblock \emph{Optical Engineering}, 55\penalty0 (1):\penalty0 011007, 2016.
+
+\bibitem[Mitra \& Gopalakrishnan(2016)Mitra and
+  Gopalakrishnan]{mitra2016review}
+Mitra, M. and Gopalakrishnan, S.
+\newblock Guided wave based structural health monitoring: A review.
+\newblock \emph{Smart Materials and Structures}, 25\penalty0 (5):\penalty0
+  053001, 2016.
+
+\bibitem[Moll et~al.(2019)Moll, Kathol, Fritzen, Moix-Bonet, Rennoch, Koerdt,
+  Herrmann, Sause, and Bach]{moll2019ogw}
+Moll, J., Kathol, J., Fritzen, C.-P., Moix-Bonet, M., Rennoch, M., Koerdt, M.,
+  Herrmann, A.~S., Sause, M. G.~R., and Bach, M.
+\newblock {Open Guided Waves}: Online platform for ultrasonic guided wave
+  measurements.
+\newblock \emph{Structural Health Monitoring}, 18\penalty0 (5--6):\penalty0
+  1903--1914, 2019.
+
+\bibitem[Rautela et~al.(2021)Rautela, Senthilnath, Moll, and
+  Gopalakrishnan]{rautela2021combined}
+Rautela, M., Senthilnath, J., Moll, J., and Gopalakrishnan, S.
+\newblock Combined two-level damage identification strategy using ultrasonic
+  guided waves and physical knowledge assisted machine learning.
+\newblock \emph{Ultrasonics}, 115:\penalty0 106451, 2021.
+
+\bibitem[Rautela et~al.(2022)Rautela, Senthilnath, Monaco, and
+  Gopalakrishnan]{rautela2022delamination}
+Rautela, M., Senthilnath, J., Monaco, E., and Gopalakrishnan, S.
+\newblock Delamination prediction in composite panels using
+  unsupervised-feature learning methods with wavelet-enhanced guided wave
+  representations.
+\newblock \emph{Composite Structures}, 291:\penalty0 115579, 2022.
+
+\bibitem[Saxena et~al.(2008)Saxena, Goebel, Larrosa, and Chang]{saxena2008nasa}
+Saxena, A., Goebel, K., Larrosa, C.~C., and Chang, F.-K.
+\newblock {CFRP} composites data set.
+\newblock NASA Prognostics Data Repository, NASA Ames Research Center, Moffett
+  Field, CA, 2008.
+
+\bibitem[Woo et~al.(2024)Woo, Liu, Kumar, Xiong, Savarese, and
+  Sahoo]{woo2024moirai}
+Woo, G., Liu, C., Kumar, A., Xiong, C., Savarese, S., and Sahoo, D.
+\newblock Unified training of universal time series forecasting transformers.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}, 2024.
+
+\bibitem[Xu et~al.(2019)Xu, Yuan, Chen, and Ren]{xu2019crack}
+Xu, L., Yuan, S., Chen, J., and Ren, Y.
+\newblock Guided wave-convolutional neural network based fatigue crack
+  diagnosis of aircraft structures.
+\newblock \emph{Sensors}, 19\penalty0 (16):\penalty0 3567, 2019.
+
+\end{thebibliography}

@@ -1,0 +1,808 @@
+%%%%%%%% ICML 2026 submission: frozen TSFMs for guided-wave SHM %%%%%%%%
+\documentclass{article}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Blind submission (default). For a preprint with author names use
+%   \usepackage[preprint]{icml2026}
+% and for the camera-ready version use
+%   \usepackage[accepted]{icml2026}
+\usepackage{icml2026}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+
+\definecolor{tsfmblue}{HTML}{2A78D6}
+\definecolor{tsfmblue1}{HTML}{CDE2FB}
+\definecolor{tsfmblue2}{HTML}{6DA7EC}
+\definecolor{tsfmblue3}{HTML}{184F95}
+\definecolor{dmgorange}{HTML}{EB6834}
+\definecolor{inkgray}{HTML}{52514E}
+\definecolor{rulegray}{HTML}{D9D8D3}
+
+\newcommand{\fft}{$|$FFT$|$}
+% primitive \input, so generated table rows can sit inside tabular
+\makeatletter\newcommand{\inputrows}[1]{\@@input #1 }\makeatother
+
+\icmltitlerunning{Frozen Time Series Foundation Models for Guided-Wave Structural Health Monitoring}
+
+\begin{document}
+
+\twocolumn[
+  \icmltitle{Compare Like with Like: Frozen Time Series Foundation Models\\
+    for Guided-Wave Structural Health Monitoring}
+
+  % Author information is hidden automatically in the blind version.
+  % TODO before a preprint or camera-ready: complete affiliation and e-mail.
+  \begin{icmlauthorlist}
+    \icmlauthor{Mahindra Rautela}{aff}
+  \end{icmlauthorlist}
+  \icmlaffiliation{aff}{Affiliation, City, Country}
+  \icmlcorrespondingauthor{Mahindra Rautela}{email@example.com}
+
+  \icmlkeywords{time series foundation models, structural health monitoring, guided waves,
+    anomaly detection, damage localisation, transfer learning}
+
+  \vskip 0.3in
+]
+
+\printAffiliationsAndNotice{}
+
+\begin{abstract}
+Time series foundation models (TSFMs) are pretrained on large and varied corpora, but it is not clear
+whether their representations help with ultrasonic guided waves, the signals used to monitor composite
+aircraft structures for damage. We test six frozen TSFMs as feature extractors on three public datasets
+that cover the main monitoring tasks: supervised damage classification, unsupervised delamination
+detection and damage localisation. The embeddings are useful when they are used the way engineers use
+baseline measurements, by comparing each signal with healthy recordings from the same sensor path and
+reading the sensor network as a whole. Used this way, frozen embeddings classify damage on held-out sensor
+configurations with AUC up to 0.86, match classical baseline subtraction for delamination detection while
+transferring better across specimens, and place all 28 held-out damage positions in the correct zone,
+where a physics-based damage index reaches 0.89. Used one signal at a time, the same embeddings, like
+every other method we tried, locate damage barely above chance. We also show how repeated acquisitions,
+sign-inverted signals and baseline normalisation can inflate results on these datasets.
+\end{abstract}
+
+\begin{figure*}[t]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[font=\footnotesize, >={Stealth[length=2.2mm]},
+      box/.style={draw=inkgray, rounded corners=2pt, line width=0.4pt, align=left, inner sep=3pt}]
+    % plate with transducer network
+    \draw[rulegray, line width=0.5pt] (0,0) rectangle (3,3);
+    \foreach \i in {0,...,5} {\foreach \j in {0,...,5} {
+      \draw[rulegray, line width=0.25pt] (0.3+0.48*\i,2.75) -- (0.3+0.48*\j,0.25);}}
+    \draw[tsfmblue, line width=1.4pt] (0.78,2.75) -- (1.74,0.25);
+    \foreach \i in {0,...,5} {\fill[inkgray] (0.3+0.48*\i-0.06,2.69) rectangle ++(0.12,0.12);
+                              \fill[inkgray] (0.3+0.48*\i-0.06,0.19) rectangle ++(0.12,0.12);}
+    \node[star, star points=5, star point ratio=2.2, fill=dmgorange, draw=white, line width=0.3pt,
+          minimum size=7pt, inner sep=0pt] at (1.12,1.95) {};
+    \node[tsfmblue, anchor=west] at (1.62,0.62) {path $p$};
+    \node[align=center, anchor=north] at (1.5,-0.08) {transducer network\\(36 paths)};
+    % signal
+    \draw[->, inkgray] (3.25,1.5) -- (3.85,1.5);
+    \draw[inkgray, line width=0.2pt] (4.0,1.5) -- (5.8,1.5);
+    \draw[tsfmblue3, line width=0.6pt, domain=0:1.8, samples=220, smooth]
+      plot (\x+4.0, {1.5 + 0.55*exp(-((\x-0.55)^2)/0.03)*sin(\x*1500)
+                          + 0.22*exp(-((\x-1.25)^2)/0.02)*sin(\x*1500+40)});
+    \node[align=center, anchor=north] at (4.9,0.85) {signal $x_p$ of path $p$\\(or its residual)};
+    % frozen model
+    \draw[->, inkgray] (5.95,1.5) -- (6.5,1.5);
+    \node[box, fill=tsfmblue1, align=center, minimum width=2.1cm, minimum height=1.05cm]
+      (m) at (7.65,1.5) {frozen TSFM $\phi$\\(no training)};
+    \draw[->, inkgray] (m.east) -- (9.25,1.5);
+    \foreach \k/\c in {0/tsfmblue1,1/tsfmblue2,2/tsfmblue,3/tsfmblue3,4/tsfmblue2,5/tsfmblue} {
+      \fill[\c] (9.35,0.95+0.18*\k) rectangle ++(0.22,0.16);}
+    \node[anchor=north] at (9.46,0.85) {$\phi(x_p)$};
+    % three uses
+    \draw[->, inkgray] (9.7,1.5) -- (10.25,2.55);
+    \draw[->, inkgray] (9.7,1.5) -- (10.25,1.5);
+    \draw[->, inkgray] (9.7,1.5) -- (10.25,0.45);
+    \node[box, anchor=west, text width=7.7cm] at (10.3,2.55)
+      {\textbf{Classify} (GW-TCW): logistic regression on $\phi(x)$, tested on held-out sensor configurations};
+    \node[box, anchor=west, text width=7.7cm] at (10.3,1.5)
+      {\textbf{Detect} (NASA, healthy data only): distance from $\phi(x_p)$ to healthy embeddings of the
+       \emph{same path}};
+    \node[box, anchor=west, text width=7.7cm, fill=tsfmblue1!45] at (10.3,0.45)
+      {\textbf{Locate} (OGW-1): same-path distances of all 36 paths form a map; a classifier reads the
+       damage zone};
+  \end{tikzpicture}}
+  \caption{Overview. Each signal is embedded by a frozen time series foundation model, and only a light
+  head is fitted on top. The embeddings help when, as with classical baseline subtraction, a signal is
+  compared with healthy recordings of its own sensor path and the paths are read together as a network.
+  Predicting the damage zone from one path's signal on its own fails for every method
+  (\cref{sec:res3}).}
+  \label{fig:overview}
+\end{figure*}
+
+% ---------------------------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+
+Composite aircraft structures can be monitored with networks of piezoelectric transducers bonded to
+their surface. One transducer excites an ultrasonic guided wave and the others record it. Damage scatters
+and attenuates the wave, so the signals on transmitter--receiver paths that pass close to the damage
+change \citep{mitra2016review}. The usual way to expose that change is to subtract a baseline recorded on
+the same path while the structure was healthy \citep{croxford2007strategies}. Learned methods for
+guided-wave structural health monitoring (SHM) are mostly trained from scratch on one structure
+\citep{xu2019crack,rautela2021combined,rautela2022delamination}. Damage data are expensive to produce,
+so these models see few damage cases, and it is hard to know how well they carry over to sensor paths
+and specimens they were not trained on.
+
+Time series foundation models offer another starting point. Chronos, TimesFM, Moirai, MOMENT, TiRex,
+TTM and others are pretrained on large time series corpora
+\citep{ansari2024chronos,das2024timesfm,woo2024moirai,goswami2024moment,auer2025tirex,ekambaram2024ttm},
+and their frozen representations are increasingly used as general-purpose features, for example for
+classification \citep{goswami2024moment,feofanov2026mantis}. Guided waves are a hard test for them. A
+guided-wave signal is a transient lasting a fraction of a millisecond, sampled at megahertz rates, and
+its information sits in arrival times, mode content and small scattered wave packets. Little of the
+pretraining data looks like this.
+
+We ask whether frozen TSFM representations are useful for guided-wave SHM without any training of the
+models. We evaluate six models (Chronos-2, Chronos-Bolt, TiRex, MOMENT, Mantis and TTM) as fixed feature
+extractors on three public composite datasets, one for each of the main monitoring tasks: supervised
+damage classification on a tapered wing panel, unsupervised delamination detection on fatigue-loaded
+coupons, and damage localisation on a plate. Only a light head is fitted on top of the embeddings, and the
+evaluations hold out whole sensor configurations, specimens or damage positions.
+
+The answer depends on how the embeddings are used (\cref{fig:overview}). They work when used the way SHM
+engineers use baselines: compare a signal with healthy recordings of the same sensor path, and read the
+network of paths as a whole. A distance in embedding space to the same path's healthy recordings detects
+delamination as well as classical baseline subtraction, and it carries over better from one specimen to
+another. A map of these distances over the 36 paths of a plate places every held-out damage position in
+the correct zone. Used one signal at a time, the same embeddings say little about where the damage is,
+and neither does any other method we tried, including models trained on the data.
+
+Our contributions are:
+\begin{itemize}
+  \setlength\itemsep{0.1em}
+  \item A benchmark of six frozen TSFMs on three guided-wave SHM tasks, against classical damage indices
+        and models trained on the target data (\cref{sec:results}).
+  \item A simple way to make frozen embeddings useful: same-path distances act as a learned baseline
+        subtraction, and their map over the sensor network localises damage (\cref{sec:method}). With it,
+        all six models localise all 28 held-out damage positions.
+  \item Leakage-aware protocols and audits of the three datasets, covering repeated acquisitions,
+        sign-inverted signals and a baseline-normalisation shortcut, each of which can inflate results
+        (\cref{sec:setup,sec:discussion}).
+  \item CPU-only code for every experiment, with all result tables.
+\end{itemize}
+
+
+
+% ---------------------------------------------------------------------------------------------
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Time series foundation models.}
+Most TSFMs are pretrained for forecasting. Chronos quantises scaled values into tokens and trains T5
+language models on them \citep{ansari2024chronos}, and its successors Chronos-Bolt and Chronos-2
+\citep{ansari2025chronos2} forecast quantiles of whole patches. TimesFM \citep{das2024timesfm} and Moirai
+\citep{woo2024moirai} are patch-based transformers, TiRex builds on xLSTM \citep{auer2025tirex}, and TTM
+is a small MLP-mixer \citep{ekambaram2024ttm}. MOMENT is pretrained by masked reconstruction and evaluated
+on classification and anomaly detection as well \citep{goswami2024moment}; Mantis is pretrained
+contrastively for classification \citep{feofanov2026mantis}. These models are mainly evaluated on
+forecasting benchmarks and on general classification archives. We are not aware of a systematic
+evaluation on ultrasonic guided waves, whose sampling rates and waveforms are far from these corpora.
+
+\paragraph{Machine learning for guided-wave SHM.}
+Most learned methods are deep networks trained on raw signals or time--frequency images, for crack
+diagnosis \citep{xu2019crack}, damage localisation \citep{rautela2021combined,henkmann2025tinyml} and
+unsupervised delamination detection \citep{rautela2022delamination,guo2025dcat}. They are trained on data
+from the target structure. Classical methods instead compare each path with its own baseline, through
+residual energy or correlation \citep{croxford2007strategies}, and combine paths by tomography such as
+RAPID \citep{hay2006rapid}. Frozen embeddings fit into this classical pipeline: they replace the raw
+signal in the baseline comparison, and nothing in them is fitted to the target structure.
+
+\paragraph{Leakage in evaluation.}
+Leakage between training and test data is a well-known source of over-optimistic results
+\citep{kaufman2012leakage,kapoor2023leakage}. Guided-wave datasets invite it: acquisitions are repeated,
+each path is recorded at several frequencies, and damage cases are measured in blocks that share
+baselines. We document three concrete cases in \cref{sec:setup,sec:discussion}.
+
+% ---------------------------------------------------------------------------------------------
+\section{Frozen Embeddings for Guided-Wave Monitoring}
+\label{sec:method}
+
+\paragraph{Setting.}
+A transducer network defines paths $p$, each a transmitter--receiver pair. A measurement records one
+signal $x_{p,f}\in\mathbb{R}^L$ per path and excitation frequency $f$. As in any baseline-based SHM
+system, healthy reference recordings are available for every path. Damage mainly changes the paths that
+pass near it.
+
+\paragraph{Embeddings.}
+A frozen TSFM maps each signal on its own to a vector $\phi(x)\in\mathbb{R}^d$, the mean of its encoder
+tokens or the model's pooled embedding (\cref{tab:models}). No weight of the model is updated. We use the
+embeddings in three ways, one per task.
+
+\paragraph{Classification.}
+Logistic regression on standardised embeddings predicts whether a single signal is healthy or damaged.
+
+\paragraph{Same-path distance.}
+For a signal of path $p$ at frequency $f$, the anomaly score is the distance of its embedding to the
+mean embedding $\mu_{p,f}$ of the healthy reference signals of the same path and frequency,
+\begin{equation}
+  s(x_{p,f}) = \Big(\frac{1}{d}\sum_{j=1}^{d}\frac{\big(\phi_j(x_{p,f})-\mu_{p,f,j}\big)^2}{\sigma_j^2}\Big)^{1/2},
+  \label{eq:samepath}
+\end{equation}
+where $\sigma_j$ is the standard deviation of feature $j$ over all reference embeddings. This is baseline
+subtraction carried out in embedding space, and only healthy data enter it. The score of a whole
+measurement is the mean of $s$ over its signals.
+
+\paragraph{Network damage-index map.}
+For localisation we start from residuals: the damaged signal of a path minus the mean of its healthy
+baselines, $r_p = x_p - \bar b_p$. The baselines themselves give drift residuals
+$b^{(i)}_p-\bar b_p$, $i=1,\dots,n$, which show how much the path varies without damage. The damage index
+of path $p$ is the distance of the residual from the drift residuals in embedding space, in units of
+their spread,
+\begin{equation}
+  \mathrm{DI}_p = \frac{\lVert \tilde\phi(r_p) - m_p\rVert}
+  {\frac{1}{n}\sum_{i=1}^{n}\lVert\tilde\phi(b^{(i)}_p-\bar b_p) - m_p\rVert},
+  \label{eq:di}
+\end{equation}
+where $\tilde\phi$ is the embedding standardised with healthy statistics and $m_p$ the mean embedding of
+the drift residuals of path $p$. The values $\log\mathrm{DI}_p$ of all paths form a map of the structure,
+and a logistic regression reads the damage zone from it. The physics counterpart replaces the embedding
+distance with residual energy, $\mathrm{DI}_p=\overline{r_p^2}\,/\,\overline{(b_p-\bar b_p)^2}$, where the
+bar averages over samples and, in the denominator, also over baselines.
+
+Both detectors compare like with like. A signal is only ever compared with recordings of its own path,
+so the large differences between paths never enter the score.
+
+% ---------------------------------------------------------------------------------------------
+\section{Experimental Setup}
+\label{sec:setup}
+
+\begin{table*}[t]
+  \caption{Datasets and what each evaluation holds out. The audits are described in \cref{sec:data}.}
+  \label{tab:data}
+  \centering
+  \small
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{2.75cm}@{}}
+    \toprule
+    Dataset & Task & Structure and damage & Signals used & Held out in testing \\
+    \midrule
+    GW-TCW \citep{memmolo2016tomography} & 1.\ Damage classification (supervised) &
+      Tapered composite wing panel; delamination & 156 configurations $\times$ 2 states;
+      1{,}000 samples at 2\,MHz & Whole sensor configurations (5-fold) \\[3pt]
+    NASA PCoE, layup 2 \citep{saxena2008nasa} & 2.\ Delamination detection (healthy data only) &
+      CFRP coupons under tension--tension fatigue & 4 specimens, 62 measurements $\times$ 252 signals;
+      1{,}024 samples at 1.2\,MHz & Reference draws; whole specimens \\[3pt]
+    OGW dataset 1 \citep{moll2019ogw} & 3.\ Damage-zone localisation (supervised) &
+      500\,$\times$\,500\,mm CFRP plate; reversible defect at 28 positions in 7 zones &
+      36 paths $\times$ 3 frequencies per case; 512 samples at 1\,MHz & Damage positions
+      (leave-position-out) \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\subsection{Datasets and audits}
+\label{sec:data}
+
+\Cref{tab:data} summarises the three datasets. To our knowledge none of them is part of the models'
+pretraining data.
+
+\paragraph{GW-TCW.}
+Guided-wave measurements on a tapered composite wing panel \citep{memmolo2016tomography}, used for
+delamination detection by \citet{rautela2022delamination}. Each state (healthy, damaged) has 1{,}560
+signals, organised as 13 blocks $\times$ 12 sensor paths $\times$ 10 repeated acquisitions; we call a
+(block, path) pair a configuration. Two properties shape the evaluation. First, the 10 repeats of a
+configuration are near copies (median correlation 0.99997), so a random split puts the same signal on
+both sides. We keep one acquisition per configuration (312 signals) and split by configuration. Second,
+in 71 of the 156 configurations every damaged signal is sign-inverted relative to its baseline, while
+otherwise healthy and damaged signals are very similar (median $|r|=0.98$). A classifier could learn
+polarity instead of damage, so we also report a sign-symmetric setting.
+
+\paragraph{NASA PCoE CFRP composites.}
+Layup-2 coupons under tension--tension fatigue \citep{saxena2008nasa}, with six actuators and six
+sensors (36 paths) excited at seven frequencies from 150 to 450\,kHz, giving 252 signals per measurement.
+We use its four specimens (S11, S17, S18, S20) under the loaded boundary condition, which has the most
+early-life repeats. For each specimen, the 8 measurements at no more than 3 cycles are healthy and, following
+\citet{rautela2022delamination}, the 20{,}000-cycle measurement is damaged. The remaining measurements up to
+200{,}000 cycles serve to track damage growth. We use the first 1{,}024 samples (0.85\,ms) of each signal.
+
+\paragraph{Open Guided Waves, dataset 1 (OGW-1).}
+A quasi-isotropic CFRP plate with 12 transducers, measured at constant temperature with a reversible
+surface defect at 28 positions \citep{moll2019ogw}. Measurements come in six phases: 20 baselines,
+D1--D11, 20 baselines, D12--D20, 20 baselines, D21--D28. The positions form seven zones of four
+neighbouring positions (D1--4, \dots, D25--28). Transducers T1--T6 line one edge and T7--T12 the
+opposite edge, and we use the 36 paths that cross the plate between them, at 40, 60 and 80\,kHz. As in
+\citet{rautela2021combined}, each example is a residual: the damaged signal minus the mean of the 20
+baselines of the preceding phase, 512 samples from the excitation onset after decimation to 1\,MHz.
+
+The audit that matters here is how zone information is spread over the paths. We compare each path's
+residual energy with its baseline-to-baseline drift. At 40\,kHz, paths that pass within 10\,mm of the
+damage have a median of 4.2$\times$ the drift energy, and paths more than 120\,mm away have 0.71$\times$.
+At 60\,kHz the near paths drop to 2.4$\times$, and at 80\,kHz to 0.81$\times$, below the drift. Most
+residuals of a damage case therefore carry no information about its zone.
+
+\begin{table}[t]
+  \caption{Frozen models. Parameters were counted in the loaded checkpoints. Embeddings are the mean of
+  the encoder tokens (Chronos-2, Chronos-Bolt, TTM-R2) or the model's own embedding (TiRex, MOMENT,
+  Mantis). Dim.: embedding size; $^*$per 512-sample window.}
+  \label{tab:models}
+  \centering
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lrllr@{}}
+    \toprule
+    Model & Size & Backbone & Pretraining & Dim. \\
+    \midrule
+    Chronos-2 & 120M & transf.\ encoder & forecasting & 768 \\
+    Chronos-Bolt base & 205M & T5 enc.--dec. & forecasting & 768 \\
+    TiRex & 35M & xLSTM & forecasting & 6{,}144 \\
+    MOMENT-1 base & 110M & T5 encoder & masked rec. & 768$^*$ \\
+    Mantis-8M & 8M & ViT & contrastive & 256$^*$ \\
+    TTM-R2 & 3M & MLP-mixer & forecasting & 384 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Models}
+\Cref{tab:models} lists the six models. They cover transformers, a recurrent xLSTM and an MLP-mixer,
+three pretraining objectives, and sizes from 3M to 205M parameters. Chronos-2, Chronos-Bolt and TiRex take each signal
+as it is. MOMENT and Mantis take 512 samples: GW-TCW signals are resampled to 512, while NASA and OGW-1
+signals are cut into consecutive 512-sample windows at their native rate and the window embeddings are
+concatenated, which avoids aliasing the 450\,kHz NASA content. TTM-R2 uses a 1{,}024-sample context, and
+shorter signals are padded on the left with their first value. All experiments run on a two-core CPU.
+
+\subsection{Protocols and reference methods}
+\label{sec:protocols}
+
+\paragraph{Task 1: classification (GW-TCW).}
+Five-fold cross-validation grouped by configuration, so no test configuration, and none of its repeated
+acquisitions, is seen in training.
+Heads on frozen embeddings: logistic regression, $k$-NN ($k=5$, cosine) and a one-class score that uses no
+damage labels (mean distance to the 5 nearest healthy training embeddings). In the sign-symmetric setting
+every head is fitted on $x$ and $-x$; classifiers average their scores over both signs, and the one-class
+score takes the smaller of the two distances. For label efficiency we train on
+$m=2,4,\dots,64$ labelled configurations (5 random draws). References trained on the data: MiniRocket with
+a ridge classifier \citep{dempster2021minirocket}, logistic regression on the \fft{} spectrum, and the 1D-CNN
+of the dataset's reference notebook. We report ROC-AUC and balanced accuracy.
+
+\paragraph{Task 2: delamination detection (NASA).}
+Only healthy data are used for fitting. Within-specimen: 4 of a specimen's 8 healthy measurements form
+the reference (5 random draws); the other 4 and the 20{,}000-cycle measurement are tested.
+Cross-specimen: the reference is the healthy data of the other three specimens. Detectors on each feature
+set: the same-path distance (\cref{eq:samepath}); a $k$-NN distance to the nearest reference signal of any
+path; and PCA (10 components) with a one-class SVM pooled over all signals, as in
+\citet{rautela2022delamination}. The physics reference is baseline subtraction against the mean healthy
+signal of the same path, scored by residual energy or by $1-$correlation. We report signal-level ROC-AUC
+and, per specimen, whether the 20{,}000-cycle measurement scores above every healthy test measurement,
+that is, detection at zero false alarms.
+
+\paragraph{Task 3: localisation (OGW-1).}
+\emph{Path level}, the original protocol: each residual is labelled with its zone and classified on its
+own, with the path and frequency given as one-hot features. Splits: random 90/10 (10 repeats, as in
+\citet{rautela2021combined}); grouped by (position, path) so that the three frequencies of a residual stay
+together; and unseen positions, where fold $j$ of 4 holds out the $j$-th position of every zone. We also
+pool the 36 per-path predictions of a case by averaging class probabilities. \emph{Network level}: the
+map of \cref{eq:di} over the 36 paths is classified by logistic regression with the same
+leave-position-out folds, per frequency and with the three frequencies concatenated. Because zones were
+measured in separate phases and each case is normalised by its own phase's baselines, a classifier
+could in principle recognise the phase rather than the damage. As a control we replace every damage map
+with the map of a healthy baseline from the same phase (10 random draws). We also run training-free
+RAPID tomography \citep{hay2006rapid} on the same maps. Chance is $1/7=0.14$ throughout.
+
+% ---------------------------------------------------------------------------------------------
+\section{Results}
+\label{sec:results}
+
+\subsection{Task 1: damage classification on held-out configurations}
+\label{sec:res1}
+
+\begin{table}[t]
+  \caption{Task 1, GW-TCW. ROC-AUC on held-out configurations (mean $\pm$ s.d.\ over 5
+  folds). Main
+  columns: sign-symmetric setting with logistic regression. Also shown: AUC as recorded (no sign
+  augmentation), with a $k$-NN head, and with the one-class score, which uses no damage labels. Best
+  frozen model per column in bold.}
+  \label{tab:task1}
+  \centering
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Sign-symmetric} & As & $k$-NN & One- \\
+    \cmidrule(lr){2-3}
+    Features & AUC & Bal.\ acc. & rec. & head & class \\
+    \midrule
+    \inputrows{tables/task1.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/task1_label_efficiency.pdf}
+  \caption{Task 1, label efficiency. AUC on held-out configurations against the number of labelled
+  configurations used for training (logistic regression, sign-symmetric, mean of 5 draws and 5 folds).
+  The band spans the six frozen models. Diamonds: references trained on all training configurations.}
+  \label{fig:task1}
+\end{figure}
+
+On configurations not seen in training, logistic regression on frozen embeddings reaches AUC 0.83--0.86 for
+five of the six models (\cref{tab:task1}). MiniRocket, which builds its features from the training folds,
+does better (0.90). The 1D-CNN trained from scratch does clearly worse (0.69), as does the spectrum
+baseline. TTM-R2 is the weakest frozen model (0.74).
+
+\paragraph{Random splits leak.}
+On the reference notebook's random split over all 3{,}120 signals, $k$-NN on frozen MOMENT, Mantis or TTM
+embeddings reaches AUC 1.00. So does the 1D-CNN when, as in the notebook, its early-stopping data are also
+drawn at random. On held-out configurations the CNN falls to 0.69, and training it for 150 instead of 40 epochs does
+not help (0.62 on the first fold), so its gap is one of generalisation, not under-training.
+
+\paragraph{Polarity is not the cue.}
+A probe that only sees the sign of the largest peak is at chance (\cref{tab:task1}). Removing polarity as
+a cue raises the AUC of every frozen model by 0.02 to 0.07, so the models were not exploiting it.
+
+\paragraph{Labels help, but a few are not enough.}
+Without any damage labels, Mantis still separates damaged from healthy signals on held-out configurations with AUC
+0.79, using only distances to healthy training signals. With labels, \cref{fig:task1} shows that up to 8
+labelled configurations are not enough for any method (AUC at most 0.64). From 32 configurations on,
+every frozen model is ahead of the spectrum baseline, and the gap grows as labels are added.
+
+\subsection{Task 2: delamination detection from healthy data only}
+\label{sec:res2}
+
+\begin{table*}[t]
+  \caption{Task 2, NASA PCoE. Signal-level ROC-AUC (mean $\pm$ s.d.\ over 4 specimens $\times$ 5
+  reference draws within specimen; mean over 4 held-out specimens across specimens), and the number of
+  20{,}000-cycle measurements that score above every healthy test measurement of the same specimen
+  (detection at zero false alarms). Best value per column in bold.}
+  \label{tab:task2}
+  \centering
+  \small
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    & \multicolumn{4}{c}{Reference from the same specimen} &
+      \multicolumn{2}{c}{Reference from the other specimens} \\
+    \cmidrule(lr){2-5}\cmidrule(lr){6-7}
+    Features and detector & Same-path & $k$-NN & PCA + ocSVM & Detected & Same-path & Detected \\
+    \midrule
+    \multicolumn{7}{@{}l}{\emph{Frozen TSFM embeddings}} \\
+    \inputrows{tables/task2.tex}
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/task2_cross_specimen.pdf}
+  \caption{Task 2, healthy reference taken from the \emph{other} three specimens. Measurement scores of
+  each specimen relative to the mean of its own healthy measurements (open markers on the left; dotted
+  lines mark their maximum). With Mantis embeddings, every measurement from 10{,}000 cycles on lies above the
+  specimen's healthy ones. With the best raw-signal detector, S11 falls below its healthy level and S17
+  barely separates.}
+  \label{fig:task2}
+\end{figure}
+
+Within a specimen, the same-path distance on frozen embeddings is as good as classical baseline
+subtraction (\cref{tab:task2}): signal-level AUC 0.95--0.98 for five models (Chronos-2: 0.88), against
+0.97 for $1-$correlation. With the same-path distance, every model flags all 20 damaged measurements at zero
+false alarms.
+
+\paragraph{Compare like with like.}
+For every feature set the same-path distance beats the $k$-NN distance, which compares a signal with
+reference signals of any path. The PCA + one-class SVM detector, pooled over all signals, is near chance
+on embeddings (0.44--0.62) and below chance on raw signals (0.23): differences between paths swamp the
+damage.
+
+\paragraph{Across specimens the models separate.}
+When the healthy reference comes from the other three coupons, the raw-signal detectors fall to AUC
+0.15--0.57, because coupons differ from each other more than fatigue changes them. Mantis (0.81) and
+Chronos-Bolt (0.67) still rank every coupon's damaged measurement above all its healthy ones, and TiRex
+does so for three of the four (\cref{fig:task2}). MOMENT detects well within a specimen (0.95) but
+transfers worst (0.47).
+
+\paragraph{Damage growth.}
+Within a specimen, the same-path distance keeps rising with fatigue. By 10{,}000 cycles it reaches 1.9 to
+3.2 times the healthy level (geometric mean over specimens) for every model, and it keeps rising more
+slowly up to 100{,}000--150{,}000 cycles (\cref{app:growth}).
+
+\subsection{Task 3: locating damage on the plate}
+\label{sec:res3}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/task3_maps_spearman.pdf}
+  \caption{Task 3, why the network view works. (a) Damage-index maps for one damage case (D10, whose
+  80\,kHz correlations are close to the median for both methods). The eight paths with the highest index are drawn
+  in blue, darker for higher; the star marks the damage. Residual energy is only weakly related to the damage
+  position at 40\,kHz and unrelated at 80\,kHz; the MOMENT embedding distance concentrates on paths
+  through the damage at both. (b) Spearman correlation between a
+  path's damage index and its proximity to the damage (negative distance from the damage centre to the
+  path), averaged over the 28 cases.}
+  \label{fig:task3}
+\end{figure*}
+
+\begin{table}[t]
+  \caption{Task 3, OGW-1, path level. Zone accuracy of single-path classification ($k$-NN for frozen
+  and raw features), averaged over the three frequencies. Last column: per-path predictions averaged over
+  the 36 paths of a case. Splits: random 90/10; grouped by (position, path); unseen damage positions.
+  Chance is 0.14. $^\dagger$Trained on the data; run on one random split and the four unseen-position
+  folds.}
+  \label{tab:task3path}
+  \centering
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    & \multicolumn{3}{c}{One path at a time} & 36 paths \\
+    \cmidrule(lr){2-4}\cmidrule(lr){5-5}
+    Features & Random & Grouped & Unseen & Unseen \\
+    \midrule
+    \inputrows{tables/task3_path.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \caption{Task 3, OGW-1, network level. Zone accuracy on held-out positions (28 cases per column) from
+  the 36-path damage-index map with logistic regression; residual energy is the physics-based index.
+  Control: healthy maps of the same phase (mean and maximum over 10 draws). Chance is 0.14.}
+  \label{tab:task3net}
+  \centering
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    & \multicolumn{4}{c}{Damage maps, kHz} & \multicolumn{2}{c}{Control} \\
+    \cmidrule(lr){2-5}\cmidrule(lr){6-7}
+    Damage index & 40 & 60 & 80 & All & Mean & Max \\
+    \midrule
+    \inputrows{tables/task3_network.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{One path at a time, nothing works.}
+Classified path by path, no method finds the zone. Accuracy in \cref{tab:task3path} stays between 0.17
+and 0.29 for every feature set and split, including MiniRocket and the CNN trained on the data. The audit
+in \cref{sec:data} explains why: only paths close to the damage carry a residual above the drift, so most
+training examples are labelled with a zone they contain no evidence of. Averaging the per-path predictions
+over the 36 paths of a case recovers part of the zone, up to 0.81 for MOMENT.
+
+\paragraph{Read as a network, every position is found.}
+The map of same-path distances solves the task (\cref{tab:task3net}). All six models place all 28 held-out
+positions in the correct zone when the three frequencies are combined (95\% Clopper--Pearson interval
+0.88--1.00),
+and MOMENT and TiRex do so at every frequency on its own. Residual energy read by the same classifier
+reaches 0.96 at 40\,kHz but drops to 0.61 at 60\,kHz and 0.25 at 80\,kHz, where the damage changes less
+energy than the drift does.
+
+\paragraph{The result is not a phase shortcut.}
+With healthy maps from the same phase in place of the damage maps, accuracy falls to 0.15--0.20 on average
+(chance 0.14). The phase normalisation alone does not give the zone away.
+
+
+
+\paragraph{Why it works.}
+The embedding distance of a path grows the closer the path passes to the damage, at all three
+frequencies (\cref{fig:task3}). For MOMENT and TiRex the rank correlation is 0.77--0.82. Residual energy
+follows proximity at 40\,kHz (0.49) and loses it at 80\,kHz (0.16), where drift dominates the energy.
+
+\paragraph{The classifier is still needed.}
+In training-free RAPID tomography the embedding distances localise worse than residual energy at 40\,kHz
+(0.32--0.50 against 0.75) and better at 80\,kHz (0.29--0.61 against 0.07; \cref{app:rapid}). Their contrast
+is not proportional to proximity in the way RAPID assumes, but the pattern over paths is consistent enough
+for a linear classifier to read.
+
+% ---------------------------------------------------------------------------------------------
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What transfers.}
+A distance between embeddings of the same path behaves like a learned, nonlinear baseline subtraction. It
+is as sensitive as classical subtraction within a specimen, and less disturbed by the variations that break
+raw subtraction: differences between coupons in Task 2 and drift between baseline and damage sessions in
+Task 3. What does not transfer is the idea that one signal, on its own, says where the damage is. That
+fails for frozen and trained models alike, because the information is spread over the network.
+
+\paragraph{No model wins everywhere.}
+MOMENT and TiRex are best when labels are available (Task 1) and their distances track the damage most
+closely (Task 3). Mantis, the only model pretrained for classification, is best without labels, both on
+Task 1 and across specimens in Task 2. TTM-R2, the smallest model, is weakest in most settings, but size is
+not decisive otherwise: Mantis has 8M parameters and Chronos-Bolt 205M. A practitioner should therefore
+try several models, and should validate across specimens, not only within one.
+
+\paragraph{Evaluation pitfalls.}
+\label{sec:pitfalls}
+Four choices change the conclusions on these datasets. Random splits over repeated acquisitions score AUC
+1.00 for almost any method (Task 1). Sign-inverted signals could stand in for damage; a polarity probe and
+sign-symmetric training rule this out (Task 1). Normalising each damage case by the baselines of its own
+measurement phase opens a possible shortcut, which a healthy-map control rules out (Task 3). Finally,
+per-path zone labels are ill-posed for paths far from the damage, so localisation should be scored on the
+network (Task 3).
+
+\paragraph{Limitations.}
+The number of independent units is small: 156 sensor configurations, four specimens and 28 damage
+positions, so confidence intervals are wide. In the NASA data we use one boundary condition and, as in
+earlier work, label the 20{,}000-cycle state as damaged without an independent damage measurement. OGW-1
+was recorded at constant temperature, so environmental variation is not tested in Tasks 2 and 3. The
+embeddings are mean-pooled and never fine-tuned, and other TSFMs such as TimesFM and Moirai were not
+tested. In exploratory work we also used the models as forecasters along the temperature axis of another
+OGW dataset; physics-based compensation was far more accurate, so we did not pursue forecasting as a
+monitoring framing.
+
+% ---------------------------------------------------------------------------------------------
+\section{Conclusion}
+\label{sec:conclusion}
+
+Frozen time series foundation models, never trained on ultrasonic data, carry enough information about
+guided waves to detect, classify and locate damage in composite structures. The condition is to use them
+the way the field has always used signals: compare each one with healthy recordings of its own sensor
+path, and read the network of paths together. Under that condition, a pretrained model with a linear
+head matches classical damage indices, transfers better across specimens, beats a CNN trained from
+scratch and comes close to MiniRocket, all without fine-tuning and on a CPU. Testing the same recipe under changing temperature and on larger
+structures is the natural next step.
+
+% ---------------------------------------------------------------------------------------------
+\section*{Software and Data}
+All three datasets are public. \ificmlshowauthors Code, result tables and download scripts are available at
+\url{https://github.com/mahindrautela/gwshm-tsfm}.\else Code, result tables and download scripts are
+provided as supplementary material and will be released publicly.\fi{} Every experiment runs on a two-core
+CPU in one Python environment.
+
+\section*{Impact Statement}
+This work concerns monitoring of safety-critical structures. The methods are research results on small
+laboratory datasets and are not a substitute for certified inspection. A missed detection in practice can
+have serious consequences, so any deployment would need validation on the target structure, under its
+operating conditions, with false-alarm and missed-detection rates set by the relevant certification
+process. We see no other societal consequences that need to be highlighted here.
+
+\bibliography{references}
+\bibliographystyle{icml2026}
+
+% ---------------------------------------------------------------------------------------------
+\newpage
+\appendix
+\onecolumn
+
+\section{Dataset Details}
+\label{app:data}
+
+\paragraph{GW-TCW.} The baseline and damage files each hold 1{,}560 signals of 1{,}000 samples at 2\,MHz
+(0.5\,ms). Row $i$ belongs to configuration $(\lfloor i/120\rfloor, i \bmod 12)$: 13 blocks of 120 rows,
+each holding 10 repeated acquisitions of 12 sensor paths, and baseline row $i$ and damaged row $i$ share
+a configuration. The median correlation between repeats of a configuration is 0.99997 (minimum 0.9994).
+We keep the first acquisition of each configuration. The leaky split of the reference notebook uses all
+3{,}120 signals with a random 95/5 split.
+
+\paragraph{NASA PCoE.} Each measurement holds 252 signals: actuators 1--6 to sensors 7--12 (36 paths) at
+150, 200, \dots, 450\,kHz. Healthy measurements are those at 0--3 cycles, 8 per specimen. Damage-growth
+measurements are taken at 10, 110, 1{,}000, 10{,}000, 20{,}000, 30{,}000, 50{,}000, 100{,}000, 150{,}000 and
+200{,}000 cycles where available, the first repetition at each count (30 in total; only S11 has the counts
+below 10{,}000).
+
+\paragraph{OGW-1.} Signals are recorded at 10\,MHz with 13{,}108 samples and decimated to 1\,MHz. The
+excitation onset is read from the recorded excitation signal. Transducers T1--T6 sit at $y=470$\,mm and
+T7--T12 at $y=30$\,mm, at $x=450, 370, \dots, 50$\,mm; the 36 crossing paths are T$i$--T$j$ with
+$i\le 6<j$. The 28 defect positions form seven $2\times2$ clusters with 15\,mm spacing. Distances in the
+audit and in \cref{fig:task3} are from the defect centre to the transmitter--receiver segment.
+
+\begin{table}[H]
+  \caption{OGW-1 audit: median residual energy of a path relative to the baseline-to-baseline drift of the
+  same path and phase, by distance between path and damage (48 near and 448 far path--case pairs per
+  frequency).}
+  \label{tab:audit}
+  \centering
+  \small
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Paths & 40\,kHz & 60\,kHz & 80\,kHz \\
+    \midrule
+    within 10\,mm of the damage & 4.24 & 2.36 & 0.81 \\
+    more than 120\,mm away & 0.71 & 0.67 & 0.60 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Implementation Details}
+\label{app:impl}
+
+\paragraph{Embeddings.} \Cref{tab:checkpoints} lists the checkpoints and how each signal is turned into
+one vector. TTM-R2 uses a context of 1{,}024. NASA and OGW-1 embeddings are stored in half precision.
+
+\begin{table}[H]
+  \caption{Checkpoints and pooling.}
+  \label{tab:checkpoints}
+  \centering
+  \small
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Model & Checkpoint & Embedding of one signal \\
+    \midrule
+    Chronos-2 & \texttt{amazon/chronos-2} & mean over the encoder's patch tokens \\
+    Chronos-Bolt base & \texttt{amazon/chronos-bolt-base} & mean over the encoder's patch tokens \\
+    TiRex & \texttt{NX-AI/TiRex} & output of the package's embedding module \\
+    MOMENT-1 base & \texttt{AutonLab/MOMENT-1-base} & embedding task head (mean of patch embeddings) \\
+    Mantis-8M & \texttt{paris-noah/Mantis-8M} & the trainer's \texttt{transform} \\
+    TTM-R2 & \texttt{ibm-granite/granite-timeseries-ttm-r2} & mean over patches of the backbone hidden state \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Heads.} Features are standardised with training statistics. Logistic regression uses L2
+regularisation with $C=1$ (Tasks 1 and 3, path level) or $C=0.1$ (Task 3, network level, 21 training cases
+with 36 to 108 features). $k$-NN uses $k=5$ and cosine distance. The $k$-NN anomaly score in Task 2 is the
+Euclidean distance to the nearest standardised reference signal. The one-class SVM uses an RBF kernel and
+$\nu=0.1$ on 10 principal components.
+
+\paragraph{Trained references.} MiniRocket uses its default settings, followed by a ridge classifier
+whose penalty is chosen by internal cross-validation. The 1D-CNN follows the GW-TCW reference notebook:
+four convolution layers with 16, 32, 64 and 128 filters, Adam with learning rate $10^{-3}$, 40 epochs and
+early stopping on held-out training configurations. In Task 3 the CNN uses early stopping on held-out
+groups.
+
+\paragraph{RAPID.} Each path contributes $\max(\mathrm{DI}_p-1,0)$ inside an ellipse with foci at its
+transducers ($\beta=1.05$) on a 5\,mm grid; the predicted zone is the one whose centre is nearest the
+image maximum.
+
+\section{Additional Results}
+\label{app:results}
+
+\subsection{Damage growth (Task 2)}
+\label{app:growth}
+
+\begin{table}[H]
+  \caption{Same-path distance of later measurements relative to the healthy level, within specimen
+  (geometric mean over specimens of the ratio to the mean healthy test score; 200k: three specimens).}
+  \label{tab:growth}
+  \centering
+  \small
+  \begin{tabular}{@{}lccccccc@{}}
+    \toprule
+    Features & 10k & 20k & 30k & 50k & 100k & 150k & 200k \\
+    \midrule
+    \inputrows{tables/task2_growth.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Training-free localisation with RAPID (Task 3)}
+\label{app:rapid}
+
+\begin{table}[H]
+  \caption{RAPID tomography on the damage-index maps: zone accuracy (median localisation error in mm).}
+  \label{tab:rapid}
+  \centering
+  \small
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Damage index & 40\,kHz & 60\,kHz & 80\,kHz \\
+    \midrule
+    \inputrows{tables/task3_rapid.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Path-level localisation with logistic regression (Task 3)}
+
+\begin{table}[H]
+  \caption{As \cref{tab:task3path}, with logistic regression instead of $k$-NN.}
+  \label{tab:task3pathlr}
+  \centering
+  \small
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    & \multicolumn{3}{c}{One path at a time} & 36 paths \\
+    \cmidrule(lr){2-4}\cmidrule(lr){5-5}
+    Features & Random & Grouped & Unseen & Unseen \\
+    \midrule
+    \inputrows{tables/task3_path_lr.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}

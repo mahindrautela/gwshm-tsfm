@@ -1,0 +1,29 @@
+{
+  "gwtcw": {
+    "n_configs": 156,
+    "median_repeat_r": 0.9999745456131959,
+    "min_repeat_r": 0.9993922724512652,
+    "sign_inverted_configs": 71,
+    "median_abs_r_baseline_damaged": 0.9758867168184859
+  },
+  "ogw1_energy_contrast": {
+    "40": {
+      "near_median": 4.244932174682617,
+      "far_median": 0.7071332335472107,
+      "n_near": 48,
+      "n_far": 448
+    },
+    "60": {
+      "near_median": 2.357151746749878,
+      "far_median": 0.6699939966201782,
+      "n_near": 48,
+      "n_far": 448
+    },
+    "80": {
+      "near_median": 0.8114887475967407,
+      "far_median": 0.6009488105773926,
+      "n_near": 48,
+      "n_far": 448
+    }
+  }
+}

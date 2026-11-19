@@ -20,7 +20,8 @@ No model is trained or fine-tuned.
 | 2. NASA delamination, healthy data only | same-path embedding distance: AUC 0.95–0.98 within a specimen for five of six models (Chronos-2 0.88), baseline subtraction 0.97; with references from other coupons Mantis (0.81) and Chronos-Bolt (0.67) flag all 4 damaged coupons at zero false alarms, raw methods ≤ 3/4 |
 | 3. OGW-1 localisation, unseen damage positions | per path: near chance for every method; network level (36-path damage-index map): all six models localise 28/28 positions with 40/60/80 kHz combined, MOMENT and TiRex at every single frequency; physics residual energy 0.89 (0.25 at 80 kHz) |
 
-Result tables behind the paper are in [`paper_results/`](paper_results).
+Result tables behind the paper are in [`paper_results/`](paper_results). The paper (ICML 2026 format) is in
+[`paper/`](paper): `main.pdf`, its LaTeX source, and the scripts that regenerate its tables and figures.
 
 ## Setup
 
@@ -71,7 +72,13 @@ python scripts/ogw1_spearman.py  --loc data/ogw1/loc.npz --di results_ogw1_netwo
 # tables, figures, and the copy kept in git
 python scripts/summarize_gwtcw.py --results results_gwtcw --out report_gwtcw
 python scripts/summarize_nasa.py  --results results_nasa
+python scripts/audit_datasets.py
 python scripts/export_results.py
+
+# paper: tables and figures straight from the results, then LaTeX
+python paper/make_tables.py
+python paper/figures/make_figures.py
+cd paper && latexmk -pdf main.tex
 ```
 
 ## Layout
