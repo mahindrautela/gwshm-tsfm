@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gwtsfm import metrics, protocol  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1])); sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from forecasting import metrics, protocol  # noqa: E402
 from gwtsfm.ogw import FreqCache, pair_index, pair_name  # noqa: E402
 
 # reference palette (dataviz skill): categorical slots 1-3, sequential blue, ink
@@ -27,7 +27,7 @@ BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 SEQ = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
 
-CLASSICAL = ["OBS", "OBS+BSS", "Stretch extrapolation", "Last value", "Linear trend", "AutoETS"]
+CLASSICAL = ["OBS (per path)", "OBS", "OBS+BSS", "Stretch extrapolation", "Last value", "Linear trend", "AutoETS"]
 GAP_BINS = (0, 2.5, 5, 10, 20, 40)
 
 plt.rcParams.update({"font.size": 9, "axes.edgecolor": INK2, "axes.labelcolor": INK,
@@ -41,6 +41,7 @@ def load(results: str) -> pd.DataFrame:
 
 
 def order_methods(ms) -> list[str]:
+    ms = [m for m in ms if "[probe T]" not in m]
     tsfm = sorted(m for m in ms if m not in CLASSICAL)
     return [m for m in CLASSICAL if m in ms] + tsfm
 
@@ -79,7 +80,8 @@ def main():
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    df = load(args.results)
+    df_all = load(args.results)
+    df = df_all[~df_all["method"].str.contains(r"\[probe T\]")]
     methods = order_methods(df["method"].unique())
     tables = {}
 
@@ -97,6 +99,19 @@ def main():
     tables["auc_fused_z"] = pz.reindex([m for m in methods if m in pz.index])
     pt = A[A.di == "di_res"].pivot_table(index="method", columns=["f_khz", "Tc"], values="tpr")
     tables["tpr5_fused_res"] = pt.reindex(methods)
+    ps = A[A.di == "di_res"].pivot_table(index="method", columns=["f_khz", "Tc"], values="auc_strat")
+    tables["auc_stratified_res"] = ps.reindex(methods)
+    for st in ("D04", "D12", "D16", "D24"):
+        if f"auc_{st}" in A:
+            A[f"auc_{st}"] = A[f"auc_{st}"]
+    dmg = A[A.di == "di_res"].groupby("method")[[c for c in A if c.startswith("auc_D")]].mean()
+    tables["auc_by_damage_res_mean"] = dmg.reindex(methods)
+    # ablation: library selection vs probe temperature
+    probe = df_all[df_all["method"].str.contains(r"\[probe T\]")]
+    if len(probe):
+        B = metrics.fused_auc(pd.concat([probe, df[df["method"].isin(
+            [m.replace(" [probe T]", "") for m in probe["method"].unique()])]]), "di_res")
+        tables["ablation_library_vs_probeT_strat"] = B.groupby("method")["auc_strat"].mean().sort_index()
 
     # ---- AUC vs gap (fused, di_res), mean over Tc and f --------------------------------
     G = metrics.auc_vs_gap(df, "di_res", edges=GAP_BINS)
@@ -112,7 +127,7 @@ def main():
 
     fig, axes = plt.subplots(1, 2, figsize=(9.5, 0.32 * len(methods) + 1.2),
                              gridspec_kw={"width_ratios": [1, 1]})
-    heatmap(axes[0], g, "Fused AUC vs extrapolation gap (residual DI)")
+    heatmap(axes[0], g, "Temperature-stratified AUC vs extrapolation gap", vmin=0.2)
     axes[0].set_xlabel("gap T - Tc (°C)")
     E = metrics.forecast_error(df)
     e = E.groupby(["method", "bin"], observed=True)["rel_err"].median().unstack().reindex(methods)
@@ -198,7 +213,9 @@ def main():
         T = pd.DataFrame([json.loads(l) for l in tfile.read_text().splitlines() if l.strip()])
         T = T.drop_duplicates(["method", "f_khz", "Tc"], keep="last")
         T["ms_per_series"] = 1e3 * T["seconds"] / T["n_series"].replace(0, np.nan)
-        tables["timing"] = T.groupby("method")[["seconds", "ms_per_series"]].mean()
+        col = "forecast_seconds" if "forecast_seconds" in T else "seconds"
+        T["ms_per_series"] = 1e3 * T[col] / T["n_series"].replace(0, np.nan)
+        tables["timing"] = T.groupby("method")[[col, "ms_per_series"]].mean()
 
     with open(out / "tables.md", "w") as fh:
         for k, v in tables.items():

@@ -2,9 +2,9 @@
 
 import numpy as np
 
-from gwtsfm import metrics, models, protocol
+from forecasting import metrics, models, protocol
 from gwtsfm.ogw import FreqCache, build_cache, pair_index, split_reference
-from gwtsfm.synth import write_dataset
+from forecasting.synth import write_dataset
 
 
 def test_end_to_end(tmp_path):

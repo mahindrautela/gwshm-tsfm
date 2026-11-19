@@ -36,7 +36,7 @@ import pandas as pd
 
 from . import baselines as bl
 from .dsp import analysis_window, di_corr, di_residual, di_zscore, excitation_onset
-from .ogw import PAIRS, FreqCache, split_reference
+from gwtsfm.ogw import PAIRS, FreqCache, split_reference
 
 
 @dataclass
@@ -61,7 +61,10 @@ def prepare(cache: FreqCache, t_end_ms: float = 0.6, step: float = 0.5,
     ref, test = split_reference(cache)
     paths = np.arange(len(PAIRS)) if paths is None else np.asarray(paths)
     n = cache.X.shape[-1]
-    onset = excitation_onset(cache.X[ref][:, paths])
+    if "onset" in cache.meta:  # from the recorded excitation signal
+        onset = int(round(cache.meta["onset"]))
+    else:
+        onset = excitation_onset(cache.X[ref][:, paths])
     win = analysis_window(n, cache.fs, cache.f_khz, onset)
     stop = min(n, int(round(t_end_ms * 1e-3 * cache.fs)) + onset)
     win = slice(win.start, max(stop, win.start + 16))
@@ -140,26 +143,151 @@ def evaluate_forecast(s: Setup, Tc: float, method: str, fc, keep_examples: bool 
     return df, ex
 
 
+def library(s: Setup, Tc: float, fc=None, sub: int = 5) -> tuple[np.ndarray, dict]:
+    """Baseline library over temperature: references <= Tc, then forecasts (if any).
+
+    Returns temperatures (K,) and arrays q10/q50/q90 of shape (K, P, N), linearly
+    interpolated to ``sub`` sub-steps per grid step.  Without a forecast the
+    library is the reference set only (classical OBS).
+    """
+    k = int(np.sum(s.grid <= Tc + 1e-9))
+    R = s.ref_grid[:, :k, :].transpose(1, 0, 2)                     # (k, P, N)
+    Tl = s.grid[:k]
+    qs = {"q10": R, "q50": R, "q90": R}
+    if fc is not None:
+        P, N = R.shape[1:]
+        H = fc.q50.shape[1]
+        Tl = np.r_[Tl, s.grid[k - 1] + s.step * np.arange(1, H + 1)]
+        qs = {q: np.concatenate([R, getattr(fc, q).reshape(P, N, H).transpose(2, 0, 1)])
+              for q in ("q10", "q50", "q90")}
+    # sub-step interpolation along temperature
+    Tf = np.arange(Tl[0], Tl[-1] + 1e-9, s.step / sub)
+    j = np.clip(np.searchsorted(Tl, Tf) - 1, 0, len(Tl) - 2)
+    w = ((Tf - Tl[j]) / (Tl[j + 1] - Tl[j]))[:, None, None]
+    return Tf, {q: ((1 - w) * v[j] + w * v[j + 1]).astype(np.float32) for q, v in qs.items()}
+
+
+def select_from_library(x: np.ndarray, T: np.ndarray, Tl: np.ndarray, L: np.ndarray,
+                        delta: float) -> np.ndarray:
+    """Joint OBS over a library: one library temperature per measurement (all paths).
+
+    x (M, P, N) test signals, T (M,) probe temperatures, L (K, P, N) library.
+    Candidates are restricted to |Tl - T| <= delta; the criterion is the sum over
+    paths of the normalised residual energy.  Returns the selected index (M,).
+    """
+    Ln = np.sum(L.astype(np.float64) ** 2, -1) + 1e-30                # (K, P)
+    xx = np.sum(x.astype(np.float64) ** 2, -1)                         # (M, P)
+    cross = np.einsum("mpn,kpn->mkp", x, L, optimize=True)             # (M, K, P)
+    crit = ((xx[:, None, :] - 2 * cross + Ln[None]) / Ln[None]).sum(-1)  # (M, K)
+    ok = np.abs(Tl[None, :] - T[:, None]) <= delta
+    none = ~ok.any(1)
+    ok[none, np.argmin(np.abs(Tl[None, :] - T[none, None]), 1)] = True  # fallback: nearest
+    crit[~ok] = np.inf
+    return np.argmin(crit, 1)
+
+
+def evaluate_library(s: Setup, Tc: float, method: str, fc=None, delta: float = 3.0,
+                     chunk: int = 128) -> pd.DataFrame:
+    """Damage indices against the best library entry (references + forecasts)."""
+    Tl, Q = library(s, Tc, fc)
+    sel = np.flatnonzero(s.T > s.grid[int(np.sum(s.grid <= Tc + 1e-9)) - 1] + 1e-9)
+    prob = fc is not None and not np.allclose(fc.q10, fc.q90)
+    d_res, d_cc, d_z, Tsel = [], [], [], []
+    for i in range(0, len(sel), chunk):
+        idx = sel[i:i + chunk]
+        x = s.X[idx]
+        kk = select_from_library(x, s.T[idx], Tl, Q["q50"], delta)
+        xh = Q["q50"][kk]
+        d_res.append(di_residual(x, xh))
+        d_cc.append(di_corr(x, xh))
+        if prob:
+            d_z.append(di_zscore(x, xh, Q["q10"][kk], Q["q90"][kk]))
+        Tsel.append(Tl[kk])
+    df = _rows(s, sel, Tc, method, np.concatenate(d_res), np.concatenate(d_cc),
+               np.concatenate(d_z) if prob else None)
+    df["T_lib"] = np.repeat(np.concatenate(Tsel), len(s.paths))
+    return df
+
+
+def warped_context(s: Setup, Tc: float):
+    """Physics-warped context: references mapped onto the time axis of the Tc reference.
+
+    Per path, a stretch rate kappa and amplitude rate beta are estimated from the
+    references (as in stretch extrapolation).  Each reference x(t, T_k) is
+    un-stretched and rescaled to T_c, u_k = e^{-beta dT} x(t (1+kappa)^{dT}, T_k),
+    dT = T_k - T_c.  What remains in u along temperature is the part of the
+    temperature effect that a uniform stretch does not explain; that is what the
+    forecaster is asked to extrapolate.  Returns (Y (P*N, k), H, rates (P, 2)).
+    """
+    k = int(np.sum(s.grid <= Tc + 1e-9))
+    Tk, T0 = s.grid[:k], s.grid[k - 1]
+    P, N = len(s.paths), s.ref_grid.shape[-1]
+    rates = np.zeros((P, 2))
+    U = np.empty((P, k, N), np.float32)
+    for p in range(P):
+        kap, beta = bl.estimate_rates(s.ref_grid[p, :k], Tk, s.onset)
+        rates[p] = kap, beta
+        dT = Tk - T0
+        U[p] = np.exp(-beta * dT)[:, None] * bl.stretch(s.ref_grid[p, :k], (1 + kap) ** (-dT) - 1, s.onset)
+    _, sel, H = context(s, Tc)
+    return U.transpose(0, 2, 1).reshape(P * N, k), H, rates
+
+
+def dewarp(fc, s: Setup, Tc: float, rates: np.ndarray):
+    """Map warped-space forecasts back to signals at the forecast temperatures."""
+    k = int(np.sum(s.grid <= Tc + 1e-9))
+    P, N = len(s.paths), s.ref_grid.shape[-1]
+    H = fc.q50.shape[1]
+    dT = s.step * np.arange(1, H + 1)
+
+    class _F:
+        pass
+
+    out = _F()
+    for q in ("q10", "q50", "q90"):
+        V = getattr(fc, q).reshape(P, N, H)
+        R = np.empty_like(V)
+        for p in range(P):
+            kap, beta = rates[p]
+            R[p] = (np.exp(beta * dT)[:, None] *
+                    bl.stretch(V[p].T, (1 + kap) ** dT - 1, s.onset)).T
+        setattr(out, q, R.reshape(P * N, H))
+    return out
+
+
 def run_baselines(s: Setup, Tc: float, bss_span: float = 5.0,
                   s_grid: np.ndarray | None = None) -> pd.DataFrame:
     """OBS, OBS+BSS and stretch extrapolation with references T <= Tc."""
     if s_grid is None:
         s_grid = np.arange(-0.02, 0.15 + 1e-9, 0.001)
-    sel = np.flatnonzero(s.T > Tc + 1e-9)
+    k = int(np.sum(s.grid <= Tc + 1e-9))
+    sel = np.flatnonzero(s.T > s.grid[k - 1] + 1e-9)
     x = s.X[sel]
     ok = s.ref_T <= Tc + 1e-9
     near = ok & (s.ref_T >= Tc - bss_span)
-    out = []
     xh_obs = np.empty_like(x)
     xh_bss = np.empty_like(x)
-    xh_ext = np.empty_like(x)
-    k = int(np.sum(s.grid <= Tc + 1e-9))
-    for p in range(len(s.paths)):
+    P, N = len(s.paths), s.X.shape[-1]
+    H = int(np.ceil((s.T[sel].max() - s.grid[k - 1]) / s.step)) + 1
+    Tf = s.grid[k - 1] + s.step * np.arange(1, H + 1)
+    ext = np.empty((P, N, H), np.float32)
+    for p in range(P):
         _, xh_obs[:, p] = bl.obs(x[:, p], s.ref_raw[ok, p])
         _, xh_bss[:, p] = bl.obs_bss(x[:, p], s.ref_raw[near, p], s.onset, s_grid)
         kap, beta = bl.estimate_rates(s.ref_grid[p, :k], s.grid[:k], s.onset)
-        xh_ext[:, p] = bl.stretch_extrapolate(s.ref_grid[p, k - 1], s.grid[k - 1], s.T[sel],
-                                              kap, beta, s.onset)
-    for name, xh in (("OBS", xh_obs), ("OBS+BSS", xh_bss), ("Stretch extrapolation", xh_ext)):
-        out.append(_rows(s, sel, Tc, name, di_residual(x, xh), di_corr(x, xh)))
+        ext[p] = bl.stretch_extrapolate(s.ref_grid[p, k - 1], s.grid[k - 1], Tf, kap, beta, s.onset).T
+    ext = ext.reshape(P * N, H)
+
+    class _F:  # forecast-like container for the physics extrapolation
+        q10 = q50 = q90 = ext
+
+    out = [
+        # classical per-path OBS / OBS+BSS (no temperature restriction)
+        _rows(s, sel, Tc, "OBS (per path)", di_residual(x, xh_obs), di_corr(x, xh_obs)),
+        _rows(s, sel, Tc, "OBS+BSS", di_residual(x, xh_bss), di_corr(x, xh_bss)),
+        # joint selection over the reference library within +-delta of the probe temperature
+        evaluate_library(s, Tc, "OBS"),
+        evaluate_library(s, Tc, "Stretch extrapolation", _F),
+        evaluate_forecast(s, Tc, "Stretch extrapolation [probe T]", _F)[0],
+    ]
     return pd.concat(out, ignore_index=True)

@@ -10,3 +10,6 @@ report*/
 *.npz
 *.parquet
 *.h5
+logs_*.txt
+run_*.sh
+data_ext/

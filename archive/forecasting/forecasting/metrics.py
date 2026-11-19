@@ -25,16 +25,46 @@ def tpr_at_fpr(y: np.ndarray, s: np.ndarray, fpr_max: float = 0.05) -> float:
     return float(np.interp(fpr_max, fpr, tpr))
 
 
+def common_range(df: pd.DataFrame) -> pd.DataFrame:
+    """Keep test signals inside the temperature range covered by *both* classes.
+
+    The intact plate was heated to ~61 deg C, the damaged plate only to ~60 deg C;
+    without this filter the hottest (hardest to predict) signals are all pristine
+    and every method is biased towards AUC < 0.5.
+    """
+    hi = df.groupby("label")["T"].max().min()
+    lo = df.groupby("label")["T"].min().max()
+    return df[(df["T"] <= hi + 1e-9) & (df["T"] >= lo - 1e-9)]
+
+
+def stratified_auc(y: np.ndarray, s: np.ndarray, T: np.ndarray, width: float = 1.0) -> float:
+    """AUC computed within temperature bins and averaged (weights = pairs per bin).
+
+    Equivalent to allowing a temperature-dependent threshold: measures how well a
+    DI separates the classes at a given temperature, free of temperature trends.
+    """
+    b = np.floor(T / width)
+    num = den = 0.0
+    for v in np.unique(b):
+        m = b == v
+        n1, n0 = int(y[m].sum()), int((1 - y[m]).sum())
+        if n1 and n0 and np.isfinite(s[m]).all():
+            num += roc_auc_score(y[m], s[m]) * n1 * n0
+            den += n1 * n0
+    return num / den if den else np.nan
+
+
 def per_path_auc(df: pd.DataFrame, di: str = "di_res") -> pd.DataFrame:
     """AUC for every (f, Tc, method, path)."""
-    g = df.groupby(["f_khz", "Tc", "method", "path"], sort=False)
-    return g.apply(lambda d: _auc(d["label"].to_numpy(), d[di].to_numpy()),
+    g = common_range(df).groupby(["f_khz", "Tc", "method", "path"], sort=False)
+    return g.apply(lambda d: stratified_auc(d["label"].to_numpy(), d[di].to_numpy(), d["T"].to_numpy()),
                    include_groups=False).rename("auc").reset_index()
 
 
 def fused_scores(df: pd.DataFrame, di: str = "di_res", paths=None) -> pd.DataFrame:
     """Structure-level score per measurement: mean log-DI over paths."""
-    d = df if paths is None else df[df["path"].isin(paths)]
+    d = common_range(df)
+    d = d if paths is None else d[d["path"].isin(paths)]
     d = d.assign(logdi=np.log(np.maximum(d[di].astype(np.float64), 1e-12)))
     return (d.groupby(["f_khz", "Tc", "method", "meas"], sort=False)
              .agg(score=("logdi", "mean"), T=("T", "first"), state=("state", "first"),
@@ -48,6 +78,7 @@ def fused_auc(df: pd.DataFrame, di: str = "di_res", paths=None, by_state: bool =
     for key, d in fs.groupby(["f_khz", "Tc", "method"], sort=False):
         y, s = d["label"].to_numpy(), d["score"].to_numpy()
         r = dict(zip(["f_khz", "Tc", "method"], key), auc=_auc(y, s), tpr=tpr_at_fpr(y, s, fpr),
+                 auc_strat=stratified_auc(y, s, d["T"].to_numpy()),
                  n_pos=int(y.sum()), n_neg=int((1 - y).sum()))
         if by_state:
             for st in sorted(set(d["state"]) - {"udam"}):
@@ -59,20 +90,22 @@ def fused_auc(df: pd.DataFrame, di: str = "di_res", paths=None, by_state: bool =
 
 def auc_vs_gap(df: pd.DataFrame, di: str = "di_res", paths=None,
                edges=(0, 2.5, 5, 10, 20, 40)) -> pd.DataFrame:
-    """Fused AUC as a function of the extrapolation gap T - Tc."""
+    """Fused, temperature-stratified AUC as a function of the extrapolation gap T - Tc."""
     fs = fused_scores(df, di, paths)
     fs["gap"] = fs["T"] - fs["Tc"]
     fs["bin"] = pd.cut(fs["gap"], list(edges))
     rows = []
     for key, d in fs.groupby(["f_khz", "Tc", "method", "bin"], sort=False, observed=True):
+        y, s = d["label"].to_numpy(), d["score"].to_numpy()
         rows.append(dict(zip(["f_khz", "Tc", "method", "bin"], key),
-                         auc=_auc(d["label"].to_numpy(), d["score"].to_numpy()), n=len(d)))
+                         auc=stratified_auc(y, s, d["T"].to_numpy()), n=len(d)))
     return pd.DataFrame(rows)
 
 
 def forecast_error(df: pd.DataFrame, paths=None) -> pd.DataFrame:
     """Median relative residual energy on *pristine* test signals vs gap."""
-    d = df[(df["label"] == 0)]
+    d = common_range(df)
+    d = d[(d["label"] == 0)]
     if paths is not None:
         d = d[d["path"].isin(paths)]
     d = d.assign(gap=d["T"] - d["Tc"])

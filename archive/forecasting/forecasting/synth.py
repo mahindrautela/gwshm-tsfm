@@ -23,7 +23,7 @@ from pathlib import Path
 import h5py
 import numpy as np
 
-from .ogw import FOLDERS, PAIRS
+from gwtsfm.ogw import FOLDERS, PAIRS
 
 PLATE = 0.5  # m
 # 12 transducers: T1-T6 on the left, T7-T12 on the right (synthetic layout)

@@ -70,31 +70,43 @@ def _first_existing(group: h5py.Group, names) -> object | None:
     return None
 
 
-def describe_h5(path: str | os.PathLike) -> dict:
+def _jsonable(v):
+    try:
+        a = np.asarray(v)
+        if a.dtype.kind == "S":
+            out = [s.decode(errors="replace") for s in a.ravel()]
+        else:
+            out = a.tolist()
+        json.dumps(out)
+        return out
+    except Exception:  # exotic attr types (e.g. h5py.Empty)
+        return str(v)
+
+
+def describe_h5(path) -> dict:
     """Return a JSON-able description of an OGW H5 file (structure + attrs)."""
     out: dict = {"datasets": {}, "attrs": {}}
 
     def visit(name, obj):
         if isinstance(obj, h5py.Dataset):
-            out["datasets"][name] = {"shape": list(obj.shape), "dtype": str(obj.dtype)}
-            if obj.size <= 16:
-                out["datasets"][name]["value"] = np.asarray(obj[()]).tolist()
+            shape = list(obj.shape) if obj.shape is not None else None
+            out["datasets"][name] = {"shape": shape, "dtype": str(obj.dtype)}
+            if shape is not None and obj.size <= 16:
+                out["datasets"][name]["value"] = _jsonable(obj[()])
         for k, v in obj.attrs.items():
-            try:
-                v = np.asarray(v).tolist()
-            except Exception:  # pragma: no cover - exotic attr types
-                v = str(v)
-            out["attrs"][f"{name}@{k}"] = v
+            out["attrs"][f"{name}@{k}"] = _jsonable(v)
 
     with h5py.File(path, "r") as f:
         for k, v in f.attrs.items():
-            out["attrs"][f"/@{k}"] = np.asarray(v).tolist()
+            out["attrs"][f"/@{k}"] = _jsonable(v)
         f.visititems(visit)
     return out
 
 
 def _infer_fs(f: h5py.File) -> float | None:
     """Try to read the sampling rate from common attribute/dataset names."""
+    if "command/pitchcatch/sampling_frequency" in f:  # real OGW files
+        return float(np.asarray(f["command/pitchcatch/sampling_frequency"][()]).ravel()[0])
     for grp in (f, f.get("pitchcatch")):
         if grp is None:
             continue
@@ -115,14 +127,32 @@ def _infer_fs(f: h5py.File) -> float | None:
     return None
 
 
-def read_h5(path: str | os.PathLike) -> tuple[np.ndarray, float, float | None]:
-    """Read one OGW file -> (catch [66, N] float32, mean temperature, fs or None)."""
+def read_h5(path, with_onset: bool = False):
+    """Read one OGW file (path or file-like).
+
+    Returns (catch [66, N] float32 in canonical pair order, mean temperature,
+    fs or None) and, if ``with_onset``, the excitation onset sample (from the
+    recorded excitation ``pitchcatch/pitch``) or None.
+    """
     with h5py.File(path, "r") as f:
         x = np.asarray(f["pitchcatch"]["catch"], dtype=np.float32)
         temps = np.asarray(f["Temperature"]["values"], dtype=np.float64).ravel()
         fs = _infer_fs(f)
+        onset = None
+        if with_onset and "pitchcatch/pitch" in f:
+            p = np.abs(np.asarray(f["pitchcatch/pitch"][0], dtype=np.float64))
+            onset = int(np.argmax(p > 0.01 * p.max()))
+        if "command/pitchcatch/channels" in f:  # reorder rows to canonical (i<j) order
+            ch = np.asarray(f["command/pitchcatch/channels"][()]).astype(int) + 1
+            order = [PAIRS.index(tuple(sorted(r))) for r in ch]
+            if order != list(range(len(PAIRS))):
+                y = np.empty_like(x)
+                y[order] = x
+                x = y
     if x.shape[0] != len(PAIRS) and x.shape[1] == len(PAIRS):
         x = x.T
+    if with_onset:
+        return x, float(np.nanmean(temps)), fs, onset
     return x, float(np.nanmean(temps)), fs
 
 

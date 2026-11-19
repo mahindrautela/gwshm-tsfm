@@ -241,15 +241,22 @@ class Toto2(Forecaster):
         self.model = Toto2Model.from_pretrained(self.hf_id).to(torch.device("cpu")).eval()
         return self
 
+    PATCH = 32
+
     def _predict(self, Y, H):
         torch = _torch()
+        L = Y.shape[1]
+        pad = (-L) % self.PATCH  # context must be a whole number of patches: left-pad, masked
         out = []
         for i in range(0, len(Y), 512):
-            t = torch.from_numpy(Y[i:i + 512])[:, None, :]
+            y = Y[i:i + 512]
+            t = torch.from_numpy(np.ascontiguousarray(np.pad(y, ((0, 0), (pad, 0)))))[:, None, :]
+            mask = torch.ones_like(t, dtype=torch.bool)
+            mask[..., :pad] = False
             with torch.inference_mode():
-                q = self.model.forecast({"target": t, "target_mask": torch.ones_like(t, dtype=torch.bool),
+                q = self.model.forecast({"target": t, "target_mask": mask,
                                          "series_ids": torch.zeros(t.shape[0], 1, dtype=torch.long)},
-                                        horizon=H, has_missing_values=False)
+                                        horizon=H, has_missing_values=pad > 0)
             out.append(q[:, :, 0, :].float().numpy())  # (9, b, H)
         q = np.concatenate(out, 1)
         return q[0], q[4], q[8]
@@ -293,7 +300,9 @@ class TTM(Forecaster):
         from tsfm_public.toolkit.get_model import get_model
         key = (L, H)
         if key not in self.cache:
-            self.cache[key] = get_model(self.hf_id, context_length=L, prediction_length=H).eval()
+            # short-context TTMs have short native horizons: roll them forward
+            m = get_model(self.hf_id, context_length=L, prediction_length=H, force_return="rolling")
+            self.cache[key] = m.eval()
         return self.cache[key]
 
     def _predict(self, Y, H):
@@ -301,13 +310,22 @@ class TTM(Forecaster):
         L = next((c for c in self.CONTEXTS if c >= Y.shape[1]), self.CONTEXTS[-1])
         if Y.shape[1] < L:  # left-pad by edge replication
             Y = np.concatenate([np.repeat(Y[:, :1], L - Y.shape[1], 1), Y], 1)
-        Y = Y[:, -L:]
+        Y = np.ascontiguousarray(Y[:, -L:])
         model = self._get(L, H)
+        hm = int(getattr(model.config, "prediction_filter_length", None) or model.config.prediction_length)
         out = []
         for i in range(0, len(Y), 1024):
-            with torch.inference_mode():
-                o = model(past_values=torch.from_numpy(Y[i:i + 1024])[:, :, None])
-            out.append(o.prediction_outputs[:, :H, 0].float().numpy())
+            ctx, preds = Y[i:i + 1024], []
+            kw = {}
+            if getattr(model.config, "resolution_prefix_tuning", False):
+                kw["freq_token"] = torch.zeros(len(ctx), dtype=torch.long)  # 'oov' resolution
+            while sum(p.shape[1] for p in preds) < H:
+                with torch.inference_mode():
+                    o = model(past_values=torch.from_numpy(np.ascontiguousarray(ctx))[:, :, None], **kw)
+                p = o.prediction_outputs[:, :hm, 0].float().numpy()
+                preds.append(p)
+                ctx = np.concatenate([ctx, p], 1)[:, -L:]
+            out.append(np.concatenate(preds, 1)[:, :H])
         q = np.concatenate(out)
         return q, q, q
 

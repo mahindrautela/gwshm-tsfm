@@ -15,3 +15,5 @@ tirex-ts
 tirex-2
 granite-tsfm
 pytest
+mantis-tsfm
+aeon

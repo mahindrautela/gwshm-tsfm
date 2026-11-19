@@ -21,10 +21,11 @@ import traceback
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1])); sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from gwtsfm import models, protocol  # noqa: E402
+from forecasting import models, protocol  # noqa: E402
 from gwtsfm.ogw import FreqCache, pair_index  # noqa: E402
 
 EXAMPLE_PATHS = [pair_index(4, 9), pair_index(3, 10), pair_index(1, 7)]
@@ -43,6 +44,10 @@ def main():
     ap.add_argument("--methods", nargs="+", default=["baselines", "last", "linear"])
     ap.add_argument("--t-end-ms", type=float, default=0.6)
     ap.add_argument("--chunk", type=int, default=8192)
+    ap.add_argument("--warp", action="store_true",
+                    help="forecast in the physics-warped (stretch-compensated) space")
+    ap.add_argument("--paths", choices=["all", "cross"], default="all",
+                    help="all 66 pairs, or the 36 cross-plate pairs T1-T6 -> T7-T12")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -52,7 +57,9 @@ def main():
     def setup(f):
         if f not in setups:
             c = FreqCache.load(Path(args.cache) / f"f{f}kHz.npz")
-            setups[f] = protocol.prepare(c, t_end_ms=args.t_end_ms)
+            paths = None if args.paths == "all" else np.array(
+                [pair_index(i, j) for i in range(1, 7) for j in range(7, 13)])
+            setups[f] = protocol.prepare(c, t_end_ms=args.t_end_ms, paths=paths)
             s = setups[f]
             print(f"[setup] f={f} kHz: refs={len(s.ref_T)} ({s.ref_T.min():.1f}-{s.ref_T.max():.1f} C), "
                   f"test={len(s.T)}, paths={len(s.paths)}, N={s.X.shape[-1]}, fs={s.fs/1e3:.0f} kHz",
@@ -60,8 +67,9 @@ def main():
         return setups[f]
 
     for method in args.methods:
+        tag = "_warp" if args.warp else ""
         todo = [(f, tc) for f in args.freqs for tc in args.tc
-                if not (out / f"f{f}" / f"Tc{tc:g}" / f"{slug(method)}.parquet").exists()]
+                if not (out / f"f{f}" / f"Tc{tc:g}" / f"{slug(method)}{tag}.parquet").exists()]
         if not todo:
             print(f"[skip] {method}: all done", flush=True)
             continue
@@ -84,18 +92,33 @@ def main():
                     df = protocol.run_baselines(s, tc)
                     n_series, H = 0, 0
                 else:
-                    Y, sel, H = protocol.context(s, tc)
-                    fc = model(Y, H, chunk=args.chunk)
-                    df, ex = protocol.evaluate_forecast(s, tc, model.name, fc, keep_examples=True)
+                    if args.warp:
+                        Y, H, rates = protocol.warped_context(s, tc)
+                        fc = protocol.dewarp(model(Y, H, chunk=args.chunk), s, tc, rates)
+                        name = f"Stretch warp + {model.name}"
+                    else:
+                        Y, sel, H = protocol.context(s, tc)
+                        fc = model(Y, H, chunk=args.chunk)
+                        name = model.name
+                    t_fc = time.time() - t0
+                    P, N = len(s.paths), s.X.shape[-1]
+                    np.savez_compressed(d / f"{slug(method)}{tag}_fc.npz", paths=s.paths, grid=s.grid,
+                                        **{q: getattr(fc, q).reshape(P, N, H).astype(np.float16)
+                                           for q in ("q10", "q50", "q90")})
+                    df_nom, ex = protocol.evaluate_forecast(s, tc, f"{name} [probe T]", fc,
+                                                            keep_examples=True)
+                    df = pd.concat([protocol.evaluate_library(s, tc, name, fc), df_nom],
+                                   ignore_index=True)
                     ex_paths = [list(s.paths).index(p) for p in EXAMPLE_PATHS if p in s.paths]
-                    np.savez_compressed(d / f"{slug(method)}_examples.npz",
+                    np.savez_compressed(d / f"{slug(method)}{tag}_examples.npz",
                                         paths=s.paths[ex_paths], grid=s.grid,
                                         **{k: v[ex_paths].astype(np.float32) for k, v in ex.items()})
                     n_series = len(Y)
-                df.to_parquet(d / f"{slug(method)}.parquet")
+                df.to_parquet(d / f"{slug(method)}{tag if method != 'baselines' else ''}.parquet")
                 dt = time.time() - t0
                 with open(out / "timing.jsonl", "a") as fh:
-                    fh.write(json.dumps({"method": method, "f_khz": f, "Tc": tc, "seconds": dt,
+                    fh.write(json.dumps({"method": method + tag, "f_khz": f, "Tc": tc, "seconds": dt,
+                                         "forecast_seconds": t_fc if method != "baselines" else 0.0,
                                          "n_series": n_series, "horizon": H}) + "\n")
                 print(f"[done] {method} f={f} Tc={tc:g}: {dt:.1f}s ({n_series} series, H={H})",
                       flush=True)

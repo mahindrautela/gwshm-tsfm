@@ -1,90 +1,71 @@
-# Zero-shot guided-wave damage detection with time series foundation models
+# Frozen time series foundation models for guided-wave structural health monitoring
 
-Benchmark of time series foundation models (TSFMs), used strictly zero-shot,
-for temperature-compensated damage detection with ultrasonic guided waves on the
-Open Guided Waves (OGW) CFRP temperature dataset (Moll et al., *Sci. Data* 6:191, 2019).
+Benchmark of six pretrained time series foundation models (TSFMs) used **frozen**, as
+feature extractors with only a light head, on three guided-wave SHM tasks:
 
-> **Status:** pipeline implemented and tested on synthetic data in the OGW file layout
-> (`pytest tests`). Results on the real OGW data are pending.
-
-## Idea
-
-For one transducer pair and excitation frequency the received signal is x(t, T).
-At each fixed time sample t_n, the pristine references ordered by temperature,
-y_n[k] = x(t_n, T_k), form an ordinary, quasi-periodic time series on a 0.5 °C grid.
-Given pristine references only up to a cut-off temperature T_c, each TSFM forecasts
-all y_n beyond T_c. The forecast at the measured temperature of a new signal is the
-predicted pristine signal; the prediction error is the damage index (DI). No model is
-trained or fine-tuned.
-
-Damage indices: residual energy ratio, 1 − correlation, and (for probabilistic
-models) an uncertainty-normalised residual that uses the 10–90 % forecast interval.
-
-Baselines on the same references: OBS, OBS + baseline signal stretch (BSS),
-physics-based stretch extrapolation, last value, linear trend, AutoETS.
-
-## Models
-
-| key | model | weights |
+| Task | Dataset | Setting |
 |---|---|---|
-| chronos2 | Chronos-2 | amazon/chronos-2 |
-| chronos_bolt | Chronos-Bolt base | amazon/chronos-bolt-base |
-| timesfm25 | TimesFM-2.5 | google/timesfm-2.5-200m-pytorch |
-| timesfm3 | TimesFM-3 (non-commercial weights) | google/timesfm-3.0-pytorch |
-| tirex | TiRex | NX-AI/TiRex |
-| tirex2 | TiRex-2 (gated on Hugging Face) | NX-AI/TiRex-2 |
-| toto2 | Toto-2.0 22M | Datadog/Toto-2.0-22m |
-| moirai2 | Moirai-2.0 small | Salesforce/moirai-2.0-R-small |
-| ttm | TTM-R2 (point forecasts) | ibm-granite/granite-timeseries-ttm-r2 |
+| 1. Damage classification | GW-TCW tapered composite wing (Rautela et al. 2022) | supervised, test sensor paths unseen in training |
+| 2. Delamination detection | NASA PCoE CFRP fatigue coupons, layup 2 | unsupervised: only healthy data is used |
+| 3. Damage-zone localisation | Open Guided Waves dataset 1 (Moll et al. 2019), 28 positions in 7 zones | supervised; random, grouped and unseen-position splits; network-level (36-path) localisation |
+
+Models: Chronos-2, Chronos-Bolt (base), TiRex, MOMENT-1 (base), Mantis-8M, TTM-R2.
+No model is trained or fine-tuned.
+
+> **Status:** experiments running; results and the paper draft are being added.
 
 ## Setup
 
-Python 3.12, CPU is enough.
+Python 3.12, CPU only.
 
 ```bash
 uv venv -p 3.12 .venv && source .venv/bin/activate
-uv pip install "torch==2.11.*" "numpy>=2.1.3,<2.4" scipy pandas h5py scikit-learn matplotlib \
-    remotezip statsforecast pyarrow tabulate "chronos-forecasting>=2.3" tirex-ts tirex-2 granite-tsfm
-git clone https://github.com/google-research/timesfm && uv pip install -e timesfm      # TimesFM 2.5 + 3
-git clone https://github.com/DataDog/toto && uv pip install --no-deps -e toto/dd_unit_scaling -e toto/toto2
-uv pip install --no-deps unit-scaling docstring_parser
-git clone https://github.com/SalesforceAIResearch/uni2ts && uv pip install --no-deps -e uni2ts
-uv pip install einops jaxtyping "gluonts[torch]>=0.16" lightning hydra-core python-dotenv orjson multiprocess safetensors
+uv pip install -r requirements.txt
+uv pip install --no-deps momentfm && uv pip install mantis-tsfm aeon
 ```
 
-(The `--no-deps` installs relax version pins of Toto 2 and uni2ts that conflict with the
-other packages; both import and run with torch 2.11.)
+## Data
+
+```bash
+# Task 1: GW-TCW (Hugging Face)
+for f in IISHM_BaselineExpData.txt IISHM_DamageExpData.txt IISHM_timevector.txt; do
+  curl -L -o data/gwtcw/$f https://huggingface.co/datasets/mahindrautela/GW-TCW/resolve/main/$f; done
+python -c "import numpy as np; d='data/gwtcw/'; np.savez(d+'gwtcw.npz', \
+  B=np.loadtxt(d+'IISHM_BaselineExpData.txt',delimiter=',').astype('f4'), \
+  D=np.loadtxt(d+'IISHM_DamageExpData.txt',delimiter=',').astype('f4'), t=np.loadtxt(d+'IISHM_timevector.txt'))"
+
+# Task 2: NASA PCoE composites (4.6 GB), then extract layup 2
+curl -L -o data_ext/Composites.zip "https://phm-datasets.s3.amazonaws.com/NASA/2.+Composites.zip"
+unzip -p data_ext/Composites.zip "2. Composites/Layup2.zip" > data_ext/Layup2.zip
+python scripts/prepare_nasa.py --zip data_ext/Layup2.zip --out data/nasa/l2.npz
+
+# Task 3: OGW dataset 1 (40/60/80 kHz streamed from the OGW Nextcloud share), residuals
+python scripts/fetch_ogw1.py --out data/ogw1 --freqs 40 60 80
+python scripts/prepare_ogw1_loc.py --cache data/ogw1 --out data/ogw1/loc.npz
+```
 
 ## Run
 
 ```bash
-python scripts/download_ogw.py   --root data/raw   --freqs 40 100 160      # figshare, range requests
-python scripts/prepare_cache.py  --root data/raw   --out data/cache --freqs 40 100 160
-python scripts/run_benchmark.py  --cache data/cache --out results --freqs 40 100 160 \
-       --tc 30 40 50 --methods baselines last linear ets chronos2 chronos_bolt timesfm25 \
-       timesfm3 tirex toto2 moirai2 ttm
-python scripts/summarize.py      --results results --cache data/cache --out report
-```
+# frozen embeddings
+python scripts/gwtcw_embed.py   --data data/gwtcw/gwtcw.npz --out data/gwtcw_emb
+python scripts/embed_signals.py --npz data/nasa/l2.npz  --key X --length 1024 --segment --out data/nasa_emb
+python scripts/embed_signals.py --npz data/ogw1/loc.npz --key R --segment --out data/ogw1_emb_R
+python scripts/embed_signals.py --npz data/ogw1/loc.npz --key B --segment --out data/ogw1_emb_B
 
-`run_benchmark.py` is resumable: finished (method, frequency, cut-off) chunks are skipped.
-
-Pipeline check without the real data:
-
-```bash
-python -c "from gwtsfm.synth import write_dataset; write_dataset('data/synth_raw', freqs_khz=(100,))"
-python scripts/prepare_cache.py --root data/synth_raw --out data/synth_cache --freqs 100
-python scripts/run_benchmark.py --cache data/synth_cache --out results_synth --freqs 100 --tc 30 45
+# tasks
+python scripts/gwtcw_classify.py --data data/gwtcw/gwtcw.npz --emb data/gwtcw_emb --out results_gwtcw
+python scripts/nasa_anomaly.py   --data data/nasa/l2.npz --emb data/nasa_emb --out results_nasa
+python scripts/ogw1_localize.py  --data data/ogw1/loc.npz --emb data/ogw1_emb_R --out results_ogw1
+python scripts/ogw1_network.py   --data data/ogw1/loc.npz --embR data/ogw1_emb_R --embB data/ogw1_emb_B --out results_ogw1_network
 ```
 
 ## Layout
 
 ```
-gwtsfm/ogw.py        dataset I/O, pair indexing, decimation, reference/test split
-gwtsfm/synth.py      synthetic data in the OGW file layout (testing only)
-gwtsfm/dsp.py        analysis window, time stretch, damage indices
-gwtsfm/baselines.py  OBS, OBS+BSS, stretch extrapolation
-gwtsfm/models.py     unified zero-shot forecaster wrappers
-gwtsfm/protocol.py   temperature-axis forecasting protocol
-gwtsfm/metrics.py    AUC (per path, fused), AUC vs gap, TPR@FPR, forecast error
-scripts/             download, cache, run, summarize
+gwtsfm/embed.py      frozen TSFM embedders (mean-pooled tokens; MOMENT/Mantis on 512-sample windows)
+gwtsfm/evalkit.py    heads (logistic regression, k-NN), one-class detectors, MiniRocket, 1D-CNN
+gwtsfm/ogw.py        OGW H5 reader (channel order, sampling rate, excitation onset), decimation
+scripts/             data preparation, embedding extraction, the three task evaluations
+archive/forecasting/ an earlier exploratory study (forecasting along the temperature axis), not used
 ```
