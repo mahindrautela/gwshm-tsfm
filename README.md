@@ -1,7 +1,8 @@
 # Frozen time series foundation models for guided-wave structural health monitoring
 
 Code and results for the paper *Compare Like with Like: Frozen Time Series Foundation Models for
-Guided-Wave Structural Health Monitoring* ([`paper/main.pdf`](paper/main.pdf), ICML 2026 format).
+Guided-Wave Structural Health Monitoring* ([`paper/main.pdf`](paper/main.pdf), ICML 2026 format). The PDF and
+an Overleaf-ready LaTeX source zip are also in [`docs/`](docs).
 
 Six pretrained time series foundation models (Chronos-2, Chronos-Bolt, TiRex, MOMENT, Mantis, TTM) are
 used **frozen**: each ultrasonic signal is turned into an embedding vector, and only a light head is
