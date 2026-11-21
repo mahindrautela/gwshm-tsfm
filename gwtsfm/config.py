@@ -25,4 +25,7 @@ PAPER_MODELS = {
 # extended experiments (scripts/ext_*.py).
 MODELS = {
     **PAPER_MODELS,
+    "timesfm": "TimesFM 2.5",
+    "sundial": "Sundial (base)",
+    "moirai2": "Moirai 2.0 (small)",
 }
