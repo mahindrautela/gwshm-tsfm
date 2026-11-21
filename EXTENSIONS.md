@@ -12,7 +12,7 @@ None of them changes the protocols, splits, seeds or results of Tasks 1–3. Eac
 | E3 | Does Task 2 generalise to other boundary conditions and layups? | Within a specimen, yes, everywhere. Across specimens only under load (Sundial, Moirai 2, Mantis 0.79–0.86 on all layups); clamped and traction-free do not transfer. Cross-layup references partly work. |
 | E4 | Which differences in Tables 3–6 are significant? | Few: the top seven frozen models are indistinguishable on Task 1, and nothing in Task 2 can be significant with four specimens. |
 | E5 | Can Task 3 give coordinates, unseen zones, or survive missing sensors? | Coordinates to 22 mm (MOMENT); unseen zones largely fail; missing sensors cost little. |
-| E6 | Does light adaptation beat the linear probe? | see E6 below |
+| E6 | Does light adaptation beat the linear probe? | No. Fine-tuning the last two blocks or LoRA on MOMENT and TiRex matches a linear probe trained on the same data (±0.01 AUC) and stays below the paper's probe on all the training data. |
 
 Two decisions taken during Phase 2, both confirmed with the author:
 - `config.PAPER_MODELS` holds the paper's six models. The Task 1–3 scripts, `make_tables.py` and
@@ -411,7 +411,65 @@ with 4 transducers missing (e.g. TiRex 0.97, MOMENT 0.92).
 
 ## E6 Light adaptation
 
-(to be completed)
+**Question.** Does adapting the backbone beat the paper's linear probe on Task 1 (GW-TCW, held-out
+sensor configurations)?
+
+**Protocol** (`scripts/ext_adapt.py`, Apple GPU `mps`).
+- Models: MOMENT-1 base and TiRex, the two best on Task 1.
+- Data: the paper's Task 1 data, its five grouped folds and its sign symmetry (train on x and −x, average
+  the two scores).
+- Early stopping: within each training fold, 20% of the configurations (seed = fold) are held out. The
+  test fold is never used to choose anything.
+- Feature: the mean over tokens of the last block's output.
+  - MOMENT: its own embedding, so the linear probe gives the paper's 0.863.
+  - TiRex: the last of its 12 blocks. This is not the package's all-layer embedding, and it scores 0.80
+    with the paper's head instead of 0.86.
+- Variants:
+  - LP (sklearn): the paper's head (StandardScaler + logistic regression C = 1) on all the training
+    configurations.
+  - LP (sklearn, 80%): the same head, fitted only on the 80% the trained variants learn from. This is the
+    control.
+  - LP (gradient): a linear head trained by the loop below, backbone frozen.
+  - FT last 2: the last two blocks unfrozen.
+  - LoRA r = 8: peft adapters in the last six blocks. MOMENT gets them on attention q and v; TiRex on its
+    feed-forward projections, because its sLSTM gates are custom layers.
+- Training is LP-then-FT:
+  - The head starts from the 80% probe, and that starting point is kept unless the validation AUC improves.
+  - AdamW: learning rate 1e-3 for the head, 1e-4 (fine-tuning) or 5e-4 (LoRA) for the backbone; weight
+    decay 0.01.
+  - Batch 32, binary cross-entropy, up to 20 epochs; the epoch with the best validation AUC is kept.
+
+**Results** (test AUC, mean ± s.d. over five folds; `results/ext_adapt/folds.csv`)
+
+| Model | LP (sklearn), all | LP (sklearn), 80% | LP (gradient) | FT last 2 | LoRA r=8 |
+|---|---|---|---|---|---|
+| MOMENT-1 base | 0.863 ± 0.035 | 0.828 ± 0.024 | 0.827 ± 0.021 | 0.820 ± 0.014 | 0.829 ± 0.018 |
+| TiRex (last block) | 0.799 ± 0.044 | 0.778 ± 0.027 | 0.780 ± 0.028 | 0.765 ± 0.065 | 0.784 ± 0.025 |
+
+Change in test AUC per fold against the 80% probe, which has the same training data:
+- FT last 2: from −0.09 to +0.04 (mean −0.01 for both models).
+- LoRA: from −0.02 to +0.02 (MOMENT +0.00; TiRex +0.01, positive in four of five folds).
+
+With five folds, no paired test can reach p < 0.05: the smallest possible two-sided p-value of the exact
+sign-flip test is 0.0625.
+
+**Conclusion.**
+- **Adaptation does not help here.** Light fine-tuning and LoRA give the same AUC as a linear probe
+  trained on the same configurations.
+- **The early-stopping split costs more than adaptation gains.** Every trained variant is below the
+  paper's probe on all the training data, and the 80% control shows why: holding out 20% for early
+  stopping costs 0.02–0.04 AUC.
+- **Task 1 is data-limited.** It has about 125 labelled configurations per training fold. With this much
+  data, the frozen embedding with a linear head, as in the paper, is the better choice.
+
+**Limitations.**
+- Two models, one task, one set of hyperparameters (no search, so as not to tune on the folds).
+- The TiRex feature is a single block, not the package's embedding.
+- TiRex pads its input to 2,048 samples with NaN, so the gradients of its first 3–4 blocks are NaN
+  (`results/ext_mps/training.csv`). Only its last six blocks can be trained.
+- MOMENT is trained on the 512-sample resampled signal, as in the paper.
+- Runs are on `mps`; TiRex's cpu and mps outputs differ by about 1e-3 (MPS check).
+- Larger labelled sets, full fine-tuning and other tasks are not tested.
 
 ---
 
@@ -424,8 +482,20 @@ with 4 transducers missing (e.g. TiRex 0.97, MOMENT 0.92).
 
 ## Reproducing Phase 2
 
+Environments (conda-forge; Python 3.12):
+
 ```bash
-# environments: gwtsfm (main), gwtsfm-moirai (uni2ts), see README
+# main: the paper's requirements plus the TimesFM 2.5 and LoRA packages
+conda create -n gwtsfm --override-channels -c conda-forge python=3.12
+conda activate gwtsfm
+pip install -r requirements.txt && pip install --no-deps momentfm==0.1.4
+pip install timesfm==3.0.2 peft==0.22.0        # transformers ended at 5.23.0 (unpinned in requirements.txt)
+# Moirai 2: uni2ts pins torch 2.4 and numpy 1.26, so it gets its own environment
+conda create -n gwtsfm-moirai --override-channels -c conda-forge python=3.12
+~/miniconda3/envs/gwtsfm-moirai/bin/pip install uni2ts==2.0.0
+```
+
+```bash
 python scripts/ext_mps_check.py
 python scripts/embed.py gwtcw nasa ogw1_residuals ogw1_baselines --models timesfm sundial --device mps
 ~/miniconda3/envs/gwtsfm-moirai/bin/python scripts/embed.py gwtcw nasa ogw1_residuals ogw1_baselines --models moirai2

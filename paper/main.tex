@@ -1058,15 +1058,25 @@ feature here is the last block's mean (0.80 with the paper's head), not the pack
   \label{tab:ext:adapt}
   \centering
   \small
-  \begin{tabular}{@{}lcccc@{}}
+  \begin{tabular}{@{}lccccc@{}}
     \toprule
-    Model & Linear probe (paper head) & Linear head (gradient) & Last 2 blocks & LoRA $r=8$ \\
+    & \multicolumn{2}{c}{Linear probe (paper head)} & \multicolumn{3}{c}{Trained on 80\%, early stopping on 20\%} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-6}
+    Model & All training & 80\% only & Linear head & Last 2 blocks & LoRA $r=8$ \\
     \midrule
     \inputrows{tables/ext_adapt.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-\paragraph{Results.} EXT-ADAPT-RESULTS
+\paragraph{Results.} Adaptation does not beat the linear probe. Every trained variant scores below the
+paper's head fitted on all training configurations (MOMENT 0.86, TiRex 0.80), but so does that same head
+fitted on only the 80\% the trained variants learn from (0.83 and 0.78): the gap is the 20\% of
+configurations held out for early stopping, not the adaptation. Against this matched probe, unfreezing
+the last two blocks changes the AUC by $-0.09$ to $+0.04$ per fold (mean $-0.01$ for both models) and LoRA by
+$-0.02$ to $+0.02$ (MOMENT $+0.00$, TiRex $+0.01$ in four of five folds, which five folds cannot make
+significant). With about 125 labelled configurations (250 signals) per training fold, the frozen embedding
+with a linear head is as good as lightly adapting the backbone; whether larger labelled sets change this
+is not tested.
 
 \end{document}

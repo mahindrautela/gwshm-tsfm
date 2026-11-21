@@ -12,6 +12,8 @@ Feature for the head: the mean over the signal's tokens of the last block's outp
 its own 'embedding' output, on the signal resampled to 512 as in the paper; TiRex: the last
 of its 12 sLSTM blocks, on the signal's own tokens). Variants:
   LP (sklearn)     the paper's logistic regression on these frozen features
+  LP (sklearn, 80%) the same, fitted only on the 80% of the training configurations the
+                   trained variants learn from (control: the others see 20% less data)
   LP (gradient)    a linear head trained with the loop below, backbone frozen (checks the loop)
   FT last 2        last 2 blocks unfrozen + linear head
   LoRA r=8         rank-8 adapters (peft) in the last 6 blocks + linear head; MOMENT: attention
@@ -102,16 +104,20 @@ def set_trainable(key, net, variant):
     return []
 
 
+def inner_split(cfg, tr, fold):
+    """Hold out 20% of the training configurations (seed = fold) for early stopping."""
+    rng = np.random.default_rng(fold)
+    cfgs = np.unique(cfg[tr])
+    val_cfg = rng.choice(cfgs, int(round(0.2 * len(cfgs))), replace=False)
+    return tr[np.isin(cfg[tr], val_cfg)], tr[~np.isin(cfg[tr], val_cfg)]
+
+
 def train_eval(key, variant, X, y, cfg, tr, te, fold, device, epochs, log):
     import torch
     torch.manual_seed(fold)
     e, net = backbone(key, device)
     bb = set_trainable(key, net, variant)
-    # inner grouped validation split of the training configurations
-    rng = np.random.default_rng(fold)
-    cfgs = np.unique(cfg[tr])
-    val_cfg = rng.choice(cfgs, int(round(0.2 * len(cfgs))), replace=False)
-    va, fit = tr[np.isin(cfg[tr], val_cfg)], tr[~np.isin(cfg[tr], val_cfg)]
+    va, fit = inner_split(cfg, tr, fold)                   # grouped validation split
     Xt = torch.from_numpy(X).to(device)
 
     def feats(idx, sign, grad=False):
@@ -174,6 +180,8 @@ def main():
     ap.add_argument("--device", default="mps")
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--models", nargs="+", default=["moment", "tirex"])
+    ap.add_argument("--probe-only", action="store_true",
+                    help="only the two sklearn probes; replaces their rows in an existing folds.csv")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -197,6 +205,11 @@ def main():
         for i, (tr, te) in enumerate(folds):
             rows.append(dict(model=key, variant="LP (sklearn)", fold=i,
                              auc=roc_auc_score(y[te], t1.damage_score(t1.logistic, Fp, Fn, y, tr, te, True))))
+            fit = inner_split(cfg, tr, i)[1]
+            rows.append(dict(model=key, variant="LP (sklearn, 80%)", fold=i,
+                             auc=roc_auc_score(y[te], t1.damage_score(t1.logistic, Fp, Fn, y, fit, te, True))))
+        if args.probe_only:
+            continue
         for variant in ["LP (gradient)", "FT last 2", "LoRA r=8"]:
             for i, (tr, te) in enumerate(folds):
                 auc, val = train_eval(key, variant, Xm, y, cfg, tr, te, i, args.device, args.epochs, log)
@@ -205,6 +218,11 @@ def main():
                 pd.DataFrame(rows).to_csv(out / "folds.csv", index=False)
                 pd.DataFrame(log).to_csv(out / "curves.csv", index=False)
     R = pd.DataFrame(rows)
+    if args.probe_only:                                    # keep the trained variants' rows
+        old = pd.read_csv(out / "folds.csv")
+        old = old[~(old.model.isin(args.models) & old.variant.str.startswith("LP (sklearn"))]
+        R = pd.concat([R, old], ignore_index=True)
+        R.to_csv(out / "folds.csv", index=False)
     print(R.groupby(["model", "variant"]).auc.agg(["mean", "std"]).round(3).to_string())
 
 

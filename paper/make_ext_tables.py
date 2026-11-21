@@ -195,7 +195,7 @@ def e6():
     lines = []
     for key, label in [("moment", "MOMENT-1 base"), ("tirex", "TiRex")]:
         cells = [label]
-        for v in ["LP (sklearn)", "LP (gradient)", "FT last 2", "LoRA r=8"]:
+        for v in ["LP (sklearn)", "LP (sklearn, 80%)", "LP (gradient)", "FT last 2", "LoRA r=8"]:
             cells.append(f"{f2(g.loc[(key, v), 'mean'])}\\,{{\\scriptsize$\\pm${f2(g.loc[(key, v), 'std'])}}}"
                          if (key, v) in g.index else "--")
         lines.append(cells)
