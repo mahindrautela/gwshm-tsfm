@@ -76,6 +76,12 @@ This runs every step above in order: downloads take about an hour, embeddings se
 tasks about 1.5 hours on two CPU cores. Downloads and embeddings that already exist are skipped, and
 every script can also be run on its own with default paths, for example `python scripts/task2_nasa.py`.
 
+`python scripts/embed.py --device mps` (or `cuda`) embeds on a GPU; cpu stays the default.
+[`REPRODUCTION.md`](REPRODUCTION.md) compares a full rerun with the paper. Further experiments
+(temperature, three more models, other NASA layups, significance tests, coordinate regression, light
+adaptation) are in `scripts/ext_*.py` and reported in [`EXTENSIONS.md`](EXTENSIONS.md), which also lists
+the extra environments they need.
+
 The earlier exploratory study, which used the models as forecasters along the temperature axis of
 another OGW dataset, is kept on the
 [`forecasting-archive`](https://github.com/mahindrautela/gwshm-tsfm/tree/forecasting-archive) branch.

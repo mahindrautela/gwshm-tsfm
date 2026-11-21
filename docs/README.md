@@ -14,3 +14,7 @@ e-mail placeholders.
 
 The working source is in [`../paper/`](../paper), where `make_tables.py` and `figures/make_figures.py`
 regenerate the tables and figures from the results; rebuild this zip from there after any change.
+
+The zip now also holds the appendix "Extended experiments" (Appendix `app:ext`, tables `tables/ext_*.tex`
+written by `paper/make_ext_tables.py`; see [`../EXTENSIONS.md`](../EXTENSIONS.md)). `gwshm-tsfm-icml.pdf`
+has not been recompiled since and does not yet contain that appendix; compile the zip to update it.
