@@ -31,7 +31,6 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import embed  # noqa: E402
 from gwtsfm.config import DATA, EMBEDDINGS, MODELS  # noqa: E402
-from gwtsfm.ogw import CROSS_PATHS, PAIRS  # noqa: E402
 
 RAW = DATA / "ogw_temp"
 SIGNALS = RAW / "signals_f40kHz.npz"
@@ -40,6 +39,7 @@ CPU_ONLY = {"mantis", "moirai2"}
 
 
 def prepare():
+    from gwtsfm.ogw import CROSS_PATHS, PAIRS   # needs h5py: main environment only
     parts = []
     z = np.load(RAW / "ogwT_f40kHz_udam.npz")
     order = np.argsort(z["stamp"])

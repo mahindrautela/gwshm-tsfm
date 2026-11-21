@@ -6,8 +6,9 @@ with classical temperature compensation?
 
 Protocol (run ext_temperature_embed.py first):
   references   healthy measurements of the first undamaged cycle (udam-1) on a temperature
-               grid with spacing s in {0.5, 2, 5, 10, 20, 40} degC, starting at 20.5 degC;
-               both the heating and the cooling measurement within 0.3 degC of a grid point
+               grid with spacing s in {0.5, 2, 5, 10, 20, 40} degC, starting at 20.5 degC: for
+               each grid point, the measurement of the heating half and that of the cooling
+               half of the cycle with the nearest recorded temperature
   healthy test the second undamaged cycle (udam-2): another session, all temperatures
   damaged test the four sessions with the defect at D04, D12, D16 or D24
   gap          |T_test - nearest reference temperature| (temperatures as recorded)
@@ -68,9 +69,13 @@ DAMAGED = ["D04", "D12", "D16", "D24"]
 
 
 # ------------------------------------------------------------------------------ references
-def reference_set(temp, pool, s, tol=0.3):
+def reference_set(temp, pool, s):
+    """udam-1 measurements nearest each grid temperature, in the heating and in the cooling half."""
     grid = np.arange(20.5, 60.0 + 1e-9, s)
-    return pool[np.min(np.abs(temp[pool][:, None] - grid[None]), 1) <= tol], grid
+    peak = int(np.argmax(temp[pool]))                    # pool is in time order: up, then down
+    refs = {int(half[np.argmin(np.abs(temp[half] - g))]) for g in grid
+            for half in (pool[:peak + 1], pool[peak:])}
+    return np.array(sorted(refs)), grid
 
 
 # ------------------------------------------------------------------------------ raw-signal detectors
