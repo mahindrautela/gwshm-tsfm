@@ -33,11 +33,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score
-from sklearn.model_selection import GroupKFold
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import baselines, heads  # noqa: E402
 from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS  # noqa: E402
+from gwtsfm.splits import grouped_kfold  # noqa: E402
 
 FROZEN, TRAINED = "foundation model (frozen)", "trained from scratch"
 
@@ -50,7 +50,7 @@ def make_splits(position, path, n_examples, random_reps, rng):
         splits.append(("random 90/10", r, p[n_examples // 10:], p[:n_examples // 10]))
     group = position * 36 + path                       # one group per (position, path)
     shuffled = rng.permutation(group.max() + 1)        # random fold assignment of the groups
-    for k, (tr, te) in enumerate(GroupKFold(5).split(np.zeros(n_examples), groups=shuffled[group])):
+    for k, (tr, te) in enumerate(grouped_kfold(shuffled[group], 5)):   # GroupKFold, any platform
         splits.append(("grouped (position, path)", k, tr, te))
     for k in range(4):
         te = np.flatnonzero(position % 4 == k)         # the k-th position of every zone

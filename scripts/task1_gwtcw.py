@@ -37,13 +37,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.metrics import balanced_accuracy_score, roc_auc_score
-from sklearn.model_selection import GroupKFold, train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import baselines, heads  # noqa: E402
 from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS, SEED  # noqa: E402
+from gwtsfm.splits import grouped_kfold  # noqa: E402
 
 FROZEN, TRAINED, PROBE = "foundation model (frozen)", "trained from scratch", "artefact probe"
 
@@ -69,7 +70,7 @@ def first_repeat(n_rows: int) -> np.ndarray:
 def grouped_folds(cfg, k=5):
     """5-fold split in which all signals of a configuration fall in the same fold."""
     shuffled = np.random.default_rng(SEED).permutation(cfg.max() + 1)  # random fold assignment
-    return list(GroupKFold(k).split(np.zeros(len(cfg)), groups=shuffled[cfg]))
+    return grouped_kfold(shuffled[cfg], k)          # GroupKFold, the same on every platform
 
 
 def feature_sets(X, Xall, keep):
