@@ -14,6 +14,11 @@ to 512 points (used for GW-TCW). With ``segment=True`` it is cut into consecutiv
 512-sample windows at its native rate and the window embeddings are concatenated (used
 for NASA and OGW-1, where resampling would alias the high-frequency content).
 
+Every model runs on the CPU by default, as for the paper. ``device`` (e.g. "cuda" or "mps")
+moves the model to an accelerator; the embeddings are always returned as CPU arrays.
+Mantis is refused on Apple "mps": its scalar encoders apply LayerNorm(eps=1e-15) to
+near-zero values, which the MPS kernel gets wrong (embeddings off by ~50% against cpu).
+
 Usage:
     model = embed.get("moment", segment=True)
     Z, seconds = model(X)
@@ -57,6 +62,7 @@ class Embedder:
     name = "base"      # display name
     hf_id = ""         # Hugging Face checkpoint
     params = ""        # parameter count of the loaded checkpoint
+    device = "cpu"     # torch device the model runs on (set by ``get``)
 
     def load(self):
         return self
@@ -78,7 +84,7 @@ class Chronos2Emb(Embedder):
     def load(self):
         _torch()
         from chronos import BaseChronosPipeline
-        self.pipe = BaseChronosPipeline.from_pretrained(self.hf_id, device_map="cpu")
+        self.pipe = BaseChronosPipeline.from_pretrained(self.hf_id, device_map=self.device)
         return self
 
     def _embed(self, X):
@@ -96,7 +102,7 @@ class ChronosBoltEmb(Embedder):
     def load(self):
         _torch()
         from chronos import BaseChronosPipeline
-        self.pipe = BaseChronosPipeline.from_pretrained(self.hf_id, device_map="cpu")
+        self.pipe = BaseChronosPipeline.from_pretrained(self.hf_id, device_map=self.device)
         return self
 
     def _embed(self, X):
@@ -110,10 +116,11 @@ class TiRexEmb(Embedder):
     name, hf_id, params = "TiRex", "NX-AI/TiRex", "35M"
 
     def load(self):
-        os.environ.setdefault("TIREX_NO_CUDA", "1")
+        if self.device == "cpu":
+            os.environ.setdefault("TIREX_NO_CUDA", "1")
         _torch()
         from tirex.models.embedding import TiRexEmbedding
-        self.m = TiRexEmbedding(device="cpu", data_augmentation=False, batch_size=64)
+        self.m = TiRexEmbedding(device=self.device, data_augmentation=False, batch_size=64)
         return self
 
     def _embed(self, X):
@@ -132,17 +139,17 @@ class MomentEmb(Embedder):
         from momentfm import MOMENTPipeline
         self.m = MOMENTPipeline.from_pretrained(self.hf_id, model_kwargs={"task_name": "embedding"})
         self.m.init()
-        self.m.eval()
+        self.m.to(self.device).eval()
         return self
 
     def _embed(self, X):
         torch = _torch()
         x, k = segments(X) if self.segment else (resample(X, 512), 1)
         with torch.inference_mode():
-            out = self.m(x_enc=torch.from_numpy(np.ascontiguousarray(x))[:, None, :],
-                         input_mask=torch.ones(len(x), 512, dtype=torch.long))
+            out = self.m(x_enc=torch.from_numpy(np.ascontiguousarray(x))[:, None, :].to(self.device),
+                         input_mask=torch.ones(len(x), 512, dtype=torch.long, device=self.device))
         # (n * k windows, 768) -> (n, k * 768): window embeddings side by side
-        return out.embeddings.float().numpy().reshape(len(X), -1)
+        return out.embeddings.float().cpu().numpy().reshape(len(X), -1)
 
 
 class MantisEmb(Embedder):
@@ -150,11 +157,13 @@ class MantisEmb(Embedder):
     segment = False
 
     def load(self):
+        if str(self.device).startswith("mps"):
+            raise ValueError("Mantis gives wrong embeddings on mps (see the module docstring); use cpu")
         _torch()
         from mantis.architecture import Mantis8M
         from mantis.trainer import MantisTrainer
-        net = Mantis8M(device="cpu").from_pretrained(self.hf_id)
-        self.tr = MantisTrainer(device="cpu", network=net)
+        net = Mantis8M(device=self.device).from_pretrained(self.hf_id)
+        self.tr = MantisTrainer(device=self.device, network=net)
         return self
 
     def _embed(self, X):
@@ -169,7 +178,7 @@ class TTMEmb(Embedder):
     def load(self):
         _torch()
         from tsfm_public.toolkit.get_model import get_model
-        self.m = get_model(self.hf_id, context_length=self.L, prediction_length=96).eval()
+        self.m = get_model(self.hf_id, context_length=self.L, prediction_length=96).to(self.device).eval()
         return self
 
     def _embed(self, X):
@@ -178,18 +187,19 @@ class TTMEmb(Embedder):
             X = np.concatenate([np.repeat(X[:, :1], self.L - X.shape[1], 1), X], 1)
         X = X[:, -self.L:]
         with torch.inference_mode():
-            o = self.m(past_values=torch.from_numpy(np.ascontiguousarray(X))[:, :, None])
+            o = self.m(past_values=torch.from_numpy(np.ascontiguousarray(X))[:, :, None].to(self.device))
         h = o.backbone_hidden_state                       # (n, channels, patches, d)
-        return h.float().mean(2).reshape(len(X), -1).numpy()  # average over patches
+        return h.float().mean(2).reshape(len(X), -1).cpu().numpy()  # average over patches
 
 
 REGISTRY = {"chronos2": Chronos2Emb, "chronos_bolt": ChronosBoltEmb, "tirex": TiRexEmb,
             "moment": MomentEmb, "mantis": MantisEmb, "ttm": TTMEmb}
 
 
-def get(name: str, segment: bool = False) -> Embedder:
+def get(name: str, segment: bool = False, device: str = "cpu") -> Embedder:
     """Load a model by key (see config.MODELS). ``segment`` only matters for MOMENT and Mantis."""
     e = REGISTRY[name]()
+    e.device = device
     if hasattr(e, "segment"):
         e.segment = segment
     return e.load()

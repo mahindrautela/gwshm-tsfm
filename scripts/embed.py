@@ -2,6 +2,7 @@
 
     python scripts/embed.py                          # all datasets, all six models
     python scripts/embed.py nasa --models ttm mantis # one dataset, two models
+    python scripts/embed.py nasa --device cuda       # on a GPU (default: cpu, as for the paper)
 
 Datasets (input -> output folder under data/embeddings/):
     gwtcw            GW-TCW signals x and their sign-flipped copies -x  -> gwtcw/<model>.npz
@@ -76,6 +77,8 @@ def main():
     ap.add_argument("--models", nargs="+", default=list(MODELS), choices=list(MODELS))
     ap.add_argument("--all-repeats", action="store_true",
                     help="GW-TCW: embed all 3,120 signals (needed only for the leaky-split check)")
+    ap.add_argument("--device", default="cpu",
+                    help="torch device, e.g. cuda or mps (default cpu; results in the paper use cpu)")
     args = ap.parse_args()
 
     for dataset in args.datasets:
@@ -92,13 +95,13 @@ def main():
                 continue
             try:
                 if dataset == "gwtcw":
-                    model = embed.get(key)                       # resample to 512 for MOMENT/Mantis
+                    model = embed.get(key, device=args.device)   # resample to 512 for MOMENT/Mantis
                     Zp, t1 = model(X)
                     Zn, t2 = model(-X)
                     np.savez(out, pos=Zp, neg=Zn)
                     log_time(folder, model, t1 + t2, 2 * len(X), Zp.shape[1])
                 else:
-                    model = embed.get(key, segment=SOURCES[dataset][3])
+                    model = embed.get(key, segment=SOURCES[dataset][3], device=args.device)
                     Z, t = model(X)
                     np.save(out, Z.reshape(*lead, -1).astype(np.float16))
                     log_time(folder, model, t, len(X), Z.shape[1])
