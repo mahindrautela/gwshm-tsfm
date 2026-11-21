@@ -39,7 +39,7 @@ def e1():
     if not f.exists():
         return
     S = pd.read_csv(f)
-    S = S[S.agg == "mean"]
+    S = S[S["agg"] == "mean"]
     grids = sorted(S.grid.unique())
     order = ["raw NT", "raw OBS", "raw BSS", "raw OBS+BSS"]
     emb = sorted({d.split(" | ")[0] for d in S.detector if " | " in d})

@@ -229,7 +229,7 @@ def main():
     summary.to_csv(out / "summary.csv", index=False)
     by_gap.to_csv(out / "by_gap.csv", index=False)
     locality(S, per_path, cross).to_csv(out / "locality.csv", index=False)
-    print(summary[summary.agg == "mean"].pivot_table(index="detector", columns="grid", values="auc").round(3).to_string())
+    print(summary[summary["agg"] == "mean"].pivot_table(index="detector", columns="grid", values="auc").round(3).to_string())
 
 
 if __name__ == "__main__":
