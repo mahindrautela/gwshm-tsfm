@@ -17,7 +17,7 @@ import pandas as pd  # noqa: E402
 from scipy.stats import spearmanr  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from gwtsfm.config import DATA, MODELS, RESULTS  # noqa: E402
+from gwtsfm.config import DATA, PAPER_MODELS, RESULTS  # noqa: E402
 from gwtsfm.ogw import path_distance  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
@@ -40,7 +40,7 @@ plt.rcParams.update({
     "pdf.fonttype": 42, "savefig.bbox": "tight", "savefig.pad_inches": 0.02,
 })
 
-TSFM = list(MODELS.values())
+TSFM = list(PAPER_MODELS.values())
 
 
 def fig_task1():

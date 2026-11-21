@@ -26,9 +26,9 @@ import pandas as pd
 from scipy.stats import beta
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gwtsfm.config import MODELS, RESULTS, ROOT  # noqa: E402
+from gwtsfm.config import PAPER_MODELS, RESULTS, ROOT  # noqa: E402
 
-TSFM = list(MODELS.values())
+TSFM = list(PAPER_MODELS.values())
 TABLES = {"task1.tex": "Table 3 (Task 1, GW-TCW)", "task2.tex": "Table 4 (Task 2, NASA)",
           "task3_path.tex": "Table 5 (Task 3, path level)", "task3_network.tex": "Table 6 (Task 3, network level)"}
 HEADERS = {

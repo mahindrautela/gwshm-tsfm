@@ -40,7 +40,7 @@ from sklearn.metrics import accuracy_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import heads  # noqa: E402
-from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS  # noqa: E402
+from gwtsfm.config import DATA, EMBEDDINGS, PAPER_MODELS, RESULTS  # noqa: E402
 from gwtsfm.ogw import path_distance, phase_of  # noqa: E402
 
 PHYSICS = "Residual energy (physics)"
@@ -154,7 +154,7 @@ def main():
     DI = {PHYSICS: np.stack([di_energy(R[f], B[f]) for f in range(nF)])}
     CONTROL = {PHYSICS: [np.stack([control_energy(B[f], np.random.default_rng(s)) for f in range(nF)])
                          for s in range(N_CONTROL)]}
-    for key, name in MODELS.items():
+    for key, name in PAPER_MODELS.items():
         fr = EMBEDDINGS / "ogw1_residuals" / f"{key}.npy"
         fb = EMBEDDINGS / "ogw1_baselines" / f"{key}.npy"
         if fr.exists() and fb.exists():

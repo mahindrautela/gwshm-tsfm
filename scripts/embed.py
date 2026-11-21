@@ -31,7 +31,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import embed  # noqa: E402
-from gwtsfm.config import DATA, EMBEDDINGS, MODELS  # noqa: E402
+from gwtsfm.config import DATA, EMBEDDINGS, MODELS, PAPER_MODELS  # noqa: E402
 
 # dataset -> (file, array name, samples to keep, cut MOMENT/Mantis input into native-rate windows)
 SOURCES = {
@@ -74,7 +74,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("datasets", nargs="*", default=["gwtcw", *SOURCES],
                     choices=["gwtcw", *SOURCES])
-    ap.add_argument("--models", nargs="+", default=list(MODELS), choices=list(MODELS))
+    ap.add_argument("--models", nargs="+", default=list(PAPER_MODELS), choices=list(MODELS))
     ap.add_argument("--all-repeats", action="store_true",
                     help="GW-TCW: embed all 3,120 signals (needed only for the leaky-split check)")
     ap.add_argument("--device", default="cpu",

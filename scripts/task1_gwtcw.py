@@ -43,7 +43,7 @@ from sklearn.preprocessing import StandardScaler
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import baselines, heads  # noqa: E402
-from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS, SEED  # noqa: E402
+from gwtsfm.config import DATA, EMBEDDINGS, PAPER_MODELS, RESULTS, SEED  # noqa: E402
 from gwtsfm.splits import grouped_kfold  # noqa: E402
 
 FROZEN, TRAINED, PROBE = "foundation model (frozen)", "trained from scratch", "artefact probe"
@@ -80,7 +80,7 @@ def feature_sets(X, Xall, keep):
     (used only by the leaky random split).
     """
     feats, feats_all = {}, {}
-    for key, name in MODELS.items():
+    for key, name in PAPER_MODELS.items():
         f = EMBEDDINGS / "gwtcw" / f"{key}.npz"
         if not f.exists():
             continue

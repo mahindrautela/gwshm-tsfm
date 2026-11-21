@@ -13,13 +13,13 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gwtsfm.config import MODELS, RESULTS  # noqa: E402
+from gwtsfm.config import PAPER_MODELS, RESULTS  # noqa: E402
 
 OUT = Path(__file__).resolve().parent / "tables"
 OUT.mkdir(exist_ok=True)
 
 # model names as printed in the paper ("Chronos-Bolt (base)" -> "Chronos-Bolt base")
-NAME = {m: m.replace(" (base)", " base") for m in MODELS.values()}
+NAME = {m: m.replace(" (base)", " base") for m in PAPER_MODELS.values()}
 TSFM = list(NAME)
 
 

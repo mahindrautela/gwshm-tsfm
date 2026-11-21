@@ -36,7 +36,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import baselines, heads  # noqa: E402
-from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS  # noqa: E402
+from gwtsfm.config import DATA, EMBEDDINGS, PAPER_MODELS, RESULTS  # noqa: E402
 from gwtsfm.splits import grouped_kfold  # noqa: E402
 
 FROZEN, TRAINED = "foundation model (frozen)", "trained from scratch"
@@ -80,7 +80,7 @@ def main():
     onehot = np.c_[np.eye(nP)[path], np.eye(nF)[freq]].astype(np.float32)
 
     feats = {"Raw residual": (TRAINED, X), "|FFT| spectrum": (TRAINED, np.abs(np.fft.rfft(X, axis=1)))}
-    for key, name in MODELS.items():
+    for key, name in PAPER_MODELS.items():
         f = EMBEDDINGS / "ogw1_residuals" / f"{key}.npy"
         if f.exists():
             feats[name] = (FROZEN, np.load(f).astype(np.float32).reshape(len(X), -1))

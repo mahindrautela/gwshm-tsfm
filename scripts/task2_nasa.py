@@ -42,7 +42,7 @@ from sklearn.metrics import roc_auc_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from gwtsfm import heads  # noqa: E402
-from gwtsfm.config import DATA, EMBEDDINGS, MODELS, RESULTS  # noqa: E402
+from gwtsfm.config import DATA, EMBEDDINGS, PAPER_MODELS, RESULTS  # noqa: E402
 
 L = 1024               # samples per signal (0.85 ms at 1.2 MHz)
 DAMAGED_CYCLES = 20000
@@ -83,7 +83,7 @@ def feature_sets(X):
     """Feature name -> (kind, array (n_meas, F, P, d)) for raw, |FFT| and every embedding."""
     feats = {"Raw signal": ("raw", X / X.std()),
              "|FFT| spectrum": ("fft", np.abs(np.fft.rfft(X, axis=-1)).astype(np.float32))}
-    for key, name in MODELS.items():
+    for key, name in PAPER_MODELS.items():
         f = EMBEDDINGS / "nasa" / f"{key}.npy"
         if f.exists():
             feats[name] = ("tsfm", np.load(f).astype(np.float32))
