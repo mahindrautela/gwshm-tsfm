@@ -34,7 +34,8 @@ def rows(lines):
 
 # ------------------------------------------------------------------------------ E1
 def e1():
-    """Temperature: AUC and detection at 5% false alarms vs reference grid spacing."""
+    """Temperature: AUC vs reference grid spacing; detection at a nominal 5% false-alarm rate
+    (realised rate in brackets) for the 2 and 5 degC grids."""
     f = RESULTS / "ext_temperature" / "summary.csv"
     if not f.exists():
         return
@@ -50,11 +51,15 @@ def e1():
         g = S[S.detector == det].set_index("grid")
         if g.empty:
             continue
-        label = {"raw NT": "Raw, nearest temperature", "raw OBS": "Raw, OBS", "raw BSS": "Raw, BSS",
-                 "raw OBS+BSS": "Raw, OBS + BSS"}.get(det, NAME.get(det.split(" | ")[0], det.split(" | ")[0])
-                                                    + ", " + det.split(" | ")[1])
+        raw = {"raw NT": "Raw, nearest temperature", "raw OBS": "Raw, OBS", "raw BSS": "Raw, BSS",
+               "raw OBS+BSS": "Raw, OBS + BSS"}
+        if det in raw:
+            label = raw[det]
+        else:
+            m, k = det.split(" | ")
+            label = f"{NAME.get(m, m)}, {k}"
         lines.append([label] + [f2(g.auc.get(s)) for s in grids]
-                     + [f"{f2(g['tpr@0.05'].get(10))} ({f2(g['far@0.05'].get(10))})"])
+                     + [f"{f2(g['tpr@0.05'].get(s))} ({f2(g['far@0.05'].get(s))})" for s in (2, 5)])
         if det == "raw OBS+BSS":
             lines.append([r"\midrule"])
     body = "\n".join(r[0] if r[0] == r"\midrule" else " & ".join(r) + r" \\" for r in lines) + "\n"

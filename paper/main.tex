@@ -805,4 +805,268 @@ image maximum.
   \end{tabular}
 \end{table}
 
+% ---------------------------------------------------------------------------------------------
+\section{Extended Experiments}
+\label{app:ext}
+
+The experiments in this appendix were run after the main study. They leave the protocols, splits and
+results of Tasks 1--3 unchanged and are produced by separate scripts (\texttt{scripts/ext\_*.py}); every
+table below is generated from their outputs. Extended embeddings were computed on an Apple GPU
+(\texttt{mps}); for the six paper models this changes Task~2 AUCs by at most $10^{-4}$, except for Mantis,
+whose embeddings are wrong on that backend and which therefore stays on the CPU.
+
+\subsection{Temperature (OGW CFRP temperature dataset)}
+\label{app:ext:temp}
+
+\paragraph{Protocol.} The plate of OGW-1 was also measured in a climate chamber stepped from 20 to
+60\,\textdegree C and back in 0.5\,\textdegree C steps \citep{moll2019ogw}: two cycles without damage and
+one cycle each with the reversible defect at D4, D12, D16 or D24 (161 measurements per cycle, 40\,kHz, the
+36 crossing paths, 1{,}024 samples at 1\,MHz). Healthy references are taken from the first undamaged
+cycle on a temperature grid with spacing $s$ (for each grid point, the nearest measurement of the heating
+and of the cooling half); the second undamaged cycle is the healthy test and the four damaged cycles are
+the damaged test. A measurement's score is the mean over its paths of a per-path index: the same-path
+embedding distance (\cref{eq:samepath}) to the mean reference, to the reference at the nearest
+temperature (NT) or to the closest reference (OBS, optimal baseline selection in embedding space); and,
+on raw signals, the residual energy against the NT reference, against the best reference (OBS), against
+the NT reference stretched in time by the best factor in 0.96--1.04 (BSS, baseline signal stretch), or
+both (OBS + BSS, over the three nearest references). Thresholds for a nominal false-alarm rate are the
+quantiles of leave-one-out scores of the first cycle, so no test data are used.
+
+\begin{table}[H]
+  \caption{Temperature robustness. ROC-AUC (healthy second cycle vs damaged cycles) as a function of the
+  spacing of the reference temperatures, and detection rate at a nominal 5\% false-alarm rate (realised
+  rate on the healthy test in brackets) for spacings of 2 and 5\,\textdegree C. Embedding rows: the three
+  models with the highest OBS AUC averaged over spacings; all nine are in \texttt{results/ext\_temperature}.}
+  \label{tab:ext:temp}
+  \centering
+  \small
+  \begin{tabular}{@{}lcccccccc@{}}
+    \toprule
+    & \multicolumn{6}{c}{AUC, reference spacing (\textdegree C)} & \multicolumn{2}{c}{Detected at 5\%} \\
+    \cmidrule(lr){2-7}\cmidrule(lr){8-9}
+    Detector & 0.5 & 2 & 5 & 10 & 20 & 40 & 2\,\textdegree C & 5\,\textdegree C \\
+    \midrule
+    \inputrows{tables/ext_temperature.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Results.} With references every 0.5--2\,\textdegree C, the closest-reference embedding
+distance is as good as classical compensation (AUC 0.98--1.00 for TiRex, MOMENT and both Chronos
+models; raw OBS + BSS 1.00). As the references thin out, classical compensation degrades more slowly: at
+5\,\textdegree C spacing OBS + BSS reaches 0.98 and BSS alone 0.89, against 0.92 for the best embedding
+(TiRex); at 10\,\textdegree C, 0.87 against at most 0.74; from 20\,\textdegree C on every method is near
+chance. Without temperature handling, the mean-reference distance that works in Task~2 fails here
+(0.49--0.69): temperature changes a path more than the defect does. At a fixed false-alarm rate the
+embeddings fall further behind: with references every 5\,\textdegree C, OBS + BSS detects 73\% of the
+damaged measurements at a realised 1\% false-alarm rate; the best embedding detects 17\% (Mantis, nearest
+temperature, at a realised 8\%).
+
+\paragraph{Controls.} Damage is confounded with recording time (the sessions span one month). A trigger
+offset between sessions would be a shortcut; the median lag of every session against the first cycle is
+below 0.1 sample. A drift between the two healthy cycles would raise healthy test scores; it does not
+(healthy test vs leave-one-out first-cycle scores: AUC at most 0.53). Finally, paths closer to the defect
+change more than distant ones (Spearman 0.56--0.64 for the raw detectors, 0.3--0.6 for most embeddings
+with OBS; weak for Chronos and Mantis), so the detections are at least partly local to the damage.
+
+\subsection{More models and pooling}
+\label{app:ext:models}
+
+\paragraph{Models.} TimesFM~2.5 (231M parameters, \texttt{google/timesfm-2.5-200m-pytorch}), Sundial base
+(128M, \texttt{thuml/sundial-base-128m}) and Moirai~2.0-R small (11M, \texttt{Salesforce/moirai-2.0-R-small})
+are added through the same interface: each signal is prepared as the model's own forecasting code
+prepares its context, and the decoder's patch tokens are averaged. \Cref{tab:ext:models} runs the
+unchanged Task 1--3 protocols on all nine models; the six paper models reproduce the main tables exactly in
+this run. Sundial ties the best models on Task~1 and, with Moirai~2, transfers best across NASA coupons
+(AUC 0.83--0.84, all four coupons detected). TimesFM~2.5 is weak on Task~1 (0.75) but locates every
+damage position.
+
+\begin{table}[H]
+  \caption{Nine frozen models under the paper's protocols. T1: GW-TCW, sign-symmetric logistic
+  regression AUC. T2: NASA, same-path distance, signal AUC within and across specimens, and coupons
+  detected at zero false alarms across specimens. T3: OGW-1 network level, zone accuracy (mean of 40, 60,
+  80\,kHz; three frequencies combined) and Spearman correlation of the DI with path proximity (mean over
+  frequencies). $^\star$Added in this appendix.}
+  \label{tab:ext:models}
+  \centering
+  \small
+  \begin{tabular}{@{}lccccccc@{}}
+    \toprule
+    & T1 & \multicolumn{3}{c}{T2} & \multicolumn{3}{c}{T3} \\
+    \cmidrule(lr){2-2}\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+    Model & AUC & Within & Across & Det. & Acc. (per freq.) & Acc. (all) & $\rho$ \\
+    \midrule
+    \inputrows{tables/ext_models.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Pooling.} Forward hooks record every block of each model in the same pass, and seven
+read-outs are scored with the same protocols (\cref{tab:ext:pooling}). The last token, the natural summary
+of the causal models, is the worst read-out on average and loses most of the localisation signal
+($\rho$ 0.42). Intermediate blocks are often better than the final one: the block at half depth improves
+cross-specimen detection for seven of nine models and the Spearman correlation for six. The best single
+read-outs (Sundial at half depth, Task~1 AUC 0.89; Chronos-2 at a quarter depth, Task~2 within-specimen
+0.98 instead of 0.88) were found by looking at the test protocols, so they indicate headroom rather than
+an unbiased estimate.
+
+\begin{table}[H]
+  \caption{Pooling ablation: mean over the nine models of each task's headline metric (as in
+  \cref{tab:ext:models}; T3 accuracy is the mean over the three single frequencies), and in brackets the
+  number of models for which the read-out beats the model's own embedding.}
+  \label{tab:ext:pooling}
+  \centering
+  \small
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    Read-out & T1 AUC & T2 within & T2 across & T3 acc. & T3 $\rho$ \\
+    \midrule
+    \inputrows{tables/ext_pooling.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Other NASA layups and boundary conditions}
+\label{app:ext:nasa}
+
+\paragraph{Protocol.} The NASA data also contain layups 1 and 3 and two further boundary conditions,
+clamped and traction-free, with fewer early-life repeats (2--7 per specimen) and a 20{,}000-cycle
+measurement for only some specimens. The Task~2 selection is applied unchanged to every combination
+(layup~2, loaded, reproduces the paper's array exactly). Within a specimen, half of its healthy
+measurements form the reference (every split if there are at most five, else five random ones); across
+specimens, the other coupons of the same layup and condition; across layups, every healthy measurement of
+another layup under the loaded condition. Signals are scaled by healthy data only.
+
+\begin{table}[H]
+  \caption{Same-path distance on all layups and boundary conditions: signal AUC, mean over specimens
+  (specimens whose 20k measurement scores above all their healthy test measurements / specimens with a
+  20k measurement). Cross-specimen and cross-layup: loaded condition.}
+  \label{tab:ext:nasa}
+  \centering
+  \small
+  \begin{tabular}{@{}llccccc@{}}
+    \toprule
+    & & \multicolumn{3}{c}{Within specimen} & Across & Across \\
+    \cmidrule(lr){3-5}
+    Layup & Features & Loaded & Clamped & Traction free & specimens & layups \\
+    \midrule
+    \inputrows{tables/ext_nasa.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Results.} Within a specimen, the result of Task~2 generalises to every layup and boundary
+condition: AUC 0.82--1.00 under load and 0.70--0.99 clamped or traction-free, with the 20{,}000-cycle
+measurement detected at zero false alarms in 215 of 216 model--specimen cases. Across specimens, transfer
+holds under load for all three layups (Sundial, Moirai~2 and Mantis 0.79--0.86, every damaged coupon
+detected; raw-signal detectors 0.15--0.57), but not for the clamped and traction-free conditions (embeddings
+0.36--0.74). These two unloaded conditions give almost identical signals (median correlation 0.95--0.98
+for the same specimen and cycle count, against 0.38--0.69 with the loaded condition). A healthy reference
+from another layup works partly: 0.66--0.80 for Moirai~2, which detects every damaged coupon, against
+0.44--0.48 for raw $1-$correlation.
+
+\subsection{Uncertainty and significance}
+\label{app:ext:stats}
+
+\paragraph{Protocol.} Intervals resample the physical unit of each task. Task~1: out-of-fold scores on the
+paper's folds, AUC with a 95\% bootstrap interval over the 156 configurations, paired bootstrap tests
+between methods with Holm correction, and the whole cross-validation repeated with 20 fold assignments.
+Task~2: all $\binom{8}{4}=70$ reference splits per specimen; with four specimens, an exact paired test
+cannot reach $p<0.125$. Task~3: per-position correctness with Clopper--Pearson intervals and exact McNemar
+tests.
+
+\begin{table}[H]
+  \caption{Uncertainty over physical units. T1: pooled out-of-fold AUC [95\% bootstrap interval over
+  configurations] and mean $\pm$ s.d.\ over 20 fold assignments. T2: within-specimen same-path AUC over all
+  70 reference splits (worst split) and share of splits detected at zero false alarms. T3: positions
+  located from the three-frequency map [Clopper--Pearson 95\%].}
+  \label{tab:ext:stats}
+  \centering
+  \small
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{T1} & \multicolumn{2}{c}{T2} & T3 \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-6}
+    Features & AUC [CI] & 20 fold sets & AUC (worst) & Detected & Correct [CI] \\
+    \midrule
+    \inputrows{tables/ext_stats.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Which differences are significant.} In Task~1 the seven strongest frozen models (MOMENT,
+TiRex, Sundial, Chronos-Bolt, Chronos-2, Moirai, Mantis) cannot be separated: every pairwise difference is
+at most 0.04 AUC with uncorrected $p\ge0.11$, and the choice of folds alone moves a model by about 0.02.
+TTM-R2 and TimesFM~2.5 are significantly below MOMENT, TiRex, Sundial and Chronos-Bolt, and the seven
+strongest frozen models are significantly above the \fft{} baseline (Holm-corrected $p<0.05$). MiniRocket's advantage is significant against Mantis
+and Moirai but, after correction, not against MOMENT, TiRex, Sundial or the Chronos models (uncorrected
+$p$ = 0.01--0.08). In Task~2 no difference in \cref{tab:task2} can be significant at the level of
+specimens; every model still detects the damaged state in all 280 within-specimen runs. In Task~3, with the
+three frequencies combined, 28/28 against 25/28 for residual energy is not significant ($p=0.25$); at
+80\,kHz every embedding is significantly better than residual energy (Holm-corrected $p\le0.04$).
+
+\subsection{Coordinates, unseen zones and missing sensors (Task 3)}
+\label{app:ext:task3}
+
+\paragraph{Protocol.} From the same log-DI maps: ridge regression of the defect centre in mm under the
+paper's leave-position-out folds; a leave-one-zone-out split, where the four positions of a zone are never
+seen in training (only regression can be scored), with the healthy-map control; and missing sensors at
+test time (1--4 transducers or 10--50\% of the paths, 20 random draws), with the classifier retrained on
+the remaining paths.
+
+\begin{table}[H]
+  \caption{Task 3 beyond seven zones. Median localisation error (mm) of ridge regression on the
+  three-frequency map (leave position out), of RAPID at 40\,kHz, and of ridge regression with a whole zone
+  held out (healthy-map control alongside; predicting the mean training position gives 174\,mm). Last
+  columns: zone accuracy with 2 or 4 transducers, or half of the paths, missing.}
+  \label{tab:ext:task3}
+  \centering
+  \small
+  \begin{tabular}{@{}lccccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Seen zones} & \multicolumn{2}{c}{Unseen zone} & \multicolumn{3}{c}{Missing} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-8}
+    Damage index & Ridge & RAPID & Ridge & Control & 2 T & 4 T & 50\% \\
+    \midrule
+    \inputrows{tables/ext_task3.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Results.} Regressing coordinates locates the defect to a median of 22\,mm (MOMENT) to 72\,mm,
+against 66\,mm for residual energy and 72--126\,mm for RAPID; with the zone known, the zone centre is
+11\,mm from the defect, so regression is less precise than the seven-zone classifier on known zones and
+mainly useful as a continuous estimate. Extrapolation to a zone never seen in training largely fails:
+errors of 119--225\,mm against 174--187\,mm without any damage information. Only the zone in the middle of
+the plate (D9--D12) is found by every method (16--86\,mm); the zones at the plate edges are not. Missing sensors cost little: with four of twelve transducers lost, TiRex, MOMENT,
+TimesFM~2.5 and Sundial still locate 99--100\% of the positions after retraining, residual energy 70\%.
+
+\subsection{Light adaptation}
+\label{app:ext:adapt}
+
+\paragraph{Protocol.} MOMENT and TiRex, the strongest Task~1 models, are adapted on the GPU under the
+Task~1 folds and sign symmetry. The head starts from the paper's logistic regression on the frozen
+features; 20\% of the training configurations are held out for early stopping, and the starting point
+itself is kept if no epoch improves the validation AUC. Variants: the linear head alone, the last two blocks
+unfrozen, or rank-8 LoRA adapters in the last six blocks (MOMENT: attention; TiRex: feed-forward
+projections). TiRex pads every input to its 2{,}048-sample context with NaN, which makes the gradients of
+its first blocks undefined; only its last six blocks, whose gradients are finite, are trained. The TiRex
+feature here is the last block's mean (0.80 with the paper's head), not the package's all-layer embedding.
+
+\begin{table}[H]
+  \caption{Light adaptation, Task 1 (AUC, mean $\pm$ s.d.\ over the five folds).}
+  \label{tab:ext:adapt}
+  \centering
+  \small
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    Model & Linear probe (paper head) & Linear head (gradient) & Last 2 blocks & LoRA $r=8$ \\
+    \midrule
+    \inputrows{tables/ext_adapt.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Results.} EXT-ADAPT-RESULTS
+
 \end{document}
